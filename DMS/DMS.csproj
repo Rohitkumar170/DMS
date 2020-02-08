@@ -2741,6 +2741,9 @@
     <Compile Include="Master\Users.aspx.designer.cs">
       <DependentUpon>Users.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Models\EntitySetupClass\BindEntity.cs" />
+    <Compile Include="Models\Count.cs" />
+    <Compile Include="Models\Flag.cs" />
     <Compile Include="Models\EntitySetupClass\Country.cs" />
     <Compile Include="Models\EntitySetupClass\Entity.cs" />
     <Compile Include="Models\EntitySetupClass\UserTypes.cs" />

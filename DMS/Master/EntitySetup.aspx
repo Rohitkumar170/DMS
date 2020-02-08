@@ -90,7 +90,7 @@
                                                <div class="col-md-3">
                                                 <div class="form-group">
                                                   <label for="ItemGroup"> Mobile</label>
-                        <input type="text" id="txtmobile"    class="form-control" onkeypress="RemoveClass()" autocomplete="off" placeholder="Enter Mobile" />
+                        <input type="text" id="txtmobile"    class="form-control" onkeypress="RemoveClass()" maxlength="10" autocomplete="off" placeholder="Enter Mobile" />
                                                 
                                                 </div>
                                             </div>
@@ -105,7 +105,7 @@
                                         
                                         </div>
                                     
-                                        <div class="row">
+                                     <%--   <div class="row">
                                    
                                             <div class="col-md-3">
                                                 <div class="form-group">
@@ -121,7 +121,7 @@
                                                 
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div>--%>
                              
                              
                                       <div class="row ">

@@ -6,7 +6,7 @@ jquery_1_11_3_min_p(document).ready(function () {
     LoadData = jquery_1_11_3_min_p("#hdnLoad").val();
     jquery_1_11_3_min_p('#preloader').css('display', 'block');
     jquery_1_11_3_min_p('#Overlay_Load').css('display', 'block');
-  //  BindEntityGrid(searchtxt);
+    BindEntityGrid(searchtxt);
  
 
      jquery_1_11_3_min_p('#btnLoadMore').click(function () {
@@ -80,7 +80,7 @@ jquery_1_11_3_min_p(document).ready(function () {
 
     jquery_1_11_3_min_p("#btnback").click(function () {
 
-        window.location.replace("CreateEntity.aspx");
+        window.location.replace("EntitySetup.aspx");
     });
 });
 
@@ -152,21 +152,21 @@ function FormValidation() {
         jquery_1_11_3_min_p("#txtemail").attr("placeholder", "Enter Valid EmailId");
                     allow = false;
         }
-        if (jquery_1_11_3_min_p("#txtpassword").val() != jquery_1_11_3_min_p("#txtconfirmpwd").val()) {
-      swal("Confirm password does not match");
-       allow = false;
-                }
+    //    if (jquery_1_11_3_min_p("#txtpassword").val() != jquery_1_11_3_min_p("#txtconfirmpwd").val()) {
+    //  swal("Confirm password does not match");
+    //   allow = false;
+    //            }
 
-    if (jquery_1_11_3_min_p("#txtpassword").val() == "") {
-      jquery_1_11_3_min_p("#txtpassword").addClass('validate');
-      jquery_1_11_3_min_p("#txtpassword").attr("placeholder", "Enter Password");
-       allow = false;
-                }
-                if (jquery_1_11_3_min_p("#txtconfirmpwd").val() == "") {
-                    jquery_1_11_3_min_p("#txtconfirmpwd").addClass('validate');
-                    jquery_1_11_3_min_p("#txtconfirmpwd").attr("placeholder", "enter Confirm Pwd");
-        allow = false;
-    }
+    //if (jquery_1_11_3_min_p("#txtpassword").val() == "") {
+    //  jquery_1_11_3_min_p("#txtpassword").addClass('validate');
+    //  jquery_1_11_3_min_p("#txtpassword").attr("placeholder", "Enter Password");
+    //   allow = false;
+    //            }
+    //            if (jquery_1_11_3_min_p("#txtconfirmpwd").val() == "") {
+    //                jquery_1_11_3_min_p("#txtconfirmpwd").addClass('validate');
+    //                jquery_1_11_3_min_p("#txtconfirmpwd").attr("placeholder", "enter Confirm Pwd");
+    //    allow = false;
+    //}
 
     return allow;
 }
@@ -185,14 +185,7 @@ function RemoveClass()
                 jquery_1_11_3_min_p("#txtemail").removeClass('validate');
                 
             }
-             if (jquery_1_11_3_min_p("#txtpassword").val() != "") {
-                jquery_1_11_3_min_p("#txtpassword").removeClass('validate');
-                
-            }
-            if (jquery_1_11_3_min_p("#txtconfirmpwd").val() != "") {
-                jquery_1_11_3_min_p("#txtconfirmpwd").removeClass('validate');
-               
-            }
+           
              
 }
 
@@ -204,31 +197,25 @@ function isEmail(email) {
 function SaveEntity() {
 var EntityData=[];
 var EntityDataJson='';
- var CreatedBy = jquery_1_11_3_min_p('#ContentPlaceHolder1_lblUserId').text().trim();
-  var countryid=kendo_all_min_js("#ddlcountryId").data("kendoDropDownList").value();
-  var userName=jquery_1_11_3_min_p("#txtusername").val();
-  var Mobile=jquery_1_11_3_min_p("#txtmobile").val();
-   var Emailid=jquery_1_11_3_min_p("#txtemail").val();
-    var PassWord=jquery_1_11_3_min_p("#txtpassword").val();
-  EntityData.push({userName:userName,countryid:countryid,Mobile:Mobile,Emailid:Emailid,CreatedBy:CreatedBy})
+    EntityData.push({ userName: jquery_1_11_3_min_p("#txtusername").val(), countryid: kendo_all_min_js("#ddlcountryId").data("kendoDropDownList").value(), Mobile: jquery_1_11_3_min_p("#txtmobile").val(), Emailid: jquery_1_11_3_min_p("#txtemail").val(), CreatedBy: jquery_1_11_3_min_p('#ContentPlaceHolder1_lblUserId').text().trim()})
 var EntityDataJson=JSON.stringify(EntityData);
 
   jquery_1_11_3_min_p.ajax({
     type: "POST",
     contentType: "application/json; charset=utf-8",
     url: "../WebServices/CreateUser.asmx/SaveEntity",
-    data: "{'EntityDataJson':'" + EntityDataJson + "','Password':'" + PassWord + "'}",
+    data: "{'EntityDataJson':'" + EntityDataJson + "'}",
     dataType: "json",
     async: false,
     success: function (result) {
             var i = 0;
             var jsonData = eval(result.d);
-            if(jsonData.Table[0].Response=="-1")
+            if(jsonData.Table[0].Res=="-1")
             {
             swal("Entity name already exists");
 
             }
-            else if(jsonData.Table[0].Response=="-2")
+            else if(jsonData.Table[0].Res=="-2")
             {
             swal("EmailId already exists");
 
@@ -236,7 +223,7 @@ var EntityDataJson=JSON.stringify(EntityData);
             else{
               swal("Saved Successfully","Your data Saved successfully!","success")
             .then((value) => {
-             window.location.replace("CreateEntity.aspx");
+             window.location.replace("EntitySetup.aspx");
             });
             }
         }
@@ -246,20 +233,14 @@ var EntityDataJson=JSON.stringify(EntityData);
 function UpdateEntity() {
 var EntityData=[];
 var EntityDataJson='';
- var CreatedBy = jquery_1_11_3_min_p('#ContentPlaceHolder1_lblUserId').text().trim();
-  var countryid=kendo_all_min_js("#ddlcountryId").data("kendoDropDownList").value();
-  var userName=jquery_1_11_3_min_p("#txtusername").val();
-  var Mobile=jquery_1_11_3_min_p("#txtmobile").val();
-   var Emailid=jquery_1_11_3_min_p("#txtemail").val();
-    var PassWord=jquery_1_11_3_min_p("#txtpassword").val();
-  EntityData.push({userName:userName,countryid:countryid,Mobile:Mobile,Emailid:Emailid,CreatedBy:CreatedBy,EntityId:dblEntityId})
+    EntityData.push({ userName: jquery_1_11_3_min_p("#txtusername").val(), countryid: kendo_all_min_js("#ddlcountryId").data("kendoDropDownList").value(), Mobile: jquery_1_11_3_min_p("#txtmobile").val(), Emailid: jquery_1_11_3_min_p("#txtemail").val(), CreatedBy: jquery_1_11_3_min_p('#ContentPlaceHolder1_lblUserId').text().trim(),EntityId:dblEntityId})
 var EntityDataJson=JSON.stringify(EntityData);
 
   jquery_1_11_3_min_p.ajax({
     type: "POST",
     contentType: "application/json; charset=utf-8",
     url: "../WebServices/CreateUser.asmx/UpdateEntity",
-    data: "{'EntityDataJson':'" + EntityDataJson + "','Password':'" + PassWord + "'}",
+    data: "{'EntityDataJson':'" + EntityDataJson + "'}",
     dataType: "json",
     async: false,
     success: function (result) {
@@ -267,7 +248,7 @@ var EntityDataJson=JSON.stringify(EntityData);
             var jsonData = eval(result.d);
               swal("Updated Successfully","Your data Updated successfully!","success")
             .then((value) => {
-             window.location.replace("CreateEntity.aspx");
+                window.location.replace("EntitySetup.aspx");
             });
           
         }
