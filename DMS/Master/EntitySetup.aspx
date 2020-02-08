@@ -18,6 +18,43 @@
     <script src="../Telerix/js/jszip.min.js" type="text/javascript"></script>
     <script src="../JavaScript/CreateEntity.js" type="text/javascript"></script>
     <style>
+        <style>
+.custom-file-input::-webkit-file-upload-button {
+    visibility: hidden;
+}
+.custom-file-input:active{  outline:none !important  }
+.custom-file-input::before 
+{
+     
+    content: ' Import';
+    display: inline-block;
+    background: #2D4D76 !important;    
+    border-radius: 2px;
+    padding: 3px 5px 2px 16px;
+    outline: none;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    cursor: pointer;
+        color: #fff;
+    font-weight: 500;
+    font-size: 10px;
+}
+
+.custom-file-input:hover::before {
+    border-color: black;
+}
+
+.custom-file-input:active::before {
+    background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+}
+.custom-file-input{    opacity: 1;  height: 19px;  width: 50px;}
+.multifileupload{    position: relative;
+    display: inherit;}
+    .multifileupload i{    position: absolute;
+    z-index: 10;
+    top: 5px;
+    color: #fff;
+    left: 4px;}
     #userGrid td:nth-child(3), #userGrid th:nth-child(3) {    width: 50px;}
     </style>
 </asp:Content>
@@ -32,7 +69,11 @@
                 </div>
                 <div class="content-header-right col-md-6 col-12">
                     <div class="btn-group float-md-right" role="group" aria-label="Button group with nested dropdown">
-                   
+                
+                       <span class="multifileupload" id="btnupload"> 
+                       <i class="fa fa-upload"></i>
+                       <input type="file" id='attachfile' class="custom-file-input multifileBtn">
+                       </span>
                        <button type="button" id="btnnew" class="btn btn-primary">
                             <i class="fa fa-plus-square"></i> New</button>
                         
@@ -166,9 +207,9 @@
 
                  <button type="button" id="btnexportpdf"  class="btn btn-outline-primary" title="PDF">
                            <i class="fa fa-print"></i> </button>
-          <button type="button" id=""  class="btn btn-outline-primary" title="Import">
-                           <i class="fa fa-upload"></i> </button>
-                       
+        <%--  <button type="button" id=""  class="btn btn-outline-primary" title="Import">
+                           <i class="fa fa-upload"></i> </button>--%>
+               
                          
     </div></div>
     <div class="col-md-2"> 
