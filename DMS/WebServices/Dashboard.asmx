@@ -1,1 +1,1 @@
-﻿<%@ WebService Language="C#" CodeBehind="Dashboard.asmx.cs" Class="DealerManagementSystem.WebServices.Dashboard" %>
+﻿<%@ WebService Language="C#" CodeBehind="Dashboard.asmx.cs" Class="DMS.WebServices.Dashboard" %>

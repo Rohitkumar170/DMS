@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Services;
 
-namespace DealerManagementSystem.WebServices
+namespace DMS.WebServices
 {
     /// <summary>
     /// Summary description for Dashboard
@@ -16,6 +16,7 @@ namespace DealerManagementSystem.WebServices
      [System.Web.Script.Services.ScriptService]
     public class Dashboard : System.Web.Services.WebService
     {
+
         [WebMethod(EnableSession = true)]
         public void Logout()
         {

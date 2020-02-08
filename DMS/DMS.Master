@@ -378,6 +378,8 @@
                    <ul class="menu-content">
                      <li><a class="menu-item" href="#"><span>Organization</span></a>
                   <ul class="menu-content">
+                <li class=""><a class="menu-item" href="../Master/Users.aspx"><span >Users</span></a> </li>  
+                    <li class=""><a class="menu-item" href="../Master/EntitySetup.aspx"><span >Entity Setup</span></a> </li>    
                   <li class=""><a class="menu-item" href="../Master/OrganizationPara.aspx"><span >Organization Parameter</span></a> </li>   
                   <li class=""><a class="menu-item" href="../Master/OrganizationDataSetup.aspx"><span > Organization Data Setup  </span></a> </li>  
                    <li class=""><a class="menu-item" href="../Master/SystemParameterSetup.aspx"><span >System Parameter Setup </span></a> </li>  
