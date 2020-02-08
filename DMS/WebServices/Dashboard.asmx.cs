@@ -16,11 +16,9 @@ namespace DealerManagementSystem.WebServices
      [System.Web.Script.Services.ScriptService]
     public class Dashboard : System.Web.Services.WebService
     {
-
         [WebMethod(EnableSession = true)]
         public void Logout()
         {
-
             System.Web.HttpContext.Current.Session["UserID"] = null;
             Session.Abandon();
             Session.Clear();
