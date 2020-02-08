@@ -2743,6 +2743,7 @@
     </Compile>
     <Compile Include="Models\EntitySetupClass\BindEntity.cs" />
     <Compile Include="Models\Count.cs" />
+    <Compile Include="Models\EntitySetupClass\ImportEntity.cs" />
     <Compile Include="Models\Flag.cs" />
     <Compile Include="Models\EntitySetupClass\Country.cs" />
     <Compile Include="Models\EntitySetupClass\Entity.cs" />
