@@ -6,6 +6,7 @@ using System.Web.Services;
 using BusinessLibrary;
 using DMS.Entity;
 using DMS.Models.EntitySetupClass;
+using DMS.Models;
 namespace DMS.WebServices
 {
     /// <summary>
@@ -25,6 +26,53 @@ namespace DMS.WebServices
             var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_UserSetup]").With<Country>()
                             .Execute("@QueryType","BindCountry"));
             return results;
+        }
+
+        [WebMethod]
+        public Dictionary<string, object> SaveEntity(string EntityDataJson)
+        {
+            try
+            {
+                var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_UserSetup]").With<Flag>()
+                          .Execute("@QueryType", "@EntityDataJson", "SaveEntity", EntityDataJson));
+                return results;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+
+        }
+
+        [WebMethod]
+        public Dictionary<string, object> BindEntityGrid(string LoadData, string SearchValue)
+        {
+            try
+            {
+                var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_UserSetup]").With<BindEntity>().With<Count>()
+                         .Execute("@QueryType","@loaddata", "@searchvalue", "BindEntityGrid", LoadData, SearchValue));
+                return results;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+
+        }
+        [WebMethod]
+        public Dictionary<string, object> UpdateEntity(string EntityDataJson)
+        {
+            try
+            {
+                var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_UserSetup]").With<Flag>()
+                    .Execute("@QueryType", "@EntityDataJson", "UpdateEntity", EntityDataJson));
+                return results;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+
         }
     }
 }
