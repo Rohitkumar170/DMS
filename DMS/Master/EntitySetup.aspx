@@ -166,6 +166,8 @@
 
                  <button type="button" id="btnexportpdf"  class="btn btn-outline-primary" title="PDF">
                            <i class="fa fa-print"></i> </button>
+          <button type="button" id=""  class="btn btn-outline-primary" title="Import">
+                           <i class="fa fa-upload"></i> </button>
                        
                          
     </div></div>
