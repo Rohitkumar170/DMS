@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Collections;
 
-namespace DealerManagementSystem.Entity
+namespace DMS.Entity
 {
     public static class Common
     {

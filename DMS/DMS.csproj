@@ -203,6 +203,8 @@
     <Content Include="JavaScript\AllItem.js" />
     <Content Include="JavaScript\Assigneditem.js" />
     <Content Include="JavaScript\COA.js" />
+    <Content Include="JavaScript\CreateEntity.js" />
+    <Content Include="JavaScript\CreateUser.js" />
     <Content Include="JavaScript\Customer.js" />
     <Content Include="JavaScript\Dashboard.js" />
     <Content Include="JavaScript\discountSetup.js" />
@@ -343,6 +345,8 @@
     <Content Include="js\uploader.swf" />
     <Content Include="js\wizard.min.js" />
     <Content Include="login.aspx" />
+    <Content Include="Master\EntitySetup.aspx" />
+    <Content Include="Master\Users.aspx" />
     <Content Include="Telerix\content\dataviz\dashboards\area-chart.png" />
     <Content Include="Telerix\content\dataviz\dashboards\car-dashboard.png" />
     <Content Include="Telerix\content\dataviz\dashboards\car.gif" />
@@ -2245,6 +2249,7 @@
     <Content Include="Telerix\Style\Uniform\sprite_kpi.png" />
     <Content Include="Telerix\Style\Uniform\sprite_kpi_2x.png" />
     <Content Include="Web.config" />
+    <Content Include="WebServices\CreateUser.asmx" />
     <Content Include="WebServices\Dashboard.asmx" />
   </ItemGroup>
   <ItemGroup>
@@ -2722,6 +2727,23 @@
     <Compile Include="login.aspx.designer.cs">
       <DependentUpon>login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Master\EntitySetup.aspx.cs">
+      <DependentUpon>EntitySetup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master\EntitySetup.aspx.designer.cs">
+      <DependentUpon>EntitySetup.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Master\Users.aspx.cs">
+      <DependentUpon>Users.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master\Users.aspx.designer.cs">
+      <DependentUpon>Users.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EntitySetupClass\Country.cs" />
+    <Compile Include="Models\EntitySetupClass\Entity.cs" />
+    <Compile Include="Models\EntitySetupClass\UserTypes.cs" />
     <Compile Include="Models\LoginClass\Logindetails.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PurchaseInvoice.ashx.cs">
@@ -2729,6 +2751,10 @@
     </Compile>
     <Compile Include="SaveInvoice.ashx.cs">
       <DependentUpon>SaveInvoice.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="WebServices\CreateUser.asmx.cs">
+      <DependentUpon>CreateUser.asmx</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="WebServices\Dashboard.asmx.cs">
       <DependentUpon>Dashboard.asmx</DependentUpon>
@@ -3154,7 +3180,6 @@
     <Folder Include="InvoiceAttachment\INV-0000001\" />
     <Folder Include="InvoiceAttachment\INV-0000008\" />
     <Folder Include="InvoiceAttachment\INV-0000009\" />
-    <Folder Include="Master\" />
     <Folder Include="PurchaseInvoiceAttachment\" />
   </ItemGroup>
   <ItemGroup>
