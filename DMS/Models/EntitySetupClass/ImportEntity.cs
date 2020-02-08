@@ -7,7 +7,7 @@ namespace DMS.Models.EntitySetupClass
 {
     public class ImportEntity
     {
-        public string Entityname { get; set; }
+        public string   Entityname { get; set; }
         public Int64 CountryId { get; set; }
         public Int64 MobileNo { get; set;}
         public string EmailId { get; set; }
