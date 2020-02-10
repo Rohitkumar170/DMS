@@ -119,6 +119,7 @@ function BindCountry() {
     });
 }
 
+function UploadFile() { $('#ContentPlaceHolder1_btnUpload').click(); }
 
 
 function FormValidation() {
