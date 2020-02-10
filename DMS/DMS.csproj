@@ -3181,6 +3181,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="assets\app-assets\" />
+    <Folder Include="Import\" />
     <Folder Include="InvoiceAttachment\INV-0000001\" />
     <Folder Include="InvoiceAttachment\INV-0000008\" />
     <Folder Include="InvoiceAttachment\INV-0000009\" />

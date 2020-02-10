@@ -70,10 +70,13 @@
                 <div class="content-header-right col-md-6 col-12">
                     <div class="btn-group float-md-right" role="group" aria-label="Button group with nested dropdown">
                 
-                       <span class="multifileupload" id="btnupload"> 
+                       <span class="multifileupload" id="btnupload" > 
                        <i class="fa fa-upload"></i>
-                       <input type="file" id='attachfile' class="custom-file-input multifileBtn">
+                  <%--   <input type="file" id='FileUpload' runat="server" class="custom-file-input multifileBtn" onchange="UploadFile(this);" />--%>
+                            <asp:FileUpload runat="server" Visible="true" ID="FileUpload" onchange="UploadFile(this);" />
+                          <%--  <asp:FileUpload runat="server" Visible="true" ID="FileUpload" onchange="UploadFile(this);" />--%>
                        </span>
+                        <asp:Button ID="btnUpload" runat="server" OnClick="btnUpload_Click" style="display:none"  />
                        <button type="button" id="btnnew" class="btn btn-primary">
                             <i class="fa fa-plus-square"></i> New</button>
                         
