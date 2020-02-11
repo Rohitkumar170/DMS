@@ -36,7 +36,19 @@ jquery_1_11_3_min_p(document).ready(function () {
  jquery_1_11_3_min_p('#btnsubmit').click(function () {
  if(ValidateUnitGrid()==true)
  {
- SaveUnit();
+     swal({
+         title: "Do you want to proceed?",
+         text: "",
+         icon: "warning",
+         buttons: true,
+         dangerMode: true,
+     })
+         .then((willDelete) => {
+             if (willDelete) {
+                 SaveUnit();
+             }
+         });
+ 
  }
  });
 
@@ -172,7 +184,7 @@ function SaveUnit() {
     success: function (result) {
             var i = 0;
             var jsonData = eval(result.d);
-            if(jsonData.Table[0].Response=="1")
+        if (jsonData.Table[0].Res=="1")
             {
        swal("Saved Successfully","Your data Saved successfully!","success")
             .then((value) => {
