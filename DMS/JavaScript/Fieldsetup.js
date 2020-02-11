@@ -447,6 +447,7 @@ var entityid=kendo_all_min_js("#ddlentity").data("kendoDropDownList").value();
 
      jquery_1_11_3_min_p.ajax({
     type: "POST",
+    type: "POST",
     contentType: "application/json; charset=utf-8",
     url: "../WebServices/Setup.asmx/SaveFieldAssigned",
     data: "{'JsonFieldItems':'" + JsonFieldItems + "','countryid':'" + countryid + "','entityid':'" + entityid + "','CreatedBy':'" + CreatedBy + "'}",
