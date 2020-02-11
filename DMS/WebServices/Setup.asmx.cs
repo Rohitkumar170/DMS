@@ -23,6 +23,8 @@ namespace DMS.WebServices
     {
         DMSNEWEntities context = new DMSNEWEntities();
 
+        BindADOResultset CommonManger = new BindADOResultset();
+
         [WebMethod]
         public Dictionary<string, object> BindFieldDetails()
         {
@@ -318,16 +320,20 @@ namespace DMS.WebServices
         [WebMethod]
         public Dictionary<string, object> GetTableColumn(string TableName)
         {
-            try
-            {
-                var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_AdminSetUp]").With<GetColumnName>()
-                           .Execute("@QueryType", "@TableName", "GetDynamicTableColumn", TableName));
-                return results;
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
+
+          
+                try
+                {
+                    DataSet ds =CommonManger.FillDatasetWithParam("DMS_AdminSetUp", "@QueryType", "@TableName", "GetDynamicTableColumn", TableName);
+                    return ClsJson.JsonMethods.ToJson(ds);
+                }
+                catch (Exception ex)
+                {
+                    throw;
+                }
+            
+          
+
 
             }
         [WebMethod]
