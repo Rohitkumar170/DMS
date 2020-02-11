@@ -9,7 +9,6 @@ using DMS.Models.AddressSetupClass;
 using DMS.Models.EntitySetupClass;
 using DMS.Models;
 using System.Data;
-
 namespace DMS.WebServices
 {
     /// <summary>
