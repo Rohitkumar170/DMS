@@ -119,8 +119,10 @@ function BindCountry() {
     });
 }
 
-function UploadFile() { $('#ContentPlaceHolder1_btnUpload').click(); }
-
+function UploadFile() {$('#ContentPlaceHolder1_btnUpload').click(); }
+function Findclick() {
+    $('#ContentPlaceHolder1_FileUpload').click();
+}
 
 function FormValidation() {
     var allow = true;
@@ -337,5 +339,9 @@ jquery_1_11_3_min_p("#DivSearch").append(Searchfinaldiv);
 
 
 
+}
+
+function Showpopup(Message) {
+    swal("Invalid", Message, "warning")
 }
 

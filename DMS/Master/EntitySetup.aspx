@@ -24,9 +24,7 @@
 }
 .custom-file-input:active{  outline:none !important  }
 .custom-file-input::before 
-{
-     
-    content: ' Import';
+#upload{
     display: inline-block;
     background: #2D4D76 !important;    
     border-radius: 2px;
@@ -47,7 +45,8 @@
 .custom-file-input:active::before {
     background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
 }
-.custom-file-input{    opacity: 1;  height: 19px;  width: 50px;}
+.custom-file-input{    opacity: 1;  height: 19px;  width: 60px;    background-color: #2D4D76!important;    color: #fff;    border-radius: 2px;
+    border: none;}
 .multifileupload{    position: relative;
     display: inherit;}
     .multifileupload i{    position: absolute;
@@ -60,6 +59,9 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 <input type="hidden" id="hdnLoad"/>
+    
+       
+   
 <div class="content-header row">
         <div class="content-header-light col-12">
             <div class="row">
@@ -73,16 +75,18 @@
                        <span class="multifileupload" id="btnupload" > 
                        <i class="fa fa-upload"></i>
                   <%--   <input type="file" id='FileUpload' runat="server" class="custom-file-input multifileBtn" onchange="UploadFile(this);" />--%>
-                            <asp:FileUpload runat="server" Visible="true" ID="FileUpload" onchange="UploadFile(this);" />
-                          <%--  <asp:FileUpload runat="server" Visible="true" ID="FileUpload" onchange="UploadFile(this);" />--%>
+                           <input type="button" id="upload" value="Import" class="custom-file-input multifileBtn" onclick="Findclick();" />
+                           <asp:FileUpload runat="server" Visible="true" ID="FileUpload" onchange="UploadFile(this);" style="display:none" />
+                           <asp:Button ID="btnUpload" runat="server" OnClick="btnUpload_Click" style="display:none" /> 
                        </span>
-                        <asp:Button ID="btnUpload" runat="server" OnClick="btnUpload_Click" style="display:none"  />
+                     
+                          <%--  <asp:FileUpload runat="server" Visible="true" ID="FileUpload" onchange="UploadFile(this);" />--%>
                        <button type="button" id="btnnew" class="btn btn-primary">
                             <i class="fa fa-plus-square"></i> New</button>
                         
                         <button type="button" id="btnback" class="btn btn-primary" style="display:none">
                            <i class="fa fa-arrow-left"></i> Back</button>
-                      
+                        
                     </div>
                 </div>
             </div>
@@ -166,12 +170,13 @@
                                                 </div>
                                             </div>
                                         </div>--%>
-                             
+                            
                              
                                       <div class="row ">
                                        <div class="col-md-12">
                                         <button type="button" id="btnsubmit"   class="btn btn-primary pull-right mt-1 ">
                             <i class="fa fa-save"></i> Submit</button>
+                                          
 
                                        </div>
                                        </div>

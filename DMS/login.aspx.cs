@@ -107,13 +107,12 @@ namespace DMS
                 #endregion
                 if (txtpassword.Value != "" && txtUserName.Value != "")
                 {
-                    //DataSet dsUser = new DataSet();
-                    //dsUser = Iace.User.User.GetUser(txtUserName.Value);
+                    
                     var results = context.MultipleResults("[dbo].[DMS_Login]").With<Logindetails>()
                            .Execute("@QueryType", "@Emailid", "UserAccess", txtUserName.Value);
                     foreach (List<Logindetails> cust in results)
                     {
-                        if (cust.Count > 0)
+                            if (cust.Count > 0)
                         {
                             if (cust.FirstOrDefault().EmailId == "0")
                             {
