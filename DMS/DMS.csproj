@@ -51,7 +51,7 @@
       <HintPath>..\packages\EFCore.BulkExtensions.3.1.0\lib\netstandard2.0\EFCore.BulkExtensions.dll</HintPath>
     </Reference>
     <Reference Include="Encryption">
-      <HintPath>..\..\..\VSS\DLL\Encryption.dll</HintPath>
+      <HintPath>..\..\..\DLL\Encryption.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
@@ -63,7 +63,7 @@
       <HintPath>..\packages\FastMember.1.5.0\lib\net461\FastMember.dll</HintPath>
     </Reference>
     <Reference Include="Ionic.Zip.Reduced">
-      <HintPath>..\..\..\VSS\DLL\Ionic.Zip.Reduced.dll</HintPath>
+      <HintPath>..\..\..\DLL\Ionic.Zip.Reduced.dll</HintPath>
     </Reference>
     <Reference Include="itextsharp">
       <HintPath>..\..\..\..\dll\itextsharp.dll</HintPath>
@@ -501,6 +501,9 @@
     <Content Include="js\uploader.swf" />
     <Content Include="js\wizard.min.js" />
     <Content Include="login.aspx" />
+    <Content Include="Master\AddressDataSetup.aspx" />
+    <Content Include="Master\AddressFields.aspx" />
+    <Content Include="Master\AddressFieldSetup.aspx" />
     <Content Include="Master\EntitySetup.aspx" />
     <Content Include="Master\Users.aspx" />
     <Content Include="Telerix\content\dataviz\dashboards\area-chart.png" />
@@ -2407,6 +2410,7 @@
     <Content Include="Web.config" />
     <Content Include="WebServices\CreateUser.asmx" />
     <Content Include="WebServices\Dashboard.asmx" />
+    <Content Include="WebServices\Setup.asmx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DMS.Master.cs">
@@ -2884,6 +2888,27 @@
     <Compile Include="login.aspx.designer.cs">
       <DependentUpon>login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Master\AddressDataSetup.aspx.cs">
+      <DependentUpon>AddressDataSetup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master\AddressDataSetup.aspx.designer.cs">
+      <DependentUpon>AddressDataSetup.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Master\AddressFields.aspx.cs">
+      <DependentUpon>AddressFields.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master\AddressFields.aspx.designer.cs">
+      <DependentUpon>AddressFields.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Master\AddressFieldSetup.aspx.cs">
+      <DependentUpon>AddressFieldSetup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master\AddressFieldSetup.aspx.designer.cs">
+      <DependentUpon>AddressFieldSetup.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Master\EntitySetup.aspx.cs">
       <DependentUpon>EntitySetup.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2898,6 +2923,21 @@
     <Compile Include="Master\Users.aspx.designer.cs">
       <DependentUpon>Users.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Models\AddressSetupClass\AddressFields.cs" />
+    <Compile Include="Models\AddressSetupClass\BindAddressClass.cs" />
+    <Compile Include="Models\AddressSetupClass\BindAddressDataType.cs" />
+    <Compile Include="Models\AddressSetupClass\BindAddressField.cs" />
+    <Compile Include="Models\AddressSetupClass\BindAddressFieldGrid.cs" />
+    <Compile Include="Models\AddressSetupClass\BindAllFields.cs" />
+    <Compile Include="Models\AddressSetupClass\BindCountry.cs" />
+    <Compile Include="Models\AddressSetupClass\BindDataSetupField.cs" />
+    <Compile Include="Models\AddressSetupClass\BindEntityForAddress.cs" />
+    <Compile Include="Models\AddressSetupClass\BindFieldOndblClick.cs" />
+    <Compile Include="Models\AddressSetupClass\BindFieldSetupGrid.cs" />
+    <Compile Include="Models\AddressSetupClass\Bindparentddl.cs" />
+    <Compile Include="Models\AddressSetupClass\DdlFielsSetup.cs" />
+    <Compile Include="Models\AddressSetupClass\GetColumnName.cs" />
+    <Compile Include="Models\AddressSetupClass\SerarchBindAddressFieldGrid.cs" />
     <Compile Include="Models\EntitySetupClass\BindEntity.cs" />
     <Compile Include="Models\Count.cs" />
     <Compile Include="Models\EntitySetupClass\ImportEntity.cs" />
@@ -2921,6 +2961,10 @@
     </Compile>
     <Compile Include="WebServices\Dashboard.asmx.cs">
       <DependentUpon>Dashboard.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WebServices\Setup.asmx.cs">
+      <DependentUpon>Setup.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
   </ItemGroup>

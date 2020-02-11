@@ -10,6 +10,7 @@ namespace BusinessLibrary
 {
     public static class MultipleResultSets
     {
+       
         public static MultipleResultSetWrapper MultipleResults(this DbContext db, string storedProcedure)
         {
             return new MultipleResultSetWrapper(db, storedProcedure);
@@ -58,6 +59,7 @@ namespace BusinessLibrary
 
                         command.CommandText = "EXEC " + _storedProcedure + " " + _storedProcedureparam;
                         command.CommandTimeout = 100000;
+                       // connection.Close();
                         connection.Open();
                         using (var reader = command.ExecuteReader())
                         {
@@ -70,7 +72,9 @@ namespace BusinessLibrary
                             }
                         }
                     }
-                    finally { connection.Close(); }
+                    finally {
+                        connection.Close();
+                    }
 
                     return results;
                 }
