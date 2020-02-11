@@ -1,0 +1,4 @@
+"<li id='li_Ac-0001-Assets'><label style='display:none' id='lblId_1'></label> <label class='tree-toggler nav-header'>Ac-0001-Assets</label><label class='total'>5000.000</label><label class='description'>Description</label><label class='accountParent'>Parent Account</label></li>"
+
+
+SELECT ta.AccountId, ta.AccountCode + '-' + ta.AccountName as AccountName, Isnull(a.AccountCode + '-' + a.AccountName,'Parent Account') as ParentName,Isnull(a.AccountId ,0)as ParentId FROM tblAccounts ta left JOIN tblAccounts a ON a.AccountId=ta.parentId where ta.IsActive=1 and ta.parentId=0

@@ -1649,5 +1649,30 @@ namespace DMS.Entity
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("TestFINALCALCULATORINCLUSIVE");
         }
+    
+        public virtual int DMS_ImportExcel(string entityname, Nullable<long> countryId, Nullable<long> mobileNo, string emailId, Nullable<long> createdBy)
+        {
+            var entitynameParameter = entityname != null ?
+                new ObjectParameter("Entityname", entityname) :
+                new ObjectParameter("Entityname", typeof(string));
+    
+            var countryIdParameter = countryId.HasValue ?
+                new ObjectParameter("CountryId", countryId) :
+                new ObjectParameter("CountryId", typeof(long));
+    
+            var mobileNoParameter = mobileNo.HasValue ?
+                new ObjectParameter("MobileNo", mobileNo) :
+                new ObjectParameter("MobileNo", typeof(long));
+    
+            var emailIdParameter = emailId != null ?
+                new ObjectParameter("EmailId", emailId) :
+                new ObjectParameter("EmailId", typeof(string));
+    
+            var createdByParameter = createdBy.HasValue ?
+                new ObjectParameter("CreatedBy", createdBy) :
+                new ObjectParameter("CreatedBy", typeof(long));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DMS_ImportExcel", entitynameParameter, countryIdParameter, mobileNoParameter, emailIdParameter, createdByParameter);
+        }
     }
 }
