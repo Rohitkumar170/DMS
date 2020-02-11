@@ -2937,6 +2937,7 @@
     <Compile Include="Models\AddressSetupClass\Bindparentddl.cs" />
     <Compile Include="Models\AddressSetupClass\DdlFielsSetup.cs" />
     <Compile Include="Models\AddressSetupClass\GetColumnName.cs" />
+    <Compile Include="Models\AddressSetupClass\GetColumnNameCollection.cs" />
     <Compile Include="Models\AddressSetupClass\SerarchBindAddressFieldGrid.cs" />
     <Compile Include="Models\EntitySetupClass\BindEntity.cs" />
     <Compile Include="Models\Count.cs" />
