@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DMSNEWModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DMSNEWModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Tabel1">
           <Key>
             <PropertyRef Name="Empid" />
@@ -315,8 +315,6 @@
           <Property Name="EmailId" Type="nvarchar" MaxLength="250" />
           <Property Name="MobileNo" Type="bigint" />
           <Property Name="CountryId" Type="bigint" />
-          <Property Name="Passwordkey" Type="nvarchar" MaxLength="250" />
-          <Property Name="Password" Type="nvarchar" MaxLength="250" />
           <Property Name="CreatedOn" Type="smalldatetime" />
           <Property Name="UpdatedOn" Type="smalldatetime" />
           <Property Name="IsActive" Type="bit" />
@@ -2125,6 +2123,13 @@ warning 6002: The table/view 'DMSNEW.dbo.Taxgroupformula' does not have a primar
           <Parameter Name="SkuId" Type="bigint" Mode="In" />
           <Parameter Name="LocationId" Type="bigint" Mode="In" />
         </Function>
+        <Function Name="DMS_ImportExcel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Entityname" Type="nvarchar" Mode="In" />
+          <Parameter Name="CountryId" Type="bigint" Mode="In" />
+          <Parameter Name="MobileNo" Type="bigint" Mode="In" />
+          <Parameter Name="EmailId" Type="varchar" Mode="In" />
+          <Parameter Name="CreatedBy" Type="bigint" Mode="In" />
+        </Function>
         <Function Name="DMS_InsertRequisition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="QueryType" Type="varchar" Mode="In" />
           <Parameter Name="RequestNumber" Type="varchar" Mode="In" />
@@ -2592,8 +2597,7 @@ warning 6002: The table/view 'DMSNEW.dbo.Taxgroupformula' does not have a primar
     FROM [dbo].[Taxgroupformula] AS [Taxgroupformula]</DefiningQuery>
           </EntitySet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DMSNEWModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -4669,7 +4673,7 @@ warning 6002: The table/view 'DMSNEW.dbo.Taxgroupformula' does not have a primar
             <Parameter Name="delimiter" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="parseJSON" IsComposable="true" ReturnType="Collection(DMSNEWModel.parseJSON_Result)">
-            <Parameter Name="JSON" Mode="In" Type="String" />
+          <Parameter Name="JSON" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="AngularTest" ReturnType="Collection(DMSNEWModel.AngularTest_Result)">
             <Parameter Name="QueryType" Mode="In" Type="String" />
@@ -4811,7 +4815,7 @@ warning 6002: The table/view 'DMSNEW.dbo.Taxgroupformula' does not have a primar
             <Parameter Name="Date" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="DMS_GETAUTOGENERATENo" ReturnType="Collection(String)">
-            <Parameter Name="QueryType" Mode="In" Type="String" />
+          <Parameter Name="QueryType" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Dms_GetDiscount">
             <Parameter Name="itemid" Mode="In" Type="Int64" />
@@ -5041,10 +5045,10 @@ warning 6002: The table/view 'DMSNEW.dbo.Taxgroupformula' does not have a primar
           </FunctionImport>
           <FunctionImport Name="Sp_AxWebserviceIntegration" ReturnType="Collection(DMSNEWModel.Sp_AxWebserviceIntegration_Result)" />
           <FunctionImport Name="sp_LinkedService">
-            <Parameter Name="QueryType" Mode="In" Type="String" />
+          <Parameter Name="QueryType" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_ServiceLog">
-            <Parameter Name="LogDescription" Mode="In" Type="String" />
+          <Parameter Name="LogDescription" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Sp_test" ReturnType="Collection(Int32)">
             <Parameter Name="QueryType" Mode="In" Type="String" />
@@ -5066,6 +5070,13 @@ warning 6002: The table/view 'DMSNEW.dbo.Taxgroupformula' does not have a primar
           </FunctionImport>
           <FunctionImport Name="TestFINALCALCULATOR" />
           <FunctionImport Name="TestFINALCALCULATORINCLUSIVE" />
+          <FunctionImport Name="DMS_ImportExcel">
+            <Parameter Name="Entityname" Mode="In" Type="String" />
+            <Parameter Name="CountryId" Mode="In" Type="Int64" />
+            <Parameter Name="MobileNo" Mode="In" Type="Int64" />
+            <Parameter Name="EmailId" Mode="In" Type="String" />
+            <Parameter Name="CreatedBy" Mode="In" Type="Int64" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="AngularTest_Result">
           <Property Type="Int32" Name="Empid" Nullable="false" />
@@ -5516,8 +5527,6 @@ warning 6002: The table/view 'DMSNEW.dbo.Taxgroupformula' does not have a primar
                 <ScalarProperty Name="EmailId" ColumnName="EmailId" />
                 <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
                 <ScalarProperty Name="CountryId" ColumnName="CountryId" />
-                <ScalarProperty Name="Passwordkey" ColumnName="Passwordkey" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
                 <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
@@ -7476,6 +7485,7 @@ warning 6002: The table/view 'DMSNEW.dbo.Taxgroupformula' does not have a primar
           <FunctionImportMapping FunctionImportName="TESTCALCULATOR" FunctionName="DMSNEWModel.Store.TESTCALCULATOR" />
           <FunctionImportMapping FunctionImportName="TestFINALCALCULATOR" FunctionName="DMSNEWModel.Store.TestFINALCALCULATOR" />
           <FunctionImportMapping FunctionImportName="TestFINALCALCULATORINCLUSIVE" FunctionName="DMSNEWModel.Store.TestFINALCALCULATORINCLUSIVE" />
+          <FunctionImportMapping FunctionImportName="DMS_ImportExcel" FunctionName="DMSNEWModel.Store.DMS_ImportExcel" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
