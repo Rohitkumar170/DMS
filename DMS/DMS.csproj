@@ -44,7 +44,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BusinessLibrary">
+    <Reference Include="BusinessLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\BusinessLibrary\bin\Debug\BusinessLibrary.dll</HintPath>
     </Reference>
     <Reference Include="EFCore.BulkExtensions, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -505,6 +506,8 @@
     <Content Include="Master\AddressFields.aspx" />
     <Content Include="Master\AddressFieldSetup.aspx" />
     <Content Include="Master\EntitySetup.aspx" />
+    <Content Include="Master\ItemGroupSetup.aspx" />
+    <Content Include="Master\Unit.aspx" />
     <Content Include="Master\Users.aspx" />
     <Content Include="Telerix\content\dataviz\dashboards\area-chart.png" />
     <Content Include="Telerix\content\dataviz\dashboards\car-dashboard.png" />
@@ -2410,6 +2413,8 @@
     <Content Include="Web.config" />
     <Content Include="WebServices\CreateUser.asmx" />
     <Content Include="WebServices\Dashboard.asmx" />
+    <Content Include="WebServices\Item.asmx" />
+    <Content Include="WebServices\ItemSetup.asmx" />
     <Content Include="WebServices\Setup.asmx" />
   </ItemGroup>
   <ItemGroup>
@@ -2916,6 +2921,20 @@
     <Compile Include="Master\EntitySetup.aspx.designer.cs">
       <DependentUpon>EntitySetup.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Master\ItemGroupSetup.aspx.cs">
+      <DependentUpon>ItemGroupSetup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master\ItemGroupSetup.aspx.designer.cs">
+      <DependentUpon>ItemGroupSetup.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Master\Unit.aspx.cs">
+      <DependentUpon>Unit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master\Unit.aspx.designer.cs">
+      <DependentUpon>Unit.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Master\Users.aspx.cs">
       <DependentUpon>Users.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2937,9 +2956,7 @@
     <Compile Include="Models\AddressSetupClass\Bindparentddl.cs" />
     <Compile Include="Models\AddressSetupClass\DdlFielsSetup.cs" />
     <Compile Include="Models\AddressSetupClass\GetColumnName.cs" />
-
     <Compile Include="Models\AddressSetupClass\GetColumnNameCollection.cs" />
-
     <Compile Include="Models\AddressSetupClass\SerarchBindAddressFieldGrid.cs" />
     <Compile Include="Models\EntitySetupClass\BindEntity.cs" />
     <Compile Include="Models\Count.cs" />
@@ -2948,6 +2965,11 @@
     <Compile Include="Models\EntitySetupClass\Country.cs" />
     <Compile Include="Models\EntitySetupClass\Entity.cs" />
     <Compile Include="Models\EntitySetupClass\UserTypes.cs" />
+    <Compile Include="Models\ItemSetupClass\BindDataClassWise.cs" />
+    <Compile Include="Models\ItemSetupClass\BindItemclass.cs" />
+    <Compile Include="Models\ItemSetupClass\BindItemGroupGrid.cs" />
+    <Compile Include="Models\ItemSetupClass\BindUnit.cs" />
+    <Compile Include="Models\ItemSetupClass\BindUnitConversion.cs" />
     <Compile Include="Models\LoginClass\BindUsers.cs" />
     <Compile Include="Models\LoginClass\Logindetails.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -2964,6 +2986,14 @@
     </Compile>
     <Compile Include="WebServices\Dashboard.asmx.cs">
       <DependentUpon>Dashboard.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WebServices\Item.asmx.cs">
+      <DependentUpon>Item.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WebServices\ItemSetup.asmx.cs">
+      <DependentUpon>ItemSetup.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="WebServices\Setup.asmx.cs">
