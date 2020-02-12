@@ -22,7 +22,11 @@
 #userGrid td:nth-child(3), #userGrid th:nth-child(3) {    width: 100px;}
 #userGrid td:nth-child(5), #userGrid th:nth-child(5) {    width: 200px;}
 .AccessRights li{list-style:none;}
+.AccessRights ul{padding-left:22px;}
     .accessLevel {margin-top:5px;    }
+    .accessCheck li{display:inline-block;list-style:none;    margin: 0 40px 0 0;}
+    .accessCheck{padding-left:0;}
+    #scrolldiv{max-height: 190px;overflow-y:auto;overflow-x:hidden;}
 </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -172,7 +176,7 @@
                         </div>
                     </div>
                 </div>
-                 <div class="row match-height pb-2">
+                 <div class="row match-height pb-2" >
                   <div class="col-md-12">
                         <div class="card">
                          
@@ -182,30 +186,50 @@
 
                                     </div>
                              
-                                    <div class="form-body lineSelection">
+                                    <div class="form-body lineSelection" id="accessTree">
                                         <h6 class="form-section">Access Rights</h6>
-                                       
-                                    
-                                        <div class="row AccessRights" >
+                                        <div class="row " >
+                                             <div class="col-md-12">
+                                       <ul class="accessCheck  ">
+                                                            <li>
+                                                            <input type="radio" name="access" value="1" class="form-checkbox checkclass" >
+                                                            <label>Web</label>
+                                                            </li>
+                                                            <li>
+                                                                <input type="radio" name="access" value="2" class="form-checkbox checkclass" >
+                                                                <label>Mobile</label>
+                                                            </li>
+                                                            <li>
+                                                                <input type="radio" name="access" value="3" class="form-checkbox checkclass" checked>
+                                                                <label>Both</label>
+                                                            </li>
+                                                        </ul>
+                                                 </div>
+                                            </div>
+                                        <div id="scrolldiv">
+                                        <div class="row AccessRights" id="access1">
+                                             <div class="col-md-12">
+                                             <h6 class="form-section">Web Rights</h6>
+                                                 </div>
                                    <div class="col-md-3">
                                                 <div class="form-group mt-1">
                                                     <div class="form-group">
                                                         <input type="checkbox" class="form-checkbox checkclass" >
                                                         <label>Partners </label>
                                                         <ul class="accessLevel">
-                                                            <li class="form-group">
+                                                            <li>
                                                             <input type="checkbox" class="form-checkbox checkclass" >
                                                             <label>Sub-menu</label>
                                                                  <ul class="accessLevel">
-                                                            <li class="form-group">
+                                                            <li>
                                                             <input type="checkbox" class="form-checkbox checkclass" >
                                                             <label>Partner Group</label>
                                                             </li>
-                                                            <li class="form-group">
+                                                            <li>
                                                                 <input type="checkbox" class="form-checkbox checkclass" >
                                                                 <label>Partner</label>
                                                             </li>
-                                                            <li class="form-group">
+                                                            <li>
                                                                 <input type="checkbox" class="form-checkbox checkclass" >
                                                                 <label>Item Assign</label>
                                                             </li>
@@ -225,7 +249,7 @@
                                                         <input type="checkbox" class="form-checkbox checkclass" >
                                                         <label>Item </label>
                                                         <ul class="accessLevel">
-                                                            <li class="form-group">
+                                                            <li >
                                                             <input type="checkbox" class="form-checkbox checkclass" >
                                                             <label>Sub-menu</label>
                                                                  <ul class="accessLevel">
@@ -248,15 +272,15 @@
                                                         <input type="checkbox" class="form-checkbox checkclass" >
                                                         <label>Requisition Center </label>
                                                         <ul class="accessLevel">
-                                                            <li class="form-group">
+                                                            <li>
                                                             <input type="checkbox" class="form-checkbox checkclass" >
                                                             <label>Sub-menu</label>
                                                                  <ul class="accessLevel">
-                                                            <li class="form-group">
+                                                            <li>
                                                             <input type="checkbox" class="form-checkbox checkclass" >
                                                             <label>  All Requisition </label>
                                                             </li>
-                                                            <li class="form-group">
+                                                            <li>
                                                                 <input type="checkbox" class="form-checkbox checkclass" >
                                                                 <label> Requisition center</label>
                                                             </li>
@@ -275,15 +299,15 @@
                                                         <input type="checkbox" class="form-checkbox checkclass" >
                                                         <label>Primary Sales </label>
                                                         <ul class="accessLevel">
-                                                            <li class="form-group">
+                                                            <li>
                                                             <input type="checkbox" class="form-checkbox checkclass" >
                                                             <label>Sub-menu</label>
                                                                  <ul class="accessLevel">
-                                                            <li class="form-group">
+                                                            <li>
                                                             <input type="checkbox" class="form-checkbox checkclass" >
                                                             <label>Sale Invoice</label>
                                                             </li>
-                                                            <li class="form-group">
+                                                            <li>
                                                                 <input type="checkbox" class="form-checkbox checkclass" >
                                                                 <label>Purchase Invoice</label>
                                                             </li>
@@ -302,19 +326,19 @@
                                                         <input type="checkbox" class="form-checkbox checkclass" >
                                                         <label>Vendor </label>
                                                         <ul class="accessLevel">
-                                                            <li class="form-group">
+                                                            <li>
                                                             <input type="checkbox" class="form-checkbox checkclass" >
                                                             <label>Sub-menu</label>
                                                                  <ul class="accessLevel">
-                                                            <li class="form-group">
+                                                            <li>
                                                             <input type="checkbox" class="form-checkbox checkclass" >
                                                             <label>Vendor Group</label>
                                                             </li>
-                                                            <li class="form-group">
+                                                            <li>
                                                                 <input type="checkbox" class="form-checkbox checkclass" >
                                                                 <label>Vendor</label>
                                                             </li>
-                                                            <li class="form-group">
+                                                            <li>
                                                                 <input type="checkbox" class="form-checkbox checkclass" >
                                                                 <label>Item Assign</label>
                                                             </li>
@@ -327,8 +351,95 @@
                                                 </div>
                                             </div>
                                         </div>
-                             
-                             
+                              <div class="row AccessRights" id="access2">
+                                             <div class="col-md-12">
+                                             <h6 class="form-section">Mobile Rights</h6>
+                                                 </div>
+                                    <div class="col-md-3">
+                                                <div class="form-group mt-1">
+                                                    <div class="form-group">
+                                                        <input type="checkbox" class="form-checkbox checkclass" >
+                                                        <label>Requisition Center </label>
+                                                        <ul class="accessLevel">
+                                                            <li >
+                                                            <input type="checkbox" class="form-checkbox checkclass" >
+                                                            <label>Requisition</label>                                                        
+                                                            </li>
+                                                          <li >
+                                                            <input type="checkbox" class="form-checkbox checkclass" >
+                                                            <label>Requisition Control</label>                                                        
+                                                            </li>
+                                                            <li >
+                                                            <input type="checkbox" class="form-checkbox checkclass" >
+                                                            <label>Shipped Requisition </label>                                                        
+                                                            </li>
+                                                        </ul>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                    <div class="col-md-3">
+                                                <div class="form-group mt-1">
+                                                    <div class="form-group">
+                                                        <input type="checkbox" class="form-checkbox checkclass" >
+                                                        <label>Inventory </label>
+                                                        <ul class="accessLevel">
+                                                            <li>
+                                                            <input type="checkbox" class="form-checkbox checkclass" >
+                                                            <label>Inventory Onhand</label>                                                        
+                                                            </li>
+                                                          <li>
+                                                            <input type="checkbox" class="form-checkbox checkclass" >
+                                                            <label>Payment Receiving</label>                                                        
+                                                            </li>
+                                                            
+                                                        </ul>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                   <div class="col-md-3">
+                                                <div class="form-group mt-1">
+                                                    <div class="form-group">
+                                                        <input type="checkbox" class="form-checkbox checkclass" >
+                                                        <label>MIS </label>
+                                                        <ul class="accessLevel">
+                                                            <li>
+                                                            <input type="checkbox" class="form-checkbox checkclass" >
+                                                            <label>MIS</label>                                                        
+                                                            </li>
+                                                          <li">
+                                                            <input type="checkbox" class="form-checkbox checkclass" >
+                                                            <label>Claims & Returns</label>                                                        
+                                                            </li>
+                                                            
+                                                        </ul>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                  <div class="col-md-3">
+                                                <div class="form-group mt-1">
+                                                    <div class="form-group">
+                                                        <input type="checkbox" class="form-checkbox checkclass" >
+                                                        <label>Primary Sales </label>
+                                                        <ul class="accessLevel">
+                                                            <li>
+                                                            <input type="checkbox" class="form-checkbox checkclass" >
+                                                            <label>New Sales</label>                                                        
+                                                            </li>
+                                                          <li>
+                                                            <input type="checkbox" class="form-checkbox checkclass" >
+                                                            <label>Sales Invoice</label>                                                        
+                                                            </li>
+                                                            
+                                                        </ul>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                             </div>
                                   
 
                                     
@@ -503,5 +614,16 @@
     </div>
    
     </div>
-    
+    <script>
+      $(document).ready(function() {
+    $("input[name$='access']").click(function() {
+        var test = $(this).val();
+       // alert(test);
+        
+        $(".AccessRights").hide();
+        $("#access" + test).show();
+        if (test==3) {  $(".AccessRights").show();}
+    });
+});
+    </script>
 </asp:Content>
