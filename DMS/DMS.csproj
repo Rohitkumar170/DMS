@@ -166,12 +166,6 @@
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
-    <Reference Include="Spire.Doc">
-      <HintPath>..\..\..\..\dll\Spire.Doc.dll</HintPath>
-    </Reference>
-    <Reference Include="Spire.License">
-      <HintPath>..\..\..\..\dll\Spire.License.dll</HintPath>
-    </Reference>
     <Reference Include="SQLitePCLRaw.batteries_v2, Version=2.0.2.669, Culture=neutral, PublicKeyToken=8226ea5df37bcae9, processorArchitecture=MSIL">
       <HintPath>..\packages\SQLitePCLRaw.bundle_e_sqlite3.2.0.2\lib\net461\SQLitePCLRaw.batteries_v2.dll</HintPath>
     </Reference>
@@ -505,11 +499,13 @@
     <Content Include="Master\AddressDataSetup.aspx" />
     <Content Include="Master\AddressFields.aspx" />
     <Content Include="Master\AddressFieldSetup.aspx" />
+    <Content Include="Master\CreateSequence.aspx" />
     <Content Include="Master\EntitySetup.aspx" />
     <Content Include="Master\ItemCreate.aspx" />
     <Content Include="Master\ItemGroupSetup.aspx" />
     <Content Include="Master\Unit.aspx" />
     <Content Include="Master\Users.aspx" />
+    <Content Include="Master\variantSetup.aspx" />
     <Content Include="Telerix\content\dataviz\dashboards\area-chart.png" />
     <Content Include="Telerix\content\dataviz\dashboards\car-dashboard.png" />
     <Content Include="Telerix\content\dataviz\dashboards\car.gif" />
@@ -2416,7 +2412,9 @@
     <Content Include="WebServices\Dashboard.asmx" />
     <Content Include="WebServices\Item.asmx" />
     <Content Include="WebServices\ItemSetup.asmx" />
+    <Content Include="WebServices\Sequence.asmx" />
     <Content Include="WebServices\Setup.asmx" />
+    <Content Include="WebServices\Variant.asmx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DMS.Master.cs">
@@ -2915,6 +2913,13 @@
     <Compile Include="Master\AddressFieldSetup.aspx.designer.cs">
       <DependentUpon>AddressFieldSetup.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Master\CreateSequence.aspx.cs">
+      <DependentUpon>CreateSequence.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master\CreateSequence.aspx.designer.cs">
+      <DependentUpon>CreateSequence.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Master\EntitySetup.aspx.cs">
       <DependentUpon>EntitySetup.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2950,6 +2955,13 @@
     <Compile Include="Master\Users.aspx.designer.cs">
       <DependentUpon>Users.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Master\variantSetup.aspx.cs">
+      <DependentUpon>variantSetup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master\variantSetup.aspx.designer.cs">
+      <DependentUpon>variantSetup.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Models\AddressSetupClass\AddressFields.cs" />
     <Compile Include="Models\AddressSetupClass\BindAddressClass.cs" />
     <Compile Include="Models\AddressSetupClass\BindAddressDataType.cs" />
@@ -2975,13 +2987,24 @@
     <Compile Include="Models\EntitySetupClass\UserTypes.cs" />
     <Compile Include="Models\ItemSetupClass\BindDataClassWise.cs" />
     <Compile Include="Models\ItemSetupClass\BindItemclass.cs" />
+    <Compile Include="Models\ItemSetupClass\BindItemGroupData.cs" />
     <Compile Include="Models\ItemSetupClass\BindItemGroupGrid.cs" />
     <Compile Include="Models\ItemSetupClass\BindUnit.cs" />
     <Compile Include="Models\ItemSetupClass\BindUnitConversion.cs" />
+    <Compile Include="Models\ItemSetupClass\BindVariantGrid.cs" />
+    <Compile Include="Models\ItemSetupClass\Varientdata.cs" />
     <Compile Include="Models\LoginClass\BindUsers.cs" />
     <Compile Include="Models\LoginClass\CreateUser.cs" />
     <Compile Include="Models\LoginClass\Logindetails.cs" />
+
     <Compile Include="Models\LoginClass\Userrole.cs" />
+
+    <Compile Include="Models\SequenceSetupClasses\BindCreatedSequence.cs" />
+    <Compile Include="Models\SequenceSetupClasses\BindddlFormate.cs" />
+    <Compile Include="Models\SequenceSetupClasses\BindddlSequence.cs" />
+    <Compile Include="Models\SequenceSetupClasses\BindPage.cs" />
+    <Compile Include="Models\SequenceSetupClasses\PageFields.cs" />
+
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PurchaseInvoice.ashx.cs">
       <DependentUpon>PurchaseInvoice.ashx</DependentUpon>
@@ -3006,8 +3029,16 @@
       <DependentUpon>ItemSetup.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="WebServices\Sequence.asmx.cs">
+      <DependentUpon>Sequence.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="WebServices\Setup.asmx.cs">
       <DependentUpon>Setup.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WebServices\Variant.asmx.cs">
+      <DependentUpon>Variant.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
   </ItemGroup>
