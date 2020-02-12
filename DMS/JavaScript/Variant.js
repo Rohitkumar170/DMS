@@ -1,4 +1,4 @@
-﻿var groupcount = 1; var searchtxt = '';var ColumnName = [];var  editjsondata='';
+﻿var groupcount = 1; var searchtxt = ''; var ColumnName = []; var editjsondata = ''; var EntityId = 1; var CountryId = 1;
 jquery_1_11_3_min_p(document).ready(function () {
  jquery_1_11_3_min_p("#hdnLoad").val(10);
     LoadData = jquery_1_11_3_min_p("#hdnLoad").val();
@@ -19,7 +19,7 @@ jquery_1_11_3_min_p(document).ready(function () {
         jquery_1_11_3_min_p('#btnSubmit').css('display', 'block');
         jquery_1_11_3_min_p('#btnback').css('display', 'block');
         jquery_1_11_3_min_p('#btnnew').css('display', 'none');
-        BindFormdetails();
+       
     });
     //=========================================================End Item Group==============================================
     //=========================================================Back Button click===========================================
@@ -111,10 +111,8 @@ swal("Deleted Successfully","Data deleted successfully!","success")
 
         jquery_1_11_3_min_p('#btnDeleteLine').css('display', 'none');
          $('#chkAll').prop('checked', false);
-        BindFormdetails();
+        
         editFlag=0;
-    kendo_all_min_js("#ddlcountry").data("kendoDropDownList").value(countryid);
-    kendo_all_min_js("#ddlentity").data("kendoDropDownList").value(entityid);
 jquery_1_11_3_min_p("#tblgroups tbody").empty();
 var counter=0; var i=0;
     jQuery.each(editjsondata.Table2, function (rec) {
@@ -154,9 +152,9 @@ buttons: true,
 dangerMode: true,
 })
 .then((willDelete) => {
-if (willDelete) {
-var country = kendo_all_min_js('#ddlcountry').data("kendoDropDownList").value();
-var entity=kendo_all_min_js('#ddlentity').data("kendoDropDownList").value();
+    if (willDelete) {
+        var country = CountryId;
+        var entity = EntityId;
  Deleteentity(country,entity);
 }
 });
@@ -309,8 +307,8 @@ var state = $(Data).is(':checked');
 function FieldgroupAssigned()
 {
     var CreatedBy = jquery_1_11_3_min_p('#ContentPlaceHolder1_lblUserId').text().trim();
-    var countryid=kendo_all_min_js("#ddlcountry").data("kendoDropDownList").value();
-     var entityid=kendo_all_min_js("#ddlentity").data("kendoDropDownList").value();
+    var countryid=1;
+     var entityid=1
     var FieldGroup = [];
     var JsonFieldGroup = '';
     var i = 1;
@@ -323,13 +321,13 @@ function FieldgroupAssigned()
     jquery_1_11_3_min_p.ajax({
     type: "POST",
     contentType: "application/json; charset=utf-8",
-    url: "../WebServices/Variant.asmx/SaveGroupFields",
-    data: "{'JsonFields':'" + JsonFieldGroup + "','EntityId':" + entityid + ",'CountryId':" + countryid + ",'CreatedBy':" + CreatedBy + "}",
+     url: "../WebServices/Variant.asmx/SaveGroupFields",
+    data: "{'JsonFields':'" + JsonFieldGroup + "','EntityId':'" + entityid + "','CountryId':'" + countryid + "','CreatedBy':'" + CreatedBy + "'}",
     dataType: "json",
     success: function (result) {
             var i = 0;
             var jsonData = eval(result.d);
-            if(jsonData.Table[0].Response=="1")
+            if(jsonData.Table[0].Res=="1")
             {
        swal("Saved Successfully","Data Saved successfully!","success")
             .then((value) => {
@@ -350,10 +348,7 @@ function FieldgroupAssigned()
 function ValidateGroupMasterGrid() {
     var allow = true;
     var i = 1;
-     if (kendo_all_min_js("#ddlentity").data("kendoDropDownList").value() == 0) {
-            kendo_all_min_js("#ddlentity").data("kendoDropDownList").span.css('background', '#f9e5e5');
-            allow = false;
-        }
+     
     jquery_1_11_3_min_p('#tblgroups tbody').find('tr').each(function () {
         var row = jquery_1_11_3_min_p(this);
         if (jquery_1_11_3_min_p("#txtvariant_" + row.find('td:nth-child(4)').text().trim()).val() == "") {
@@ -376,11 +371,6 @@ function ValidateGroupMasterGrid() {
 
 function AddRow() {
 
-         if (kendo_all_min_js("#ddlentity").data("kendoDropDownList").value() == 0) {
-            kendo_all_min_js("#ddlentity").data("kendoDropDownList").span.css('background', '#f9e5e5');
-        }
-        else
-        {
     if (jquery_1_11_3_min_p("#txtvariant_" + groupcount).val() != '') {
         var rowID = groupcount + 1;
         var markup = "<tr><td style='opacity: 1;'><input type='checkbox' id='chk_" + rowID + "' class='checkbox'/></td><td ><input type='text' id='txtvariant_" + rowID + "' onkeyup='Comparevalue(this)' class='fieldName' placeholder='Enter Item Group' autocomplete='off'/></td><td ><input type='text' placeholder='Enter Description' class='fieldName' id='txtdescription_" + rowID + "' autocomplete='off' /></td><td  style='opacity: 0;'>" + rowID + "</td></tr>";
@@ -404,7 +394,7 @@ function AddRow() {
         }
       
        
-    }
+    
     }
 
 }
@@ -437,51 +427,51 @@ function Comparevalue(data) {
 
 
 
-function BindFormdetails() {
-    var Country = []; var Entity = [];
-    jquery_1_11_3_min_p.ajax({
-        type: "POST",
-        contentType: "application/json; charset=utf-8",
-        url: "../WebServices/Variant.asmx/BindEntitydDetails",
-        data: "{}",
-        dataType: "json",
-        async: false,
-        success: function (result) {
-          var  jsonData = eval(result.d);
-            var i = 0;
-            jQuery.each(jsonData.Table, function (rec) {
-                Country.push({ value: jsonData.Table[i].CountryId, text: jsonData.Table[i].CountryName });
-                i++;
-            });
-            var i = 0;
-            Entity.push({ value: "0", text: "Select" });
-            jQuery.each(jsonData.Table1, function (rec) {
-                Entity.push({ value: jsonData.Table1[i].Entityid, text: jsonData.Table1[i].Entityname });
-                i++;
-            });
-        },
-        error: function (result) {
-        }
-    });
+//function BindFormdetails() {
+//    var Country = []; var Entity = [];
+//    jquery_1_11_3_min_p.ajax({
+//        type: "POST",
+//        contentType: "application/json; charset=utf-8",
+//        url: "../WebServices/Variant.asmx/BindEntitydDetails",
+//        data: "{}",
+//        dataType: "json",
+//        async: false,
+//        success: function (result) {
+//          var  jsonData = eval(result.d);
+//            var i = 0;
+//            jQuery.each(jsonData.Table, function (rec) {
+//                Country.push({ value: jsonData.Table[i].CountryId, text: jsonData.Table[i].CountryName });
+//                i++;
+//            });
+//            var i = 0;
+//            Entity.push({ value: "0", text: "Select" });
+//            jQuery.each(jsonData.Table1, function (rec) {
+//                Entity.push({ value: jsonData.Table1[i].Entityid, text: jsonData.Table1[i].Entityname });
+//                i++;
+//            });
+//        },
+//        error: function (result) {
+//        }
+//    });
 
-    kendo_all_min_js('#ddlcountry').kendoDropDownList({
-        filter: "contains",
-        dataTextField: "text",
-        dataValueField: "value",
-        dataSource: Country,
-        change: function () {
-            kendo_all_min_js('#ddlcountry').data("kendoDropDownList").span.css('background', 'none');
-        }
-    });
+//    kendo_all_min_js('#ddlcountry').kendoDropDownList({
+//        filter: "contains",
+//        dataTextField: "text",
+//        dataValueField: "value",
+//        dataSource: Country,
+//        change: function () {
+//            kendo_all_min_js('#ddlcountry').data("kendoDropDownList").span.css('background', 'none');
+//        }
+//    });
 
-    kendo_all_min_js('#ddlentity').kendoDropDownList({
-        filter: "contains",
-        dataTextField: "text",
-        dataValueField: "value",
-        dataSource: Entity,
-        change: function () {
-            kendo_all_min_js('#ddlentity').data("kendoDropDownList").span.css('background', 'none');
-            // BindGroupCode();
-        }
-    });
-}
+//    kendo_all_min_js('#ddlentity').kendoDropDownList({
+//        filter: "contains",
+//        dataTextField: "text",
+//        dataValueField: "value",
+//        dataSource: Entity,
+//        change: function () {
+//            kendo_all_min_js('#ddlentity').data("kendoDropDownList").span.css('background', 'none');
+//            // BindGroupCode();
+//        }
+//    });
+//}
