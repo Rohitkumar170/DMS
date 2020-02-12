@@ -501,6 +501,7 @@
     <Content Include="Master\AddressFieldSetup.aspx" />
     <Content Include="Master\CreateSequence.aspx" />
     <Content Include="Master\EntitySetup.aspx" />
+    <Content Include="Master\ItemCreate.aspx" />
     <Content Include="Master\ItemGroupSetup.aspx" />
     <Content Include="Master\Unit.aspx" />
     <Content Include="Master\Users.aspx" />
@@ -2926,6 +2927,13 @@
     <Compile Include="Master\EntitySetup.aspx.designer.cs">
       <DependentUpon>EntitySetup.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Master\ItemCreate.aspx.cs">
+      <DependentUpon>ItemCreate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master\ItemCreate.aspx.designer.cs">
+      <DependentUpon>ItemCreate.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Master\ItemGroupSetup.aspx.cs">
       <DependentUpon>ItemGroupSetup.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2986,12 +2994,17 @@
     <Compile Include="Models\ItemSetupClass\BindVariantGrid.cs" />
     <Compile Include="Models\ItemSetupClass\Varientdata.cs" />
     <Compile Include="Models\LoginClass\BindUsers.cs" />
+    <Compile Include="Models\LoginClass\CreateUser.cs" />
     <Compile Include="Models\LoginClass\Logindetails.cs" />
+
+    <Compile Include="Models\LoginClass\Userrole.cs" />
+
     <Compile Include="Models\SequenceSetupClasses\BindCreatedSequence.cs" />
     <Compile Include="Models\SequenceSetupClasses\BindddlFormate.cs" />
     <Compile Include="Models\SequenceSetupClasses\BindddlSequence.cs" />
     <Compile Include="Models\SequenceSetupClasses\BindPage.cs" />
     <Compile Include="Models\SequenceSetupClasses\PageFields.cs" />
+
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PurchaseInvoice.ashx.cs">
       <DependentUpon>PurchaseInvoice.ashx</DependentUpon>

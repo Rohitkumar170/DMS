@@ -8,6 +8,7 @@ using DMS.Entity;
 using DMS.Models.EntitySetupClass;
 using DMS.Models.LoginClass;
 using DMS.Models;
+using System.Data;
 namespace DMS.WebServices
 {
     /// <summary>
@@ -88,6 +89,62 @@ namespace DMS.WebServices
                 context = new DMSNEWEntities();
                 var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_UserSetup]").With<BindUsers>().With<Count>()
                     .Execute("@QueryType", "@loaddata", "@searchvalue", "BindUserGrid", LoadData, SearchValue));
+                return results;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+
+        }
+        [WebMethod]
+        public Dictionary<string, object> SaveUser(string UserDataJson, string Password,string IsActive)
+        {
+            try
+            {
+                string pass = string.Empty;
+                string passkey = string.Empty;
+                pass = DbSecurity.Encrypt(Password.Trim(), ref passkey);
+                context = new DMSNEWEntities();
+                var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_UserSetup]").With<Flag>()
+                    .Execute("@QueryType",  "@EntityDataJson", "@Password", "@passKey", "@IsActive", "SaveUser", UserDataJson, pass, passkey,IsActive));
+                return results;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+
+        }
+
+        [WebMethod]
+        public Dictionary<string, object> UpdateUser(string UserDataJson, string Password, string IsActive)
+        {
+            try
+            {
+                string pass = string.Empty;
+                string passkey = string.Empty;
+                pass = DbSecurity.Encrypt(Password.Trim(), ref passkey);
+                context = new DMSNEWEntities();
+                var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_UserSetup]").With<Flag>()
+                  .Execute("@QueryType", "@EntityDataJson", "@Password", "@passKey", "@IsActive", "UpdateUser", UserDataJson, pass, passkey, IsActive));
+                return results;
+              
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+
+        }
+        [WebMethod]
+        public Dictionary<string, object> BindRole()
+        {
+            try
+            {
+                context = new DMSNEWEntities();
+                var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_UserSetup]").With<Userrole>()
+                 .Execute("@QueryType", "BindRole"));
                 return results;
             }
             catch (Exception ex)
