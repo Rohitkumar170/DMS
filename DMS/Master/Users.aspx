@@ -215,19 +215,19 @@
                                                         <input type="checkbox" class="form-checkbox checkclass" >
                                                         <label>Partners </label>
                                                         <ul class="accessLevel">
-                                                            <li class="form-group">
+                                                            <li>
                                                             <input type="checkbox" class="form-checkbox checkclass" >
                                                             <label>Sub-menu</label>
                                                                  <ul class="accessLevel">
-                                                            <li class="form-group">
+                                                            <li>
                                                             <input type="checkbox" class="form-checkbox checkclass" >
                                                             <label>Partner Group</label>
                                                             </li>
-                                                            <li class="form-group">
+                                                            <li>
                                                                 <input type="checkbox" class="form-checkbox checkclass" >
                                                                 <label>Partner</label>
                                                             </li>
-                                                            <li class="form-group">
+                                                            <li>
                                                                 <input type="checkbox" class="form-checkbox checkclass" >
                                                                 <label>Item Assign</label>
                                                             </li>
@@ -247,7 +247,7 @@
                                                         <input type="checkbox" class="form-checkbox checkclass" >
                                                         <label>Item </label>
                                                         <ul class="accessLevel">
-                                                            <li class="form-group">
+                                                            <li >
                                                             <input type="checkbox" class="form-checkbox checkclass" >
                                                             <label>Sub-menu</label>
                                                                  <ul class="accessLevel">
@@ -270,15 +270,15 @@
                                                         <input type="checkbox" class="form-checkbox checkclass" >
                                                         <label>Requisition Center </label>
                                                         <ul class="accessLevel">
-                                                            <li class="form-group">
+                                                            <li>
                                                             <input type="checkbox" class="form-checkbox checkclass" >
                                                             <label>Sub-menu</label>
                                                                  <ul class="accessLevel">
-                                                            <li class="form-group">
+                                                            <li>
                                                             <input type="checkbox" class="form-checkbox checkclass" >
                                                             <label>  All Requisition </label>
                                                             </li>
-                                                            <li class="form-group">
+                                                            <li>
                                                                 <input type="checkbox" class="form-checkbox checkclass" >
                                                                 <label> Requisition center</label>
                                                             </li>
@@ -297,15 +297,15 @@
                                                         <input type="checkbox" class="form-checkbox checkclass" >
                                                         <label>Primary Sales </label>
                                                         <ul class="accessLevel">
-                                                            <li class="form-group">
+                                                            <li>
                                                             <input type="checkbox" class="form-checkbox checkclass" >
                                                             <label>Sub-menu</label>
                                                                  <ul class="accessLevel">
-                                                            <li class="form-group">
+                                                            <li>
                                                             <input type="checkbox" class="form-checkbox checkclass" >
                                                             <label>Sale Invoice</label>
                                                             </li>
-                                                            <li class="form-group">
+                                                            <li>
                                                                 <input type="checkbox" class="form-checkbox checkclass" >
                                                                 <label>Purchase Invoice</label>
                                                             </li>
@@ -324,19 +324,19 @@
                                                         <input type="checkbox" class="form-checkbox checkclass" >
                                                         <label>Vendor </label>
                                                         <ul class="accessLevel">
-                                                            <li class="form-group">
+                                                            <li>
                                                             <input type="checkbox" class="form-checkbox checkclass" >
                                                             <label>Sub-menu</label>
                                                                  <ul class="accessLevel">
-                                                            <li class="form-group">
+                                                            <li>
                                                             <input type="checkbox" class="form-checkbox checkclass" >
                                                             <label>Vendor Group</label>
                                                             </li>
-                                                            <li class="form-group">
+                                                            <li>
                                                                 <input type="checkbox" class="form-checkbox checkclass" >
                                                                 <label>Vendor</label>
                                                             </li>
-                                                            <li class="form-group">
+                                                            <li>
                                                                 <input type="checkbox" class="form-checkbox checkclass" >
                                                                 <label>Item Assign</label>
                                                             </li>
@@ -359,15 +359,15 @@
                                                         <input type="checkbox" class="form-checkbox checkclass" >
                                                         <label>Requisition Center </label>
                                                         <ul class="accessLevel">
-                                                            <li class="form-group">
+                                                            <li >
                                                             <input type="checkbox" class="form-checkbox checkclass" >
                                                             <label>Requisition</label>                                                        
                                                             </li>
-                                                          <li class="form-group">
+                                                          <li >
                                                             <input type="checkbox" class="form-checkbox checkclass" >
                                                             <label>Requisition Control</label>                                                        
                                                             </li>
-                                                            <li class="form-group">
+                                                            <li >
                                                             <input type="checkbox" class="form-checkbox checkclass" >
                                                             <label>Shipped Requisition </label>                                                        
                                                             </li>
@@ -382,11 +382,11 @@
                                                         <input type="checkbox" class="form-checkbox checkclass" >
                                                         <label>Inventory </label>
                                                         <ul class="accessLevel">
-                                                            <li class="form-group">
+                                                            <li>
                                                             <input type="checkbox" class="form-checkbox checkclass" >
                                                             <label>Inventory Onhand</label>                                                        
                                                             </li>
-                                                          <li class="form-group">
+                                                          <li>
                                                             <input type="checkbox" class="form-checkbox checkclass" >
                                                             <label>Payment Receiving</label>                                                        
                                                             </li>
@@ -402,11 +402,11 @@
                                                         <input type="checkbox" class="form-checkbox checkclass" >
                                                         <label>MIS </label>
                                                         <ul class="accessLevel">
-                                                            <li class="form-group">
+                                                            <li>
                                                             <input type="checkbox" class="form-checkbox checkclass" >
                                                             <label>MIS</label>                                                        
                                                             </li>
-                                                          <li class="form-group">
+                                                          <li">
                                                             <input type="checkbox" class="form-checkbox checkclass" >
                                                             <label>Claims & Returns</label>                                                        
                                                             </li>
@@ -422,11 +422,11 @@
                                                         <input type="checkbox" class="form-checkbox checkclass" >
                                                         <label>Primary Sales </label>
                                                         <ul class="accessLevel">
-                                                            <li class="form-group">
+                                                            <li>
                                                             <input type="checkbox" class="form-checkbox checkclass" >
                                                             <label>New Sales</label>                                                        
                                                             </li>
-                                                          <li class="form-group">
+                                                          <li>
                                                             <input type="checkbox" class="form-checkbox checkclass" >
                                                             <label>Sales Invoice</label>                                                        
                                                             </li>
