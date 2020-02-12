@@ -408,7 +408,7 @@ function SaveHeaderSequence()
         success: function (result) {
             var i = 0;
             var jsonData = eval(result.d);
-             if(jsonData.Table[0].Response=="1")
+             if(jsonData.Table[0].Res=="1")
             {
             swal("Sequence created","Saved successfully!","success")
             .then((value) => {
@@ -443,7 +443,7 @@ function  SaveSequence()
         success: function (result) {
             var i = 0;
             var jsonData = eval(result.d);
-             if(jsonData.Table[0].Response=="1")
+             if(jsonData.Table[0].Res=="1")
             {
               
              jquery_1_11_3_min_p('#txtsequencelength').attr('disabled', true);
@@ -513,7 +513,7 @@ jquery_1_11_3_min_p.ajax({
         success: function (result) {
             var i = 0;
             var jsonData = eval(result.d);
-             if(jsonData.Table[0].Response=="1")
+             if(jsonData.Table[0].Res=="1")
             {
               
              jquery_1_11_3_min_p('#txtsequencelength').attr('disabled', true);
@@ -564,7 +564,7 @@ jquery_1_11_3_min_p.ajax({
         success: function (result) {
             var i = 0;
             var jsonData = eval(result.d);
-             if(jsonData.Table[0].Response=="1")
+             if(jsonData.Table[0].Res=="1")
             {
               
              jquery_1_11_3_min_p('#txtsequencelength').attr('disabled', true);
@@ -633,7 +633,7 @@ jquery_1_11_3_min_p.ajax({
         success: function (result) {
             var i = 0;
             var jsonData = eval(result.d);
-             if(jsonData.Table[0].Response=="1")
+             if(jsonData.Table[0].Res=="1")
             {
               
              jquery_1_11_3_min_p('#txtsequencelength').attr('disabled', true);
@@ -684,7 +684,7 @@ jquery_1_11_3_min_p.ajax({
         success: function (result) {
             var i = 0;
             var jsonData = eval(result.d);
-             if(jsonData.Table[0].Response=="1")
+             if(jsonData.Table[0].Res=="1")
             {
               
              jquery_1_11_3_min_p('#txtsequencelength').attr('disabled', true);
@@ -754,7 +754,7 @@ jquery_1_11_3_min_p.ajax({
         success: function (result) {
             var i = 0;
             var jsonData = eval(result.d);
-             if(jsonData.Table[0].Response=="1")
+             if(jsonData.Table[0].Res=="1")
             {
               
              jquery_1_11_3_min_p('#txtsequencelength').attr('disabled', true);
@@ -834,7 +834,7 @@ jquery_1_11_3_min_p.ajax({
         success: function (result) {
             var i = 0;
             var jsonData = eval(result.d);
-             if(jsonData.Table[0].Response=="1")
+             if(jsonData.Table[0].Res=="1")
             {
               
              jquery_1_11_3_min_p('#txtsequencelength').attr('disabled', true);
@@ -954,7 +954,7 @@ jquery_1_11_3_min_p.ajax({
         success: function (result) {
             var i = 0;
             var jsonData = eval(result.d);
-             if(jsonData.Table[0].Response=="1")
+             if(jsonData.Table[0].Res=="1")
             {
               
              jquery_1_11_3_min_p('#txtsequencelength').attr('disabled', true);
@@ -1034,11 +1034,11 @@ function Checkexistdata(pageid,fieldid,entityid,countryid) {
         success: function (result) {
             var i = 0;
             var jsonData = eval(result.d);
-             if(jsonData.Table[0].Response==0)
+             if(jsonData.Table[0].Res==0)
             {
             returnvalue=0;
             }
-            else if(jsonData.Table[0].Response==1)
+            else if(jsonData.Table[0].Res==1)
             {
             returnvalue=1;
             }
@@ -1535,7 +1535,7 @@ function SeqDisabled(Data)
         success: function (result) {
             var i = 0;
             var jsonData = eval(result.d);
-             if(jsonData.Table[0].Response==1)
+             if(jsonData.Table[0].Res==1)
             {
              swal("Success", "Sequence has been Enabled!", "Success")
             .then((value) => {
@@ -1558,7 +1558,7 @@ function SeqDisabled(Data)
         success: function (result) {
             var i = 0;
             var jsonData = eval(result.d);
-             if(jsonData.Table[0].Response==1)
+             if(jsonData.Table[0].Res==1)
             {
                swal("Success", "Sequence has been disabled!", "Success")
             .then((value) => {

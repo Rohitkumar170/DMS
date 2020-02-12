@@ -396,7 +396,7 @@ function SaveUnit() {
     success: function (result) {
             var i = 0;
             var jsonData = eval(result.d);
-            if(jsonData.Table[0].Response=="1")
+            if(jsonData.Table[0].Res=="1")
             {
        swal("Saved Successfully","Your data Saved successfully!","success")
             .then((value) => {
@@ -550,7 +550,7 @@ var  BaseunitJson='';
             var i = 0;
             var jsonData = eval(result.d);
            // swal("Saved Successfully","Item Saved successfully!","success")
-              if(jsonData.Table[0].Response=="1")
+              if(jsonData.Table[0].Res=="1")
               {
              swal("Saved Successfully","Item Saved successfully!","success")
             .then((value) => {
@@ -611,7 +611,7 @@ function SaveVariantDetails()
     success: function (result) {
             var i = 0;
             var jsonData = eval(result.d);
-              if(jsonData.Table[0].Response=="1")
+              if(jsonData.Table[0].Res=="1")
               {
              swal("Saved Successfully","SKU Saved successfully!","success")
             .then((value) => {
@@ -653,7 +653,7 @@ var conversionJson='';
     success: function (result) {
             var i = 0;
             var jsonData = eval(result.d);
-             if(jsonData.Table[0].Response=="1")
+             if(jsonData.Table[0].Res=="1")
               {
             swal("Saved Successfully","Conversion saved successfully!","success")
             jquery_1_11_3_min_p("#txtvalue").val('');

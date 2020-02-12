@@ -33,7 +33,13 @@
                 </div>
                 <div class="content-header-right col-md-6 col-12">
                     <div class="btn-group float-md-right" role="group" aria-label="Button group with nested dropdown">
-                   
+                       <span class="multifileupload" id="btnupload" > 
+                       <i class="fa fa-upload"></i>
+                  <%--   <input type="file" id='FileUpload' runat="server" class="custom-file-input multifileBtn" onchange="UploadFile(this);" />--%>
+                           <input type="button" id="upload" value="Import" class="custom-file-input multifileBtn" onclick="" />
+                         <%--  <asp:FileUpload runat="server" Visible="true" ID="FileUpload" onchange="" style="display:none" />--%>
+                          <%-- <asp:Button ID="btnUpload" runat="server" OnClick="" style="display:none" /> --%>
+                       </span>
                        <button type="button" id="btnnew" class="btn btn-primary">
                             <i class="fa fa-plus-square"></i> New</button>
                         <button type="button" id="btndisable" style="display:none" class="btn btn-primary"   >
@@ -71,9 +77,9 @@
 <div class="content-header-right col-md-12">
                     <div class="btn-group float-md-right" role="group">
                 
-                            <button type="button" id="btnvariantdetails" disabled  class="btn btn-primary waves-effect waves-light">
+                            <button type="button" id="btnvariantdetails" disabled  class="btn btn-primary waves-effect waves-light" style="display:none">
                             <i class="fa fa-info-circle"></i> Variant Details</button>
-                        <button type="button" id="btnconversion" disabled class="btn btn-primary waves-effect waves-light">
+                        <button type="button" id="btnconversion" disabled class="btn btn-primary waves-effect waves-light" >
                             <i class="fa fa-exchange"></i> Unit Conversion</button>
                             <button type="button" id="btntaxGrp" disabled class="btn btn-primary " data-toggle="modal" >
                             <i class="fa fa-money"></i> Tax Group</button>
@@ -790,11 +796,20 @@
                                       
  <div class="table-responsive">
  <div class=" ">    
-   
+    
        <button type="button" id="Button1" class="btn btn-primary waves-effect waves-light">
                             <i class="fa fa-file"></i> Export</button>
                             <button type="button" id="Button1" class="btn btn-primary waves-effect waves-light">
                             <i class="fa fa-print"></i> PDF</button>    
+     <div style="display:inline-block">
+         <span class="multifileupload" id="btnupload1" > 
+                       <i class="fa fa-upload"></i>
+                  <%--   <input type="file" id='FileUpload' runat="server" class="custom-file-input multifileBtn" onchange="UploadFile(this);" />--%>
+                           <input type="button" id="upload1" value="Import" class="custom-file-input multifileBtn" onclick="" />
+                         <%--  <asp:FileUpload runat="server" Visible="true" ID="FileUpload" onchange="" style="display:none" />--%>
+                          <%-- <asp:Button ID="btnUpload" runat="server" OnClick="" style="display:none" /> --%>
+                       </span>
+     </div>
                        
     </div>
                             <table class="table table-de mb-0 buttonMargin" id="tblpopunit">
