@@ -18,6 +18,7 @@
     <script src="../Telerix/js/jquery.min.js"></script>
     <script src="../Telerix/js/jszip.min.js" type="text/javascript"></script>
     <script src="../JavaScript/CreateUser.js" type="text/javascript"></script>
+  
 <style>
 #userGrid td:nth-child(3), #userGrid th:nth-child(3) {    width: 100px;}
 #userGrid td:nth-child(5), #userGrid th:nth-child(5) {    width: 200px;}
@@ -26,7 +27,9 @@
     .accessLevel {margin-top:5px;    }
     .accessCheck li{display:inline-block;list-style:none;    margin: 0 40px 0 0;}
     .accessCheck{padding-left:0;}
-    #scrolldiv{max-height: 190px;overflow-y:auto;overflow-x:hidden;}
+    #scrolldiv{max-height: 190px;overflow-y:auto;overflow-x:hidden;border: 1px solid #bcbcbc;
+    padding: 5px 10px;
+    border-radius: 4px;}
 </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -40,7 +43,7 @@
                 </div>
                 <div class="content-header-right col-md-6 col-12">
                     <div class="btn-group float-md-right" role="group" aria-label="Button group with nested dropdown">
-                   
+               
                        <button type="button" id="btnnew" class="btn btn-primary">
                             <i class="fa fa-plus-square"></i> New</button>
                         
@@ -567,7 +570,7 @@
                                 <th>Email</th>
                                 <th>Mobile</th>
                                 <th>User Role</th>
-                              <th>Action</th>
+                              <th>Active</th>
                                
                             </tr>
                         </thead>
@@ -626,4 +629,5 @@
     });
 });
     </script>
+
 </asp:Content>
