@@ -18,6 +18,7 @@
     <script src="../Telerix/js/jquery.min.js"></script>
     <script src="../Telerix/js/jszip.min.js" type="text/javascript"></script>
     <script src="../JavaScript/CreateUser.js" type="text/javascript"></script>
+  
 <style>
 #userGrid td:nth-child(3), #userGrid th:nth-child(3) {    width: 100px;}
 #userGrid td:nth-child(5), #userGrid th:nth-child(5) {    width: 200px;}
@@ -42,7 +43,7 @@
                 </div>
                 <div class="content-header-right col-md-6 col-12">
                     <div class="btn-group float-md-right" role="group" aria-label="Button group with nested dropdown">
-                   
+               
                        <button type="button" id="btnnew" class="btn btn-primary">
                             <i class="fa fa-plus-square"></i> New</button>
                         
@@ -569,7 +570,7 @@
                                 <th>Email</th>
                                 <th>Mobile</th>
                                 <th>User Role</th>
-                              <th>Action</th>
+                              <th>Active</th>
                                
                             </tr>
                         </thead>
@@ -628,4 +629,5 @@
     });
 });
     </script>
+
 </asp:Content>
