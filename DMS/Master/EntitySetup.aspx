@@ -17,43 +17,9 @@
     <script src="../Telerix/js/jquery.min.js"></script>
     <script src="../Telerix/js/jszip.min.js" type="text/javascript"></script>
     <script src="../JavaScript/CreateEntity.js" type="text/javascript"></script>
-    <style>
+  
         <style>
-.custom-file-input::-webkit-file-upload-button {
-    visibility: hidden;
-}
-.custom-file-input:active{  outline:none !important  }
-.custom-file-input::before 
-#upload{
-    display: inline-block;
-    background: #2D4D76 !important;    
-    border-radius: 2px;
-    padding: 3px 5px 2px 16px;
-    outline: none;
-    white-space: nowrap;
-    -webkit-user-select: none;
-    cursor: pointer;
-        color: #fff;
-    font-weight: 500;
-    font-size: 10px;
-}
 
-.custom-file-input:hover::before {
-    border-color: black;
-}
-
-.custom-file-input:active::before {
-    background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
-}
-.custom-file-input{    opacity: 1;  height: 19px;  width: 60px;    background-color: #2D4D76!important;    color: #fff;    border-radius: 2px;
-    border: none;}
-.multifileupload{    position: relative;
-    display: inherit;}
-    .multifileupload i{    position: absolute;
-    z-index: 10;
-    top: 5px;
-    color: #fff;
-    left: 4px;}
     #userGrid td:nth-child(3), #userGrid th:nth-child(3) {    width: 50px;}
     </style>
 </asp:Content>
