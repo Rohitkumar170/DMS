@@ -22,10 +22,11 @@
 #userGrid td:nth-child(3), #userGrid th:nth-child(3) {    width: 100px;}
 #userGrid td:nth-child(5), #userGrid th:nth-child(5) {    width: 200px;}
 .AccessRights li{list-style:none;}
+.AccessRights ul{padding-left:22px;}
     .accessLevel {margin-top:5px;    }
     .accessCheck li{display:inline-block;list-style:none;    margin: 0 40px 0 0;}
     .accessCheck{padding-left:0;}
-    #accessTree{max-height: 250px;overflow-y:auto;overflow-x:hidden;}
+    #scrolldiv{max-height: 190px;overflow-y:auto;overflow-x:hidden;}
 </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -189,22 +190,23 @@
                                         <h6 class="form-section">Access Rights</h6>
                                         <div class="row " >
                                              <div class="col-md-12">
-                                       <ul class="accessCheck mt-1 ">
-                                                            <li class="form-group">
+                                       <ul class="accessCheck  ">
+                                                            <li>
                                                             <input type="radio" name="access" value="1" class="form-checkbox checkclass" >
                                                             <label>Web</label>
                                                             </li>
-                                                            <li class="form-group">
+                                                            <li>
                                                                 <input type="radio" name="access" value="2" class="form-checkbox checkclass" >
                                                                 <label>Mobile</label>
                                                             </li>
-                                                            <li class="form-group">
+                                                            <li>
                                                                 <input type="radio" name="access" value="3" class="form-checkbox checkclass" checked>
                                                                 <label>Both</label>
                                                             </li>
                                                         </ul>
                                                  </div>
                                             </div>
+                                        <div id="scrolldiv">
                                         <div class="row AccessRights" id="access1">
                                              <div class="col-md-12">
                                              <h6 class="form-section">Web Rights</h6>
@@ -437,7 +439,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                             
+                             </div>
                                   
 
                                     
