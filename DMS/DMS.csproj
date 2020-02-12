@@ -52,7 +52,7 @@
       <HintPath>..\packages\EFCore.BulkExtensions.3.1.0\lib\netstandard2.0\EFCore.BulkExtensions.dll</HintPath>
     </Reference>
     <Reference Include="Encryption">
-      <HintPath>..\..\..\DLL\Encryption.dll</HintPath>
+      <HintPath>..\..\..\VSS\DLL\Encryption.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
@@ -64,10 +64,10 @@
       <HintPath>..\packages\FastMember.1.5.0\lib\net461\FastMember.dll</HintPath>
     </Reference>
     <Reference Include="Ionic.Zip.Reduced">
-      <HintPath>..\..\..\DLL\Ionic.Zip.Reduced.dll</HintPath>
+      <HintPath>..\..\..\VSS\DLL\Ionic.Zip.Reduced.dll</HintPath>
     </Reference>
     <Reference Include="itextsharp">
-      <HintPath>..\..\..\..\dll\itextsharp.dll</HintPath>
+      <HintPath>..\..\..\VSS\DLL\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.1.1.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
@@ -501,6 +501,7 @@
     <Content Include="Master\AddressFieldSetup.aspx" />
     <Content Include="Master\CreateSequence.aspx" />
     <Content Include="Master\EntitySetup.aspx" />
+    <Content Include="Master\ItemCreate.aspx" />
     <Content Include="Master\ItemGroupSetup.aspx" />
     <Content Include="Master\Unit.aspx" />
     <Content Include="Master\Users.aspx" />
@@ -2926,6 +2927,13 @@
     <Compile Include="Master\EntitySetup.aspx.designer.cs">
       <DependentUpon>EntitySetup.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Master\ItemCreate.aspx.cs">
+      <DependentUpon>ItemCreate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master\ItemCreate.aspx.designer.cs">
+      <DependentUpon>ItemCreate.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Master\ItemGroupSetup.aspx.cs">
       <DependentUpon>ItemGroupSetup.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2977,6 +2985,8 @@
     <Compile Include="Models\EntitySetupClass\Country.cs" />
     <Compile Include="Models\EntitySetupClass\Entity.cs" />
     <Compile Include="Models\EntitySetupClass\UserTypes.cs" />
+    <Compile Include="Models\ItemSetupClass\AssignedTaxGroup.cs" />
+    <Compile Include="Models\ItemSetupClass\BaseUnitss.cs" />
     <Compile Include="Models\ItemSetupClass\BindDataClassWise.cs" />
     <Compile Include="Models\ItemSetupClass\BindItemclass.cs" />
     <Compile Include="Models\ItemSetupClass\BindItemGroupData.cs" />
@@ -2984,9 +2994,25 @@
     <Compile Include="Models\ItemSetupClass\BindUnit.cs" />
     <Compile Include="Models\ItemSetupClass\BindUnitConversion.cs" />
     <Compile Include="Models\ItemSetupClass\BindVariantGrid.cs" />
+    <Compile Include="Models\ItemSetupClass\EntityName.cs" />
+    <Compile Include="Models\ItemSetupClass\GetItemSKU.cs" />
+    <Compile Include="Models\ItemSetupClass\ItemDetails.cs" />
+    <Compile Include="Models\ItemSetupClass\ItemGroup.cs" />
+    <Compile Include="Models\ItemSetupClass\ItemTrack.cs" />
+    <Compile Include="Models\ItemSetupClass\ItemType.cs" />
+    <Compile Include="Models\ItemSetupClass\ItemUnit.cs" />
+    <Compile Include="Models\ItemSetupClass\Otherunits.cs" />
+    <Compile Include="Models\ItemSetupClass\Sequence.cs" />
+    <Compile Include="Models\ItemSetupClass\ShortItemdetails.cs" />
+    <Compile Include="Models\ItemSetupClass\Taxgroup.cs" />
+    <Compile Include="Models\ItemSetupClass\UnitConvertion.cs" />
+    <Compile Include="Models\ItemSetupClass\VariantHeader.cs" />
+    <Compile Include="Models\ItemSetupClass\VariantLine.cs" />
     <Compile Include="Models\ItemSetupClass\Varientdata.cs" />
     <Compile Include="Models\LoginClass\BindUsers.cs" />
+    <Compile Include="Models\LoginClass\CreateUser.cs" />
     <Compile Include="Models\LoginClass\Logindetails.cs" />
+    <Compile Include="Models\LoginClass\Userrole.cs" />
     <Compile Include="Models\SequenceSetupClasses\BindCreatedSequence.cs" />
     <Compile Include="Models\SequenceSetupClasses\BindddlFormate.cs" />
     <Compile Include="Models\SequenceSetupClasses\BindddlSequence.cs" />

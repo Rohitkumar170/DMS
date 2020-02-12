@@ -43,17 +43,13 @@ namespace DMS.WebServices
             {
                 if (SearchValue == "")
                 {
-                   
                     var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_Sequenesetup]").With<BindPage>().With<Count>().With<PageFields>().With<Country>().With<BindEntity>().With<BindddlSequence>().With<BindddlFormate>()
                      .Execute("@QueryType", "@LoadMore", "BindPages", LoadData));
                     return results;
                 }
                 else
                 {
-
                     string replacestring = SearchValue.Replace("$", "'");
-                    //DataSet ds = CommonManger.FillDatasetWithParam("DMS_Sequenesetup", "@QueryType", "@LoadMore", "@SearchValue", "BindPages", LoadData, replacestring);
-                    //return ClsJson.JsonMethods.ToJson(ds);
                     var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_Sequenesetup]").With<BindPage>().With<Count>().With<PageFields>().With<Country>().With<BindEntity>().With<BindddlSequence>().With<BindddlFormate>()
                     .Execute("@QueryType", "@LoadMore", "@SearchValue", "BindPages", LoadData, replacestring));
                     return results;
@@ -75,52 +71,58 @@ namespace DMS.WebServices
             }
             catch (Exception ex) { throw ex; }
         }
-        //[WebMethod]
-        //public Dictionary<string, object> Checkexist(string Pageid, string Fieldid, string Entityid, string Countryid)
-        //{
-        //    try
-        //    {
-        //        DataSet ds = CommonManger.FillDatasetWithParam("DMS_Sequenesetup", "@QueryType", "@Pageid", "@Fieldid", "@Countryid", "@Entityid", "Checkexistance", Pageid, Fieldid, Entityid, Countryid);
-        //        return ClsJson.JsonMethods.ToJson(ds);
-        //    }
-        //    catch (Exception ex) { throw ex; }
-        //}
-        //[WebMethod]
-        //public Dictionary<string, object> SaveSequence(string Fixedjson, string SeqFlag)
-        //{
+        [WebMethod]
+        public Dictionary<string, object> Checkexist(string Pageid, string Fieldid, string Entityid, string Countryid)
+        {
+            try
+            {
+                var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_Sequenesetup]").With<Flag>()
+                 .Execute("@QueryType", "@Pageid", "@Fieldid", "@Countryid", "@Entityid", "Checkexistance", Pageid, Fieldid, Entityid, Countryid));
+                return results;
+            }
+            catch (Exception ex) { throw ex; }
+        }
+        [WebMethod]
+        public Dictionary<string, object> SaveSequence(string Fixedjson, string SeqFlag)
+        {
 
-        //    try
-        //    {
-        //        DataSet ds = CommonManger.FillDatasetWithParam("DMS_Sequenesetup", "@QueryType", "@jsonData", "@Seqflag", "SaveSeq", Fixedjson, SeqFlag);
-        //        return ClsJson.JsonMethods.ToJson(ds);
-        //    }
-        //    catch (Exception ex) { throw ex; }
+            try
+            {
+                var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_Sequenesetup]").With<Flag>()
+                .Execute("@QueryType", "@jsonData", "@Seqflag", "SaveSeq", Fixedjson, SeqFlag));
+                return results;
+            }
+            catch (Exception ex) { throw ex; }
 
-        //}
-        //[WebMethod]
-        //public Dictionary<string, object> SaveHSequence(string Headerjson)
-        //{
+        }
+        [WebMethod]
+        public Dictionary<string, object> SaveHSequence(string Headerjson)
+        {
 
-        //    try
-        //    {
-        //        DataSet ds = CommonManger.FillDatasetWithParam("DMS_Sequenesetup", "@QueryType", "@jsonData", "SaveHeaderSeq", Headerjson);
-        //        return ClsJson.JsonMethods.ToJson(ds);
-        //    }
-        //    catch (Exception ex) { throw ex; }
+            try
+            {
+                var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_Sequenesetup]").With<Flag>()
+               .Execute("@QueryType", "@jsonData", "SaveHeaderSeq", Headerjson));
+                return results;
+            }
+            catch (Exception ex) { throw ex; }
 
-        //}
+        }
 
-        //[WebMethod]
-        //public Dictionary<string, object> SeqDisabled(string seqId)
-        //{
-        //    DataSet dt = CommonManger.FillDatasetWithParam("DMS_Sequenesetup", "@QueryType", "@seqId", "SeqDisabled", seqId);
-        //    return ClsJson.JsonMethods.ToJson(dt);
-        //}
-        //[WebMethod]
-        //public Dictionary<string, object> SeqActive(string seqId)
-        //{
-        //    DataSet dt = CommonManger.FillDatasetWithParam("DMS_Sequenesetup", "@QueryType", "@seqId", "SeqActive", seqId);
-        //    return ClsJson.JsonMethods.ToJson(dt);
-        //}
+        [WebMethod]
+        public Dictionary<string, object> SeqDisabled(string seqId)
+        {
+            var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_Sequenesetup]").With<Flag>()
+              .Execute("@QueryType", "@seqId", "SeqDisabled", seqId));
+            return results;
+        }
+        [WebMethod]
+        public Dictionary<string, object> SeqActive(string seqId)
+        {
+            var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_Sequenesetup]").With<Flag>()
+            .Execute("@QueryType", "@seqId", "SeqActive", seqId));
+            return results;
+            
+        }
     }
 }

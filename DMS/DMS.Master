@@ -179,9 +179,8 @@
                     </li>--%>
                     <li class=" nav-item"><a href="../Home/Dashboard.aspx"><span
                         class="menu-title">Dashboard</span></a>                    </li>
-                        <%--<li class=" nav-item"><a href="../Master/Partners.aspx"><span
-                        class="menu-title">Partners</span></a>                    </li>--%>
-                             <li class=" nav-item"><a href="#"><span class="menu-title"><span class="customers">Partners </span></span></a>
+                   
+                           <%--  <li class=" nav-item"><a href="#"><span class="menu-title"><span class="customers">Partners </span></span></a>
                    <ul class="menu-content">
                      <li><a class="menu-item" href="#"><span>Sub-menu</span></a>
                          <ul class="menu-content">
@@ -189,15 +188,15 @@
                         <li class=""><a class="menu-item" href="../Master/PartnerGroup.aspx"><span class="customer">  Partner</span> Group </a> </li> 
                         <li class=""><a class="menu-item" href="../Master/Partner.aspx"><span class="customer">  Partner </span> </a> </li>
                        
-                     <%--    <li class=""><a class="menu-item" href="../Master/PartnerTransaction.aspx"><span class="customer">   Partner  </span> Transaction</a> </li> --%>
+                  
                           <li class=""><a class="menu-item" href="../Master/ItemAssigned.aspx"><span class="customer">   Item Assigned </span> </a> </li>
-                      <%--  <li class=""><a class="menu-item" href="../Master/PartnerOnhand.aspx"><span class="customer">  Partner </span> Onhand</a> </li>--%>
+                     
                          </ul>
                      </li>
                    </ul>
-                    </li>
+                    </li>--%>
 
-                                <li class=" nav-item"><a href="#"><span class="menu-title">Vendor</span></a>
+                               <%-- <li class=" nav-item"><a href="#"><span class="menu-title">Vendor</span></a>
                    <ul class="menu-content">
                      <li><a class="menu-item" href="#"><span>Sub-menu</span></a>
                          <ul class="menu-content">
@@ -208,7 +207,7 @@
                          </ul>
                      </li>
                    </ul>
-                    </li>
+                    </li>--%>
                                 <li class=" nav-item"><a href="#"><span class="menu-title">Item</span></a>
                    <ul class="menu-content">
                      <li><a class="menu-item" href="#"><span>Sub-menu</span></a>
@@ -220,7 +219,7 @@
                    </ul>
                     </li>
 
-                              <li class=" nav-item"><a href="#"><span class="menu-title">Requisition Center</span></a>
+<%--                              <li class=" nav-item"><a href="#"><span class="menu-title">Requisition Center</span></a>
                    <ul class="menu-content">
                      <li><a class="menu-item" href="#"><span>Sub-menu</span></a>
                          <ul class="menu-content">
@@ -229,10 +228,10 @@
                          </ul>
                      </li>
                    </ul>
-                    </li>
+                    </li>--%>
                        <%-- <li class=" nav-item"><a href="#"><span
                         class="menu-title">Requisition Center</span></a>                    </li>--%>
-                                           <li class=" nav-item"><a href="#"><span class="menu-title">Inventory</span></a>
+                                         <%--  <li class=" nav-item"><a href="#"><span class="menu-title">Inventory</span></a>
                    <ul class="menu-content">
                      <li><a class="menu-item" href="#"><span>Sub-menu</span></a>
                          <ul class="menu-content">
@@ -241,20 +240,20 @@
                          </ul>
                      </li>
                    </ul>
-                    </li>
+                    </li>--%>
                           <%-- <li class=" nav-item"><a href="#"><span
                         class="menu-title">Inventory</span></a>                    </li>--%>
-                        <li class=" nav-item"><a href="#"><span
+                      <%--  <li class=" nav-item"><a href="#"><span
                         class="menu-title"><span class="customer">Partner </span> Rewards</span></a>                    </li>
                            <li class=" nav-item"><a href="#"><span
                         class="menu-title"><span class="customer">Partner </span> Grievance</span></a>                    </li>
                         <li class=" nav-item"><a href="../Master/AllRequisition.aspx"><span
-                        class="menu-title">Secondary Sales</span></a>                    </li>
-                           <li class=" nav-item"><a href="#"><span class="menu-title">Primary Sales</span></a> 
+                        class="menu-title">Secondary Sales</span></a>                    </li>--%>
+                          <%-- <li class=" nav-item"><a href="#"><span class="menu-title">Primary Sales</span></a> 
                               <ul class="menu-content">
                          <li><a class="menu-item" href="#"><span>Sub-menu</span></a>
                        <ul class="menu-content">
-                        <%-- <li class=""><a class="menu-item" href="../Master/ItemSale.aspx"><span >Sales </span></a> </li> --%>
+                       
                        <li class=""><a class="menu-item" href="../Master/SaleInvoice.aspx"><span >Sale Invoice </span></a> </li>
                        <li class=""><a class="menu-item" href="../Master/PrintInvoice.aspx"><span >Print Invoice </span></a> </li>
                        <li class=""><a class="menu-item" href="../Master/PurchaseInvoice.aspx"><span >Purchase Invoice </span></a> </li>
@@ -264,15 +263,14 @@
                      </li>
                    </ul>
                         
-                                           </li>
-                        <li class=" nav-item"><a href="#"><span
+                                           </li>--%>
+                    <%--    <li class=" nav-item"><a href="#"><span
                         class="menu-title">Internal Transfer</span></a>                    </li>
                            <li class=" nav-item"><a href="#"><span
                         class="menu-title">Contract & Agreement</span></a>                    </li>
                         <li class=" nav-item"><a href="#"><span
-                        class="menu-title">MIS Center</span></a>                    </li>
-                         <%--  <li class=" nav-item"><a href="#"><span
-                        class="menu-title">System & Administration</span></a>                    </li>--%>
+                        class="menu-title">MIS Center</span></a>                    </li>--%>
+                 
                    
 
                 <%--          <li class=" nav-item"><a href="#"><span
@@ -317,23 +315,23 @@
                                    
                     </ul>
                             </li>
-                                <li><a class="menu-item" href="#"><span>Tax Setup</span></a>
+                                <%--<li><a class="menu-item" href="#"><span>Tax Setup</span></a>
                   <ul class="menu-content">                  
                   <li class=""><a class="menu-item" href="../Master/TaxFields.aspx"><span > Tax Fields</span></a> </li> 
                     <li class=""><a class="menu-item" href="../Master/LegalFields.aspx"><span > Legal Fields</span></a> </li>   
                     <li class=""><a class="menu-item" href="../Master/TaxSetup.aspx"><span >Setup</span></a> </li>  
                     </ul>
-                            </li> 
-                            <li><a class="menu-item" href="#"><span>Discount</span></a>
+                            </li>--%> 
+                         <%--   <li><a class="menu-item" href="#"><span>Discount</span></a>
                   <ul class="menu-content">
                      <li class="">  <a class="menu-item" href="../Master/DiscountSetup.aspx"><span >  Setup</span></a> </li> 
                   </ul>
-                  </li> 
-                           <li><a class="menu-item" href="#"><span>COA</span></a>
+                  </li> --%>
+                         <%--  <li><a class="menu-item" href="#"><span>COA</span></a>
                   <ul class="menu-content">
                      <li class="">  <a class="menu-item" href="../Master/COA.aspx"><span >  Setup</span></a> </li> 
                   </ul>
-                  </li> 
+                  </li> --%>
 <%--
                                              <li><a class="menu-item" href="#"><span>Tax Group</span></a>
                   <ul class="menu-content">                  
@@ -360,13 +358,13 @@
                     </ul>
                             </li> 
 
-                             <li><a class="menu-item" href="#"><span>Variant</span></a>
+<%--                             <li><a class="menu-item" href="#"><span>Variant</span></a>
                   <ul class="menu-content">                  
                   
                      <li class="">  <a class="menu-item" href="../Master/variantSetup.aspx"><span > Variant Setup</span></a> </li> 
                     
                     </ul>
-                            </li> 
+                            </li> --%>
                                      <li><a class="menu-item" href="#"><span>Sequence Setup</span></a>
                   <ul class="menu-content">                  
                   <li class=""><a class="menu-item" href="../Master/CreateSequence.aspx"><span >Create Sequence</span></a> </li>  
@@ -381,22 +379,22 @@
                   <ul class="menu-content">
                 <li class=""><a class="menu-item" href="../Master/Users.aspx"><span >Users</span></a> </li>  
                     <li class=""><a class="menu-item" href="../Master/EntitySetup.aspx"><span >Entity Setup</span></a> </li>    
-                  <li class=""><a class="menu-item" href="../Master/OrganizationPara.aspx"><span >Organization Parameter</span></a> </li>   
+                <%--  <li class=""><a class="menu-item" href="../Master/OrganizationPara.aspx"><span >Organization Parameter</span></a> </li>   
                   <li class=""><a class="menu-item" href="../Master/OrganizationDataSetup.aspx"><span > Organization Data Setup  </span></a> </li>  
-                   <li class=""><a class="menu-item" href="../Master/SystemParameterSetup.aspx"><span >System Parameter Setup </span></a> </li>  
+                   <li class=""><a class="menu-item" href="../Master/SystemParameterSetup.aspx"><span >System Parameter Setup </span></a> </li>  --%>
                    <li class=""><a class="menu-item" href="../Master/UiSetup.aspx"><span >UI Setup </span></a> </li>  
                   
                                    
                     </ul>
                             </li>
-                 <li><a class="menu-item" href="#"><span>Partner</span></a>
+               <%--  <li><a class="menu-item" href="#"><span>Partner</span></a>
                   <ul class="menu-content">
                   <li class=""><a class="menu-item" href="../Master/PartnerPara.aspx"><span >Partner Parameter</span></a> </li>   
                  
                    <li class=""><a class="menu-item" href="../Master/PartnerDataSetup.aspx"><span >Partner Data Setup</span></a> </li>  
                      <li class=""><a class="menu-item" href="../Master/test.aspx"><span >Test</span></a> </li>       
                     </ul>
-                            </li>
+                            </li>--%>
                         
                         </ul>
                     </li>
