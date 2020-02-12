@@ -26,7 +26,9 @@
     .accessLevel {margin-top:5px;    }
     .accessCheck li{display:inline-block;list-style:none;    margin: 0 40px 0 0;}
     .accessCheck{padding-left:0;}
-    #scrolldiv{max-height: 190px;overflow-y:auto;overflow-x:hidden;}
+    #scrolldiv{max-height: 190px;overflow-y:auto;overflow-x:hidden;border: 1px solid #bcbcbc;
+    padding: 5px 10px;
+    border-radius: 4px;}
 </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
