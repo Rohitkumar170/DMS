@@ -71,9 +71,9 @@
 <div class="content-header-right col-md-12">
                     <div class="btn-group float-md-right" role="group">
                 
-                            <button type="button" id="btnvariantdetails" disabled  class="btn btn-primary waves-effect waves-light">
+                            <button type="button" id="btnvariantdetails" disabled  class="btn btn-primary waves-effect waves-light" style="display:none">
                             <i class="fa fa-info-circle"></i> Variant Details</button>
-                        <button type="button" id="btnconversion" disabled class="btn btn-primary waves-effect waves-light">
+                        <button type="button" id="btnconversion" disabled class="btn btn-primary waves-effect waves-light" >
                             <i class="fa fa-exchange"></i> Unit Conversion</button>
                             <button type="button" id="btntaxGrp" disabled class="btn btn-primary " data-toggle="modal" >
                             <i class="fa fa-money"></i> Tax Group</button>

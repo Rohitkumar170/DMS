@@ -8,6 +8,7 @@ using DMS.Entity;
 using DMS.Models.ItemSetupClass;
 using DMS.Models;
 using DMS.Models.EntitySetupClass;
+using System.Data;
 
 namespace DMS.WebServices
 {
@@ -22,115 +23,122 @@ namespace DMS.WebServices
     public class Item : System.Web.Services.WebService
     {
         DMSNEWEntities context = new DMSNEWEntities();
-        //[WebMethod]
-        //public Dictionary<string, object> BindEntitydDetails()
-        //{
-        //    try
-        //    {
-        //        DataSet ds = CommonManger.FillDatasetWithParam("DMS_Item", "@QueryType", "BindEntitydetail");
-        //        return ClsJson.JsonMethods.ToJson(ds);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw;
-        //    }
+        BindADOResultset CommonManger = new BindADOResultset();
+        [WebMethod]
+        public Dictionary<string, object> BindEntitydDetails()
+        {
+            try
+            {
+                var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_Item]").With<Country>().With<EntityName>().With<ItemGroup>().With<ItemType>().With<ItemUnit>().With<ItemUnit>().With<ItemTrack>()
+                       .Execute("@QueryType", "BindEntitydetail"));
+                return results;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
 
-        //}
-        //[WebMethod]
-        //public Dictionary<string, object> BindVariantDetails(string EntityID, string CountryId, string Itemid)
-        //{
-        //    try
-        //    {
-        //        DataSet ds = CommonManger.FillDatasetWithParam("DMS_Item", "@QueryType", "@Entityid", "@Countryid", "@Itemsid", "BindVariantDetails", EntityID, CountryId, Itemid);
-        //        return ClsJson.JsonMethods.ToJson(ds);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw;
-        //    }
+        }
+        [WebMethod]
+        public Dictionary<string, object> BindVariantDetails(string EntityID, string CountryId, string Itemid)
+        {
+            try
+            {
+                var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_Item]").With<tblVariantHeader>().With<VariantLine>()
+                     .Execute("@QueryType", "@Entityid", "@Countryid", "@Itemsid", "BindVariantDetails", EntityID, CountryId, Itemid));
+                return results;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
 
-        //}
-        //[WebMethod]
-        //public Dictionary<string, object> BindSKU(string EntityId, string CountryId)
-        //{
-        //    try
-        //    {
-        //        DataSet ds = CommonManger.FillDatasetWithParam("DMS_Item", "@QueryType", "@Entityid", "@Countryid", "BindSKUNUM", EntityId, CountryId);
-        //        return ClsJson.JsonMethods.ToJson(ds);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw;
-        //    }
+        }
+        [WebMethod]
+        public Dictionary<string, object> BindSKU(string EntityId, string CountryId)
+        {
+            try
+            {
+                var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_Item]").With<Sequence>()
+                         .Execute("@QueryType", "@Entityid", "@Countryid", "BindSKUNUM", EntityId, CountryId));
+                return results;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
 
-        //}
-        //[WebMethod]
-        //public Dictionary<string, object> Insertitem(string Itemjson, string Otherunit, string BaseUnit)
-        //{
+        }
+        [WebMethod]
+        public Dictionary<string, object> Insertitem(string Itemjson, string Otherunit, string BaseUnit)
+        {
 
-        //    try
-        //    {
-        //        DataSet ds = CommonManger.FillDatasetWithParam("DMS_Item", "@QueryType", "@ItemJson", "@OtherUnitJson", "@BaseUnit", "SaveItem", Itemjson, Otherunit, BaseUnit);
-        //        return ClsJson.JsonMethods.ToJson(ds);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw;
-        //    }
+            try
+            {
+                var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_Item]").With<Flag>()
+                           .Execute("@QueryType", "@ItemJson", "@OtherUnitJson", "@BaseUnit", "SaveItem", Itemjson, Otherunit, BaseUnit));
+                return results;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
 
-        //}
-        //[WebMethod]
-        //public Dictionary<string, object> SkuInsertitem(string Skujson, string itemid)
-        //{
+        }
+        [WebMethod]
+        public Dictionary<string, object> SkuInsertitem(string Skujson, string itemid)
+        {
+            try
+            {
+                var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_Item]").With<Flag>().With<GetItemSKU>()
+                         .Execute("@QueryType", "@SkuJson", "@Itemsid", "SaveSku", Skujson, itemid));
+                return results;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
 
-        //    try
-        //    {
-        //        DataSet ds = CommonManger.FillDatasetWithParam("DMS_Item", "@QueryType", "@SkuJson", "@Itemsid", "SaveSku", Skujson, itemid);
-        //        return ClsJson.JsonMethods.ToJson(ds);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw;
-        //    }
+        }
+        [WebMethod]
+        public Dictionary<string, object> Binddoubleclickdata(string Itemid)
+        {
+            try
+            {
+                var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_Item]").With<Country>().With<EntityName>().With<ItemGroup>().With<ItemType>().With<ItemUnit>().With<ItemUnit>().With<ItemDetails>().With<BaseUnitss>().With<Otherunits>().With<GetItemSKU>().With<ItemTrack>().With<Otherunits>()
+                       .Execute("@QueryType", "@Itemsid", "BindItems", Itemid));
+                return results;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
 
-        //}
-        //[WebMethod]
-        //public Dictionary<string, object> Binddoubleclickdata(string Itemid)
-        //{
-        //    try
-        //    {
-        //        DataSet ds = CommonManger.FillDatasetWithParam("DMS_Item", "@QueryType", "@Itemsid", "BindItems", Itemid);
-        //        return ClsJson.JsonMethods.ToJson(ds);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw;
-        //    }
+        }
+        [WebMethod]
+        public Dictionary<string, object> BindItemGrid(string LoadData, string SearchValue)
+        {
+            try
+            {
+                if (SearchValue == "")
+                {
+                    var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_Item]").With<ShortItemdetails>().With<Count>()
+                      .Execute("@QueryType", "@LoadMore", "BindItemGrid", LoadData));
+                    return results;
+                }
+                else
+                {
 
-        //}
-        //[WebMethod]
-        //public Dictionary<string, object> BindItemGrid(string LoadData, string SearchValue)
-        //{
-        //    try
-        //    {
-        //        if (SearchValue == "")
-        //        {
-        //            DataSet dt = CommonManger.FillDatasetWithParam("DMS_Item", "@QueryType", "@LoadMore", "BindItemGrid", LoadData);
-        //            return ClsJson.JsonMethods.ToJson(dt);
-        //        }
-        //        else
-        //        {
-
-        //            string replacestring = SearchValue.Replace("$", "'");
-        //            DataSet ds = CommonManger.FillDatasetWithParam("DMS_Item", "@QueryType", "@LoadMore", "@SearchValue", "SerarchBindAddressFieldGrid", LoadData, replacestring);
-        //            return ClsJson.JsonMethods.ToJson(ds);
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw;
-        //    }
-        //}
+                    string replacestring = SearchValue.Replace("$", "'");
+                    DataSet ds = CommonManger.FillDatasetWithParam("DMS_Item", "@QueryType", "@LoadMore", "@SearchValue", "SerarchBindAddressFieldGrid", LoadData, replacestring);
+                    return ClsJson.JsonMethods.ToJson(ds);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
         [WebMethod]
         public Dictionary<string, object> saveUnits(string UnitJson)
         {
@@ -187,21 +195,24 @@ namespace DMS.WebServices
                 throw;
             }
         }
-        //[WebMethod]
-        //public Dictionary<string, object> BindUnitConversion(string ItemId)
-        //{
-        //    try
-        //    {
+        [WebMethod]
+        public Dictionary<string, object> BindUnitConversion(string ItemId)
+        {
+            try
+            { 
+                var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_Item]").With<UnitConvertion>()
+                          .Execute("@QueryType", "@Itemsid", "BindUnitsConversion", ItemId));
+                return results;
 
-        //        DataSet dt = CommonManger.FillDatasetWithParam("DMS_Item", "@QueryType", "@Itemsid", "BindUnitsConversion", ItemId);
-        //        return ClsJson.JsonMethods.ToJson(dt);
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
 
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw;
-        //    }
-        //}
+       
+
         [WebMethod]
         public Dictionary<string, object> BindUnitClass()
         {
@@ -248,35 +259,38 @@ namespace DMS.WebServices
                 throw;
             }
         }
-        //[WebMethod]
-        //public Dictionary<string, object> BindTaxGroup(string EntityId, string CountryId, string ItemId)
-        //{
-        //    try
-        //    {
-        //        DataSet ds = CommonManger.FillDatasetWithParam("DMS_Item", "@QueryType", "@Entityid", "@Countryid", "@ItemIddbl", "GetTaxGrp", EntityId, CountryId, ItemId);
-        //        return ClsJson.JsonMethods.ToJson(ds);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw;
-        //    }
+        [WebMethod]
+        public Dictionary<string, object> BindTaxGroup(string EntityId, string CountryId, string ItemId)
+        {
+            try
+            {
+                var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_Item]").With<Taxgroup>().With<AssignedTaxGroup>()
+                           .Execute("@QueryType", "@Entityid", "@Countryid", "@ItemIddbl", "GetTaxGrp", EntityId, CountryId, ItemId));
+                return results;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
 
-        //}
+        }
 
-        //[WebMethod]
-        //public Dictionary<string, object> SaveTaxGroup(string TaxGrpjson)
-        //{
-        //    try
-        //    {
-        //        DataSet ds = CommonManger.FillDatasetWithParam("DMS_Item", "@QueryType", "@jsonData", "SaveTaxGroupWithItem", TaxGrpjson);
-        //        return ClsJson.JsonMethods.ToJson(ds);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw;
-        //    }
+        [WebMethod]
+        public Dictionary<string, object> SaveTaxGroup(string TaxGrpjson)
+        {
+            try
+            {
+              
+                var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_Item]").With<Flag>()
+                        .Execute("@QueryType", "@jsonData", "SaveTaxGroupWithItem", TaxGrpjson));
+                return results;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
 
-        //}
+        }
 
     }
 }
