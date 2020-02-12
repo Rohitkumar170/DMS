@@ -2985,6 +2985,8 @@
     <Compile Include="Models\EntitySetupClass\Country.cs" />
     <Compile Include="Models\EntitySetupClass\Entity.cs" />
     <Compile Include="Models\EntitySetupClass\UserTypes.cs" />
+    <Compile Include="Models\ItemSetupClass\AssignedTaxGroup.cs" />
+    <Compile Include="Models\ItemSetupClass\BaseUnitss.cs" />
     <Compile Include="Models\ItemSetupClass\BindDataClassWise.cs" />
     <Compile Include="Models\ItemSetupClass\BindItemclass.cs" />
     <Compile Include="Models\ItemSetupClass\BindItemGroupData.cs" />
@@ -2992,19 +2994,30 @@
     <Compile Include="Models\ItemSetupClass\BindUnit.cs" />
     <Compile Include="Models\ItemSetupClass\BindUnitConversion.cs" />
     <Compile Include="Models\ItemSetupClass\BindVariantGrid.cs" />
+    <Compile Include="Models\ItemSetupClass\EntityName.cs" />
+    <Compile Include="Models\ItemSetupClass\GetItemSKU.cs" />
+    <Compile Include="Models\ItemSetupClass\ItemDetails.cs" />
+    <Compile Include="Models\ItemSetupClass\ItemGroup.cs" />
+    <Compile Include="Models\ItemSetupClass\ItemTrack.cs" />
+    <Compile Include="Models\ItemSetupClass\ItemType.cs" />
+    <Compile Include="Models\ItemSetupClass\ItemUnit.cs" />
+    <Compile Include="Models\ItemSetupClass\Otherunits.cs" />
+    <Compile Include="Models\ItemSetupClass\Sequence.cs" />
+    <Compile Include="Models\ItemSetupClass\ShortItemdetails.cs" />
+    <Compile Include="Models\ItemSetupClass\Taxgroup.cs" />
+    <Compile Include="Models\ItemSetupClass\UnitConvertion.cs" />
+    <Compile Include="Models\ItemSetupClass\VariantHeader.cs" />
+    <Compile Include="Models\ItemSetupClass\VariantLine.cs" />
     <Compile Include="Models\ItemSetupClass\Varientdata.cs" />
     <Compile Include="Models\LoginClass\BindUsers.cs" />
     <Compile Include="Models\LoginClass\CreateUser.cs" />
     <Compile Include="Models\LoginClass\Logindetails.cs" />
-
     <Compile Include="Models\LoginClass\Userrole.cs" />
-
     <Compile Include="Models\SequenceSetupClasses\BindCreatedSequence.cs" />
     <Compile Include="Models\SequenceSetupClasses\BindddlFormate.cs" />
     <Compile Include="Models\SequenceSetupClasses\BindddlSequence.cs" />
     <Compile Include="Models\SequenceSetupClasses\BindPage.cs" />
     <Compile Include="Models\SequenceSetupClasses\PageFields.cs" />
-
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PurchaseInvoice.ashx.cs">
       <DependentUpon>PurchaseInvoice.ashx</DependentUpon>
