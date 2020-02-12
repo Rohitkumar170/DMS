@@ -19,7 +19,7 @@
     <script src="../Telerix/js/jszip.min.js" type="text/javascript"></script>
     <script src="../JavaScript/CreateUser.js" type="text/javascript"></script>
 <style>
-#userGrid td:nth-child(3), #userGrid th:nth-child(3) {    width: 50px;}
+#userGrid td:nth-child(3), #userGrid th:nth-child(3) {    width: 100px;}
 #userGrid td:nth-child(5), #userGrid th:nth-child(5) {    width: 200px;}
 .AccessRights li{list-style:none;}
     .accessLevel {margin-top:5px;    }
@@ -99,7 +99,7 @@
                                                <div class="col-md-3">
                                                 <div class="form-group">
                                                   <label for="ItemGroup"> Mobile</label>
-                        <input type="text" id="txtmobile"    class="form-control" onkeypress="RemoveClass()" autocomplete="off" placeholder="Enter Mobile" />
+                        <input type="text" id="txtmobile"    class="form-control" onkeypress="RemoveClass()" maxlength="10" autocomplete="off" placeholder="Enter Mobile" />
                                                 
                                                 </div>
                                             </div>
@@ -144,7 +144,7 @@
                                             </div>
                                          <div class="col-md-3">
                                                 <div class="form-group mt-1">
-                                                     <input type="checkbox" class="checkLocation" >
+                                                     <input type="checkbox" id="chkIsActive" class="checkLocation" onchange="RemoveClass()" >
                                                      <label for="Self">User Active</label>
                                                 </div>
                                             </div>
@@ -558,13 +558,14 @@
                         <thead>
                             <tr>
                                 <th style="display:none">UserId</th>
-                                <th style="display:none">PartnerId</th>
+                               <th style="display:none">UserRole</th>
+                                 <th style="display:none">Isactive</th>
                                 <th><input type="checkbox" id="chkAll"> All</th>
                                 <th>User Name</th>
                                 <th>Email</th>
                                 <th>Mobile</th>
-                                <th>Entity</th>
-                                <th>Country</th>
+                                <th>User Role</th>
+                              
                                
                             </tr>
                         </thead>

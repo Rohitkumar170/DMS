@@ -1,7 +1,6 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/DMS.Master" AutoEventWireup="true" CodeBehind="ItemGroupSetup.aspx.cs" Inherits="DMS.Master.ItemGroupSetup" %>
-
+﻿<%@ Page Language="C#" MasterPageFile="~/DMS.Master" AutoEventWireup="true" CodeBehind="variantSetup.aspx.cs" Inherits="DMS.Master.variantSetup" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
- <script src="../js/jquery-1.11.3.min.js" type="text/javascript"></script>
+<script src="../js/jquery-1.11.3.min.js" type="text/javascript"></script>
     <script>        var jquery_1_11_3_min_p = jQuery.noConflict();</script>
     <script src="../js/bootstrap.min.js" type="text/javascript"></script>
     <script>        var bootstrap_min_js = jQuery.noConflict();</script>
@@ -18,7 +17,7 @@
     <script src="../Telerix/js/jquery.min.js"></script>
     <script src="../Telerix/js/jszip.min.js" type="text/javascript"></script>
    
-    <script src="../JavaScript/ItemGroupsetup.js" type="text/javascript"></script>
+    <script src="../JavaScript/Variant.js" type="text/javascript"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 <input type="hidden" id="hdnLoad"/>
@@ -27,17 +26,17 @@
             <div class="row">
                 <div class="content-header-left col-md-6 col-12 mb-2">
                     <h4 class="content-header-title mainheading">
-                         Item Group Setup</h4>
+                         Variant Setup</h4>
                 </div>
                 <div class="content-header-right col-md-6 col-12">
                     <div class="btn-group float-md-right" role="group" aria-label="Button group with nested dropdown">
                        <button type="button" id="btnnew" class="btn btn-primary">
                             <i class="fa fa-plus-square"></i> New</button>
-                        <button type="button" id="btnSubmit" style="display:none"  class="btn btn-primary">
+                        <button type="button" id="btnSubmit"  class="btn btn-primary">
                             <i class="fa fa-save"></i> Submit</button>
                               <button type="button" id="btndesable" style="display:none"  class="btn btn-primary">
                             <i class="fa-disabled"></i>Disable</button>
-                        <button type="button" id="btnback" class="btn btn-primary"  style="display:none"  >
+                        <button type="button" id="btnback" class="btn btn-primary"   >
                            <i class="fa fa-arrow-left"></i> Back</button>
                       
                     </div>
@@ -46,19 +45,19 @@
         </div>
     </div>
     <div class="content-wrapper">
-<div id="preloader" style="display:none">
+<%--<div id="preloader" style="display:none">
   <div id="showPreloader"> <img src="../../assets/img/preloader.gif" > </div>
 </div>
 
-<div id="Overlay_Load" style="display:none"></div>
+<div id="Overlay_Load" style="display:none"></div>--%>
     <div class="">
         <div class="content-body">
-            <section id="itemGroupForm" style=" display:none" >
-                <div class="row match-height">
+            <section id="variantForm" style=" display:none" >
+       <div class="row match-height">
                    <div class="col-12 col-xl-12 ">                    
                     <div class="card">
                         <div class="card-content">
-                        <div class="container">
+                         <div class="container">
                       <div class="row   mt-1 headerDropdown ">
     <div class="col-md-6 pull-left">    
     <div class="pdfexport">
@@ -76,7 +75,7 @@
     
     </div>
     
-   <%-- <div class="col-md-3 ">
+<%--    <div class="col-md-3 ">
                                                 <div class="form-group pull-right  ">                                                 
                                                     <label class="pr-1">Default Country</label>
 <input type="text" id="ddlcountry"  autocomplete="off"  style="width: 100px;"/>
@@ -89,9 +88,9 @@
                                                  <input type="text" id="ddlentity"  autocomplete="off"  style="width: 100px;"/>
                                                 </div>
                                             </div>--%>
-                                          </div>
-                                              </div>
-<div class="container">
+                                            </div>
+                                            </div>
+                                            <div class="container">
           <div class="row">
     <div class="col-md-12 "> 
                            <div class="table-responsive full-width" >
@@ -100,8 +99,8 @@
                   <tr>
                  
                  <th ><input type="checkbox" id="chkAll"  onclick="InputcheckAll(this)"/>All</th>
-                  <th> Group Code</th>
-                    <th> Group Name</th>
+                  <%--<th> Group Code</th>--%>
+                    <th> Variant Name</th>
                     <th>Description</th>
                        <th style="opacity: 0;"></th>   
                    
@@ -111,9 +110,9 @@
                 <tr>   
                
                 <td><input type="checkbox" id="chk_1" class="chk_All"></td>     
-                 <td > <input type="text" id="txtgroupcode_1" class="fieldName" />      </td>    
-                <td > <input type="text" id="txtgroup_1" onkeyup='Comparevalue(this)' placeholder="Enter Group Name" class="fieldName" />      </td>
-                <td > <input type="text" id="txtgroupname_1" placeholder="Enter Description"  class="fieldName"  autocomplete="off" /> </td>  
+                 <%--<td > <input type="text" id="txtgroupcode_1" disabled  class="fieldName" />      </td>    --%>
+                <td > <input type="text" id="txtvariant_1" onkeyup='Comparevalue(this)' placeholder="Enter Variant Name" class="fieldName" />      </td>
+                <td > <input type="text" id="txtdescription_1" placeholder="Enter Description"  class="fieldName"  autocomplete="off" /> </td>  
                 <td  style="opacity: 0;">1</td>
                 </tr>
               </tbody>
@@ -121,7 +120,7 @@
 
               </div>
            
-                          </div>
+                              </div>
                     </div>
                 </div>
                         </div>
@@ -129,12 +128,12 @@
                 </div>
                 </div>
             </section>
-            <div class="row match-height" id="itemGroupGrid" style="display:block">
+            <div class="row match-height" id="variantGrid" style="display:block">
           
-                <div class="col-12 col-xl-12 ">                    
+               <div class="col-12 col-xl-12 ">                    
                     <div class="card">
                         <div class="card-content">
-                      <div class="container">
+                       <div class="container">
           <div class="row">
 
     <div class="col-md-8 pull-left">    
@@ -203,16 +202,16 @@
                            <%-- table for content--%>
                            <div class="container">
           <div class="row">
-    <div class="col-md-12 ">  
+    <div class="col-md-12 ">
                             <div class="table-responsive full-width">
-                            <table class="table table-de mb-0 itemGroupSetupGrid clickableRow" id="partnersgrid">
+                            <table class="table table-de mb-0 VarientSetup clickableRow" id="partnersgrid">
                         <thead>
                             <tr>
                                 <th ><input type="checkbox" id="chkdisp"  onclick="SelectAll(this)"/> All</th>
                                 <th> Entity Name</th>
                                 <th> Country Name</th>
                                 <th>Field Count</th>
-                                <th style="display:none"></th>
+                               <th style="display:none"></th>
                                 <th style="display:none"></th>
                             </tr>
                         </thead>
@@ -261,22 +260,24 @@
         <label id="partnerid" style="display: none"></label>
     </div>
     </div>
-       <%--  <script type="text/javascript">
+         <script type="text/javascript">
 
              jquery_1_11_3_min_p(document).ready(function () {
 
                  jquery_1_11_3_min_p("#btnNew").click(function () {
-                     $("#itemGroupForm").css('display', 'block');
-                     $("#itemGroupGrid").css('display', 'none');
+                     $("#variantForm").css('display', 'block');
+                     $("#variantGrid").css('display', 'none');
+                 })
+                 jquery_1_11_3_min_p("#btnBack").click(function () {
+                     $("#variantForm").css('display', 'none');
+                     $("#variantGrid").css('display', 'block');
                  })
              })
 
 </script>
---%>
  <script>
      jquery_1_11_3_min_p(document).ready(function () {
          jquery_1_11_3_min_p(".footerDropdown").hide();
      });
 </script>
 </asp:Content>
-
