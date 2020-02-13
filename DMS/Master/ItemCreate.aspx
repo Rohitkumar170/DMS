@@ -33,10 +33,10 @@
                 </div>
                 <div class="content-header-right col-md-6 col-12">
                     <div class="btn-group float-md-right" role="group" aria-label="Button group with nested dropdown">
-                       <span class="multifileupload" id="btnupload" > 
+                       <span class="multifileupload" id="btnupload" style="display:none" > 
                        <i class="fa fa-upload"></i>
                   <%--   <input type="file" id='FileUpload' runat="server" class="custom-file-input multifileBtn" onchange="UploadFile(this);" />--%>
-                           <input type="button" id="upload" value="Import" class="custom-file-input multifileBtn" onclick="" />
+                           <input type="button"  id="upload" value="Import" class="custom-file-input multifileBtn" onclick="" />
                          <%--  <asp:FileUpload runat="server" Visible="true" ID="FileUpload" onchange="" style="display:none" />--%>
                           <%-- <asp:Button ID="btnUpload" runat="server" OnClick="" style="display:none" /> --%>
                        </span>
@@ -1143,5 +1143,10 @@
                   });
               });
           });
-      </script>                              
+      </script>  
+     <script>
+ jquery_1_11_3_min_p(document).ready(function () {
+     jquery_1_11_3_min_p(".footerDropdown").hide();
+       });
+</script>
 </asp:Content>
