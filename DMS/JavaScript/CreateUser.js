@@ -359,7 +359,7 @@ function BindUserGrid(searchtxt) {
             var jsonData = result.d;
            
             jQuery.each(jsonData.Table, function (rec) {
-                var markup = "<tr> <td style='display:none'> " + jsonData.Table[i].UserId + "</td><td style='display:none'> " + jsonData.Table[i].USERROLEid + "</td><td style='display:none'> " + jsonData.Table[i].IsActive + "</td><td> <input id='chkbox' type='checkbox' class='checkAll'  /></td><td>" + jsonData.Table[i].UserName + "</td> <td >" + jsonData.Table[i].EmailId + "</td> <td >" + jsonData.Table[i].MobileNo + "</td><td >" + jsonData.Table[i].USERROLE + "</td><td><input type='checkbox'></td></tr>";
+                var markup = "<tr> <td style='display:none'> " + jsonData.Table[i].UserId + "</td><td style='display:none'> " + jsonData.Table[i].USERROLEid + "</td><td style='display:none'> " + jsonData.Table[i].IsActive + "</td><td> <input id='chkbox' type='checkbox' class='checkAll'  /></td><td>" + jsonData.Table[i].UserName + "</td> <td >" + jsonData.Table[i].EmailId + "</td> <td >" + jsonData.Table[i].MobileNo + "</td><td >" + jsonData.Table[i].USERROLE + "</td><td><div class='btn-group' id='status' data-toggle='buttons'><label class='btn btn-default btn-on btn-xs active' title='Login'><input type='radio' value='1' name='multifeatured_module[module_id][status]' checked='checked'><i class='fa fa-sign-in' aria-hidden='true'></i></label><label class='btn btn-default btn-off btn-xs' title='Logout'><input type='radio' value='0' name='multifeatured_module[module_id][status]'><i class='fa fa-sign-out' aria-hidden='true'></i></label></div></td></tr>";
 
                 jquery_1_11_3_min_p("#userGrid tbody").append(markup);
 

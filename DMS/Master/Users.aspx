@@ -20,7 +20,7 @@
     <script src="../JavaScript/CreateUser.js" type="text/javascript"></script>
   
 <style>
-#userGrid td:nth-child(3), #userGrid th:nth-child(3) {    width: 100px;}
+#userGrid td:nth-child(4), #userGrid th:nth-child(4) {    width: 50px;}
 #userGrid td:nth-child(5), #userGrid th:nth-child(5) {    width: 200px;}
 .AccessRights li{list-style:none;}
 .AccessRights ul{padding-left:22px;}
@@ -30,6 +30,9 @@
     #scrolldiv{max-height: 190px;overflow-y:auto;overflow-x:hidden;border: 1px solid #bcbcbc;
     padding: 5px 10px;
     border-radius: 4px;}
+    .btn-default.btn-on.active{background-color: #5BB75B;color: white;}
+.btn-default.btn-off.active{background-color: #DA4F49;color: white;}
+#status .btn{padding: 3px 5px;}
 </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -40,6 +43,12 @@
                 <div class="content-header-left col-md-6 col-12 mb-2">
                     <h4 class="content-header-title mainheading">
                          Create User</h4>
+              <%--<div class="btn-group" id="status" data-toggle="buttons">
+              <label class="btn btn-default btn-on btn-xs active">
+              <input type="radio" value="1" name="multifeatured_module[module_id][status]" checked="checked">Login</label>
+              <label class="btn btn-default btn-off btn-xs ">
+              <input type="radio" value="0" name="multifeatured_module[module_id][status]">Logout</label>
+            </div>--%>
                 </div>
                 <div class="content-header-right col-md-6 col-12">
                     <div class="btn-group float-md-right" role="group" aria-label="Button group with nested dropdown">
@@ -570,7 +579,7 @@
                                 <th>Email</th>
                                 <th>Mobile</th>
                                 <th>User Role</th>
-                              <th>Active</th>
+                              <th>Action</th>
                                
                             </tr>
                         </thead>
