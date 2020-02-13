@@ -57,14 +57,17 @@ jquery_1_11_3_min_p(document).ready(function () {
          jquery_1_11_3_min_p("#unitGrid").css('display', 'none');
          jquery_1_11_3_min_p('#btnsubmit').css('display', 'block');
          jquery_1_11_3_min_p('#btnback').css('display', 'block');
-         jquery_1_11_3_min_p('#btnnew').css('display', 'none');
+        jquery_1_11_3_min_p('#btnnew').css('display', 'none');
+        jquery_1_11_3_min_p('#btnupload').css('display', 'block');
                });
         jquery_1_11_3_min_p("#btnback").click(function () {
          jquery_1_11_3_min_p("#unitForm").css('display', 'none');
          jquery_1_11_3_min_p("#unitGrid").css('display', 'block');
           jquery_1_11_3_min_p('#btnsubmit').css('display', 'none');
          jquery_1_11_3_min_p('#btnback').css('display', 'none');
-         jquery_1_11_3_min_p('#btnnew').css('display', 'block');
+            jquery_1_11_3_min_p('#btnnew').css('display', 'block');
+            jquery_1_11_3_min_p('#btnupload').css('display', 'none');
+            
                                       });
 
 
@@ -113,6 +116,22 @@ swal("Deleted Successfully","Your data deleted successfully!","success")
 
 
 });
+
+
+
+function UploadFile() { $('#ContentPlaceHolder1_btnUpload').click(); }
+function Findclick() {
+    $('#ContentPlaceHolder1_FileUpload').click();
+}
+
+function Loader() {
+    jquery_1_11_3_min_p('#preloader').css('display', 'block');
+    jquery_1_11_3_min_p('#Overlay_Load').css('display', 'block');
+}
+function LoaderOff() {
+    jquery_1_11_3_min_p('#preloader').css('display', 'none');
+    jquery_1_11_3_min_p('#Overlay_Load').css('display', 'none');
+}
 
 function AddRow() {
     if (counter == 0) {

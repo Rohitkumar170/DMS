@@ -19,8 +19,6 @@ namespace DMS.Entity
         public string EmailId { get; set; }
         public Nullable<long> MobileNo { get; set; }
         public Nullable<long> CountryId { get; set; }
-        public string Passwordkey { get; set; }
-        public string Password { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }
         public Nullable<System.DateTime> UpdatedOn { get; set; }
         public Nullable<bool> IsActive { get; set; }

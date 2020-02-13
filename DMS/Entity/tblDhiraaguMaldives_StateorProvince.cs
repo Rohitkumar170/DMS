@@ -12,11 +12,11 @@ namespace DMS.Entity
     using System;
     using System.Collections.Generic;
     
-    public partial class tblYoekisoftIndia_State
+    public partial class tblDhiraaguMaldives_StateorProvince
     {
-        public int StateAutoid { get; set; }
-        public string Statename { get; set; }
+        public int StateorProvinceAutoid { get; set; }
         public string StateCode { get; set; }
+        public string StateName { get; set; }
         public Nullable<long> ParentValue { get; set; }
         public Nullable<long> EntityId { get; set; }
         public Nullable<long> ParentId { get; set; }

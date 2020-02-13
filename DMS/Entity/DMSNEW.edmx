@@ -236,6 +236,27 @@
           <Property Name="CreatedOn" Type="smalldatetime" />
           <Property Name="UpdatedOn" Type="smalldatetime" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DMSNEW.dbo.tblDhiraaguMaldives_StateorProvince' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tblDhiraaguMaldives_StateorProvince">
+          <Key>
+            <PropertyRef Name="StateorProvinceAutoid" />
+            <PropertyRef Name="StateCode" />
+            <PropertyRef Name="StateName" />
+          </Key>
+          <Property Name="StateorProvinceAutoid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StateCode" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="StateName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ParentValue" Type="bigint" />
+          <Property Name="EntityId" Type="bigint" />
+          <Property Name="ParentId" Type="bigint" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedOn" Type="varchar" MaxLength="100" />
+          <Property Name="CreatedBy" Type="bigint" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsDeleted" Type="bit" />
+        </EntityType>
         <EntityType Name="tblDiscountGroupHeader">
           <Key>
             <PropertyRef Name="DiscountGroupId" />
@@ -1633,6 +1654,21 @@
           <Property Name="CreatedOn" Type="smalldatetime" />
           <Property Name="UpdatedOn" Type="smalldatetime" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DMSNEW.dbo.tblUserRole' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tblUserRole">
+          <Key>
+            <PropertyRef Name="URID" />
+          </Key>
+          <Property Name="URID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="USERROLE" Type="varchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="CreatedOn" Type="smalldatetime" />
+          <Property Name="UpdatedOn" Type="smalldatetime" />
+        </EntityType>
         <EntityType Name="tblVariant">
           <Key>
             <PropertyRef Name="Variantid" />
@@ -1777,74 +1813,6 @@
           <Property Name="Address" Type="nvarchar" MaxLength="500" />
           <Property Name="Company" Type="nvarchar" MaxLength="100" />
           <Property Name="Language" Type="varchar" MaxLength="100" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'DMSNEW.dbo.tblYoekisoftAddressIndia' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="tblYoekisoftAddressIndia">
-          <Key>
-            <PropertyRef Name="AutoId" />
-          </Key>
-          <Property Name="AutoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="LocationCode" Type="varchar" MaxLength="250" />
-          <Property Name="LocationName" Type="varchar" MaxLength="250" />
-          <Property Name="LocationDescription" Type="varchar" MaxLength="250" />
-          <Property Name="Country" Type="varchar" MaxLength="250" />
-          <Property Name="State" Type="varchar" MaxLength="250" />
-          <Property Name="City" Type="varchar" MaxLength="250" />
-          <Property Name="Address" Type="varchar" MaxLength="250" />
-          <Property Name="Pincode" Type="varchar" MaxLength="250" />
-          <Property Name="CountryId" Type="bigint" />
-          <Property Name="EntityId" Type="bigint" />
-          <Property Name="PartnerId" Type="bigint" />
-          <Property Name="LocationFlag" Type="bigint" />
-          <Property Name="CreatedOn" Type="datetime" />
-          <Property Name="UpdatedOn" Type="varchar" MaxLength="100" />
-          <Property Name="CreatedBy" Type="bigint" />
-          <Property Name="UpdatedBy" Type="int" />
-          <Property Name="IsActive" Type="bit" />
-          <Property Name="IsDeleted" Type="bit" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'DMSNEW.dbo.tblYoekisoftIndia_City' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="tblYoekisoftIndia_City">
-          <Key>
-            <PropertyRef Name="CityAutoid" />
-            <PropertyRef Name="CityName" />
-            <PropertyRef Name="CityCode" />
-          </Key>
-          <Property Name="CityAutoid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="CityName" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="CityCode" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="ParentValue" Type="bigint" />
-          <Property Name="EntityId" Type="bigint" />
-          <Property Name="ParentId" Type="bigint" />
-          <Property Name="CreatedOn" Type="datetime" />
-          <Property Name="UpdatedOn" Type="varchar" MaxLength="100" />
-          <Property Name="CreatedBy" Type="bigint" />
-          <Property Name="UpdatedBy" Type="int" />
-          <Property Name="IsActive" Type="bit" />
-          <Property Name="IsDeleted" Type="bit" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'DMSNEW.dbo.tblYoekisoftIndia_State' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="tblYoekisoftIndia_State">
-          <Key>
-            <PropertyRef Name="StateAutoid" />
-            <PropertyRef Name="Statename" />
-            <PropertyRef Name="StateCode" />
-          </Key>
-          <Property Name="StateAutoid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Statename" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="StateCode" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="ParentValue" Type="bigint" />
-          <Property Name="EntityId" Type="bigint" />
-          <Property Name="ParentId" Type="bigint" />
-          <Property Name="CreatedOn" Type="datetime" />
-          <Property Name="UpdatedOn" Type="varchar" MaxLength="100" />
-          <Property Name="CreatedBy" Type="bigint" />
-          <Property Name="UpdatedBy" Type="int" />
-          <Property Name="IsActive" Type="bit" />
-          <Property Name="IsDeleted" Type="bit" />
         </EntityType>
         <EntityType Name="tblZone">
           <Key>
@@ -2130,6 +2098,17 @@ warning 6002: The table/view 'DMSNEW.dbo.Taxgroupformula' does not have a primar
           <Parameter Name="EmailId" Type="varchar" Mode="In" />
           <Parameter Name="CreatedBy" Type="bigint" Mode="In" />
         </Function>
+        <Function Name="DMS_IMPORTITEMGROUP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CreatedBy" Type="bigint" Mode="In" />
+          <Parameter Name="GroupCode" Type="varchar" Mode="In" />
+          <Parameter Name="GroupName" Type="varchar" Mode="In" />
+          <Parameter Name="Description" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="DMS_ImportUnit" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Unit" Type="varchar" Mode="In" />
+          <Parameter Name="Description" Type="varchar" Mode="In" />
+          <Parameter Name="CreatedBy" Type="bigint" Mode="In" />
+        </Function>
         <Function Name="DMS_InsertRequisition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="QueryType" Type="varchar" Mode="In" />
           <Parameter Name="RequestNumber" Type="varchar" Mode="In" />
@@ -2320,6 +2299,7 @@ warning 6002: The table/view 'DMSNEW.dbo.Taxgroupformula' does not have a primar
           <Parameter Name="partId" Type="varchar" Mode="In" />
           <Parameter Name="passKey" Type="varchar" Mode="In" />
           <Parameter Name="EntityDataJson" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Isactive" Type="int" Mode="In" />
         </Function>
         <Function Name="DMSBindSequence" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Pageid" Type="int" Mode="In" />
@@ -2520,60 +2500,33 @@ warning 6002: The table/view 'DMSNEW.dbo.Taxgroupformula' does not have a primar
           <EntitySet Name="tblZonewiseItems" EntityType="Self.tblZonewiseItems" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TempFileSequenceline" EntityType="Self.TempFileSequenceline" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="testtable" EntityType="Self.testtable" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tblYoekisoftAddressIndia" EntityType="Self.tblYoekisoftAddressIndia" store:Type="Tables" store:Schema="dbo">
+          <EntitySet Name="tblDhiraaguMaldives_StateorProvince" EntityType="Self.tblDhiraaguMaldives_StateorProvince" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
-    [tblYoekisoftAddressIndia].[AutoId] AS [AutoId], 
-    [tblYoekisoftAddressIndia].[LocationCode] AS [LocationCode], 
-    [tblYoekisoftAddressIndia].[LocationName] AS [LocationName], 
-    [tblYoekisoftAddressIndia].[LocationDescription] AS [LocationDescription], 
-    [tblYoekisoftAddressIndia].[Country] AS [Country], 
-    [tblYoekisoftAddressIndia].[State] AS [State], 
-    [tblYoekisoftAddressIndia].[City] AS [City], 
-    [tblYoekisoftAddressIndia].[Address] AS [Address], 
-    [tblYoekisoftAddressIndia].[Pincode] AS [Pincode], 
-    [tblYoekisoftAddressIndia].[CountryId] AS [CountryId], 
-    [tblYoekisoftAddressIndia].[EntityId] AS [EntityId], 
-    [tblYoekisoftAddressIndia].[PartnerId] AS [PartnerId], 
-    [tblYoekisoftAddressIndia].[LocationFlag] AS [LocationFlag], 
-    [tblYoekisoftAddressIndia].[CreatedOn] AS [CreatedOn], 
-    [tblYoekisoftAddressIndia].[UpdatedOn] AS [UpdatedOn], 
-    [tblYoekisoftAddressIndia].[CreatedBy] AS [CreatedBy], 
-    [tblYoekisoftAddressIndia].[UpdatedBy] AS [UpdatedBy], 
-    [tblYoekisoftAddressIndia].[IsActive] AS [IsActive], 
-    [tblYoekisoftAddressIndia].[IsDeleted] AS [IsDeleted]
-    FROM [dbo].[tblYoekisoftAddressIndia] AS [tblYoekisoftAddressIndia]</DefiningQuery>
+    [tblDhiraaguMaldives_StateorProvince].[StateorProvinceAutoid] AS [StateorProvinceAutoid], 
+    [tblDhiraaguMaldives_StateorProvince].[StateCode] AS [StateCode], 
+    [tblDhiraaguMaldives_StateorProvince].[StateName] AS [StateName], 
+    [tblDhiraaguMaldives_StateorProvince].[ParentValue] AS [ParentValue], 
+    [tblDhiraaguMaldives_StateorProvince].[EntityId] AS [EntityId], 
+    [tblDhiraaguMaldives_StateorProvince].[ParentId] AS [ParentId], 
+    [tblDhiraaguMaldives_StateorProvince].[CreatedOn] AS [CreatedOn], 
+    [tblDhiraaguMaldives_StateorProvince].[UpdatedOn] AS [UpdatedOn], 
+    [tblDhiraaguMaldives_StateorProvince].[CreatedBy] AS [CreatedBy], 
+    [tblDhiraaguMaldives_StateorProvince].[UpdatedBy] AS [UpdatedBy], 
+    [tblDhiraaguMaldives_StateorProvince].[IsActive] AS [IsActive], 
+    [tblDhiraaguMaldives_StateorProvince].[IsDeleted] AS [IsDeleted]
+    FROM [dbo].[tblDhiraaguMaldives_StateorProvince] AS [tblDhiraaguMaldives_StateorProvince]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="tblYoekisoftIndia_City" EntityType="Self.tblYoekisoftIndia_City" store:Type="Tables" store:Schema="dbo">
+          <EntitySet Name="tblUserRole" EntityType="Self.tblUserRole" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
-    [tblYoekisoftIndia_City].[CityAutoid] AS [CityAutoid], 
-    [tblYoekisoftIndia_City].[CityName] AS [CityName], 
-    [tblYoekisoftIndia_City].[CityCode] AS [CityCode], 
-    [tblYoekisoftIndia_City].[ParentValue] AS [ParentValue], 
-    [tblYoekisoftIndia_City].[EntityId] AS [EntityId], 
-    [tblYoekisoftIndia_City].[ParentId] AS [ParentId], 
-    [tblYoekisoftIndia_City].[CreatedOn] AS [CreatedOn], 
-    [tblYoekisoftIndia_City].[UpdatedOn] AS [UpdatedOn], 
-    [tblYoekisoftIndia_City].[CreatedBy] AS [CreatedBy], 
-    [tblYoekisoftIndia_City].[UpdatedBy] AS [UpdatedBy], 
-    [tblYoekisoftIndia_City].[IsActive] AS [IsActive], 
-    [tblYoekisoftIndia_City].[IsDeleted] AS [IsDeleted]
-    FROM [dbo].[tblYoekisoftIndia_City] AS [tblYoekisoftIndia_City]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="tblYoekisoftIndia_State" EntityType="Self.tblYoekisoftIndia_State" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [tblYoekisoftIndia_State].[StateAutoid] AS [StateAutoid], 
-    [tblYoekisoftIndia_State].[Statename] AS [Statename], 
-    [tblYoekisoftIndia_State].[StateCode] AS [StateCode], 
-    [tblYoekisoftIndia_State].[ParentValue] AS [ParentValue], 
-    [tblYoekisoftIndia_State].[EntityId] AS [EntityId], 
-    [tblYoekisoftIndia_State].[ParentId] AS [ParentId], 
-    [tblYoekisoftIndia_State].[CreatedOn] AS [CreatedOn], 
-    [tblYoekisoftIndia_State].[UpdatedOn] AS [UpdatedOn], 
-    [tblYoekisoftIndia_State].[CreatedBy] AS [CreatedBy], 
-    [tblYoekisoftIndia_State].[UpdatedBy] AS [UpdatedBy], 
-    [tblYoekisoftIndia_State].[IsActive] AS [IsActive], 
-    [tblYoekisoftIndia_State].[IsDeleted] AS [IsDeleted]
-    FROM [dbo].[tblYoekisoftIndia_State] AS [tblYoekisoftIndia_State]</DefiningQuery>
+    [tblUserRole].[URID] AS [URID], 
+    [tblUserRole].[USERROLE] AS [USERROLE], 
+    [tblUserRole].[IsActive] AS [IsActive], 
+    [tblUserRole].[IsDeleted] AS [IsDeleted], 
+    [tblUserRole].[CreatedBy] AS [CreatedBy], 
+    [tblUserRole].[UpdatedBy] AS [UpdatedBy], 
+    [tblUserRole].[CreatedOn] AS [CreatedOn], 
+    [tblUserRole].[UpdatedOn] AS [UpdatedOn]
+    FROM [dbo].[tblUserRole] AS [tblUserRole]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="Taxgroupformula" EntityType="Self.Taxgroupformula" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -2924,8 +2877,6 @@ warning 6002: The table/view 'DMSNEW.dbo.Taxgroupformula' does not have a primar
           <Property Name="EmailId" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="MobileNo" Type="Int64" />
           <Property Name="CountryId" Type="Int64" />
-          <Property Name="Passwordkey" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="Password" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="CreatedOn" Type="DateTime" Precision="0" />
           <Property Name="UpdatedOn" Type="DateTime" Precision="0" />
           <Property Name="IsActive" Type="Boolean" />
@@ -4464,58 +4415,15 @@ warning 6002: The table/view 'DMSNEW.dbo.Taxgroupformula' does not have a primar
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityType Name="tblYoekisoftAddressIndia">
+        <EntityType Name="tblDhiraaguMaldives_StateorProvince">
           <Key>
-            <PropertyRef Name="AutoId" />
-          </Key>
-          <Property Name="AutoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="LocationCode" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="LocationName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="LocationDescription" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="Country" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="State" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="City" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="Address" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="Pincode" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="CountryId" Type="Int64" />
-          <Property Name="EntityId" Type="Int64" />
-          <Property Name="PartnerId" Type="Int64" />
-          <Property Name="LocationFlag" Type="Int64" />
-          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
-          <Property Name="UpdatedOn" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="CreatedBy" Type="Int64" />
-          <Property Name="UpdatedBy" Type="Int32" />
-          <Property Name="IsActive" Type="Boolean" />
-          <Property Name="IsDeleted" Type="Boolean" />
-        </EntityType>
-        <EntityType Name="tblYoekisoftIndia_City">
-          <Key>
-            <PropertyRef Name="CityAutoid" />
-            <PropertyRef Name="CityName" />
-            <PropertyRef Name="CityCode" />
-          </Key>
-          <Property Name="CityAutoid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CityName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="CityCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ParentValue" Type="Int64" />
-          <Property Name="EntityId" Type="Int64" />
-          <Property Name="ParentId" Type="Int64" />
-          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
-          <Property Name="UpdatedOn" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="CreatedBy" Type="Int64" />
-          <Property Name="UpdatedBy" Type="Int32" />
-          <Property Name="IsActive" Type="Boolean" />
-          <Property Name="IsDeleted" Type="Boolean" />
-        </EntityType>
-        <EntityType Name="tblYoekisoftIndia_State">
-          <Key>
-            <PropertyRef Name="StateAutoid" />
-            <PropertyRef Name="Statename" />
+            <PropertyRef Name="StateorProvinceAutoid" />
             <PropertyRef Name="StateCode" />
+            <PropertyRef Name="StateName" />
           </Key>
-          <Property Name="StateAutoid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Statename" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="StateorProvinceAutoid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="StateCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="StateName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ParentValue" Type="Int64" />
           <Property Name="EntityId" Type="Int64" />
           <Property Name="ParentId" Type="Int64" />
@@ -4525,6 +4433,19 @@ warning 6002: The table/view 'DMSNEW.dbo.Taxgroupformula' does not have a primar
           <Property Name="UpdatedBy" Type="Int32" />
           <Property Name="IsActive" Type="Boolean" />
           <Property Name="IsDeleted" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="tblUserRole">
+          <Key>
+            <PropertyRef Name="URID" />
+          </Key>
+          <Property Name="URID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="USERROLE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="0" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="Taxgroupformula">
           <Key>
@@ -4664,9 +4585,8 @@ warning 6002: The table/view 'DMSNEW.dbo.Taxgroupformula' does not have a primar
           <EntitySet Name="tblZonewiseItems" EntityType="Self.tblZonewiseItem" />
           <EntitySet Name="TempFileSequencelines" EntityType="Self.TempFileSequenceline" />
           <EntitySet Name="testtables" EntityType="Self.testtable" />
-          <EntitySet Name="tblYoekisoftAddressIndias" EntityType="Self.tblYoekisoftAddressIndia" />
-          <EntitySet Name="tblYoekisoftIndia_City" EntityType="Self.tblYoekisoftIndia_City" />
-          <EntitySet Name="tblYoekisoftIndia_State" EntityType="Self.tblYoekisoftIndia_State" />
+          <EntitySet Name="tblDhiraaguMaldives_StateorProvince" EntityType="Self.tblDhiraaguMaldives_StateorProvince" />
+          <EntitySet Name="tblUserRoles" EntityType="Self.tblUserRole" />
           <EntitySet Name="Taxgroupformulas" EntityType="Self.Taxgroupformula" />
           <FunctionImport Name="fn_split_string_to_column" IsComposable="true" ReturnType="Collection(DMSNEWModel.fn_split_string_to_column_Result)">
             <Parameter Name="string" Mode="In" Type="String" />
@@ -4837,6 +4757,18 @@ warning 6002: The table/view 'DMSNEW.dbo.Taxgroupformula' does not have a primar
             <Parameter Name="UserType" Mode="In" Type="String" />
             <Parameter Name="SkuId" Mode="In" Type="Int64" />
             <Parameter Name="LocationId" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="DMS_ImportExcel">
+            <Parameter Name="Entityname" Mode="In" Type="String" />
+            <Parameter Name="CountryId" Mode="In" Type="Int64" />
+            <Parameter Name="MobileNo" Mode="In" Type="Int64" />
+            <Parameter Name="EmailId" Mode="In" Type="String" />
+            <Parameter Name="CreatedBy" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="DMS_ImportUnit">
+            <Parameter Name="Unit" Mode="In" Type="String" />
+            <Parameter Name="Description" Mode="In" Type="String" />
+            <Parameter Name="CreatedBy" Mode="In" Type="Int64" />
           </FunctionImport>
           <FunctionImport Name="DMS_InsertRequisition" ReturnType="Collection(Int32)">
             <Parameter Name="QueryType" Mode="In" Type="String" />
@@ -5028,6 +4960,7 @@ warning 6002: The table/view 'DMSNEW.dbo.Taxgroupformula' does not have a primar
             <Parameter Name="partId" Mode="In" Type="String" />
             <Parameter Name="passKey" Mode="In" Type="String" />
             <Parameter Name="EntityDataJson" Mode="In" Type="String" />
+            <Parameter Name="Isactive" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="DMSBindSequence">
             <Parameter Name="Pageid" Mode="In" Type="Int32" />
@@ -5070,12 +5003,11 @@ warning 6002: The table/view 'DMSNEW.dbo.Taxgroupformula' does not have a primar
           </FunctionImport>
           <FunctionImport Name="TestFINALCALCULATOR" />
           <FunctionImport Name="TestFINALCALCULATORINCLUSIVE" />
-          <FunctionImport Name="DMS_ImportExcel">
-            <Parameter Name="Entityname" Mode="In" Type="String" />
-            <Parameter Name="CountryId" Mode="In" Type="Int64" />
-            <Parameter Name="MobileNo" Mode="In" Type="Int64" />
-            <Parameter Name="EmailId" Mode="In" Type="String" />
+          <FunctionImport Name="DMS_IMPORTITEMGROUP">
             <Parameter Name="CreatedBy" Mode="In" Type="Int64" />
+            <Parameter Name="GroupCode" Mode="In" Type="String" />
+            <Parameter Name="GroupName" Mode="In" Type="String" />
+            <Parameter Name="Description" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="AngularTest_Result">
@@ -7164,55 +7096,12 @@ warning 6002: The table/view 'DMSNEW.dbo.Taxgroupformula' does not have a primar
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tblYoekisoftAddressIndias">
-            <EntityTypeMapping TypeName="DMSNEWModel.tblYoekisoftAddressIndia">
-              <MappingFragment StoreEntitySet="tblYoekisoftAddressIndia">
-                <ScalarProperty Name="AutoId" ColumnName="AutoId" />
-                <ScalarProperty Name="LocationCode" ColumnName="LocationCode" />
-                <ScalarProperty Name="LocationName" ColumnName="LocationName" />
-                <ScalarProperty Name="LocationDescription" ColumnName="LocationDescription" />
-                <ScalarProperty Name="Country" ColumnName="Country" />
-                <ScalarProperty Name="State" ColumnName="State" />
-                <ScalarProperty Name="City" ColumnName="City" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="Pincode" ColumnName="Pincode" />
-                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
-                <ScalarProperty Name="EntityId" ColumnName="EntityId" />
-                <ScalarProperty Name="PartnerId" ColumnName="PartnerId" />
-                <ScalarProperty Name="LocationFlag" ColumnName="LocationFlag" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tblYoekisoftIndia_City">
-            <EntityTypeMapping TypeName="DMSNEWModel.tblYoekisoftIndia_City">
-              <MappingFragment StoreEntitySet="tblYoekisoftIndia_City">
-                <ScalarProperty Name="CityAutoid" ColumnName="CityAutoid" />
-                <ScalarProperty Name="CityName" ColumnName="CityName" />
-                <ScalarProperty Name="CityCode" ColumnName="CityCode" />
-                <ScalarProperty Name="ParentValue" ColumnName="ParentValue" />
-                <ScalarProperty Name="EntityId" ColumnName="EntityId" />
-                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tblYoekisoftIndia_State">
-            <EntityTypeMapping TypeName="DMSNEWModel.tblYoekisoftIndia_State">
-              <MappingFragment StoreEntitySet="tblYoekisoftIndia_State">
-                <ScalarProperty Name="StateAutoid" ColumnName="StateAutoid" />
-                <ScalarProperty Name="Statename" ColumnName="Statename" />
+          <EntitySetMapping Name="tblDhiraaguMaldives_StateorProvince">
+            <EntityTypeMapping TypeName="DMSNEWModel.tblDhiraaguMaldives_StateorProvince">
+              <MappingFragment StoreEntitySet="tblDhiraaguMaldives_StateorProvince">
+                <ScalarProperty Name="StateorProvinceAutoid" ColumnName="StateorProvinceAutoid" />
                 <ScalarProperty Name="StateCode" ColumnName="StateCode" />
+                <ScalarProperty Name="StateName" ColumnName="StateName" />
                 <ScalarProperty Name="ParentValue" ColumnName="ParentValue" />
                 <ScalarProperty Name="EntityId" ColumnName="EntityId" />
                 <ScalarProperty Name="ParentId" ColumnName="ParentId" />
@@ -7222,6 +7111,20 @@ warning 6002: The table/view 'DMSNEW.dbo.Taxgroupformula' does not have a primar
                 <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUserRoles">
+            <EntityTypeMapping TypeName="DMSNEWModel.tblUserRole">
+              <MappingFragment StoreEntitySet="tblUserRole">
+                <ScalarProperty Name="URID" ColumnName="URID" />
+                <ScalarProperty Name="USERROLE" ColumnName="USERROLE" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -7341,6 +7244,8 @@ warning 6002: The table/view 'DMSNEW.dbo.Taxgroupformula' does not have a primar
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="DMS_ImportExcel" FunctionName="DMSNEWModel.Store.DMS_ImportExcel" />
+          <FunctionImportMapping FunctionImportName="DMS_ImportUnit" FunctionName="DMSNEWModel.Store.DMS_ImportUnit" />
           <FunctionImportMapping FunctionImportName="DMS_InsertRequisition" FunctionName="DMSNEWModel.Store.DMS_InsertRequisition" />
           <FunctionImportMapping FunctionImportName="DMS_Item" FunctionName="DMSNEWModel.Store.DMS_Item">
             <ResultMapping>
@@ -7485,7 +7390,7 @@ warning 6002: The table/view 'DMSNEW.dbo.Taxgroupformula' does not have a primar
           <FunctionImportMapping FunctionImportName="TESTCALCULATOR" FunctionName="DMSNEWModel.Store.TESTCALCULATOR" />
           <FunctionImportMapping FunctionImportName="TestFINALCALCULATOR" FunctionName="DMSNEWModel.Store.TestFINALCALCULATOR" />
           <FunctionImportMapping FunctionImportName="TestFINALCALCULATORINCLUSIVE" FunctionName="DMSNEWModel.Store.TestFINALCALCULATORINCLUSIVE" />
-          <FunctionImportMapping FunctionImportName="DMS_ImportExcel" FunctionName="DMSNEWModel.Store.DMS_ImportExcel" />
+          <FunctionImportMapping FunctionImportName="DMS_IMPORTITEMGROUP" FunctionName="DMSNEWModel.Store.DMS_IMPORTITEMGROUP" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
