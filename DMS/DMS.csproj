@@ -337,15 +337,15 @@
     <Content Include="assets\js\sweetalert2.all.min.js" />
     <Content Include="assets\js\visitor-data.js" />
     <Content Include="assets\js\wizard-steps.min.js" />
-    <Content Include="Entity\DMS.Context.tt">
+    <Content Include="Entity\DMSNEW.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>DMS.Context.cs</LastGenOutput>
-      <DependentUpon>DMS.edmx</DependentUpon>
+      <DependentUpon>DMSNEW.edmx</DependentUpon>
+      <LastGenOutput>DMSNEW.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Entity\DMS.tt">
+    <Content Include="Entity\DMSNEW.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DMS.edmx</DependentUpon>
-      <LastGenOutput>DMS.cs</LastGenOutput>
+      <DependentUpon>DMSNEW.edmx</DependentUpon>
+      <LastGenOutput>DMSNEW.cs</LastGenOutput>
     </Content>
     <Content Include="Global.asax" />
     <Content Include="Home\Dashboard.aspx" />
@@ -2428,446 +2428,443 @@
       <DependentUpon>Downloadimage.ashx</DependentUpon>
     </Compile>
     <Compile Include="Entity\AngularTest_Result.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\ApplicationDbContext.cs" />
     <Compile Include="Entity\Common.cs" />
     <Compile Include="Entity\DbSecurity.cs" />
-    <Compile Include="Entity\DMS.Context.cs">
+    <Compile Include="Entity\DMSNEW.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DMS.Context.tt</DependentUpon>
+      <DependentUpon>DMSNEW.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entity\DMS.cs">
+    <Compile Include="Entity\DMSNEW.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entity\DMS.Designer.cs">
+    <Compile Include="Entity\DMSNEW.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DMS.edmx</DependentUpon>
+      <DependentUpon>DMSNEW.edmx</DependentUpon>
     </Compile>
     <Compile Include="Entity\DMS_AdminSetUp_Result.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\DMS_AllItems_Result.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\DMS_COASetup_Result.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\DMS_Customers_Result.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\DMS_DiscountSetup_Result.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\DMS_GetItemMaster_Result.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\DMS_ItemSetup_Result.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\DMS_Item_Result.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\DMS_Onhand_Result.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\DMS_PurchaseInvoice_Result.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\DMS_RequestControl_Result.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\DMS_SaleInvoice_Result.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\DMS_Sequenesetup_Result.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\DMS_Taxgroupsetup_Result.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\DMS_TaxSetup_Result.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\DMS_Transactions_Result.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\DMS_Transaction_Result.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\ENTITYTEST_Result.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\fn_split_string_to_column_Result.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\Global.cs" />
     <Compile Include="Entity\parseJSON_Result.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\Sp_AxWebserviceIntegration_Result.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\Tabel1.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\Taxgroupformula.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblAccount.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblAddresslField.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblAddressType.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblAssigneditem.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblAssigneditemsVendor.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblAssignedlineitem.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblAssignedlineitemsVendor.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblAssignTaxGroup.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblCalculatordataType.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblCountry.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblCustomerDetail.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblCustomerTran.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblCustTransOpen.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\tblDhiraaguMaldives_StateorProvince.cs">
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblDiscountGroupHeader.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblDiscountGroupLine.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblDiscountGroupLineTemp.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblEntity.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblFielddatatype.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblFieldsetup.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblFieldsetupvalue.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblFileSequenceHead.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblFileSequenceline.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblFilter.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblGroup.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblGroupHeader.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblInvoice.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblInvoiceAttachment.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblInvoiceAttachmentVendor.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblInvoiceComponent.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblInvoiceLine.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblInvoiceLineVendor.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblinvoiceVendor.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblItem.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblLegalFieldHeader.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblLegalTaxField.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblMember.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblmstAccountType.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblMstaddresstable.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblMstbaseunit.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblMstCurrency.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblMstCustType.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblmstCustVendType.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblMstdateformat.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblMstDiscountItemType.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblmstDiscountLineId.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblMstDiscountPartnerType.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblmstDiscountvendorType.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblMstItem.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblMstitem1.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblMstItemSKU.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblmstitemtype.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblMstOrganizationDataType.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblmstOrgLocationTable.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblMstOrgOtherParameterTable.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblMstOtherunit.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblMstpage.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblMstPagestatu.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblMstPartnersetup.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblMstPartnerStatu.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblMstPartnertype.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblmstTaxState.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblMstTaxType.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblMstTransactiontype.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblMstTrans_Status.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblMstunit.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblMstunitclass.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblMstunitconversion.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblMstUserType.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblmstVendorAddressTable.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblMst_Status.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblOperator.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblOrgParameterField.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblPagefield.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblPartner.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblPartner1.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblPartnerExistingLocation.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblPartnerGroup.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblPartnerTax.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblRequisition.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblRequisitionItemDetail.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblRequisitionItemWarehous.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblSequencetype.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblServiceLog.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblTaxGroup.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblTaxgroupformula.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblTaxInfoSubCompont.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblTaxSetup.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblTaxSetupInformation.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblTaxtype.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblTempTaxgroupformula.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tbltemptaxtable.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tbltest.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tbltestCOA.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblTracking.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblTrackingTran.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblTransaction.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblTransactionflag.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblUnit.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblUnitConversion.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblUserLogin.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\tblUserRole.cs">
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblVariant.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblVariantHeader.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblVendor.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblVendorAssigneditem.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblVendorAssignedlineitem.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblVendorGroup.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblVendorTax.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblWareHouse.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\TblWebserviceUser.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entity\tblYoekisoftAddressIndia.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entity\tblYoekisoftIndia_City.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entity\tblYoekisoftIndia_State.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblZone.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblZoneState.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblZonewiseItem.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\TempFileSequenceline.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\testtable.cs">
-      <DependentUpon>DMS.tt</DependentUpon>
+      <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="ForgetPassword.aspx.cs">
       <SubType>ASPXCodeBehind</SubType>
@@ -3056,13 +3053,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EntityDeploy Include="Entity\DMS.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>DMS.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Entity\DMS.edmx.diagram">
-      <DependentUpon>DMS.edmx</DependentUpon>
-    </Content>
     <Content Include="assets\css\vssver.scc" />
     <Content Include="assets\font-awesome\4.5.0\css\vssver.scc" />
     <Content Include="assets\font-awesome\4.5.0\fonts\fontawesome-webfont.eot" />
@@ -3094,6 +3084,13 @@
     <Content Include="js\vssver.scc" />
     <Content Include="DMS.Master" />
     <Content Include="Downloadimage.ashx" />
+    <EntityDeploy Include="Entity\DMSNEW.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DMSNEW.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Entity\DMSNEW.edmx.diagram">
+      <DependentUpon>DMSNEW.edmx</DependentUpon>
+    </Content>
     <None Include="packages.config" />
     <Content Include="Telerix\content\dataviz\dashboards\stock-data-2007.json" />
     <Content Include="Telerix\content\dataviz\dashboards\stock-data-2008.json" />

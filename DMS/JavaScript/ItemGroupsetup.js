@@ -20,6 +20,7 @@ jquery_1_11_3_min_p(document).ready(function () {
         jquery_1_11_3_min_p('#btnSubmit').css('display', 'block');
         jquery_1_11_3_min_p('#btnback').css('display', 'block');
         jquery_1_11_3_min_p('#btnnew').css('display', 'none');
+        jquery_1_11_3_min_p('#btnupload1').css('display', 'block');
        
     });
     //=========================================================End Item Group==============================================
@@ -163,6 +164,21 @@ dangerMode: true,
 });
     //========================================================End Button======================================================
 });
+
+
+function UploadFile() { $('#ContentPlaceHolder1_btnUpload').click(); }
+function Findclick() {
+    $('#ContentPlaceHolder1_FileUpload').click();
+}
+
+function Loader() {
+    jquery_1_11_3_min_p('#preloader').css('display', 'block');
+    jquery_1_11_3_min_p('#Overlay_Load').css('display', 'block');
+}
+function LoaderOff() {
+    jquery_1_11_3_min_p('#preloader').css('display', 'none');
+    jquery_1_11_3_min_p('#Overlay_Load').css('display', 'none');
+}
 
 
 function Deleteentity(country,entity)
