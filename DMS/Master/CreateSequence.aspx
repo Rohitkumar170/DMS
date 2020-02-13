@@ -635,5 +635,10 @@
 											</div>
 										</div>
 									</div>
+        <script>
+ jquery_1_11_3_min_p(document).ready(function () {
+     jquery_1_11_3_min_p(".footerDropdown").hide();
+       });
+</script>
 </asp:Content>
 
