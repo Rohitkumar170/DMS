@@ -147,12 +147,12 @@
     <div class="col-md-8 pull-left">    
     <div class="pdfexport">
    <button type="button" id="btnExcel"  class="btn btn-outline-primary" title="Export">
-                            <i class="fa fa-file"></i> </button>
+                            <i class="fa fa-file-excel-o"></i> </button>
                           <%--   <asp:LinkButton ID="btnExcel" runat="server" OnClick="btnExcel_Click"   class="btn btn-primary waves-effect waves-light"><i class="fa fa-print"></i> Export</asp:LinkButton>--%>
                  <%--<asp:LinkButton ID="btnpdf1" runat="server" OnClick="Exportpdf_Click" OnClientClick="SetHTML()"  class="btn btn-primary waves-effect waves-light"><i class="fa fa-print"></i> PDF</asp:LinkButton>--%>
 
                  <button type="button" id="btnexportpdf"  class="btn btn-outline-primary" title="PDF">
-                           <i class="fa fa-print"></i> </button>
+                           <i class="fa fa-file-pdf-o"></i> </button>
                        
                          
     </div></div>
