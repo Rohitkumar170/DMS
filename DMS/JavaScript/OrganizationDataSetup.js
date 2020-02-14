@@ -27,7 +27,7 @@ jquery_1_11_3_min_p(document).ready(function () {
     });
 
 
-      $(document).on("dblclick","#TblOrgDataGrid tbody tr",function() {
+  $(document).on("dblclick","#TblOrgDataGrid tbody tr",function() {
    var row = jquery_1_11_3_min_p(this);
    $("#TblOrgDataGrid tbody tr").removeClass("selectedRow"); 
     row.addClass("selectedRow");
@@ -737,7 +737,7 @@ var CountryId=kendo_all_min_js("#ddlcountry").val();
     success: function (result) {
             var i = 0;
             var jsonData = eval(result.d);
-            if(jsonData.Table[0].Response==0)
+            if(jsonData.Table[0].Res==0)
             {
              swal("Entity Already Exists!")
             
@@ -870,8 +870,8 @@ var counter=0;
            if(DataType=='2')
            {
                   
-              var Country = jquery_1_11_3_min_p("#ddlcountry").data("kendoDropDownList").value(jsonData.Table[0].CountryId);
-              var entity = jquery_1_11_3_min_p("#ddlentity").data("kendoDropDownList").value(jsonData.Table[0].EntityId);
+               jquery_1_11_3_min_p("#ddlcountry").data("kendoDropDownList").value(jsonData.Table[0].CountryId);
+              jquery_1_11_3_min_p("#ddlentity").data("kendoDropDownList").value(jsonData.Table[0].EntityId);
              BindOrgParaddl(jsonData.Table[0].CountryId,jsonData.Table[0].EntityId);
               jquery_1_11_3_min_p('#ddlOrgPara').data("kendoDropDownList").value(ParameterId);
              
