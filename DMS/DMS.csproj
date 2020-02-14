@@ -48,9 +48,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\BusinessLibrary\bin\Debug\BusinessLibrary.dll</HintPath>
     </Reference>
-    <Reference Include="EFCore.BulkExtensions, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\EFCore.BulkExtensions.3.1.0\lib\netstandard2.0\EFCore.BulkExtensions.dll</HintPath>
-    </Reference>
     <Reference Include="Encryption">
       <HintPath>..\..\..\VSS\DLL\Encryption.dll</HintPath>
     </Reference>
@@ -63,8 +60,9 @@
     <Reference Include="FastMember, Version=1.5.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\FastMember.1.5.0\lib\net461\FastMember.dll</HintPath>
     </Reference>
-    <Reference Include="Ionic.Zip.Reduced">
-      <HintPath>..\..\..\VSS\DLL\Ionic.Zip.Reduced.dll</HintPath>
+    <Reference Include="Ionic.Zip.Reduced, Version=1.9.1.8, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\BusinessLibrary\bin\Debug\Ionic.Zip.Reduced.dll</HintPath>
     </Reference>
     <Reference Include="itextsharp">
       <HintPath>..\..\..\VSS\DLL\itextsharp.dll</HintPath>
@@ -84,9 +82,6 @@
     </Reference>
     <Reference Include="Microsoft.DotNet.PlatformAbstractions, Version=3.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.DotNet.PlatformAbstractions.3.1.0\lib\net45\Microsoft.DotNet.PlatformAbstractions.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.EntityFrameworkCore, Version=3.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.EntityFrameworkCore.3.1.1\lib\netstandard2.0\Microsoft.EntityFrameworkCore.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.EntityFrameworkCore.Abstractions, Version=3.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.EntityFrameworkCore.Abstractions.3.1.1\lib\netstandard2.0\Microsoft.EntityFrameworkCore.Abstractions.dll</HintPath>
@@ -2436,7 +2431,6 @@
     <Compile Include="Entity\AngularTest_Result.cs">
       <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entity\ApplicationDbContext.cs" />
     <Compile Include="Entity\Common.cs" />
     <Compile Include="Entity\DbSecurity.cs" />
     <Compile Include="Entity\DMSNEW.Context.cs">
@@ -3073,7 +3067,6 @@
     <Compile Include="SaveInvoice.ashx.cs">
       <DependentUpon>SaveInvoice.ashx</DependentUpon>
     </Compile>
-    <Compile Include="Startup.cs" />
     <Compile Include="WebServices\CreateUser.asmx.cs">
       <DependentUpon>CreateUser.asmx</DependentUpon>
       <SubType>Component</SubType>

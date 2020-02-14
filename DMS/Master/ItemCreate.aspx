@@ -33,12 +33,11 @@
                 </div>
                 <div class="content-header-right col-md-6 col-12">
                     <div class="btn-group float-md-right" role="group" aria-label="Button group with nested dropdown">
-                       <span class="multifileupload" id="btnupload" style="display:none" > 
+                      <span class="multifileupload" id="btnupload1" style="display:none" > 
                        <i class="fa fa-upload"></i>
-                  <%--   <input type="file" id='FileUpload' runat="server" class="custom-file-input multifileBtn" onchange="UploadFile(this);" />--%>
-                           <input type="button"  id="upload" value="Import" class="custom-file-input multifileBtn" onclick="" />
-                         <%--  <asp:FileUpload runat="server" Visible="true" ID="FileUpload" onchange="" style="display:none" />--%>
-                          <%-- <asp:Button ID="btnUpload" runat="server" OnClick="" style="display:none" /> --%>
+               <input type="button" id="upload" value="Import" class="custom-file-input multifileBtn" onclick="Findclick();" />
+                           <asp:FileUpload runat="server" Visible="true" ID="FileUpload" onchange="UploadFile(this);" style="display:none" />
+                           <asp:Button ID="btnUpload4" runat="server" OnClick="btnUpload4_Click"  style="display:none" /> 
                        </span>
                        <button type="button" id="btnnew" class="btn btn-primary">
                             <i class="fa fa-plus-square"></i> New</button>
@@ -802,12 +801,11 @@
                             <button type="button" id="Button1" class="btn btn-primary waves-effect waves-light">
                             <i class="fa fa-print"></i> PDF</button>    
      <div style="display:inline-block">
-         <span class="multifileupload" id="btnupload1" > 
+      <span class="multifileupload" id="btnupload2" style="display:none" > 
                        <i class="fa fa-upload"></i>
-                  <%--   <input type="file" id='FileUpload' runat="server" class="custom-file-input multifileBtn" onchange="UploadFile(this);" />--%>
-                           <input type="button" id="upload1" value="Import" class="custom-file-input multifileBtn" onclick="" />
-                         <%--  <asp:FileUpload runat="server" Visible="true" ID="FileUpload" onchange="" style="display:none" />--%>
-                          <%-- <asp:Button ID="btnUpload" runat="server" OnClick="" style="display:none" /> --%>
+               <input type="button" id="upload2" value="Import" class="custom-file-input multifileBtn" onclick="Findclick();" />
+                           <asp:FileUpload runat="server" Visible="true" ID="FileUpload2" onchange="UploadFile(this);" style="display:none" />
+                           <asp:Button ID="btnUpload2" runat="server" OnClick="btnUpload2_Click" style="display:none" /> 
                        </span>
      </div>
                        
