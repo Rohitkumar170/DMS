@@ -250,7 +250,7 @@ var jsonfield=[];var Jsonfdata=''; var selfmanage=0;var entitymanage=0;
     success: function (result) {
             var i = 0;
             var jsonData = eval(result.d);
-            if(jsonData.Table[0].Response==1)
+            if(jsonData.Table[0].Res=="1")
             {
              swal("Saved Successfully","Data Saved successfully!","success")
             .then((value) => {
