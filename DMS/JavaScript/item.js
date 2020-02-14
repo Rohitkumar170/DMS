@@ -10,10 +10,11 @@ BindItemGrid() ;
         jquery_1_11_3_min_p('#btnsubmit').css('display', 'block');
         jquery_1_11_3_min_p('#btnback').css('display', 'block');
         jquery_1_11_3_min_p('#btnnew').css('display', 'none');
-        jquery_1_11_3_min_p('#btnupload').css('display', 'block');
-        
+        jquery_1_11_3_min_p('#btnupload1').css('display', 'block');
         BindFormdetails();
-        editflag=0;
+        editflag = 0;
+        
+
     });
     //=========================================================End Item Group==============================================
     //=========================================================Back & Submit Button click===========================================
@@ -1101,37 +1102,77 @@ function BindFormdetails() {
     //        });
           
 
-           Groups.push({ value: "0", text: "Select" });
-         kendo_all_min_js("#txtitemgroup").kendoDropDownList({
+        //   Groups.push({ value: "0", text: "Select" });
+        // kendo_all_min_js("#txtitemgroup").kendoDropDownList({
+        //filter: "contains",
+        //dataTextField: "text",
+        //dataValueField: "value",
+        //dataSource: Groups,
+        // change: function () {
+        //    kendo_all_min_js('#txtitemgroup').data("kendoDropDownList").span.css('background', 'none');
+        //}
+        //});
+        // var i = 0;  Itemtype = [];
+        //    jQuery.each(jsonData.Table3, function (rec) {
+        //        Itemtype.push({ value: jsonData.Table3[i].Itemtypeid, text: jsonData.Table3[i].Itemtype });
+        //        i++;
+        //    });
+         
+    //Itemtype.push({ value: "0", text: "Select" });
+    //kendo_all_min_js("#txtitemtype").kendoDropDownList({
+    //    filter: "contains",
+    //    dataTextField: "text",
+    //    dataValueField: "value",
+    //    dataSource: Itemtype,
+    //     change: function () {
+    //        kendo_all_min_js('#txtitemtype').data("kendoDropDownList").span.css('background', 'none');
+    //    }
+    //});
+
+
+
+       // }
+  //  });
+
+
+    jquery_1_11_3_min_p("#chkvariant").attr('disabled', false);
+    var i = 0; Groups = [];
+    jQuery.each(jsonData.Table2, function (rec) {
+        if (jsonData.Table2[i].Entityid == 1 && jsonData.Table2[i].Countryid == 1) {
+            Groups.push({ value: jsonData.Table2[i].GroupId, text: jsonData.Table2[i].GroupName });
+        }
+        i++;
+    });
+
+
+    Groups.push({ value: "0", text: "Select" });
+    kendo_all_min_js("#txtitemgroup").kendoDropDownList({
         filter: "contains",
         dataTextField: "text",
         dataValueField: "value",
         dataSource: Groups,
-         change: function () {
+        change: function () {
             kendo_all_min_js('#txtitemgroup').data("kendoDropDownList").span.css('background', 'none');
         }
-        });
-         var i = 0;  Itemtype = [];
-            jQuery.each(jsonData.Table3, function (rec) {
-                Itemtype.push({ value: jsonData.Table3[i].Itemtypeid, text: jsonData.Table3[i].Itemtype });
-                i++;
-            });
-         
+    });
+    var i = 0; Itemtype = [];
+    jQuery.each(jsonData.Table3, function (rec) {
+        Itemtype.push({ value: jsonData.Table3[i].Itemtypeid, text: jsonData.Table3[i].Itemtype });
+        i++;
+    });
+
     Itemtype.push({ value: "0", text: "Select" });
     kendo_all_min_js("#txtitemtype").kendoDropDownList({
         filter: "contains",
         dataTextField: "text",
         dataValueField: "value",
         dataSource: Itemtype,
-         change: function () {
+        change: function () {
             kendo_all_min_js('#txtitemtype').data("kendoDropDownList").span.css('background', 'none');
         }
     });
 
 
-
-       // }
-  //  });
     kendo_all_min_js('#ddlunit').kendoDropDownList({
         filter: "contains",
         dataTextField: "text",
@@ -1277,7 +1318,14 @@ function bindSkillChk(){
        })  
    }  
   
-  
+
+function UploadFile() { $('#ContentPlaceHolder1_btnUpload4').click(); }
+function Findclick() {
+    $('#ContentPlaceHolder1_FileUpload').click();
+}
+
+
+
    function onClose(e) {  
        if (IsItemChecked == true) {  
            IsItemChecked = false;  
@@ -1467,6 +1515,19 @@ function BindGriddata(itemid) {
     //            }
     //            i++;
     //        });
+
+
+    jquery_1_11_3_min_p("#chkvariant").attr('disabled', false);
+               var i = 0;  Groups = [];
+            jQuery.each(jsonData.Table2, function (rec) {
+               if(jsonData.Table2[i].Entityid==1 && jsonData.Table2[i].Countryid==1)
+               {
+                Groups.push({ value: jsonData.Table2[i].GroupId, text: jsonData.Table2[i].GroupName });
+                }
+                i++;
+            });
+
+
 
              Groups.push({ value: "0", text: "Select" });
          kendo_all_min_js("#txtitemgroup").kendoDropDownList({
@@ -1691,6 +1752,8 @@ function BindVariant(Data) {
 //==================================End Enter click=================================================================
         }
 }
+
+
 
 function RemoveChanged(Data)
 {
