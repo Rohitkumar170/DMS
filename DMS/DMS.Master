@@ -379,22 +379,22 @@
                   <ul class="menu-content">
                 <li class=""><a class="menu-item" href="../Master/Users.aspx"><span >Users</span></a> </li>  
                     <li class=""><a class="menu-item" href="../Master/EntitySetup.aspx"><span >Entity Setup</span></a> </li>    
-                <%--  <li class=""><a class="menu-item" href="../Master/OrganizationPara.aspx"><span >Organization Parameter</span></a> </li>   
+                  <li class=""><a class="menu-item" href="../Master/OrganizationPara.aspx"><span >Organization Parameter</span></a> </li>   
                   <li class=""><a class="menu-item" href="../Master/OrganizationDataSetup.aspx"><span > Organization Data Setup  </span></a> </li>  
-                   <li class=""><a class="menu-item" href="../Master/SystemParameterSetup.aspx"><span >System Parameter Setup </span></a> </li>  --%>
+                <%--   <li class=""><a class="menu-item" href="../Master/SystemParameterSetup.aspx"><span >System Parameter Setup </span></a> </li>  --%>
                    <li class=""><a class="menu-item" href="../Master/UiSetup.aspx"><span >UI Setup </span></a> </li>  
                   
                                    
                     </ul>
                             </li>
-               <%--  <li><a class="menu-item" href="#"><span>Partner</span></a>
+                 <li><a class="menu-item" href="#"><span>Partner</span></a>
                   <ul class="menu-content">
                   <li class=""><a class="menu-item" href="../Master/PartnerPara.aspx"><span >Partner Parameter</span></a> </li>   
                  
                    <li class=""><a class="menu-item" href="../Master/PartnerDataSetup.aspx"><span >Partner Data Setup</span></a> </li>  
-                     <li class=""><a class="menu-item" href="../Master/test.aspx"><span >Test</span></a> </li>       
+                    <%-- <li class=""><a class="menu-item" href="../Master/test.aspx"><span >Test</span></a> </li>  --%>     
                     </ul>
-                            </li>--%>
+                            </li>
                         
                         </ul>
                     </li>

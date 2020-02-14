@@ -503,6 +503,11 @@
     <Content Include="Master\EntitySetup.aspx" />
     <Content Include="Master\ItemCreate.aspx" />
     <Content Include="Master\ItemGroupSetup.aspx" />
+    <Content Include="Master\OrganizationDataSetup.aspx" />
+    <Content Include="Master\OrganizationPara.aspx" />
+    <Content Include="Master\PartnerDataSetup.aspx" />
+    <Content Include="Master\PartnerPara.aspx" />
+    <Content Include="Master\SystemParameterSetup.aspx" />
     <Content Include="Master\Unit.aspx" />
     <Content Include="Master\Users.aspx" />
     <Content Include="Master\variantSetup.aspx" />
@@ -2409,6 +2414,7 @@
     <Content Include="Telerix\Style\Uniform\sprite_kpi_2x.png" />
     <Content Include="Web.config" />
     <Content Include="WebServices\CreateUser.asmx" />
+    <Content Include="WebServices\Customer.asmx" />
     <Content Include="WebServices\Dashboard.asmx" />
     <Content Include="WebServices\Item.asmx" />
     <Content Include="WebServices\ItemSetup.asmx" />
@@ -2938,6 +2944,41 @@
     <Compile Include="Master\ItemGroupSetup.aspx.designer.cs">
       <DependentUpon>ItemGroupSetup.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Master\OrganizationDataSetup.aspx.cs">
+      <DependentUpon>OrganizationDataSetup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master\OrganizationDataSetup.aspx.designer.cs">
+      <DependentUpon>OrganizationDataSetup.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Master\OrganizationPara.aspx.cs">
+      <DependentUpon>OrganizationPara.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master\OrganizationPara.aspx.designer.cs">
+      <DependentUpon>OrganizationPara.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Master\PartnerDataSetup.aspx.cs">
+      <DependentUpon>PartnerDataSetup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master\PartnerDataSetup.aspx.designer.cs">
+      <DependentUpon>PartnerDataSetup.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Master\PartnerPara.aspx.cs">
+      <DependentUpon>PartnerPara.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master\PartnerPara.aspx.designer.cs">
+      <DependentUpon>PartnerPara.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Master\SystemParameterSetup.aspx.cs">
+      <DependentUpon>SystemParameterSetup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master\SystemParameterSetup.aspx.designer.cs">
+      <DependentUpon>SystemParameterSetup.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Master\Unit.aspx.cs">
       <DependentUpon>Unit.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2975,8 +3016,18 @@
     <Compile Include="Models\AddressSetupClass\GetColumnName.cs" />
     <Compile Include="Models\AddressSetupClass\GetColumnNameCollection.cs" />
     <Compile Include="Models\AddressSetupClass\SerarchBindAddressFieldGrid.cs" />
+    <Compile Include="Models\EntitySetupClass\BindDataType.cs" />
     <Compile Include="Models\EntitySetupClass\BindEntity.cs" />
     <Compile Include="Models\Count.cs" />
+    <Compile Include="Models\EntitySetupClass\BindOrganizationdataType.cs" />
+    <Compile Include="Models\EntitySetupClass\BindOrgDataSetupGrid.cs" />
+    <Compile Include="Models\EntitySetupClass\BindOrgFields.cs" />
+    <Compile Include="Models\EntitySetupClass\BindOrgParaddl.cs" />
+    <Compile Include="Models\EntitySetupClass\BindOrgParaGrid.cs" />
+    <Compile Include="Models\EntitySetupClass\BindPAddressFields.cs" />
+    <Compile Include="Models\EntitySetupClass\BindParaDataSetupdblClick.cs" />
+    <Compile Include="Models\EntitySetupClass\BindParaParaddl.cs" />
+    <Compile Include="Models\EntitySetupClass\GetTablename.cs" />
     <Compile Include="Models\EntitySetupClass\ImportEntity.cs" />
     <Compile Include="Models\Flag.cs" />
     <Compile Include="Models\EntitySetupClass\Country.cs" />
@@ -3025,6 +3076,10 @@
     <Compile Include="Startup.cs" />
     <Compile Include="WebServices\CreateUser.asmx.cs">
       <DependentUpon>CreateUser.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WebServices\Customer.asmx.cs">
+      <DependentUpon>Customer.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="WebServices\Dashboard.asmx.cs">
