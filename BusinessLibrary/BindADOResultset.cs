@@ -1,19 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Web.UI;
+using System.Web.UI.WebControls;
 using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
-//using DMS.Entity;
+using System.Data.OleDb;
+using System.IO;
 namespace BusinessLibrary
 {
 
     public class BindADOResultset
     {
         string conn = ConfigurationManager.ConnectionStrings["Conn1"].ConnectionString;
-       
         public DataSet FillDatasetWithParam(string spName, params string[] parameter)
         {
             DataSet ds = new DataSet();
@@ -28,7 +27,6 @@ namespace BusinessLibrary
             }
             return ds;
         }
-
         public DataSet GetTablesWithParameter(string spName, params string[] parameter)
         {
             DataSet ds = null;
@@ -52,7 +50,6 @@ namespace BusinessLibrary
             else
                 return null;
         }
-
         public static DataSet ExecuteDataset(string connectionString, CommandType commandType, string commandText, params SqlParameter[] commandParameters)
         {
             if (connectionString == null || connectionString.Length == 0) throw new ArgumentNullException("connectionString");
@@ -72,7 +69,6 @@ namespace BusinessLibrary
                 return ExecuteDataset(connection, commandType, commandText, commandParameters);
             }
         }
-
         public static DataSet ExecuteDataset(SqlConnection connection, CommandType commandType, string commandText, params SqlParameter[] commandParameters)
         {
             if (connection == null) throw new ArgumentNullException("connection");
@@ -101,7 +97,6 @@ namespace BusinessLibrary
                 return ds;
             }
         }
-
         private static void PrepareCommand(SqlCommand command, SqlConnection connection, SqlTransaction transaction, CommandType commandType, string commandText, SqlParameter[] commandParameters, out bool mustCloseConnection)
         {
             if (command == null) throw new ArgumentNullException("command");
@@ -141,7 +136,6 @@ namespace BusinessLibrary
             }
             return;
         }
-
         private static void AttachParameters(SqlCommand command, SqlParameter[] commandParameters)
         {
             if (command == null) throw new ArgumentNullException("command");
@@ -162,6 +156,59 @@ namespace BusinessLibrary
                     }
                 }
             }
+        }
+        public DataTable ExcelImport(string Extension, string path, string FolderPath,FileUpload FileUpload)
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                Dictionary<int, string> country = new Dictionary<int, string>();
+                country.Add(1, "Maldives");
+                string FilePath = FolderPath + path;
+                string conString = string.Empty;
+                switch (Extension)
+                {
+                    case ".xls": //Excel 97-03.
+                        conString = ConfigurationManager.ConnectionStrings["Excel03ConString"].ConnectionString;
+                        break;
+                    case ".xlsx": //Excel 07 and above.
+                        conString = ConfigurationManager.ConnectionStrings["Excel07ConString"].ConnectionString;
+                        break;
+                    default:
+
+                        dt.Columns.Add("RES", typeof(string));
+                        dt.Rows.Add(1);
+                        return dt;
+                }
+
+                if (!Directory.Exists(FolderPath))   // CHECK IF THE FOLDER EXISTS. IF NOT, CREATE A NEW FOLDER.
+                {
+                    Directory.CreateDirectory(FolderPath);
+                }
+                if (File.Exists(FilePath))
+                {
+                    File.Delete(FilePath);
+                }
+                FileUpload.SaveAs(FilePath);
+                conString = string.Format(conString, FilePath, true);
+                OleDbConnection connExcel = new OleDbConnection(conString);
+                OleDbCommand cmdExcel = new OleDbCommand();
+                OleDbDataAdapter oda = new OleDbDataAdapter();
+                cmdExcel.Connection = connExcel;
+                connExcel.Close();
+                connExcel.Open();
+                System.Data.DataTable dtExcelSchema;
+                dtExcelSchema = connExcel.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
+                string SheetName = dtExcelSchema.Rows[0]["Table_Name"].ToString();
+                //connExcel.Close();
+                //connExcel.Open();
+                cmdExcel.CommandText = "SELECT * From [" + SheetName + "]";
+                oda.SelectCommand = cmdExcel;
+                oda.Fill(dt);
+                connExcel.Close();
+                return dt;
+            }
+            catch (Exception ex) { throw ex; }
         }
     }
 }

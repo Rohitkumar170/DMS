@@ -10,8 +10,6 @@ using System.Data;
 using System.Configuration;
 using DMS.Models.EntitySetupClass;
 using DMS.Entity;
-using Microsoft.EntityFrameworkCore;
-using EFCore.BulkExtensions;
 using System.Text.RegularExpressions;
 
 namespace DMS.Master
