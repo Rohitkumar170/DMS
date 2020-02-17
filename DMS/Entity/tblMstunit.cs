@@ -26,5 +26,6 @@ namespace DMS.Entity
         public Nullable<long> UpdatedBy { get; set; }
         public bool IsActive { get; set; }
         public bool IsDeleted { get; set; }
+        public string UnitCode { get; set; }
     }
 }

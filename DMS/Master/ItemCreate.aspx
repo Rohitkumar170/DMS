@@ -35,10 +35,14 @@
                     <div class="btn-group float-md-right" role="group" aria-label="Button group with nested dropdown">
                       <span class="multifileupload" id="btnupload1" style="display:none" > 
                        <i class="fa fa-upload"></i>
-               <input type="button" id="upload" value="Import" class="custom-file-input multifileBtn" onclick="Findclick();" />
+               <input type="button" id="upload" value="Import" title="Import Items" class="custom-file-input multifileBtn" onclick="Findclick();" />
                            <asp:FileUpload runat="server" Visible="true" ID="FileUpload" onchange="UploadFile(this);" style="display:none" />
                            <asp:Button ID="btnUpload4" runat="server" OnClick="btnUpload4_Click"  style="display:none" /> 
                        </span>
+
+
+
+
                        <button type="button" id="btnnew" class="btn btn-primary">
                             <i class="fa fa-plus-square"></i> New</button>
                         <button type="button" id="btndisable" style="display:none" class="btn btn-primary"   >
@@ -52,11 +56,11 @@
         </div>
     </div>
     <div class="content-wrapper">
-<%--<div id="preloader">
+<div id="preloader">
   <div id="showPreloader"> <img src="../../assets/img/preloader.gif" > </div>
 </div>
 
-<div id="Overlay_Load"></div>--%>
+<div id="Overlay_Load"></div>
     <div class="">
         <div class="content-body">
             <section id="variantForm" style=" display:none" >
@@ -85,8 +89,19 @@
                                    <button type="button" id="btnaddunit" class="btn btn-primary waves-effect waves-light" >
                             <i class="fa fa-plus-square"></i> Add Unit</button>
                             
-                              <button type="button" id="btnother2" class="btn btn-primary waves-effect waves-light">
-                            <i class="fa fa-save"></i> Button1</button>
+                              <span class="multifileupload" id="btnupload3" style="display:none" > 
+                       <i class="fa fa-upload"></i>
+               <input type="button" id="upload3" value="Import" title="Import Other Units" class="custom-file-input multifileBtn" onclick="Findclick3();" />
+                           <asp:FileUpload runat="server" Visible="true" ID="FileUpload3" onchange="UploadFile3(this);" style="display:none" />
+                           <asp:Button ID="btnUpload3" runat="server" OnClick="btnUpload3_Click"  style="display:none" /> 
+                       </span>
+
+                          <span class="multifileupload" id="btnupload5" style="display:none" > 
+                       <i class="fa fa-upload"></i>
+               <input type="button" id="upload5" value="Import" title="Import Unit Conversions" class="custom-file-input multifileBtn" onclick="Findclick5();" />
+                           <asp:FileUpload runat="server" Visible="true" ID="FileUpload5" onchange="UploadFile5(this);" style="display:none" />
+                           <asp:Button ID="btnUpload5" runat="server" OnClick="btnUpload5_Click"  style="display:none" /> 
+                       </span>
 
                       
                     </div>

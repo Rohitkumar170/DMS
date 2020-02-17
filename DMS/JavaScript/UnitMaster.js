@@ -137,21 +137,27 @@ function AddRow() {
     if (counter == 0) {
         counter++;
     }
-    if ((jquery_1_11_3_min_p("#txtUnit_" + counter).val() != "") && (jquery_1_11_3_min_p("#txtDesc_" + counter).val() != "")) {
+    if ((jquery_1_11_3_min_p("#txtUnit_" + counter).val() != "") && (jquery_1_11_3_min_p("#txtUnitcode_" + counter).val() != "") && (jquery_1_11_3_min_p("#txtDesc_" + counter).val() != "")) {
         var rowID = counter + 1;
-        var markup = "<tr><td style='display:none'>" + rowID + "</td><td><input type='checkbox' class='chk_All' id='chk_" + rowID + "'></td><td ><input type='text' class='' id='txtUnit_" + rowID + "' onkeypress='RemoveClass(this)' onkeyup='' autocomplete='off' placeholder='' /></td><td ><input type='text' id='txtDesc_" + rowID + "' class=''   onkeypress='RemoveClass(this)'   autocomplete='off'/></td></tr>";
+        var markup = "<tr><td style='display:none'>" + rowID + "</td><td><input type='checkbox' class='chk_All' id='chk_" + rowID + "'></td><td ><input type='text' class='' id='txtUnit_" + rowID + "' onkeypress='RemoveClass(this)' onkeyup='' autocomplete='off' placeholder='' /></td><td ><input type='text' class='' id='txtUnitcode_" + rowID + "' onkeypress='RemoveClass(this)' onkeyup='' autocomplete='off' placeholder='' /></td><td ><input type='text' id='txtDesc_" + rowID + "' class=''   onkeypress='RemoveClass(this)'   autocomplete='off'/></td></tr>";
         jquery_1_11_3_min_p("#tblUnit tbody").append(markup);
 
 
         kendo_all_min_js("#txtUnit_" + rowID).focus();
         counter = rowID;
-         jquery_1_11_3_min_p("#txtUnit_" + parseInt(counter-1)).attr('disabled', 'disabled');
+        jquery_1_11_3_min_p("#txtUnit_" + parseInt(counter - 1)).attr('disabled', 'disabled');
+        jquery_1_11_3_min_p("#txtUnitcode_" + parseInt(counter - 1)).attr('disabled', 'disabled');
           jquery_1_11_3_min_p("#txtDesc_" + parseInt(counter-1)).attr('disabled', 'disabled');
     }
     else {
         if (jquery_1_11_3_min_p("#txtUnit_" + counter).val() == "") {
             jquery_1_11_3_min_p("#txtUnit_" + counter).addClass("validate");
             jquery_1_11_3_min_p("#txtUnit_" + counter).attr("placeholder", "Enter Unit Name!");
+
+        }
+        if (jquery_1_11_3_min_p("#txtUnitcode_" + counter).val() == "") {
+            jquery_1_11_3_min_p("#txtUnitcode_" + counter).addClass("validate");
+            jquery_1_11_3_min_p("#txtUnitcode_" + counter).attr("placeholder", "Enter Unit Code!");
 
         }
 
@@ -171,6 +177,9 @@ function RemoveClass(data) {
     if (jquery_1_11_3_min_p('#txtUnit_' + id).val() != '') {
         jquery_1_11_3_min_p("#txtUnit_" + id).removeClass('validate');
     }
+    if (jquery_1_11_3_min_p('#txtUnitcode_' + id).val() != '') {
+        jquery_1_11_3_min_p("#txtUnitcode_" + id).removeClass('validate');
+    }
     if (jquery_1_11_3_min_p('#txtDesc_' + id).val() != '') {
         jquery_1_11_3_min_p("#txtDesc_" + id).removeClass('validate');
     }
@@ -184,11 +193,12 @@ function SaveUnit() {
     jquery_1_11_3_min_p('#tblUnit tbody').find('tr').each(function () {
     var row = jquery_1_11_3_min_p(this);
     var  FieldId= row.find('td:nth-child(1)').text().trim();
-    var Unit=jquery_1_11_3_min_p("#txtUnit_" + row.find('td:nth-child(1)').text().trim()).val();
+        var Unit = jquery_1_11_3_min_p("#txtUnit_" + row.find('td:nth-child(1)').text().trim()).val();
+        var UnitCode = jquery_1_11_3_min_p("#txtUnitcode_" + row.find('td:nth-child(1)').text().trim()).val();
     var Description= jquery_1_11_3_min_p("#txtDesc_" + row.find('td:nth-child(1)').text().trim()).val();
     if(editFlag==0)
     {
-    UnitArr.push({ Unit: Unit, Description: Description, CreatedBy: CreatedBy });
+        UnitArr.push({ Unit: Unit, UnitCode: UnitCode, Description: Description, CreatedBy: CreatedBy });
    }
   
     i++;
@@ -226,6 +236,11 @@ function ValidateUnitGrid() {
             jquery_1_11_3_min_p("#txtUnit_" + row.find('td:nth-child(1)').text().trim()).attr("placeholder", "Enter Unit Name!");
             allow=false;
         }
+        if (jquery_1_11_3_min_p("#txtUnitcode_" + row.find('td:nth-child(1)').text().trim()).val() == "") {
+            jquery_1_11_3_min_p("#txtUnitcode_" + row.find('td:nth-child(1)').text().trim()).addClass("validate");
+            jquery_1_11_3_min_p("#txtUnitcode_" + row.find('td:nth-child(1)').text().trim()).attr("placeholder", "Enter Unit Name!");
+            allow = false;
+        }
 
        if (jquery_1_11_3_min_p("#txtDesc_" + row.find('td:nth-child(1)').text().trim()).val() == "") {
             jquery_1_11_3_min_p("#txtDesc_" + row.find('td:nth-child(1)').text().trim()).addClass("validate");
@@ -261,7 +276,7 @@ function BindUnitGrid() {
             var i = 0;
             var jsonData = result.d;
         jQuery.each(jsonData.Table, function (rec) {
-       var markup = "<tr> <td style='display:none'> " + jsonData.Table[i].unitId + "</td> <td> <input id='chkbox' type='checkbox' class='checkAll'  /></td><td>" + jsonData.Table[i].Unitname + "</td> <td >" + jsonData.Table[i].Description + "</td></tr>";
+            var markup = "<tr> <td style='display:none'> " + jsonData.Table[i].unitId + "</td> <td> <input id='chkbox' type='checkbox' class='checkAll'  /></td><td>" + jsonData.Table[i].Unitname + "</td><td>" + jsonData.Table[i].UnitCode + "</td> <td >" + jsonData.Table[i].Description + "</td></tr>";
 
                 jquery_1_11_3_min_p("#tblUnitGrid tbody").append(markup);
 
@@ -380,7 +395,7 @@ function BindUnitGridclassWise(id) {
             var i = 0;
             var jsonData = result.d;
         jQuery.each(jsonData.Table, function (rec) {
-       var markup = "<tr> <td style='display:none'> " + jsonData.Table[i].unitId + "</td> <td> <input id='chkbox' type='checkbox' class='checkAll'  /></td><td>" + jsonData.Table[i].Unitname + "</td></tr>";
+            var markup = "<tr> <td style='display:none'> " + jsonData.Table[i].unitId + "</td> <td> <input id='chkbox' type='checkbox' class='checkAll'  /></td><td>" + jsonData.Table[i].Unitname + "</td><td>" + jsonData.Table[i].UnitCode + "</td></tr>";
 
                 jquery_1_11_3_min_p("#stndUnit tbody").append(markup);
 

@@ -49,11 +49,11 @@
         </div>
     </div>
     <div class="content-wrapper">
-<%--<div id="preloader">
+<div id="preloader">
   <div id="showPreloader"> <img src="../../assets/img/preloader.gif" > </div>
 </div>
 
-<div id="Overlay_Load"></div>--%>
+<div id="Overlay_Load"></div>
     <div class="">
         <div class="content-body">
            <div class="row match-height" id="unitForm"  style="display:none" >
@@ -86,15 +86,17 @@
                                 <th style="display:none"> </th>
                                 <th id="hidePselect_all"><input type="checkbox" id="chkPAll" onclick="">All</th>
                                  <th>  Unit Name</th>
+                                  <th>  Unit Code</th>
                                  <th>Description</th>   
                             </tr>
                         </thead>
                         <tbody>
                         <tr>
                         <td  style="display:none">1</td>
-                        <td id="chkPtd"><input type="checkbox" id="cb_1" class="chk_PAll"></td>
-                         <td>  <input type="text" id="txtUnit_1" onchange="" onkeypress='RemoveClass(this)' placeholder="Enter Unit Name" class="fieldName" autocomplete="off">      </td>
-                     <td><input type="text" id="txtDesc_1" onchange="" onkeypress='RemoveClass(this)' placeholder="Enter Description" autocomplete="off"></td> 
+                        <td id="chkPtd"><input type="checkbox" id="cb_1" class="chk_PAll" /></td>
+                         <td>  <input type="text" id="txtUnit_1" onchange="" onkeypress='RemoveClass(this)' placeholder="Enter Unit Name" class="fieldName" autocomplete="off" />      </td>
+                             <td>  <input type="text" id="txtUnitcode_1" onchange="" onkeypress='RemoveClass(this)' placeholder="Enter Unit Code" class="fieldName" autocomplete="off" />      </td>
+                     <td><input type="text" id="txtDesc_1" onchange="" onkeypress='RemoveClass(this)' placeholder="Enter Description" autocomplete="off" /></td> 
                         </tr>
                          
                            
@@ -182,6 +184,7 @@
                                 <th style="display:none"></th>
                                 <th><input type ="checkBox" id ="CheckAll"> All</th>
                                 <th>Units</th>
+                                 <th>UnitCode</th>
                                 <th>Description</th>
                             </tr>
                         </thead>
