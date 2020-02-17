@@ -123,7 +123,8 @@ swal("Deleted Successfully","Your data deleted successfully!","success")
 });
 
 function BindEntity() {
-  var   Entity = [];
+    var Entity = [];
+
     jquery_1_11_3_min_p.ajax({
         type: "POST",
         contentType: "application/json; charset=utf-8",

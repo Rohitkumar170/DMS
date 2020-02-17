@@ -2419,8 +2419,11 @@
     <Content Include="WebServices\Dashboard.asmx" />
     <Content Include="WebServices\Item.asmx" />
     <Content Include="WebServices\ItemSetup.asmx" />
+    <Content Include="WebServices\LegalTaxField.asmx" />
     <Content Include="WebServices\Sequence.asmx" />
     <Content Include="WebServices\Setup.asmx" />
+    <Content Include="WebServices\Taxgroupsetup.asmx" />
+    <Content Include="WebServices\TaxSetup.asmx" />
     <Content Include="WebServices\Variant.asmx" />
   </ItemGroup>
   <ItemGroup>
@@ -3136,6 +3139,27 @@
     <Compile Include="Models\SequenceSetupClasses\BindddlSequence.cs" />
     <Compile Include="Models\SequenceSetupClasses\BindPage.cs" />
     <Compile Include="Models\SequenceSetupClasses\PageFields.cs" />
+    <Compile Include="Models\TaxSetupClass\Binddatatype.cs" />
+    <Compile Include="Models\TaxSetupClass\BindEntityCountry.cs" />
+    <Compile Include="Models\TaxSetupClass\BindFormula.cs" />
+    <Compile Include="Models\TaxSetupClass\Bindformula1.cs" />
+    <Compile Include="Models\TaxSetupClass\BindFormulahistorygrid.cs" />
+    <Compile Include="Models\TaxSetupClass\BindGST.cs" />
+    <Compile Include="Models\TaxSetupClass\Bindlegalfieldvalue.cs" />
+    <Compile Include="Models\TaxSetupClass\Calculatorout.cs" />
+    <Compile Include="Models\TaxSetupClass\InvoiceCMP.cs" />
+    <Compile Include="Models\TaxSetupClass\Invoicecomponent.cs" />
+    <Compile Include="Models\TaxSetupClass\Legalfieldgrid.cs" />
+    <Compile Include="Models\TaxSetupClass\Taxation.cs" />
+    <Compile Include="Models\TaxSetupClass\Taxfield.cs" />
+    <Compile Include="Models\TaxSetupClass\Taxgroupdata.cs" />
+    <Compile Include="Models\TaxSetupClass\Taxgroupgrid.cs" />
+    <Compile Include="Models\TaxSetupClass\Taxgroupgridline.cs" />
+    <Compile Include="Models\TaxSetupClass\Taxinfo.cs" />
+    <Compile Include="Models\TaxSetupClass\Taxinfosubcomponenet.cs" />
+    <Compile Include="Models\TaxSetupClass\Taxsetup.cs" />
+    <Compile Include="Models\TaxSetupClass\Taxsetupcompo.cs" />
+    <Compile Include="Models\TaxSetupClass\Taxtype1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PurchaseInvoice.ashx.cs">
       <DependentUpon>PurchaseInvoice.ashx</DependentUpon>
@@ -3163,12 +3187,24 @@
       <DependentUpon>ItemSetup.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="WebServices\LegalTaxField.asmx.cs">
+      <DependentUpon>LegalTaxField.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="WebServices\Sequence.asmx.cs">
       <DependentUpon>Sequence.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="WebServices\Setup.asmx.cs">
       <DependentUpon>Setup.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WebServices\Taxgroupsetup.asmx.cs">
+      <DependentUpon>Taxgroupsetup.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WebServices\TaxSetup.asmx.cs">
+      <DependentUpon>TaxSetup.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="WebServices\Variant.asmx.cs">
