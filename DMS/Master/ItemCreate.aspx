@@ -20,7 +20,10 @@
     <script src="../JavaScript/item.js" type="text/javascript"></script>
    <style>
    #instruction p{margin-bottom:5px !important;}
-   #ItemGrid td:nth-child(3), #ItemGrid th:nth-child(3) {    width: 350px;}
+   #ItemGrid td:nth-child(3), #ItemGrid th:nth-child(3) {    white-space: nowrap; 
+  width: 250px; 
+  overflow: hidden;
+  text-overflow: ellipsis; }
       #ItemGrid td:nth-child(4), #ItemGrid th:nth-child(4) {    width: 250px;}
        #ItemGrid td:nth-child(7), #ItemGrid th:nth-child(7) {    width: 130px;}
         #ItemGrid td:nth-child(5), #ItemGrid th:nth-child(5) {    width: 100px;}
