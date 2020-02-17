@@ -1116,6 +1116,7 @@ warning 6002: The table/view 'DMSNEW.dbo.tblDhiraaguMaldives_StateorProvince' do
           <Property Name="DecimalPrecision" Type="int" />
           <Property Name="Unittype" Type="int" />
           <Property Name="Unitclass" Type="int" />
+          <Property Name="UnitCode" Type="varchar" MaxLength="100" />
           <Property Name="CreatedOn" Type="smalldatetime" />
           <Property Name="UpdatedOn" Type="smalldatetime" />
           <Property Name="CreatedBy" Type="bigint" />
@@ -1921,6 +1922,8 @@ warning 6002: The table/view 'DMSNEW.dbo.Taxgroupformula' does not have a primar
           <Parameter Name="Password" Type="varchar" Mode="In" />
           <Parameter Name="Empid" Type="int" Mode="In" />
         </Function>
+        <Function Name="BINDGROUP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="BINDUNITS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="ConcateAllFormula" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar(max)">
           <Parameter Name="fromdate" Type="smalldatetime" Mode="In" />
           <Parameter Name="todate" Type="smalldatetime" Mode="In" />
@@ -1982,6 +1985,7 @@ warning 6002: The table/view 'DMSNEW.dbo.Taxgroupformula' does not have a primar
           <Parameter Name="TaxState" Type="bigint" Mode="In" />
           <Parameter Name="QueryType" Type="nvarchar(max)" Mode="In" />
         </Function>
+        <Function Name="DMS_BindItemcode" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="Dms_BindLine" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="groupId" Type="bigint" Mode="In" />
           <Parameter Name="AssignType" Type="bigint" Mode="In" />
@@ -2091,11 +2095,35 @@ warning 6002: The table/view 'DMSNEW.dbo.Taxgroupformula' does not have a primar
           <Parameter Name="SkuId" Type="bigint" Mode="In" />
           <Parameter Name="LocationId" Type="bigint" Mode="In" />
         </Function>
+        <Function Name="DMS_ImportBulkItem" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ItemName" Type="varchar" Mode="In" />
+          <Parameter Name="ItemGroup" Type="bigint" Mode="In" />
+          <Parameter Name="ItemType" Type="bigint" Mode="In" />
+          <Parameter Name="Description" Type="nvarchar" Mode="In" />
+          <Parameter Name="CartPrice" Type="decimal" Mode="In" />
+          <Parameter Name="CreatedBy" Type="bigint" Mode="In" />
+          <Parameter Name="track" Type="int" Mode="In" />
+          <Parameter Name="itemcode" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="BaseUnit" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="DMS_ImportBulkOtherunit" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ItemId" Type="bigint" Mode="In" />
+          <Parameter Name="CreatedBy" Type="bigint" Mode="In" />
+          <Parameter Name="OtherUnit" Type="bigint" Mode="In" />
+        </Function>
         <Function Name="DMS_ImportExcel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Entityname" Type="nvarchar" Mode="In" />
           <Parameter Name="CountryId" Type="bigint" Mode="In" />
           <Parameter Name="MobileNo" Type="bigint" Mode="In" />
           <Parameter Name="EmailId" Type="varchar" Mode="In" />
+          <Parameter Name="CreatedBy" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="DMS_ImportItemConversion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ItemId" Type="bigint" Mode="In" />
+          <Parameter Name="Value" Type="decimal" Mode="In" />
+          <Parameter Name="ToUnit" Type="bigint" Mode="In" />
+          <Parameter Name="FromUnit" Type="bigint" Mode="In" />
+          <Parameter Name="ConvertedValue" Type="decimal" Mode="In" />
           <Parameter Name="CreatedBy" Type="bigint" Mode="In" />
         </Function>
         <Function Name="DMS_IMPORTITEMGROUP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -2105,6 +2133,7 @@ warning 6002: The table/view 'DMSNEW.dbo.Taxgroupformula' does not have a primar
           <Parameter Name="Description" Type="varchar" Mode="In" />
         </Function>
         <Function Name="DMS_ImportUnit" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UnitCode" Type="varchar" Mode="In" />
           <Parameter Name="Unit" Type="varchar" Mode="In" />
           <Parameter Name="Description" Type="varchar" Mode="In" />
           <Parameter Name="CreatedBy" Type="bigint" Mode="In" />
@@ -2334,6 +2363,17 @@ warning 6002: The table/view 'DMSNEW.dbo.Taxgroupformula' does not have a primar
         <Function Name="GetSubcomponentvalue" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="nvarchar(max)">
           <Parameter Name="Table" Type="nvarchar(max)" Mode="In" />
           <Parameter Name="Colname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="InsertItem" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ItemName" Type="varchar" Mode="In" />
+          <Parameter Name="ItemGroup" Type="bigint" Mode="In" />
+          <Parameter Name="ItemType" Type="bigint" Mode="In" />
+          <Parameter Name="Description" Type="nvarchar" Mode="In" />
+          <Parameter Name="CartPrice" Type="decimal" Mode="In" />
+          <Parameter Name="CreatedBy" Type="bigint" Mode="In" />
+          <Parameter Name="track" Type="int" Mode="In" />
+          <Parameter Name="itemcode" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="BaseUnit" Type="varchar" Mode="In" />
         </Function>
         <Function Name="parseJSON" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="JSON" Type="nvarchar(max)" Mode="In" />
@@ -3663,6 +3703,7 @@ warning 6002: The table/view 'DMSNEW.dbo.Taxgroupformula' does not have a primar
           <Property Name="UpdatedBy" Type="Int64" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="UnitCode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="tblMstUserType">
           <Key>
@@ -4766,6 +4807,7 @@ warning 6002: The table/view 'DMSNEW.dbo.Taxgroupformula' does not have a primar
             <Parameter Name="CreatedBy" Mode="In" Type="Int64" />
           </FunctionImport>
           <FunctionImport Name="DMS_ImportUnit">
+            <Parameter Name="UnitCode" Mode="In" Type="String" />
             <Parameter Name="Unit" Mode="In" Type="String" />
             <Parameter Name="Description" Mode="In" Type="String" />
             <Parameter Name="CreatedBy" Mode="In" Type="Int64" />
@@ -5009,6 +5051,44 @@ warning 6002: The table/view 'DMSNEW.dbo.Taxgroupformula' does not have a primar
             <Parameter Name="GroupName" Mode="In" Type="String" />
             <Parameter Name="Description" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="BINDUNITS" ReturnType="Collection(DMSNEWModel.BINDUNITS_Result)" />
+          <FunctionImport Name="InsertItem" ReturnType="Collection(String)">
+            <Parameter Name="ItemName" Mode="In" Type="String" />
+            <Parameter Name="ItemGroup" Mode="In" Type="Int64" />
+            <Parameter Name="ItemType" Mode="In" Type="Int64" />
+            <Parameter Name="Description" Mode="In" Type="String" />
+            <Parameter Name="CartPrice" Mode="In" Type="Decimal" />
+            <Parameter Name="CreatedBy" Mode="In" Type="Int64" />
+            <Parameter Name="track" Mode="In" Type="Int32" />
+            <Parameter Name="itemcode" Mode="In" Type="String" />
+            <Parameter Name="BaseUnit" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="BINDGROUP" ReturnType="Collection(DMSNEWModel.BINDGROUP_Result)" />
+          <FunctionImport Name="DMS_ImportBulkItem" ReturnType="Collection(String)">
+            <Parameter Name="ItemName" Mode="In" Type="String" />
+            <Parameter Name="ItemGroup" Mode="In" Type="Int64" />
+            <Parameter Name="ItemType" Mode="In" Type="Int64" />
+            <Parameter Name="Description" Mode="In" Type="String" />
+            <Parameter Name="CartPrice" Mode="In" Type="Decimal" />
+            <Parameter Name="CreatedBy" Mode="In" Type="Int64" />
+            <Parameter Name="track" Mode="In" Type="Int32" />
+            <Parameter Name="itemcode" Mode="In" Type="String" />
+            <Parameter Name="BaseUnit" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="DMS_BindItemcode" ReturnType="Collection(DMSNEWModel.DMS_BindItemcode_Result)" />
+          <FunctionImport Name="DMS_ImportBulkOtherunit">
+            <Parameter Name="ItemId" Mode="In" Type="Int64" />
+            <Parameter Name="CreatedBy" Mode="In" Type="Int64" />
+            <Parameter Name="OtherUnit" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="DMS_ImportItemConversion">
+            <Parameter Name="ItemId" Mode="In" Type="Int64" />
+            <Parameter Name="Value" Mode="In" Type="Decimal" />
+            <Parameter Name="ToUnit" Mode="In" Type="Int64" />
+            <Parameter Name="FromUnit" Mode="In" Type="Int64" />
+            <Parameter Name="ConvertedValue" Mode="In" Type="Decimal" />
+            <Parameter Name="CreatedBy" Mode="In" Type="Int64" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="AngularTest_Result">
           <Property Type="Int32" Name="Empid" Nullable="false" />
@@ -5126,6 +5206,18 @@ warning 6002: The table/view 'DMSNEW.dbo.Taxgroupformula' does not have a primar
           <Property Type="String" Name="Address" Nullable="true" MaxLength="500" />
           <Property Type="String" Name="Company" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="Language" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="BINDUNITS_Result">
+          <Property Type="Int32" Name="Unitid" Nullable="false" />
+          <Property Type="String" Name="UnitCode" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="BINDGROUP_Result">
+          <Property Type="Int32" Name="Groupid" Nullable="false" />
+          <Property Type="String" Name="GroupCode" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="DMS_BindItemcode_Result">
+          <Property Type="Int64" Name="Itemid" Nullable="false" />
+          <Property Type="String" Name="ItemCode" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -6284,6 +6376,7 @@ warning 6002: The table/view 'DMSNEW.dbo.Taxgroupformula' does not have a primar
           <EntitySetMapping Name="tblMstunits">
             <EntityTypeMapping TypeName="DMSNEWModel.tblMstunit">
               <MappingFragment StoreEntitySet="tblMstunits">
+                <ScalarProperty Name="UnitCode" ColumnName="UnitCode" />
                 <ScalarProperty Name="Unitid" ColumnName="Unitid" />
                 <ScalarProperty Name="Unitname" ColumnName="Unitname" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
@@ -7391,6 +7484,34 @@ warning 6002: The table/view 'DMSNEW.dbo.Taxgroupformula' does not have a primar
           <FunctionImportMapping FunctionImportName="TestFINALCALCULATOR" FunctionName="DMSNEWModel.Store.TestFINALCALCULATOR" />
           <FunctionImportMapping FunctionImportName="TestFINALCALCULATORINCLUSIVE" FunctionName="DMSNEWModel.Store.TestFINALCALCULATORINCLUSIVE" />
           <FunctionImportMapping FunctionImportName="DMS_IMPORTITEMGROUP" FunctionName="DMSNEWModel.Store.DMS_IMPORTITEMGROUP" />
+          <FunctionImportMapping FunctionImportName="BINDUNITS" FunctionName="DMSNEWModel.Store.BINDUNITS">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DMSNEWModel.BINDUNITS_Result">
+                <ScalarProperty Name="Unitid" ColumnName="Unitid" />
+                <ScalarProperty Name="UnitCode" ColumnName="UnitCode" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="InsertItem" FunctionName="DMSNEWModel.Store.InsertItem" />
+          <FunctionImportMapping FunctionImportName="BINDGROUP" FunctionName="DMSNEWModel.Store.BINDGROUP">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DMSNEWModel.BINDGROUP_Result">
+                <ScalarProperty Name="Groupid" ColumnName="Groupid" />
+                <ScalarProperty Name="GroupCode" ColumnName="GroupCode" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="DMS_ImportBulkItem" FunctionName="DMSNEWModel.Store.DMS_ImportBulkItem" />
+          <FunctionImportMapping FunctionImportName="DMS_BindItemcode" FunctionName="DMSNEWModel.Store.DMS_BindItemcode">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DMSNEWModel.DMS_BindItemcode_Result">
+                <ScalarProperty Name="Itemid" ColumnName="Itemid" />
+                <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="DMS_ImportBulkOtherunit" FunctionName="DMSNEWModel.Store.DMS_ImportBulkOtherunit" />
+          <FunctionImportMapping FunctionImportName="DMS_ImportItemConversion" FunctionName="DMSNEWModel.Store.DMS_ImportItemConversion" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

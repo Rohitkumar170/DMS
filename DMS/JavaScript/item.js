@@ -1,8 +1,11 @@
 ﻿var Groups = [];var Itemtype = [];var variantcount=0;var isexist=0;var Tempvariantcount=1; var checkeddatajson=''; var variantcounter=1;var Existotherunitid = 0;
 var ColumnName = []; var SkillCount = []; var parentunitype = 0; var parentUnitclass = 0; var otherunitype = 0; var otherUnitclass = 0; var unitjson = ''; var SessionCountryId = 1; var SessionEntityId = 1;
-var SKUCOUNT=''; var dblitemid=0; var dbitemname=''; var counter = 0;var editFlag=0; var editflag=0;
+var SKUCOUNT = ''; var dblitemid = 0; var dbitemname = ''; var counter = 0; var editFlag = 0; var editflag = 0; var LoadData = '';
 jquery_1_11_3_min_p(document).ready(function () {
-BindItemGrid() ;
+    jquery_1_11_3_min_p("#hdnLoad").val(1000);
+    BindItemGrid();
+
+   
     //============================================================New Item Group===========================================
     jquery_1_11_3_min_p('#btnnew').click(function () {
         jquery_1_11_3_min_p('#variantForm').css('display', 'block');
@@ -11,6 +14,8 @@ BindItemGrid() ;
         jquery_1_11_3_min_p('#btnback').css('display', 'block');
         jquery_1_11_3_min_p('#btnnew').css('display', 'none');
         jquery_1_11_3_min_p('#btnupload1').css('display', 'block');
+        jquery_1_11_3_min_p('#btnupload3').css('display', 'block');
+        jquery_1_11_3_min_p('#btnupload5').css('display', 'block');
         BindFormdetails();
         editflag = 0;
         
@@ -80,7 +85,9 @@ $(document).on("dblclick","#ItemGrid tbody tr",function() {
         jquery_1_11_3_min_p('#btnsubmit').prop("disabled", true);
          jquery_1_11_3_min_p('#btndisable').css('display', 'block');
         jquery_1_11_3_min_p('#btnback').css('display', 'block');
-        jquery_1_11_3_min_p('#btnnew').css('display', 'none');
+    jquery_1_11_3_min_p('#btnnew').css('display', 'none');
+  
+    
         editflag=1;
         BindGriddata(Itemid);
 
@@ -305,6 +312,15 @@ $(document).on("dblclick","#ItemGrid tbody tr",function() {
     }
     });
    //============================================================End Variant Proceed Click================================
+
+    
+    jquery_1_11_3_min_p('#btnLoadMore').click(function () {
+        LoadData = parseInt(LoadData) + 500;
+        jquery_1_11_3_min_p("#hdnLoad").val(LoadData);
+        jquery_1_11_3_min_p('#preloader').css('display', 'block');
+        jquery_1_11_3_min_p('#Overlay_Load').css('display', 'block');
+        BindItemGrid();
+    });
    
 });
 
@@ -1324,6 +1340,16 @@ function Findclick() {
     $('#ContentPlaceHolder1_FileUpload').click();
 }
 
+function UploadFile3() { $('#ContentPlaceHolder1_btnUpload3').click(); }
+function Findclick3() {
+    $('#ContentPlaceHolder1_FileUpload3').click();
+}
+
+function UploadFile5() { $('#ContentPlaceHolder1_btnUpload5').click(); }
+function Findclick5() {
+    $('#ContentPlaceHolder1_FileUpload5').click();
+}
+
 
 
    function onClose(e) {  
@@ -1866,9 +1892,10 @@ function BindItemGrid() {
     var Partners = [];
 
     var SearchValue = "";
-
+    jquery_1_11_3_min_p('#preloader').css('display', 'block');
+    jquery_1_11_3_min_p('#Overlay_Load').css('display', 'block');
   //  LoadData = jquery_1_11_3_min_p("#hdnLoad").val();
- var LoadData=20;
+     LoadData = jquery_1_11_3_min_p("#hdnLoad").val();
     jquery_1_11_3_min_p.ajax({
         type: "POST",
         contentType: "application/json; charset=utf-8",

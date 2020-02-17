@@ -19,7 +19,6 @@ namespace DMS.Master
             }
 
         }
-
         protected void btnUpload_Click(object sender, EventArgs e)
         {
             try
@@ -31,7 +30,7 @@ namespace DMS.Master
                     ScriptManager.RegisterStartupScript(this, GetType(), "alertmsg", "Showpopup('" + Message + "');", true);
                     return;
                 }
-                if (dt.Columns.Count != 2)
+                if (dt.Columns.Count != 3)
                 {
                     string Message = "Excel is not in Proper format";
                     ScriptManager.RegisterStartupScript(this, GetType(), "alertmsg", "Showpopup('" + Message + "');", true);
@@ -46,7 +45,7 @@ namespace DMS.Master
                 DMSNEWEntities context = new DMSNEWEntities();
                 foreach (DataRow dr in dt.Rows)
                 {
-                    context.DMS_ImportUnit(Convert.ToString(dr["UnitName"].ToString().Trim()), Convert.ToString(dr["Description"].ToString().Trim()), Convert.ToInt64(Session["UserId"].ToString()));
+                    context.DMS_ImportUnit(Convert.ToString(dr["UnitCode"].ToString().Trim()), Convert.ToString(dr["UnitName"].ToString().Trim()), Convert.ToString(dr["Description"].ToString().Trim()), Convert.ToInt64(Session["UserId"].ToString()));
                 }
                 context.SaveChanges();
             }

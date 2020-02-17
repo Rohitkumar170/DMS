@@ -805,8 +805,12 @@ namespace DMS.Entity
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DMS_ImportExcel", entitynameParameter, countryIdParameter, mobileNoParameter, emailIdParameter, createdByParameter);
         }
     
-        public virtual int DMS_ImportUnit(string unit, string description, Nullable<long> createdBy)
+        public virtual int DMS_ImportUnit(string unitCode, string unit, string description, Nullable<long> createdBy)
         {
+            var unitCodeParameter = unitCode != null ?
+                new ObjectParameter("UnitCode", unitCode) :
+                new ObjectParameter("UnitCode", typeof(string));
+    
             var unitParameter = unit != null ?
                 new ObjectParameter("Unit", unit) :
                 new ObjectParameter("Unit", typeof(string));
@@ -819,7 +823,7 @@ namespace DMS.Entity
                 new ObjectParameter("CreatedBy", createdBy) :
                 new ObjectParameter("CreatedBy", typeof(long));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DMS_ImportUnit", unitParameter, descriptionParameter, createdByParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DMS_ImportUnit", unitCodeParameter, unitParameter, descriptionParameter, createdByParameter);
         }
     
         public virtual ObjectResult<Nullable<int>> DMS_InsertRequisition(string queryType, string requestNumber, string createdBy, string requestedDate, string wareHouseId, string submittedDate, string status, string jsonRequestionItems, string jsonUpdateRequestItems, string updatedBy, string requisitionId, Nullable<long> loadMore)
@@ -1714,6 +1718,149 @@ namespace DMS.Entity
                 new ObjectParameter("Description", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DMS_IMPORTITEMGROUP", createdByParameter, groupCodeParameter, groupNameParameter, descriptionParameter);
+        }
+    
+        public virtual ObjectResult<BINDUNITS_Result> BINDUNITS()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BINDUNITS_Result>("BINDUNITS");
+        }
+    
+        public virtual ObjectResult<string> InsertItem(string itemName, Nullable<long> itemGroup, Nullable<long> itemType, string description, Nullable<decimal> cartPrice, Nullable<long> createdBy, Nullable<int> track, string itemcode, string baseUnit)
+        {
+            var itemNameParameter = itemName != null ?
+                new ObjectParameter("ItemName", itemName) :
+                new ObjectParameter("ItemName", typeof(string));
+    
+            var itemGroupParameter = itemGroup.HasValue ?
+                new ObjectParameter("ItemGroup", itemGroup) :
+                new ObjectParameter("ItemGroup", typeof(long));
+    
+            var itemTypeParameter = itemType.HasValue ?
+                new ObjectParameter("ItemType", itemType) :
+                new ObjectParameter("ItemType", typeof(long));
+    
+            var descriptionParameter = description != null ?
+                new ObjectParameter("Description", description) :
+                new ObjectParameter("Description", typeof(string));
+    
+            var cartPriceParameter = cartPrice.HasValue ?
+                new ObjectParameter("CartPrice", cartPrice) :
+                new ObjectParameter("CartPrice", typeof(decimal));
+    
+            var createdByParameter = createdBy.HasValue ?
+                new ObjectParameter("CreatedBy", createdBy) :
+                new ObjectParameter("CreatedBy", typeof(long));
+    
+            var trackParameter = track.HasValue ?
+                new ObjectParameter("track", track) :
+                new ObjectParameter("track", typeof(int));
+    
+            var itemcodeParameter = itemcode != null ?
+                new ObjectParameter("itemcode", itemcode) :
+                new ObjectParameter("itemcode", typeof(string));
+    
+            var baseUnitParameter = baseUnit != null ?
+                new ObjectParameter("BaseUnit", baseUnit) :
+                new ObjectParameter("BaseUnit", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("InsertItem", itemNameParameter, itemGroupParameter, itemTypeParameter, descriptionParameter, cartPriceParameter, createdByParameter, trackParameter, itemcodeParameter, baseUnitParameter);
+        }
+    
+        public virtual ObjectResult<BINDGROUP_Result> BINDGROUP()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BINDGROUP_Result>("BINDGROUP");
+        }
+    
+        public virtual ObjectResult<string> DMS_ImportBulkItem(string itemName, Nullable<long> itemGroup, Nullable<long> itemType, string description, Nullable<decimal> cartPrice, Nullable<long> createdBy, Nullable<int> track, string itemcode, Nullable<long> baseUnit)
+        {
+            var itemNameParameter = itemName != null ?
+                new ObjectParameter("ItemName", itemName) :
+                new ObjectParameter("ItemName", typeof(string));
+    
+            var itemGroupParameter = itemGroup.HasValue ?
+                new ObjectParameter("ItemGroup", itemGroup) :
+                new ObjectParameter("ItemGroup", typeof(long));
+    
+            var itemTypeParameter = itemType.HasValue ?
+                new ObjectParameter("ItemType", itemType) :
+                new ObjectParameter("ItemType", typeof(long));
+    
+            var descriptionParameter = description != null ?
+                new ObjectParameter("Description", description) :
+                new ObjectParameter("Description", typeof(string));
+    
+            var cartPriceParameter = cartPrice.HasValue ?
+                new ObjectParameter("CartPrice", cartPrice) :
+                new ObjectParameter("CartPrice", typeof(decimal));
+    
+            var createdByParameter = createdBy.HasValue ?
+                new ObjectParameter("CreatedBy", createdBy) :
+                new ObjectParameter("CreatedBy", typeof(long));
+    
+            var trackParameter = track.HasValue ?
+                new ObjectParameter("track", track) :
+                new ObjectParameter("track", typeof(int));
+    
+            var itemcodeParameter = itemcode != null ?
+                new ObjectParameter("itemcode", itemcode) :
+                new ObjectParameter("itemcode", typeof(string));
+    
+            var baseUnitParameter = baseUnit.HasValue ?
+                new ObjectParameter("BaseUnit", baseUnit) :
+                new ObjectParameter("BaseUnit", typeof(long));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("DMS_ImportBulkItem", itemNameParameter, itemGroupParameter, itemTypeParameter, descriptionParameter, cartPriceParameter, createdByParameter, trackParameter, itemcodeParameter, baseUnitParameter);
+        }
+    
+        public virtual ObjectResult<DMS_BindItemcode_Result> DMS_BindItemcode()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DMS_BindItemcode_Result>("DMS_BindItemcode");
+        }
+    
+        public virtual int DMS_ImportBulkOtherunit(Nullable<long> itemId, Nullable<long> createdBy, Nullable<long> otherUnit)
+        {
+            var itemIdParameter = itemId.HasValue ?
+                new ObjectParameter("ItemId", itemId) :
+                new ObjectParameter("ItemId", typeof(long));
+    
+            var createdByParameter = createdBy.HasValue ?
+                new ObjectParameter("CreatedBy", createdBy) :
+                new ObjectParameter("CreatedBy", typeof(long));
+    
+            var otherUnitParameter = otherUnit.HasValue ?
+                new ObjectParameter("OtherUnit", otherUnit) :
+                new ObjectParameter("OtherUnit", typeof(long));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DMS_ImportBulkOtherunit", itemIdParameter, createdByParameter, otherUnitParameter);
+        }
+    
+        public virtual int DMS_ImportItemConversion(Nullable<long> itemId, Nullable<decimal> value, Nullable<long> toUnit, Nullable<long> fromUnit, Nullable<decimal> convertedValue, Nullable<long> createdBy)
+        {
+            var itemIdParameter = itemId.HasValue ?
+                new ObjectParameter("ItemId", itemId) :
+                new ObjectParameter("ItemId", typeof(long));
+    
+            var valueParameter = value.HasValue ?
+                new ObjectParameter("Value", value) :
+                new ObjectParameter("Value", typeof(decimal));
+    
+            var toUnitParameter = toUnit.HasValue ?
+                new ObjectParameter("ToUnit", toUnit) :
+                new ObjectParameter("ToUnit", typeof(long));
+    
+            var fromUnitParameter = fromUnit.HasValue ?
+                new ObjectParameter("FromUnit", fromUnit) :
+                new ObjectParameter("FromUnit", typeof(long));
+    
+            var convertedValueParameter = convertedValue.HasValue ?
+                new ObjectParameter("ConvertedValue", convertedValue) :
+                new ObjectParameter("ConvertedValue", typeof(decimal));
+    
+            var createdByParameter = createdBy.HasValue ?
+                new ObjectParameter("CreatedBy", createdBy) :
+                new ObjectParameter("CreatedBy", typeof(long));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DMS_ImportItemConversion", itemIdParameter, valueParameter, toUnitParameter, fromUnitParameter, convertedValueParameter, createdByParameter);
         }
     }
 }
