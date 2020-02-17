@@ -1061,6 +1061,7 @@ function SaveTaxInfo() {
             var i = 0;
             var jsonData = eval(result.d);
             if (jsonData.Table[0].Res == "1") {
+
                 swal("Saved Successfully", "Your data Saved successfully!", "success")
                     .then((value) => {
                         window.location.replace("Partner.aspx");
