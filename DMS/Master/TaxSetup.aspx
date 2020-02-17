@@ -359,9 +359,9 @@
     <div class="col-md-7 ">    
     <div class="pdfexport">
    <button type="button" id="Button3" class="btn btn-outline-primary" title="Export">
-                            <i class="fa fa-file"></i> </button>
+                            <i class="fa fa-file-excel-o"></i> </button>
                             <button type="button" id="Button4" class="btn btn-outline-primary" title="PDF">
-                            <i class="fa fa-print"></i> </button>
+                            <i class="fa fa-file-pdf-o"></i> </button>
                           
                           
     </div>
@@ -499,9 +499,9 @@
     <div class="col-md-8 ">    
     <div class="pdfexport">
    <button type="button" id="btnExport" class="btn btn-outline-primary" title="Export">
-                            <i class="fa fa-file"></i> </button>
+                            <i class="fa fa-file-excel-o"></i> </button>
                             <button type="button" id="btnPdf" class="btn btn-outline-primary" title="PDF">
-                            <i class="fa fa-print"></i> </button>
+                            <i class="fa fa-file-pdf-o"></i> </button>
                              <button type="button" id="btnUpdate" style="display:none" disabled class="btn btn-outline-primary" title="Edit">
                             <i class="fa fa-edit"></i> </button>
                           

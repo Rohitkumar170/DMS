@@ -20,6 +20,11 @@
     <script src="../JavaScript/item.js" type="text/javascript"></script>
    <style>
    #instruction p{margin-bottom:5px !important;}
+   #ItemGrid td:nth-child(3), #ItemGrid th:nth-child(3) {    width: 350px;}
+      #ItemGrid td:nth-child(4), #ItemGrid th:nth-child(4) {    width: 250px;}
+       #ItemGrid td:nth-child(7), #ItemGrid th:nth-child(7) {    width: 130px;}
+        #ItemGrid td:nth-child(5), #ItemGrid th:nth-child(5) {    width: 100px;}
+       #ItemGrid td:nth-child(6), #ItemGrid th:nth-child(6) {    width: 80px;text-align:right}
    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">

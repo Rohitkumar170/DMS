@@ -70,14 +70,14 @@
                       <div class="row   mt-1 headerDropdown ">
     <div class="col-md-6 pull-left">    
     <div class="pdfexport">
-   <button type="button" id="btnAdd" onclick="AddRow()" class="btn btn-primary waves-effect waves-light">
-                            <i class="fa fa-plus"></i> Add Line</button>
-                            <button type="button" id="btnDeleteLine" class="btn btn-primary waves-effect waves-light">
-                            <i class="fa fa-trash"></i> Delete Line</button>
-                            <button type="button" id="Button1" class="btn btn-primary waves-effect waves-light">
-                            <i class="fa fa-file"></i> Export</button>
-                            <button type="button" id="Button2" class="btn btn-primary waves-effect waves-light">
-                            <i class="fa fa-print"></i> PDF</button>    
+   <button type="button" id="btnAdd" onclick="AddRow()" class="btn btn-outline-primary" title="Add Line">
+                            <i class="fa fa-plus"></i> </button>
+                            <button type="button" id="btnDeleteLine" class="btn btn-outline-primary" title="Delete Line">
+                            <i class="fa fa-trash"></i> </button>
+                            <button type="button" id="Button1" class="btn btn-outline-primary" title="Export">
+                            <i class="fa fa-file-excel-o"></i> </button>
+                            <button type="button" id="Button2" class="btn btn-outline-primary" title="PDF">
+                            <i class="fa fa-file-excel-o"></i> </button>    
                           
     </div>
   
@@ -145,12 +145,12 @@
 
     <div class="col-md-8 pull-left">    
     <div class="pdfexport">
-   <button type="button" id="btnExport" class="btn btn-primary waves-effect waves-light">
-                            <i class="fa fa-file"></i> Export</button>
-                            <button type="button" id="btnPdf" class="btn btn-primary waves-effect waves-light">
-                            <i class="fa fa-print"></i> PDF</button>
-                             <button type="button" id="btnUpdate" style="display:none" disabled class="btn btn-primary waves-effect waves-light">
-                            <i class="fa fa-edit"></i> Edit</button>
+   <button type="button" id="btnExport" class="btn btn-outline-primary" title="Export">
+                            <i class="fa fa-file-excel-o"></i> </button>
+                            <button type="button" id="btnPdf" class="btn btn-outline-primary" title="PDF">
+                            <i class="fa fa-file-pdf-o"></i> </button>
+                             <button type="button" id="btnUpdate" style="display:none" disabled class="btn btn-outline-primary" title="Edit">
+                            <i class="fa fa-edit"></i> </button>
                           
                           
     </div>
