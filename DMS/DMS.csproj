@@ -496,11 +496,14 @@
     <Content Include="Master\AddressFieldSetup.aspx" />
     <Content Include="Master\CreateSequence.aspx" />
     <Content Include="Master\EntitySetup.aspx" />
+    <Content Include="Master\ItemAssigned.aspx" />
     <Content Include="Master\ItemCreate.aspx" />
     <Content Include="Master\ItemGroupSetup.aspx" />
     <Content Include="Master\OrganizationDataSetup.aspx" />
     <Content Include="Master\OrganizationPara.aspx" />
+    <Content Include="Master\Partner.aspx" />
     <Content Include="Master\PartnerDataSetup.aspx" />
+    <Content Include="Master\PartnerGroup.aspx" />
     <Content Include="Master\PartnerPara.aspx" />
     <Content Include="Master\SystemParameterSetup.aspx" />
     <Content Include="Master\Unit.aspx" />
@@ -2924,6 +2927,13 @@
     <Compile Include="Master\EntitySetup.aspx.designer.cs">
       <DependentUpon>EntitySetup.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Master\ItemAssigned.aspx.cs">
+      <DependentUpon>ItemAssigned.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master\ItemAssigned.aspx.designer.cs">
+      <DependentUpon>ItemAssigned.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Master\ItemCreate.aspx.cs">
       <DependentUpon>ItemCreate.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2952,12 +2962,26 @@
     <Compile Include="Master\OrganizationPara.aspx.designer.cs">
       <DependentUpon>OrganizationPara.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Master\Partner.aspx.cs">
+      <DependentUpon>Partner.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master\Partner.aspx.designer.cs">
+      <DependentUpon>Partner.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Master\PartnerDataSetup.aspx.cs">
       <DependentUpon>PartnerDataSetup.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Master\PartnerDataSetup.aspx.designer.cs">
       <DependentUpon>PartnerDataSetup.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Master\PartnerGroup.aspx.cs">
+      <DependentUpon>PartnerGroup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master\PartnerGroup.aspx.designer.cs">
+      <DependentUpon>PartnerGroup.aspx</DependentUpon>
     </Compile>
     <Compile Include="Master\PartnerPara.aspx.cs">
       <DependentUpon>PartnerPara.aspx</DependentUpon>
@@ -3055,6 +3079,22 @@
     <Compile Include="Models\LoginClass\CreateUser.cs" />
     <Compile Include="Models\LoginClass\Logindetails.cs" />
     <Compile Include="Models\LoginClass\Userrole.cs" />
+    <Compile Include="Models\PartnerClasses\BindAccount.cs" />
+    <Compile Include="Models\PartnerClasses\BindAddressForTax.cs" />
+    <Compile Include="Models\PartnerClasses\BindAssignedDataSetupGrid.cs" />
+    <Compile Include="Models\PartnerClasses\BindAssignPartner.cs" />
+    <Compile Include="Models\PartnerClasses\BindExistingLocation.cs" />
+    <Compile Include="Models\PartnerClasses\BindItem.cs" />
+    <Compile Include="Models\PartnerClasses\BindItems.cs" />
+    <Compile Include="Models\PartnerClasses\BindLocation.cs" />
+    <Compile Include="Models\PartnerClasses\BindPartGroup.cs" />
+    <Compile Include="Models\PartnerClasses\BindPartnerCode.cs" />
+    <Compile Include="Models\PartnerClasses\BindPartnerGrid.cs" />
+    <Compile Include="Models\PartnerClasses\BindPartnerGroup.cs" />
+    <Compile Include="Models\PartnerClasses\BindPartStatus.cs" />
+    <Compile Include="Models\PartnerClasses\BindPartType.cs" />
+    <Compile Include="Models\PartnerClasses\BindTaxData.cs" />
+    <Compile Include="Models\PartnerClasses\PartnerSaveRes.cs" />
     <Compile Include="Models\SequenceSetupClasses\BindCreatedSequence.cs" />
     <Compile Include="Models\SequenceSetupClasses\BindddlFormate.cs" />
     <Compile Include="Models\SequenceSetupClasses\BindddlSequence.cs" />

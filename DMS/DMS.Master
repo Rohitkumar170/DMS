@@ -180,7 +180,7 @@
                     <li class=" nav-item"><a href="../Home/Dashboard.aspx"><span
                         class="menu-title">Dashboard</span></a>                    </li>
                    
-                           <%--  <li class=" nav-item"><a href="#"><span class="menu-title"><span class="customers">Partners </span></span></a>
+                             <li class=" nav-item"><a href="#"><span class="menu-title"><span class="customers">Partners </span></span></a>
                    <ul class="menu-content">
                      <li><a class="menu-item" href="#"><span>Sub-menu</span></a>
                          <ul class="menu-content">
@@ -194,7 +194,7 @@
                          </ul>
                      </li>
                    </ul>
-                    </li>--%>
+                    </li>
 
                                <%-- <li class=" nav-item"><a href="#"><span class="menu-title">Vendor</span></a>
                    <ul class="menu-content">
