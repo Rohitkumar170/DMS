@@ -499,6 +499,7 @@
     <Content Include="Master\ItemAssigned.aspx" />
     <Content Include="Master\ItemCreate.aspx" />
     <Content Include="Master\ItemGroupSetup.aspx" />
+    <Content Include="Master\LegalFields.aspx" />
     <Content Include="Master\OrganizationDataSetup.aspx" />
     <Content Include="Master\OrganizationPara.aspx" />
     <Content Include="Master\Partner.aspx" />
@@ -506,6 +507,8 @@
     <Content Include="Master\PartnerGroup.aspx" />
     <Content Include="Master\PartnerPara.aspx" />
     <Content Include="Master\SystemParameterSetup.aspx" />
+    <Content Include="Master\TaxFields.aspx" />
+    <Content Include="Master\TaxSetup.aspx" />
     <Content Include="Master\Unit.aspx" />
     <Content Include="Master\Users.aspx" />
     <Content Include="Master\variantSetup.aspx" />
@@ -2957,6 +2960,13 @@
     <Compile Include="Master\ItemGroupSetup.aspx.designer.cs">
       <DependentUpon>ItemGroupSetup.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Master\LegalFields.aspx.cs">
+      <DependentUpon>LegalFields.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master\LegalFields.aspx.designer.cs">
+      <DependentUpon>LegalFields.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Master\OrganizationDataSetup.aspx.cs">
       <DependentUpon>OrganizationDataSetup.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -3005,6 +3015,20 @@
     </Compile>
     <Compile Include="Master\SystemParameterSetup.aspx.designer.cs">
       <DependentUpon>SystemParameterSetup.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Master\TaxFields.aspx.cs">
+      <DependentUpon>TaxFields.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master\TaxFields.aspx.designer.cs">
+      <DependentUpon>TaxFields.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Master\TaxSetup.aspx.cs">
+      <DependentUpon>TaxSetup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master\TaxSetup.aspx.designer.cs">
+      <DependentUpon>TaxSetup.aspx</DependentUpon>
     </Compile>
     <Compile Include="Master\Unit.aspx.cs">
       <DependentUpon>Unit.aspx</DependentUpon>

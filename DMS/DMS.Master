@@ -312,13 +312,13 @@
                                    
                     </ul>
                             </li>
-                                <%--<li><a class="menu-item" href="#"><span>Tax Setup</span></a>
+                                <li><a class="menu-item" href="#"><span>Tax Setup</span></a>
                   <ul class="menu-content">                  
                   <li class=""><a class="menu-item" href="../Master/TaxFields.aspx"><span > Tax Fields</span></a> </li> 
                     <li class=""><a class="menu-item" href="../Master/LegalFields.aspx"><span > Legal Fields</span></a> </li>   
                     <li class=""><a class="menu-item" href="../Master/TaxSetup.aspx"><span >Setup</span></a> </li>  
                     </ul>
-                            </li>--%> 
+                            </li> 
                          <%--   <li><a class="menu-item" href="#"><span>Discount</span></a>
                   <ul class="menu-content">
                      <li class="">  <a class="menu-item" href="../Master/DiscountSetup.aspx"><span >  Setup</span></a> </li> 

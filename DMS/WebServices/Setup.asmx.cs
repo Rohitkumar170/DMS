@@ -58,20 +58,20 @@ namespace DMS.WebServices
 
         }
         [WebMethod]
-    public Dictionary<string, object> BindDataType()
-    {
-        try
+        public Dictionary<string, object> BindDataType()
         {
-             var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_AdminSetUp]").With<BindAddressDataType>()
-                           .Execute("@QueryType", "BindDataType"));
-                    return results;
-        }
-        catch (Exception ex)
-        {
-            throw;
-        }
+            try
+            {
+                var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_AdminSetUp]").With<BindAddressDataType>()
+                              .Execute("@QueryType", "BindDataType"));
+                return results;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
 
-    }
+        }
         [WebMethod]
         public Dictionary<string, object> BindDataTypeOrgParam(string OrgFlag)
         {
@@ -95,17 +95,17 @@ namespace DMS.WebServices
                 if (SearchValue == "")
                 {
                     var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_AdminSetUp]").With<BindAddressFieldGrid>().With<Count>().With<BindAddressField>().With<BindAddressClass>()
-                           .Execute("@QueryType", "@LoadMore","BindAddressFieldGrid",LoadData));
+                           .Execute("@QueryType", "@LoadMore", "BindAddressFieldGrid", LoadData));
                     return results;
                 }
-              else
-               {
+                else
+                {
 
                     string replacestring = SearchValue.Replace("$", "'");
                     var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_AdminSetUp]").With<SerarchBindAddressFieldGrid>().With<Count>()
                           .Execute("@QueryType", "@LoadMore", "@SearchValue", "SerarchBindAddressFieldGrid", LoadData, replacestring));
                     return results;
-                    
+
                 }
             }
             catch (Exception ex)
@@ -129,7 +129,7 @@ namespace DMS.WebServices
 
                     string replacestring = SearchValue.Replace("$", "'");
                     var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_AdminSetUp]").With<BindFieldSetupGrid>().With<Count>()
-                             .Execute("@QueryType", "@LoadMore", "@SearchValue", "BindFieldSetupGrid", LoadData,replacestring));
+                             .Execute("@QueryType", "@LoadMore", "@SearchValue", "BindFieldSetupGrid", LoadData, replacestring));
                     return results;
                 }
             }
@@ -149,10 +149,10 @@ namespace DMS.WebServices
             try
             {
                 #region For Fields Name Insertion Details
-                
+
                 var results1 = context.MultipleResults("[dbo].[DMS_AdminSetUp]").With<Flag>()
                           .Execute("@QueryType", "@JsonFields", "@entityid", "@countryid", "SaveAddressFields", JsonFields, entityid, countryid);
-                
+
                 if (results1.Count > 0)
                 {
                     #region For Table Creation
@@ -187,10 +187,10 @@ namespace DMS.WebServices
                         columns += "[IsActive] [bit]" + ' ' + "NULL" + ',';
                         columns += "[IsDeleted] [bit]" + ' ' + "NULL";
                         DMSNEWEntities context = new DMSNEWEntities();
-                        
+
                         results = Common.Getdata(context.MultipleResults("[dbo].[DMS_AdminSetUp]").With<Flag>()
                           .Execute("@QueryType", "@TableName", "@ColumnName", "@countryid", "@entityid", "Createtable", tablename, columns, countryid, entityid));
-                      
+
 
 
                     }
@@ -244,7 +244,7 @@ namespace DMS.WebServices
                 throw;
             }
 
-            }
+        }
         //[WebMethod]
         //public Dictionary<string, object> SaveAddress(string AddressLineJson, string CountryJson)
         //{
@@ -264,9 +264,9 @@ namespace DMS.WebServices
         {
             try
             {
-             var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_AdminSetUp]").With<BindAddressFieldGrid>().With<Flag>()
-                           .Execute("@QueryType", "@countryid", "@entityid", "DeleteEntity", Country, Entity));
-            return results;
+                var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_AdminSetUp]").With<BindAddressFieldGrid>().With<Flag>()
+                              .Execute("@QueryType", "@countryid", "@entityid", "DeleteEntity", Country, Entity));
+                return results;
             }
             catch (Exception ex)
             {
@@ -294,7 +294,7 @@ namespace DMS.WebServices
         {
             try
             {
-             
+
                 var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_AdminSetUp]").With<BindFieldOndblClick>().With<AddressFields>().With<BindCountry>().With<BindEntityForAddress>()
                               .Execute("@QueryType", "@Fieldid", "UpdateFieldSetup", FieldId));
                 return results;
@@ -325,21 +325,21 @@ namespace DMS.WebServices
         public Dictionary<string, object> GetTableColumn(string TableName)
         {
 
-          
-                try
-                {
-                    DataSet ds =CommonManger.FillDatasetWithParam("DMS_AdminSetUp", "@QueryType", "@TableName", "GetDynamicTableColumn", TableName);
-                    return ClsJson.JsonMethods.ToJson(ds);
-                }
-                catch (Exception ex)
-                {
-                    throw;
-                }
-            
-          
 
-
+            try
+            {
+                DataSet ds = CommonManger.FillDatasetWithParam("DMS_AdminSetUp", "@QueryType", "@TableName", "GetDynamicTableColumn", TableName);
+                return ClsJson.JsonMethods.ToJson(ds);
             }
+            catch (Exception ex)
+            {
+                throw;
+            }
+
+
+
+
+        }
         [WebMethod]
         public Dictionary<string, object> SaveRecord(string JsonFieldItems, string TableName, string parentid, string entityid, string CreatedBy, List<Object> Column)
         {
@@ -359,7 +359,7 @@ namespace DMS.WebServices
                 string NewselectJson = selectJson.Remove(selectJson.Length - 1, 1);
                 Query = "insert Into " + TableName + "(" + NewInsCols + ",IsActive,IsDeleted,CreatedOn,EntityId,ParentId,CreatedBy)" + selectJson + " 1,0,getdate()," + entityid + "," + parentid + "," + CreatedBy + " FROM parseJSON(" + "''" + JsonFieldItems + "''" + ") where ValueType = ''string'' OR  ValueType = ''int''group by parent_ID ";
 
-              //  CheckExist = NewselectJson + "into #temp" + TableName + "" + " FROM parseJSON(" + "'" + JsonFieldItems + "'" + ") where ValueType = 'string' OR  ValueType = 'int'group by parent_ID ";
+                //  CheckExist = NewselectJson + "into #temp" + TableName + "" + " FROM parseJSON(" + "'" + JsonFieldItems + "'" + ") where ValueType = 'string' OR  ValueType = 'int'group by parent_ID ";
 
                 var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_AdminSetUp]").With<Flag>()
                           .Execute("@QueryType", "@InsertQuery", "InsertRecord", Query));
@@ -410,7 +410,7 @@ namespace DMS.WebServices
 
         //    return JsonConvert.DeserializeObject<DataTable>(trgArray.ToString());
         //}
-       [WebMethod]
+        [WebMethod]
         public Dictionary<string, object> saveOrganizationParameter(string JsonFields, string editFlag, List<Object> dbcolumns, string entityid, string countryid, string OrgFlag)
         {
             string columns = "";
@@ -421,7 +421,7 @@ namespace DMS.WebServices
             {
                 var results1 = context.MultipleResults("[dbo].[DMS_AdminSetUp]").With<Flag>()
                          .Execute("@QueryType", "@JsonFields", "@entityid", "@countryid", "@Orgflag", "SavaOrganizationPara", JsonFields, entityid, countryid, OrgFlag);
-                
+
                 if (results1.Count > 0)
                 {
                     for (int i = 0; i < dbcolumns.Count; i++)
@@ -455,9 +455,9 @@ namespace DMS.WebServices
                         columns += "[IsActive] [bit]" + ' ' + "NULL" + ',';
                         columns += "[IsDeleted] [bit]" + ' ' + "NULL";
                         DMSNEWEntities context1 = new DMSNEWEntities();
-                        results =Common.Getdata(context1.MultipleResults("[dbo].[DMS_AdminSetUp]").With<Flag>()
+                        results = Common.Getdata(context1.MultipleResults("[dbo].[DMS_AdminSetUp]").With<Flag>()
                     .Execute("@QueryType", "@TableName", "@ColumnName", "@countryid", "@entityid", "@Orgflag", "CreatetableOrgPara", tablename, columns, countryid, entityid, OrgFlag));
-                        
+
 
                     }
 
@@ -483,19 +483,19 @@ namespace DMS.WebServices
             {
                 if (SearchValue == "")
                 {
-                   
-               var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_AdminSetUp]").With<BindOrgParaGrid>().With<Count>().With <BindOrgFields
->().With<BindDataType>()
-                            .Execute("@QueryType", "@LoadMore", "@Orgflag", "BindOrgParaGrid", LoadData, OrgFlag));
+
+                    var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_AdminSetUp]").With<BindOrgParaGrid>().With<Count>().With<BindOrgFields
+     >().With<BindDataType>()
+                                 .Execute("@QueryType", "@LoadMore", "@Orgflag", "BindOrgParaGrid", LoadData, OrgFlag));
                     return results;
                 }
                 else
                 {
 
                     string replacestring = SearchValue.Replace("$", "'");
-                      var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_AdminSetUp]").With<BindOrgParaGrid>().With<Count>().With <BindOrgFields
+                    var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_AdminSetUp]").With<BindOrgParaGrid>().With<Count>().With<BindOrgFields
 >().With<BindDataType>()
-                            .Execute("@QueryType", "@LoadMore", "@Orgflag", "BindOrgParaGrid", LoadData, OrgFlag));
+                          .Execute("@QueryType", "@LoadMore", "@Orgflag", "BindOrgParaGrid", LoadData, OrgFlag));
                     return results;
                 }
             }
@@ -543,7 +543,7 @@ namespace DMS.WebServices
                          .Execute("@QueryType", "@countryid", "@entityid", "BindAssigned", CountryId, EntityId));
                 return results;
             }
-            
+
             catch (Exception ex)
             {
                 throw;
@@ -653,7 +653,7 @@ namespace DMS.WebServices
         {
             try
             {
-                
+
                 var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_AdminSetUp]").With<Flag>()
                          .Execute("@QueryType", "@jsonData", "SaveParalocaton", Jsondata));
                 return results;

@@ -109,8 +109,8 @@ namespace DMS.WebServices
         {
             try
             {
-                   var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_Customers]").With<BindCountry>().With<BindEntity>().With<BindPartGroup>().With<BindPartType>().With<BindPartStatus>()
-                       .Execute("@QueryType", "@entityId", "BindDropDown", entity));
+                var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_Customers]").With<BindCountry>().With<BindEntity>().With<BindPartGroup>().With<BindPartType>().With<BindPartStatus>()
+                    .Execute("@QueryType", "@entityId", "BindDropDown", entity));
                 return results;
             }
             catch (Exception ex)
@@ -153,8 +153,8 @@ namespace DMS.WebServices
         {
             try
             {
-                      var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_Customers]").With<Flag>()
-                       .Execute("@QueryType", "@AccountId", "@groupName", "@Description", "@groupId", "@UserId", "UpdatePartnerGroup", AccountId, PartnerType, PartnerDescription, dblclickGroupId, userId));
+                var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_Customers]").With<Flag>()
+                 .Execute("@QueryType", "@AccountId", "@groupName", "@Description", "@groupId", "@UserId", "UpdatePartnerGroup", AccountId, PartnerType, PartnerDescription, dblclickGroupId, userId));
                 return results;
             }
             catch (Exception ex)
@@ -275,7 +275,7 @@ namespace DMS.WebServices
         {
             try
             {
-                
+
                 var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_Customers]").With<BindPAddressFields>().With<GetTablename>()
                           .Execute("@QueryType", "@countryId", "@entityId", "BindPAddressFields", CountryId, EntityId));
                 return results;
@@ -285,7 +285,7 @@ namespace DMS.WebServices
                 throw;
             }
 
-            }
+        }
         [WebMethod]
         public Dictionary<string, object> BindFieldsddl(string TableName)
         {
@@ -340,7 +340,7 @@ namespace DMS.WebServices
             {
                 string Resp = "";
                 // DataTable dt = CommonManger.FillDatasetWithParam("DMS_Customers", "@QueryType", "@PartnerCode", "@PartnerName", "@PartnerGroup", "@PartnerType", "@Description", "@PartnerRepresentative", "@entityId", "@PartnerStatus", "@CreatedBy", "@countryId", "savePartner", PCode, PName, PGroup, PType, PDescription, PRepresetative, entityid, Status, CreatedBy, EntityCountryId);
-                var results1 =context.MultipleResults("[dbo].[DMS_Customers]").With<Flag>()
+                var results1 = context.MultipleResults("[dbo].[DMS_Customers]").With<Flag>()
                         .Execute("@QueryType", "@PartnerCode", "@PartnerName", "@PartnerGroup", "@PartnerType", "@Description", "@PartnerRepresentative", "@entityId", "@PartnerStatus", "@CreatedBy", "@countryId", "savePartner", PCode, PName, PGroup, PType, PDescription, PRepresetative, entityid, Status, CreatedBy, EntityCountryId);
 
 
@@ -415,7 +415,7 @@ namespace DMS.WebServices
                             Query = "insert Into " + Tablename + "(" + NewInsCols + ",IsActive,IsDeleted,CreatedOn,PartnerId,CreatedBy,CountryId,EntityId,LocationFlag)" + selectJson + " 1,0,getdate()," + partnerId + "," + CreatedBy + "," + countryId + "," + entityid + ",2 FROM parseJSON(" + "''" + Jsondata + "''" + ") where ValueType = ''string'' OR  ValueType = ''int'' group by parent_ID ";
                             DMSNEWEntities context = new DMSNEWEntities();
                             // ds = CommonManger.FillDatasetWithParam("DMS_Customers", "@QueryType", "@countryid", "@entityid", "@CreatedBy", "@InsertQuery", "@TableName", "@ColumnName", "@PartnerId", "@ExistingLocation", "SaveAddressPartner", countryId, entityid, CreatedBy, Query, Tablename, columns, partnerId, jsonExistingLocdata);
-                            results =Common.Getdata(context.MultipleResults("[dbo].[DMS_Customers]").With<PartnerSaveRes>()
+                            results = Common.Getdata(context.MultipleResults("[dbo].[DMS_Customers]").With<PartnerSaveRes>()
                         .Execute("@QueryType", "@countryid", "@entityid", "@CreatedBy", "@InsertQuery", "@TableName", "@ColumnName", "@PartnerId", "@ExistingLocation", "SaveAddressPartner", countryId, entityid, CreatedBy, Query, Tablename, columns, partnerId, jsonExistingLocdata));
 
 
@@ -824,8 +824,8 @@ namespace DMS.WebServices
         {
             try
             {
-              var  results = Common.Getdata(context.MultipleResults("[dbo].[DMS_Customers]").With<Flag>()
-                       .Execute("@QueryType", "@TaxJson", "SaveTaxInfo", TaxData));
+                var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_Customers]").With<Flag>()
+                         .Execute("@QueryType", "@TaxJson", "SaveTaxInfo", TaxData));
                 return results;
             }
             catch (Exception ex)
