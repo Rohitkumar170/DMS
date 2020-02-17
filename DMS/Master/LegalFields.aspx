@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/DMS.Master" AutoEventWireup="true" CodeBehind="LegalFields.aspx.cs" Inherits="DMS.Master.LegalFields" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/DMS.Master" CodeBehind="LegalFields.aspx.cs" Inherits="DMS.Master.LegalFields" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
