@@ -839,7 +839,7 @@ function DisabledTaxField() {
         async: false,
         success: function (result) {
       var  jsonData = eval(result.d);
-      if(jsonData.Table[0].Response=="1")
+      if(jsonData.Table[0].Res=="1")
       {
       swal("Tax Field Disabled");
       }
