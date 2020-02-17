@@ -184,11 +184,8 @@
                    <ul class="menu-content">
                      <li><a class="menu-item" href="#"><span>Sub-menu</span></a>
                          <ul class="menu-content">
-                           
                         <li class=""><a class="menu-item" href="../Master/PartnerGroup.aspx"><span class="customer">  Partner</span> Group </a> </li> 
                         <li class=""><a class="menu-item" href="../Master/Partner.aspx"><span class="customer">  Partner </span> </a> </li>
-                       
-                  
                           <li class=""><a class="menu-item" href="../Master/ItemAssigned.aspx"><span class="customer">   Item Assigned </span> </a> </li>
                      
                          </ul>

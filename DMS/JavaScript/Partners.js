@@ -1058,8 +1058,10 @@ function SaveTaxInfo() {
         data: "{'TaxData':'" + TaxData + "'}",
         dataType: "json",
         success: function (result) {
+
             var i = 0;
             var jsonData = eval(result.d);
+
             if (jsonData.Table[0].Res == "1") {
 
                 swal("Saved Successfully", "Your data Saved successfully!", "success")
