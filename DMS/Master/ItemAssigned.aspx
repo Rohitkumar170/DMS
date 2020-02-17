@@ -75,44 +75,13 @@
     
     </div>
     
-       <div class="col-md-3">
-                                                <div class="form-group pull-right ">
-                                                   <label class="customPadding"> Entity</label>
-                                                   
-                                              <input type="text" id="ddlentity"  autocomplete="off"  style="width: 110px!important;"/>
-                                                 <%--<select id="Select4" name="interested" class="Operator">
-												<option value="Textbox">Amy Softech</option>
-                                                <option value="Textbox">Yoeki Soft</option>
-												<option value="Textbox">IACE</option>	
-												
-                                                 </select>--%>
-                                                </div>
-                                            </div>
-    <div class="col-md-2 ">
-                                                <div class=" pull-right  ">                                                 
-                                                    <label class="customPadding"> Country</label>   
-                                                    <input type="text" id="ddlcountry"  autocomplete="off"  style="width: 90px!important;"/>
-  <%--  <select id="Select9" class="Operator">
-												
-													
-												<option value="Textbox">India</option>
-                                                <option value="Textbox">Russia</option>
-												<option value="Textbox">Pakistan</option>
-                                                </select>     --%>
-                                                
-                                                </div>
-                                            </div>
+
                                             <div class="col-md-3 ">
                                                 <div class=" pull-right  ">                                                 
                                                     <label class="customPadding"> Partner </label>
                                                     <input type="text" id="ddlpartnername"  autocomplete="off"  style="width: 145px!important;"/>
-  <%--<select id="Select4" name="interested" class="Operator">
-												<option value="Textbox">Partner1</option>
-                                                <option value="Textbox">Partner2</option>
-												<option value="Textbox">Partner3</option>	
-												
-                                                 </select>
-                                                --%>
+ 
+                                                
                                                 </div>
                                             </div>
        <div class="col-md-2 ">

@@ -84,7 +84,7 @@
     
     </div>
     
-       <div class="col-md-3">
+      <%-- <div class="col-md-3">
                                                 <div class="form-group pull-right pr-1">
                                                    <label class="pr-1">Select Entity</label>
                                                    
@@ -97,7 +97,7 @@
 <input type="text" id="ddlcountry"  autocomplete="off"  style="width: 100px;"/>
                                                 
                                                 </div>
-                                            </div>
+                                            </div>--%>
  
                                           </div>
                                              </div>

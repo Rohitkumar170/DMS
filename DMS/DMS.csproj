@@ -3128,7 +3128,9 @@
     <Compile Include="Models\PartnerClasses\BindPartStatus.cs" />
     <Compile Include="Models\PartnerClasses\BindPartType.cs" />
     <Compile Include="Models\PartnerClasses\BindTaxData.cs" />
+    <Compile Include="Models\PartnerClasses\BindTaxGroup.cs" />
     <Compile Include="Models\PartnerClasses\PartnerSaveRes.cs" />
+    <Compile Include="Models\PartnerClasses\TaxtGroupId.cs" />
     <Compile Include="Models\SequenceSetupClasses\BindCreatedSequence.cs" />
     <Compile Include="Models\SequenceSetupClasses\BindddlFormate.cs" />
     <Compile Include="Models\SequenceSetupClasses\BindddlSequence.cs" />

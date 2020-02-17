@@ -327,16 +327,6 @@ function BindddlCountry(entityId) {
             BindExistingLocation(entityId, countryId);
         }
     });
-    //kendo_all_min_js('#ddlEntityCountry').kendoDropDownList({
-    //    filter: "contains",
-    //    dataTextField: "text",
-    //    dataValueField: "value",
-    //    dataSource: Country,
-    //    change: function () {
-    //        kendo_all_min_js('#ddlEntityCountry').data("kendoDropDownList").span.css('background', 'none');
-    //    }
-    //});
-
     kendo_all_min_js('#ddlPartnergroup').kendoDropDownList({
         filter: "contains",
         dataTextField: "text",
@@ -476,14 +466,6 @@ function ValidateAddress() {
 function ValidateForm() {
     var allow = true;
     var i = 0;
-    //if (kendo_all_min_js("#ddlEntityCountry").val() == 0) {
-    //    kendo_all_min_js("#ddlEntityCountry").data("kendoDropDownList").span.css('background', '#f9e5e5');
-    //    allow = false;
-    //}
-    //if (kendo_all_min_js("#ddlentity" + counter).val() == 0) {
-    //    kendo_all_min_js("#ddlentity" + counter).data("kendoDropDownList").span.css('background', '#f9e5e5');
-    //    allow = false;
-    //}
     if (jquery_1_11_3_min_p("#txtPname").val() == "") {
         jquery_1_11_3_min_p("#txtPname").addClass('validate');
         jquery_1_11_3_min_p("#txtPname").attr("placeholder", "Enter Partner Name!");
@@ -1290,7 +1272,7 @@ function BindAllPartner(searchtxt) {
             var Searchfinaldiv = "<div class='dropdownBottom'><label class='pull-left' id='selectall' onclick='searchcheckAll()' >Select All</label><label class='pull-right' id='reset' onclick='searchUncheckAll()' >Reset</label></div>";
             jquery_1_11_3_min_p("#DivSearch").append(Searchfinaldiv);
             if (jsonData.Table.length >= jsonData.Table1[0].Totalcount) {
-                jquery_1_11_3_min_p('#lblRowCount').text(jsonData.Table1[0].Totalcount);
+                jquery_1_11_3_min_p('#lblRowCount').text(jsonData.Table1[0].length);
                 jquery_1_11_3_min_p('#lblTotalCount').text(jsonData.Table1[0].Totalcount);
                 jquery_1_11_3_min_p('#btnLoadMore').css('visibility', 'hidden');
             }

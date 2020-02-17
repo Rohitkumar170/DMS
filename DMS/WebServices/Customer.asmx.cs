@@ -868,7 +868,7 @@ namespace DMS.WebServices
             {
                 if (SearchValue == "")
                 {
-                    var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_Customers]").With<BindPartnerGrid>().With<Flag>()
+                    var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_Customers]").With<BindPartnerGrid>().With<Count>()
                           .Execute("@QueryType", "@LoadMore", "Bindpartner", LoadData));
                     return results;
                 }
@@ -876,7 +876,7 @@ namespace DMS.WebServices
                 {
 
                     string replacestring = SearchValue.Replace("$", "'");
-                    var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_Customers]").With<BindPartnerGrid>().With<Flag>()
+                    var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_Customers]").With<BindPartnerGrid>().With<Count>()
                          .Execute("@QueryType", "@LoadMore", "@SearchValue", "Bindpartner", LoadData, replacestring));
                     return results;
                 }
@@ -938,20 +938,22 @@ namespace DMS.WebServices
         //    }
 
         //}
-        //[WebMethod]
-        //public Dictionary<string, object> BindTaxGroup(string EntityId, string CountryId, string PartnerId)
-        //{
-        //    try
-        //    {
-        //        DataSet ds = CommonManger.FillDatasetWithParam("DMS_Customers", "@QueryType", "@EntityId", "@CountryId", "@PartId", "GetTaxGrp", EntityId, CountryId, PartnerId);
-        //        return ClsJson.JsonMethods.ToJson(ds);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw;
-        //    }
+        [WebMethod]
+        public Dictionary<string, object> BindTaxGroup(string EntityId, string CountryId, string PartnerId)
+        {
+            try
+            {
+               
+                var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_Customers]").With<BindTaxGroup>().With<TaxtGroupId>()
+                       .Execute("@QueryType", "@EntityId", "@CountryId", "@PartId", "GetTaxGrp", EntityId, CountryId, PartnerId));
+                return results;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
 
-        //}
+        }
 
         //[WebMethod]
         //public Dictionary<string, object> BindTaxGroupVendor(string EntityId, string CountryId, string VendorId)
@@ -968,20 +970,21 @@ namespace DMS.WebServices
 
         //}
 
-        //[WebMethod]
-        //public Dictionary<string, object> SaveTaxGroup(string TaxGrpjson)
-        //{
-        //    try
-        //    {
-        //        DataSet ds = CommonManger.FillDatasetWithParam("DMS_Customers", "@QueryType", "@jsonData", "SaveTaxGroupWithItem", TaxGrpjson);
-        //        return ClsJson.JsonMethods.ToJson(ds);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw;
-        //    }
+        [WebMethod]
+        public Dictionary<string, object> SaveTaxGroup(string TaxGrpjson)
+        {
+            try
+            {
+                var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_Customers]").With<Flag>()
+                      .Execute("@QueryType", "@jsonData", "SaveTaxGroupWithItem", TaxGrpjson));
+                return results;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
 
-        //}
+        }
         //[WebMethod]
         //public Dictionary<string, object> SaveTaxGroupVendor(string TaxGrpjson)
         //{
