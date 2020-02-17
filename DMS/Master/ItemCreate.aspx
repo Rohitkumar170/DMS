@@ -19,7 +19,7 @@
     <script src="../Telerix/js/jszip.min.js" type="text/javascript"></script>
     <script src="../JavaScript/item.js" type="text/javascript"></script>
    <style>
-   
+   #instruction p{margin-bottom:5px !important;}
    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -33,12 +33,18 @@
                 </div>
                 <div class="content-header-right col-md-6 col-12">
                     <div class="btn-group float-md-right" role="group" aria-label="Button group with nested dropdown">
+                         <button type="button" id="download" class="btn btn-primary" title="View & Download Template" data-toggle="modal" data-target="#instruction">
+                            <i class="fa fa-download"></i> Template</button>
                       <span class="multifileupload" id="btnupload1" style="display:none" > 
                        <i class="fa fa-upload"></i>
-               <input type="button" id="upload" value="Import" class="custom-file-input multifileBtn" onclick="Findclick();" />
+               <input type="button" id="upload" value="Import" title="Import Items" class="custom-file-input multifileBtn" onclick="Findclick();" />
                            <asp:FileUpload runat="server" Visible="true" ID="FileUpload" onchange="UploadFile(this);" style="display:none" />
                            <asp:Button ID="btnUpload4" runat="server" OnClick="btnUpload4_Click"  style="display:none" /> 
                        </span>
+
+
+
+
                        <button type="button" id="btnnew" class="btn btn-primary">
                             <i class="fa fa-plus-square"></i> New</button>
                         <button type="button" id="btndisable" style="display:none" class="btn btn-primary"   >
@@ -52,11 +58,11 @@
         </div>
     </div>
     <div class="content-wrapper">
-<%--<div id="preloader">
+<div id="preloader">
   <div id="showPreloader"> <img src="../../assets/img/preloader.gif" > </div>
 </div>
 
-<div id="Overlay_Load"></div>--%>
+<div id="Overlay_Load"></div>
     <div class="">
         <div class="content-body">
             <section id="variantForm" style=" display:none" >
@@ -85,8 +91,19 @@
                                    <button type="button" id="btnaddunit" class="btn btn-primary waves-effect waves-light" >
                             <i class="fa fa-plus-square"></i> Add Unit</button>
                             
-                              <button type="button" id="btnother2" class="btn btn-primary waves-effect waves-light">
-                            <i class="fa fa-save"></i> Button1</button>
+                              <span class="multifileupload" id="btnupload3" style="display:none" > 
+                       <i class="fa fa-upload"></i>
+               <input type="button" id="upload3" value="Import" title="Import Other Units" class="custom-file-input multifileBtn" onclick="Findclick3();" />
+                           <asp:FileUpload runat="server" Visible="true" ID="FileUpload3" onchange="UploadFile3(this);" style="display:none" />
+                           <asp:Button ID="btnUpload3" runat="server" OnClick="btnUpload3_Click"  style="display:none" /> 
+                       </span>
+
+                          <span class="multifileupload" id="btnupload5" style="display:none" > 
+                       <i class="fa fa-upload"></i>
+               <input type="button" id="upload5" value="Import" title="Import Unit Conversions" class="custom-file-input multifileBtn" onclick="Findclick5();" />
+                           <asp:FileUpload runat="server" Visible="true" ID="FileUpload5" onchange="UploadFile5(this);" style="display:none" />
+                           <asp:Button ID="btnUpload5" runat="server" OnClick="btnUpload5_Click"  style="display:none" /> 
+                       </span>
 
                       
                     </div>
@@ -1124,6 +1141,58 @@
 <div class="col-md-12">
          <button type="button" id="btnTaxgrpSubmit" class="btn btn-primary pull-right mb-1 waves-effect waves-light">
                             <i class="fa fa-save"></i> Submit</button>
+		</div>
+		</div></div>
+												
+												</div>
+												
+											</div>
+										</div>
+									</div>
+     <div class="modal fade text-left" id="instruction" tabindex="-1" role="dialog" aria-labelledby="myModalLabel8"
+									 aria-hidden="true" >
+										<div class="modal-dialog " role="document">
+											<div class="modal-content">
+												<div class="modal-header bg-primary white">
+                                                    <h6 class="white" id="H2"> Instructions </h6>
+													<button type="button" id="" class="close" aria-label="Close">
+														<span aria-hidden="true">&times;</span>
+													</button>
+												</div>
+											<div class="mt-1">
+                                          <div class="container ">
+                                  
+						<div class="assignedTaxGroups">						    
+    <div class="row">
+    <div class="col-md-12">
+                                            <h6 class="form-section">All Instructions</h6>
+                                             </div> 
+           <div class="col-md-12" >
+    <p>1. Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>  
+               <p>2. Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>  
+                 <p>3. Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>  
+                                         </div>
+    </div>
+           
+                                          
+
+                                        </div>
+                                  <div class="row " >
+    
+       <div class="col-md-12 ">    
+       <div class="taxGroup">
+       <input type="checkbox">
+       <label class="">I acknowledge that I have read, and  accepting the terms and conditions contained in this document.</label>
+       </div>
+       </div>
+           </div>
+                                        
+                                        
+                                        
+                                        <div class="row">
+<div class="col-md-12">
+         <button type="button" id="" class="btn btn-primary pull-right mb-1 mt-1">
+                            <i class="fa fa-download" aria-hidden="true"></i> Accept & Download</button>
 		</div>
 		</div></div>
 												

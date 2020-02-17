@@ -16,7 +16,7 @@
     <script src="../Telerix/js/kendo.all.min.js"></script>
     <script>        var kendo_all_min_js = jQuery.noConflict();</script>
     <script src="../Telerix/js/jquery.min.js"></script>
-    <script src="../Telerix/js/jszip.min.js" type="text/javascript"></script>
+    <script src="../Telerix/js/jszip.min.js" type="text/javascript"></script> 
     <script src="../JavaScript/CreateUser.js" type="text/javascript"></script>
   
 <style>
@@ -30,7 +30,7 @@
     #scrolldiv{max-height: 190px;overflow-y:auto;overflow-x:hidden;border: 1px solid #bcbcbc;
     padding: 5px 10px;
     border-radius: 4px;}
-    .btn-default.btn-on.active{background-color: #5BB75B;color: white;}
+    .btn-default.btn-on.active{background-color: #2D4D76;color: white;}
 .btn-default.btn-off.active{background-color: #DA4F49;color: white;}
 #status .btn{padding: 3px 5px;}
 </style>

@@ -32,7 +32,7 @@ namespace DMS.Master
                     ScriptManager.RegisterStartupScript(this, GetType(), "alertmsg", "Showpopup('" + Message + "');", true);
                     return;
                 }
-                if (dt.Columns.Count != 2)
+                if (dt.Columns.Count != 3)
                 {
                     string Message = "Excel is not in Proper format";
                     ScriptManager.RegisterStartupScript(this, GetType(), "alertmsg", "Showpopup('" + Message + "');", true);

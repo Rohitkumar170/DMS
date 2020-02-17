@@ -1526,6 +1526,7 @@ form .form-control{    color: #2c2c2c;}
 .multifileupload {
     position: relative;
     display: inherit;
+    margin-left: 4px;
 }
 
     .multifileupload i {
