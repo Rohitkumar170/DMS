@@ -7,8 +7,10 @@ using BusinessLibrary;
 using DMS.Entity;
 using DMS.Models.AddressSetupClass;
 using DMS.Models.EntitySetupClass;
+using DMS.Models.PartnerClasses;
 using DMS.Models;
 using System.Data;
+using Newtonsoft.Json.Linq;
 
 namespace DMS.WebServices
 {
@@ -102,20 +104,21 @@ namespace DMS.WebServices
         //        throw;
         //    }
         //}
-        //[WebMethod]
-        //public Dictionary<string, object> BindCountry(string entity)
-        //{
-        //    try
-        //    {
-        //        DataSet ds = CommonManger.FillDatasetWithParam("DMS_Customers", "@QueryType", "@entityId", "BindDropDown", entity);
-        //        return ClsJson.JsonMethods.ToJson(ds);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw;
-        //    }
+        [WebMethod]
+        public Dictionary<string, object> BindCountry(string entity)
+        {
+            try
+            {
+                var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_Customers]").With<BindCountry>().With<BindEntity>().With<BindPartGroup>().With<BindPartType>().With<BindPartStatus>()
+                    .Execute("@QueryType", "@entityId", "BindDropDown", entity));
+                return results;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
 
-        //}
+        }
         //[WebMethod]
         //public Dictionary<string, object> BindVendorDropDown(string entity)
         //{
@@ -130,34 +133,36 @@ namespace DMS.WebServices
         //    }
 
         //}
-        //[WebMethod]
-        //public Dictionary<string, object> BindTaxDropDowns(string entityId, string CountryId, string PartnerId)
-        //{
-        //    try
-        //    {
-        //        DataSet ds = CommonManger.FillDatasetWithParam("DMS_Customers", "@QueryType", "@entityId", "@countryId", "@PartId", "BindTaxdata", entityId, CountryId, PartnerId);
-        //        return ClsJson.JsonMethods.ToJson(ds);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw;
-        //    }
+        [WebMethod]
+        public Dictionary<string, object> BindTaxDropDowns(string entityId, string CountryId, string PartnerId)
+        {
+            try
+            {
+                var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_Customers]").With<BindTaxData>().With<BindAddressForTax>()
+                     .Execute("@QueryType", "@entityId", "@countryId", "@PartId", "BindTaxdata", entityId, CountryId, PartnerId));
+                return results;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
 
-        //}
-        //[WebMethod]
-        //public Dictionary<string, object> UpdatePartnerGroup(string PartnerType, string PartnerDescription, string AccountId, string dblclickGroupId, string userId)
-        //{
-        //    try
-        //    {
-        //        DataSet ds = CommonManger.FillDatasetWithParam("DMS_Customers", "@QueryType", "@AccountId", "@groupName", "@Description", "@groupId", "@UserId", "UpdatePartnerGroup", AccountId, PartnerType, PartnerDescription, dblclickGroupId, userId);
-        //        return ClsJson.JsonMethods.ToJson(ds);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw;
-        //    }
+        }
+        [WebMethod]
+        public Dictionary<string, object> UpdatePartnerGroup(string PartnerType, string PartnerDescription, string AccountId, string dblclickGroupId, string userId)
+        {
+            try
+            {
+                var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_Customers]").With<Flag>()
+                 .Execute("@QueryType", "@AccountId", "@groupName", "@Description", "@groupId", "@UserId", "UpdatePartnerGroup", AccountId, PartnerType, PartnerDescription, dblclickGroupId, userId));
+                return results;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
 
-        //}
+        }
 
         //[WebMethod]
         //public Dictionary<string, object> BindTaxDropDownsForVendor(string entityId, string CountryId, string VendorId)
@@ -187,20 +192,21 @@ namespace DMS.WebServices
         //    }
 
         //}
-        //[WebMethod]
-        //public Dictionary<string, object> SavePartnerGroup(string JsonFields, string EntityId, string CountryId)
-        //{
-        //    try
-        //    {
-        //        DataSet ds = CommonManger.FillDatasetWithParam("DMS_Customers", "@QueryType", "@JsonFields", "@countryId", "@entityId", "SavePartnerGroup", JsonFields, CountryId, EntityId);
-        //        return ClsJson.JsonMethods.ToJson(ds);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw;
-        //    }
+        [WebMethod]
+        public Dictionary<string, object> SavePartnerGroup(string JsonFields, string EntityId, string CountryId)
+        {
+            try
+            {
+                var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_Customers]").With<Flag>()
+                        .Execute("@QueryType", "@JsonFields", "@countryId", "@entityId", "SavePartnerGroup", JsonFields, CountryId, EntityId));
+                return results;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
 
-        //}
+        }
         //[WebMethod]
         //public Dictionary<string, object> SaveVendorGroup(string JsonFields, string EntityId, string CountryId)
         //{
@@ -215,30 +221,31 @@ namespace DMS.WebServices
         //    }
 
         //}
-        //[WebMethod]
-        //public Dictionary<string, object> BindPartnerGroup(string SearchValue, string LoadData, string CountryId, string EntityId)
-        //{
-        //    try
-        //    {
-        //        if (SearchValue == "")
-        //        {
-        //            DataSet ds = CommonManger.FillDatasetWithParam("DMS_Customers", "@QueryType", "@LoadMore", "@countryId", "@entityId", "BindPartnerGroup", LoadData, CountryId, EntityId);
-        //            return ClsJson.JsonMethods.ToJson(ds);
-        //        }
-        //        else
-        //        {
-        //            // var result = JsonConvert.ToObject(SearchValue);
-        //            string replacestring = SearchValue.Replace("$", "'");
-        //            DataSet ds = CommonManger.FillDatasetWithParam("DMS_AdminSetUp", "@QueryType", "@LoadMore", "@SearchValue", "SerarchBindPartners", LoadData, replacestring);
-        //            return ClsJson.JsonMethods.ToJson(ds);
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw;
-        //    }
+        [WebMethod]
+        public Dictionary<string, object> BindPartnerGroup(string SearchValue, string LoadData, string CountryId, string EntityId)
+        {
+            try
+            {
+                if (SearchValue == "")
+                {
+                    var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_Customers]").With<BindPartnerGroup>().With<Count>()
+                         .Execute("@QueryType", "@LoadMore", "@countryId", "@entityId", "BindPartnerGroup", LoadData, CountryId, EntityId));
+                    return results;
+                }
+                else
+                {
+                    string replacestring = SearchValue.Replace("$", "'");
+                    var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_Customers]").With<BindPartnerGroup>().With<Count>()
+                        .Execute("@QueryType", "@LoadMore", "@SearchValue", "SerarchBindPartners", LoadData, replacestring));
+                    return results;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
 
-        //}
+        }
         //[WebMethod]
         //public Dictionary<string, object> BindVendorGroup(string SearchValue, string LoadData, string CountryId, string EntityId)
         //{
@@ -268,7 +275,7 @@ namespace DMS.WebServices
         {
             try
             {
-                
+
                 var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_Customers]").With<BindPAddressFields>().With<GetTablename>()
                           .Execute("@QueryType", "@countryId", "@entityId", "BindPAddressFields", CountryId, EntityId));
                 return results;
@@ -278,7 +285,7 @@ namespace DMS.WebServices
                 throw;
             }
 
-            }
+        }
         [WebMethod]
         public Dictionary<string, object> BindFieldsddl(string TableName)
         {
@@ -294,21 +301,21 @@ namespace DMS.WebServices
             }
 
         }
-        //[WebMethod]
-        //public Dictionary<string, object> BindPartnerCode()
-        //{
-        //    try
-        //    {
+        [WebMethod]
+        public Dictionary<string, object> BindPartnerCode()
+        {
+            try
+            {
+                var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_Customers]").With<BindPartnerCode>()
+                        .Execute("@QueryType", "BindPartnerCode"));
+                return results;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
 
-        //        DataSet ds = CommonManger.FillDatasetWithParam("DMS_Customers", "@QueryType", "BindPartnerCode");
-        //        return ClsJson.JsonMethods.ToJson(ds);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw;
-        //    }
-
-        //}
+        }
         //[WebMethod]
         //public Dictionary<string, object> BindVendorCode()
         //{
@@ -324,238 +331,259 @@ namespace DMS.WebServices
         //    }
 
         //}
-        //[WebMethod]
-        //public Dictionary<string, object> SavePartner(List<Object> AddressJson, string PGroup, string PType, string PDescription, string Status, string CreatedBy, string entityid, string PCode, string PName, string PRepresetative, string EntityCountryId, string jsonExistingLocdata)
-        //{
-
-        //    DataSet ds = new DataSet();
-        //    try
-        //    {
-
-        //        DataTable dt = CommonManger.FillDatatableWithParam("DMS_Customers", "@QueryType", "@PartnerCode", "@PartnerName", "@PartnerGroup", "@PartnerType", "@Description", "@PartnerRepresentative", "@entityId", "@PartnerStatus", "@CreatedBy", "@countryId", "savePartner", PCode, PName, PGroup, PType, PDescription, PRepresetative, entityid, Status, CreatedBy, EntityCountryId);
-        //        if (dt.Rows.Count > 0)
-        //        {
-        //            string Tablename = "";
-        //            string countryId = "";
-        //            string Query = "";
-        //            string columns = "";
-        //            string partnerId = Convert.ToString(dt.Rows[0]["Response"]);
-        //            if (AddressJson.Count != 0)
-        //            {
-        //                for (int i = 0; i < AddressJson.Count; i++)
-        //                {
-
-        //                    List<string> COLUMN = new List<string>();
-        //                    string Address = Convert.ToString(AddressJson[i]);
-        //                    string[] Address1 = Address.Split('&');
-        //                    string Jsondata = Address1[1];
-        //                    string Table = Address1[0];
-        //                    string[] tabs = Table.Split(' ');
-        //                    Tablename = "";
-        //                    Tablename = tabs[0];
-        //                    countryId = "";
-        //                    countryId = tabs[1];
-
-        //                    JArray ar = JArray.Parse(Address1[1]);
-        //                    foreach (JObject content in ar.Children<JObject>())
-        //                    {
-        //                        foreach (JProperty prop in content.Properties())
-        //                        {
-
-        //                            COLUMN.Add(prop.Name);
-        //                        }
-        //                    }
-        //                    columns = "";
-        //                    columns += "AutoId" + " " + "[int] IDENTITY(1,1) NOT NULL" + ",";
-        //                    for (int c = 0; c < COLUMN.Count; c++)
-        //                    {
-
-        //                        columns += COLUMN[c] + " " + "[varchar](250) NULL" + ",";
-
-        //                    }
-        //                    columns += "[CountryId] [bigint]" + ' ' + " NULL" + ',';
-        //                    columns += "[EntityId] [bigint]" + ' ' + " NULL" + ',';
-        //                    columns += "[PartnerId] [bigint]" + ' ' + " NULL" + ',';
-        //                    columns += "[LocationFlag] [bigint]" + ' ' + " NULL" + ',';
-        //                    columns += "[CreatedOn] [Datetime]" + ' ' + "NULL" + ',';
-        //                    columns += "[UpdatedOn] [varchar](100)" + ' ' + "NULL" + ',';
-        //                    columns += "[CreatedBy] [bigint]" + ' ' + "NULL" + ',';
-        //                    columns += "[UpdatedBy] [int]" + ' ' + "NULL" + ',';
-        //                    columns += "[IsActive] [bit]" + ' ' + "NULL" + ',';
-        //                    columns += "[IsDeleted] [bit]" + ' ' + "NULL";
-
-        //                    string InsertColumn = "";
-        //                    string selectJson = "select ";
-        //                    Query = "";
-        //                    for (int d = 0; d < COLUMN.Count; d++)
-        //                    {
-        //                        InsertColumn += COLUMN[d] + ",";
-        //                        selectJson += " max(case when name='" + COLUMN[d] + "' then convert(nvarchar(100),StringValue) else '' end) as " + COLUMN[d] + ",";
-
-        //                    }
-
-        //                    string NewInsCols = InsertColumn.Remove(InsertColumn.Length - 1, 1);
-        //                    string NewselectJson = selectJson.Remove(selectJson.Length - 1, 1);
-        //                    Query = "insert Into " + Tablename + "(" + NewInsCols + ",IsActive,IsDeleted,CreatedOn,PartnerId,CreatedBy,CountryId,EntityId,LocationFlag)" + selectJson + " 1,0,getdate()," + partnerId + "," + CreatedBy + "," + countryId + "," + entityid + ",2 FROM parseJSON(" + "'" + Jsondata + "'" + ") where ValueType = 'string' OR  ValueType = 'int'group by parent_ID ";
-
-        //                    ds = CommonManger.FillDatasetWithParam("DMS_Customers", "@QueryType", "@countryid", "@entityid", "@CreatedBy", "@InsertQuery", "@TableName", "@ColumnName", "@PartnerId", "@ExistingLocation", "SaveAddressPartner", countryId, entityid, CreatedBy, Query, Tablename, columns, partnerId, jsonExistingLocdata);
+        [WebMethod]
+        public Dictionary<string, object> SavePartner(List<Object> AddressJson, string PGroup, string PType, string PDescription, string Status, string CreatedBy, string entityid, string PCode, string PName, string PRepresetative, string EntityCountryId, string jsonExistingLocdata)
+        {
+            Dictionary<string, object> results = new Dictionary<string, object>();
+            DataSet ds = new DataSet();
+            try
+            {
+                string Resp = "";
+                // DataTable dt = CommonManger.FillDatasetWithParam("DMS_Customers", "@QueryType", "@PartnerCode", "@PartnerName", "@PartnerGroup", "@PartnerType", "@Description", "@PartnerRepresentative", "@entityId", "@PartnerStatus", "@CreatedBy", "@countryId", "savePartner", PCode, PName, PGroup, PType, PDescription, PRepresetative, entityid, Status, CreatedBy, EntityCountryId);
+                var results1 = context.MultipleResults("[dbo].[DMS_Customers]").With<Flag>()
+                        .Execute("@QueryType", "@PartnerCode", "@PartnerName", "@PartnerGroup", "@PartnerType", "@Description", "@PartnerRepresentative", "@entityId", "@PartnerStatus", "@CreatedBy", "@countryId", "savePartner", PCode, PName, PGroup, PType, PDescription, PRepresetative, entityid, Status, CreatedBy, EntityCountryId);
 
 
-        //                }
+                foreach (List<Flag> cust in results1)
+                {
+                    Resp = cust.FirstOrDefault().Res;
+                }
 
-        //            }
-        //            else
-        //            {
+                if (results1.Count > 0)
+                {
+                    string Tablename = "";
+                    string countryId = "";
+                    string Query = "";
+                    string columns = "";
+                    string partnerId = Resp;
+                    if (AddressJson.Count != 0)
+                    {
+                        for (int i = 0; i < AddressJson.Count; i++)
+                        {
 
-        //                ds = CommonManger.FillDatasetWithParam("DMS_Customers", "@QueryType", "@countryid", "@entityid", "@CreatedBy", "@InsertQuery", "@TableName", "@ColumnName", "@PartnerId", "@ExistingLocation", "SaveAddressPartner", countryId, entityid, CreatedBy, Query, Tablename, columns, partnerId, jsonExistingLocdata);
+                            List<string> COLUMN = new List<string>();
+                            string Address = Convert.ToString(AddressJson[i]);
+                            string[] Address1 = Address.Split('&');
+                            string Jsondata = Address1[1];
+                            string Table = Address1[0];
+                            string[] tabs = Table.Split(' ');
+                            Tablename = "";
+                            Tablename = tabs[0];
+                            countryId = "";
+                            countryId = tabs[1];
 
-        //            }
-        //        }
-        //        return ClsJson.JsonMethods.ToJson(ds);
-        //    }
+                            JArray ar = JArray.Parse(Address1[1]);
+                            foreach (JObject content in ar.Children<JObject>())
+                            {
+                                foreach (JProperty prop in content.Properties())
+                                {
 
-        //    catch (Exception ex)
-        //    {
-        //        throw;
-        //    }
-        //}
+                                    COLUMN.Add(prop.Name);
+                                }
+                            }
+                            columns = "";
+                            columns += "AutoId" + " " + "[int] IDENTITY(1,1) NOT NULL" + ",";
+                            for (int c = 0; c < COLUMN.Count; c++)
+                            {
 
-        //[WebMethod]
-        //public Dictionary<string, object> UpdatePartner(List<Object> AddressJson, List<Object> AddressJsonUpdate, string PGroup, string PType, string PDescription, string Status, string CreatedBy, string entityid, string PCode, string PName, string PRepresetative, string EntityCountryId, string PartnerId)
-        //{
+                                columns += COLUMN[c] + " " + "[varchar](250) NULL" + ",";
 
-        //    DataSet ds = new DataSet();
-        //    try
-        //    {
+                            }
+                            columns += "[CountryId] [bigint]" + ' ' + " NULL" + ',';
+                            columns += "[EntityId] [bigint]" + ' ' + " NULL" + ',';
+                            columns += "[PartnerId] [bigint]" + ' ' + " NULL" + ',';
+                            columns += "[LocationFlag] [bigint]" + ' ' + " NULL" + ',';
+                            columns += "[CreatedOn] [Datetime]" + ' ' + "NULL" + ',';
+                            columns += "[UpdatedOn] [varchar](100)" + ' ' + "NULL" + ',';
+                            columns += "[CreatedBy] [bigint]" + ' ' + "NULL" + ',';
+                            columns += "[UpdatedBy] [int]" + ' ' + "NULL" + ',';
+                            columns += "[IsActive] [bit]" + ' ' + "NULL" + ',';
+                            columns += "[IsDeleted] [bit]" + ' ' + "NULL";
 
-        //        DataTable dt = CommonManger.FillDatatableWithParam("DMS_Customers", "@QueryType", "@PartnerCode", "@PartnerName", "@PartnerGroup", "@PartnerType", "@Description", "@PartnerRepresentative", "@entityId", "@PartnerStatus", "@CreatedBy", "@countryId", "@PartnerId", "UpdatePartner", PCode, PName, PGroup, PType, PDescription, PRepresetative, entityid, Status, CreatedBy, EntityCountryId, PartnerId);
-        //        if (dt.Rows.Count > 0)
-        //        {
-        //            if (AddressJson.Count != 0)
-        //            {
-        //                string Tablename = "";
-        //                string countryId = "";
-        //                string Query = "";
-        //                string columns = "";
-        //                for (int i = 0; i < AddressJson.Count; i++)
-        //                {
+                            string InsertColumn = "";
+                            string selectJson = "select ";
+                            Query = "";
+                            for (int d = 0; d < COLUMN.Count; d++)
+                            {
+                                InsertColumn += COLUMN[d] + ",";
+                                selectJson += " max(case when name=''" + COLUMN[d] + "'' then convert(nvarchar(100),StringValue) else '''' end) as " + COLUMN[d] + ",";
 
-        //                    List<string> COLUMN = new List<string>();
-        //                    string Address = Convert.ToString(AddressJson[i]);
-        //                    string[] Address1 = Address.Split('&');
-        //                    string Jsondata = Address1[1];
-        //                    string Table = Address1[0];
-        //                    string[] tabs = Table.Split(' ');
-        //                    Tablename = "";
-        //                    Tablename = tabs[0];
-        //                    countryId = "";
-        //                    countryId = tabs[1];
+                            }
 
-        //                    JArray ar = JArray.Parse(Address1[1]);
-        //                    foreach (JObject content in ar.Children<JObject>())
-        //                    {
-        //                        foreach (JProperty prop in content.Properties())
-        //                        {
-
-        //                            COLUMN.Add(prop.Name);
-        //                        }
-        //                    }
-        //                    columns = "";
-        //                    columns += "AutoId" + " " + "[int] IDENTITY(1,1) NOT NULL" + ",";
-        //                    for (int c = 0; c < COLUMN.Count; c++)
-        //                    {
-
-        //                        columns += COLUMN[c] + " " + "[varchar](250) NULL" + ",";
-
-        //                    }
-        //                    columns += "[CountryId] [bigint]" + ' ' + " NULL" + ',';
-        //                    columns += "[EntityId] [bigint]" + ' ' + " NULL" + ',';
-        //                    columns += "[PartnerId] [bigint]" + ' ' + " NULL" + ',';
-        //                    columns += "[LocationFlag] [bigint]" + ' ' + " NULL" + ',';
-        //                    columns += "[CreatedOn] [Datetime]" + ' ' + "NULL" + ',';
-        //                    columns += "[UpdatedOn] [varchar](100)" + ' ' + "NULL" + ',';
-        //                    columns += "[CreatedBy] [bigint]" + ' ' + "NULL" + ',';
-        //                    columns += "[UpdatedBy] [int]" + ' ' + "NULL" + ',';
-        //                    columns += "[IsActive] [bit]" + ' ' + "NULL" + ',';
-        //                    columns += "[IsDeleted] [bit]" + ' ' + "NULL";
-
-        //                    string InsertColumn = "";
-        //                    string selectJson = "select ";
-        //                    Query = "";
-        //                    for (int d = 0; d < COLUMN.Count; d++)
-        //                    {
-        //                        InsertColumn += COLUMN[d] + ",";
-        //                        selectJson += " max(case when name='" + COLUMN[d] + "' then convert(nvarchar(100),StringValue) else '' end) as " + COLUMN[d] + ",";
-
-        //                    }
-
-        //                    string NewInsCols = InsertColumn.Remove(InsertColumn.Length - 1, 1);
-        //                    string NewselectJson = selectJson.Remove(selectJson.Length - 1, 1);
-        //                    Query = "insert Into " + Tablename + "(" + NewInsCols + ",IsActive,IsDeleted,CreatedOn,PartnerId,CreatedBy,CountryId,EntityId,LocationFlag)" + selectJson + " 1,0,getdate()," + PartnerId + "," + CreatedBy + "," + countryId + "," + entityid + ",2 FROM parseJSON(" + "'" + Jsondata + "'" + ") where ValueType = 'string' OR  ValueType = 'int'group by parent_ID ";
-
-        //                    ds = CommonManger.FillDatasetWithParam("DMS_Customers", "@QueryType", "@countryid", "@entityid", "@CreatedBy", "@InsertQuery", "@TableName", "@ColumnName", "@PartnerId", "SaveAddressPartner", countryId, entityid, CreatedBy, Query, Tablename, columns, PartnerId);
+                            string NewInsCols = InsertColumn.Remove(InsertColumn.Length - 1, 1);
+                            string NewselectJson = selectJson.Remove(selectJson.Length - 1, 1);
+                            Query = "insert Into " + Tablename + "(" + NewInsCols + ",IsActive,IsDeleted,CreatedOn,PartnerId,CreatedBy,CountryId,EntityId,LocationFlag)" + selectJson + " 1,0,getdate()," + partnerId + "," + CreatedBy + "," + countryId + "," + entityid + ",2 FROM parseJSON(" + "''" + Jsondata + "''" + ") where ValueType = ''string'' OR  ValueType = ''int'' group by parent_ID ";
+                            DMSNEWEntities context = new DMSNEWEntities();
+                            // ds = CommonManger.FillDatasetWithParam("DMS_Customers", "@QueryType", "@countryid", "@entityid", "@CreatedBy", "@InsertQuery", "@TableName", "@ColumnName", "@PartnerId", "@ExistingLocation", "SaveAddressPartner", countryId, entityid, CreatedBy, Query, Tablename, columns, partnerId, jsonExistingLocdata);
+                            results = Common.Getdata(context.MultipleResults("[dbo].[DMS_Customers]").With<PartnerSaveRes>()
+                        .Execute("@QueryType", "@countryid", "@entityid", "@CreatedBy", "@InsertQuery", "@TableName", "@ColumnName", "@PartnerId", "@ExistingLocation", "SaveAddressPartner", countryId, entityid, CreatedBy, Query, Tablename, columns, partnerId, jsonExistingLocdata));
 
 
-        //                }
 
-        //            }
+                        }
+
+                    }
+                    else
+                    {
+                        DMSNEWEntities context = new DMSNEWEntities();
+                        // ds = CommonManger.FillDatasetWithParam("DMS_Customers", "@QueryType", "@countryid", "@entityid", "@CreatedBy", "@InsertQuery", "@TableName", "@ColumnName", "@PartnerId", "@ExistingLocation", "SaveAddressPartner", countryId, entityid, CreatedBy, Query, Tablename, columns, partnerId, jsonExistingLocdata);
+                        results = Common.Getdata(context.MultipleResults("[dbo].[DMS_Customers]").With<PartnerSaveRes>()
+                       .Execute("@QueryType", "@countryid", "@entityid", "@CreatedBy", "@InsertQuery", "@TableName", "@ColumnName", "@PartnerId", "@ExistingLocation", "SaveAddressPartner", countryId, entityid, CreatedBy, Query, Tablename, columns, partnerId, jsonExistingLocdata));
+
+                    }
+                }
+                return results;
+            }
+
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
+        [WebMethod]
+        public Dictionary<string, object> UpdatePartner(List<Object> AddressJson, List<Object> AddressJsonUpdate, string PGroup, string PType, string PDescription, string Status, string CreatedBy, string entityid, string PCode, string PName, string PRepresetative, string EntityCountryId, string PartnerId)
+        {
+            Dictionary<string, object> results = new Dictionary<string, object>();
+            DataSet ds = new DataSet();
+            try
+            {
+
+                //  DataTable dt = CommonManger.FillDatatableWithParam("DMS_Customers", "@QueryType", "@PartnerCode", "@PartnerName", "@PartnerGroup", "@PartnerType", "@Description", "@PartnerRepresentative", "@entityId", "@PartnerStatus", "@CreatedBy", "@countryId", "@PartnerId", "UpdatePartner", PCode, PName, PGroup, PType, PDescription, PRepresetative, entityid, Status, CreatedBy, EntityCountryId, PartnerId);
+                results = Common.Getdata(context.MultipleResults("[dbo].[DMS_Customers]").With<Flag>()
+                       .Execute("@QueryType", "@PartnerCode", "@PartnerName", "@PartnerGroup", "@PartnerType", "@Description", "@PartnerRepresentative", "@entityId", "@PartnerStatus", "@CreatedBy", "@countryId", "@PartnerId", "UpdatePartner", PCode, PName, PGroup, PType, PDescription, PRepresetative, entityid, Status, CreatedBy, EntityCountryId, PartnerId));
+
+                if (results.Count > 0)
+                {
+                    if (AddressJson.Count != 0)
+                    {
+                        string Tablename = "";
+                        string countryId = "";
+                        string Query = "";
+                        string columns = "";
+                        for (int i = 0; i < AddressJson.Count; i++)
+                        {
+
+                            List<string> COLUMN = new List<string>();
+                            string Address = Convert.ToString(AddressJson[i]);
+                            string[] Address1 = Address.Split('&');
+                            string Jsondata = Address1[1];
+                            string Table = Address1[0];
+                            string[] tabs = Table.Split(' ');
+                            Tablename = "";
+                            Tablename = tabs[0];
+                            countryId = "";
+                            countryId = tabs[1];
+
+                            JArray ar = JArray.Parse(Address1[1]);
+                            foreach (JObject content in ar.Children<JObject>())
+                            {
+                                foreach (JProperty prop in content.Properties())
+                                {
+
+                                    COLUMN.Add(prop.Name);
+                                }
+                            }
+                            columns = "";
+                            columns += "AutoId" + " " + "[int] IDENTITY(1,1) NOT NULL" + ",";
+                            for (int c = 0; c < COLUMN.Count; c++)
+                            {
+
+                                columns += COLUMN[c] + " " + "[varchar](250) NULL" + ",";
+
+                            }
+                            columns += "[CountryId] [bigint]" + ' ' + " NULL" + ',';
+                            columns += "[EntityId] [bigint]" + ' ' + " NULL" + ',';
+                            columns += "[PartnerId] [bigint]" + ' ' + " NULL" + ',';
+                            columns += "[LocationFlag] [bigint]" + ' ' + " NULL" + ',';
+                            columns += "[CreatedOn] [Datetime]" + ' ' + "NULL" + ',';
+                            columns += "[UpdatedOn] [varchar](100)" + ' ' + "NULL" + ',';
+                            columns += "[CreatedBy] [bigint]" + ' ' + "NULL" + ',';
+                            columns += "[UpdatedBy] [int]" + ' ' + "NULL" + ',';
+                            columns += "[IsActive] [bit]" + ' ' + "NULL" + ',';
+                            columns += "[IsDeleted] [bit]" + ' ' + "NULL";
+
+                            string InsertColumn = "";
+                            string selectJson = "select ";
+                            Query = "";
+                            for (int d = 0; d < COLUMN.Count; d++)
+                            {
+                                InsertColumn += COLUMN[d] + ",";
+                                selectJson += " max(case when name=''" + COLUMN[d] + "'' then convert(nvarchar(100),StringValue) else '''' end) as " + COLUMN[d] + ",";
+
+                            }
+
+                            string NewInsCols = InsertColumn.Remove(InsertColumn.Length - 1, 1);
+                            string NewselectJson = selectJson.Remove(selectJson.Length - 1, 1);
+                            Query = "insert Into " + Tablename + "(" + NewInsCols + ",IsActive,IsDeleted,CreatedOn,PartnerId,CreatedBy,CountryId,EntityId,LocationFlag)" + selectJson + " 1,0,getdate()," + PartnerId + "," + CreatedBy + "," + countryId + "," + entityid + ",2 FROM parseJSON(" + "''" + Jsondata + "''" + ") where ValueType = ''string'' OR  ValueType = ''int'' group by parent_ID ";
+                            DMSNEWEntities context = new DMSNEWEntities();
+                            //  ds = CommonManger.FillDatasetWithParam("DMS_Customers", "@QueryType", "@countryid", "@entityid", "@CreatedBy", "@InsertQuery", "@TableName", "@ColumnName", "@PartnerId", "SaveAddressPartner", countryId, entityid, CreatedBy, Query, Tablename, columns, PartnerId);
+                            results = Common.Getdata(context.MultipleResults("[dbo].[DMS_Customers]").With<PartnerSaveRes>()
+                        .Execute("@QueryType", "@countryid", "@entityid", "@CreatedBy", "@InsertQuery", "@TableName", "@ColumnName", "@PartnerId", "SaveAddressPartner", countryId, entityid, CreatedBy, Query, Tablename, columns, PartnerId));
 
 
-        //            string Tablename1 = "";
-        //            string countryId1 = "";
-        //            string Query1 = "";
-        //            string columns1 = "";
-        //            // string partnerId = Convert.ToString(dt.Rows[0]["Response"]);
-        //            if (AddressJsonUpdate.Count != 0)
-        //            {
-        //                for (int i = 0; i < AddressJsonUpdate.Count; i++)
-        //                {
-        //                    string COLUMN = "";
-        //                    string Address = Convert.ToString(AddressJsonUpdate[i]);
-        //                    string[] Address1 = Address.Split('&');
-        //                    string Jsondata = Address1[1];
-        //                    string[] data = Jsondata.Split('#');
-        //                    string autoId = data[1];
-        //                    string Table = Address1[0];
-        //                    string[] tabs = Table.Split(' ');
-        //                    Tablename1 = "";
-        //                    Tablename1 = tabs[0];
-        //                    countryId1 = "";
-        //                    countryId1 = tabs[1];
+                        }
 
-        //                    JArray ar = JArray.Parse(data[0]);
-        //                    foreach (JObject content in ar.Children<JObject>())
-        //                    {
-        //                        foreach (JProperty prop in content.Properties())
-        //                        {
-
-        //                            COLUMN += prop.Name + "=" + "'" + prop.Value + "'" + " ,";
-        //                        }
-        //                    }
-
-        //                    Query1 = "Update " + Tablename1 + " set" + COLUMN + "UpdatedBy=" + CreatedBy + ",PartnerId=" + PartnerId + ",UpdatedOn=getdate()" + ",CountryId=" + countryId1 + ",EntityId=" + entityid + " where AutoId=" + autoId;
-
-        //                    ds = CommonManger.FillDatasetWithParam("DMS_Customers", "@QueryType", "@InsertQuery", "@TableName", "UpdatePartnerAddress", Query1, Tablename1);
+                    }
 
 
-        //                }
+                    string Tablename1 = "";
+                    string countryId1 = "";
+                    string Query1 = "";
+                    string columns1 = "";
+                    // string partnerId = Convert.ToString(dt.Rows[0]["Response"]);
+                    if (AddressJsonUpdate.Count != 0)
+                    {
+                        for (int i = 0; i < AddressJsonUpdate.Count; i++)
+                        {
+                            string COLUMN = "";
+                            string Address = Convert.ToString(AddressJsonUpdate[i]);
+                            string[] Address1 = Address.Split('&');
+                            string Jsondata = Address1[1];
+                            string[] data = Jsondata.Split('#');
+                            string autoId = data[1];
+                            string Table = Address1[0];
+                            string[] tabs = Table.Split(' ');
+                            Tablename1 = "";
+                            Tablename1 = tabs[0];
+                            countryId1 = "";
+                            countryId1 = tabs[1];
 
-        //            }
-        //            //else
-        //            //{
+                            JArray ar = JArray.Parse(data[0]);
+                            foreach (JObject content in ar.Children<JObject>())
+                            {
+                                foreach (JProperty prop in content.Properties())
+                                {
 
-        //            //    ds = CommonManger.FillDatasetWithParam("DMS_Customers", "@QueryType", "@countryid", "@entityid", "@CreatedBy", "@InsertQuery", "@TableName", "@ColumnName", "@PartnerId",  "SaveAddressPartner", countryId, entityid, CreatedBy, Query, Tablename, columns, partnerId);
+                                    COLUMN += prop.Name + "=" + "''" + prop.Value + "''" + " ,";
+                                }
+                            }
 
-        //            //}
-        //        }
-        //        return ClsJson.JsonMethods.ToJson(ds);
-        //    }
+                            Query1 = "Update " + Tablename1 + " set" + COLUMN + "UpdatedBy=" + CreatedBy + ",PartnerId=" + PartnerId + ",UpdatedOn=getdate()" + ",CountryId=" + countryId1 + ",EntityId=" + entityid + " where AutoId=" + autoId;
+                            DMSNEWEntities context = new DMSNEWEntities();
+                            // ds = CommonManger.FillDatasetWithParam("DMS_Customers", "@QueryType", "@InsertQuery", "@TableName", "UpdatePartnerAddress", Query1, Tablename1);
+                            results = Common.Getdata(context.MultipleResults("[dbo].[DMS_Customers]").With<Flag>()
+                        .Execute("@QueryType", "@InsertQuery", "@TableName", "UpdatePartnerAddress", Query1, Tablename1));
 
-        //    catch (Exception ex)
-        //    {
-        //        throw;
-        //    }
-        //}
+
+                        }
+
+                    }
+                    //else
+                    //{
+
+                    //    ds = CommonManger.FillDatasetWithParam("DMS_Customers", "@QueryType", "@countryid", "@entityid", "@CreatedBy", "@InsertQuery", "@TableName", "@ColumnName", "@PartnerId",  "SaveAddressPartner", countryId, entityid, CreatedBy, Query, Tablename, columns, partnerId);
+
+                    //}
+                }
+                return results;
+            }
+
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
 
         //[WebMethod]
         //public Dictionary<string, object> SaveVendor(List<Object> AddressJson, string PGroup, string PType, string PDescription, string Status, string CreatedBy, string entityid, string PCode, string PName, string PRepresetative, string EntityCountryId)
@@ -791,19 +819,20 @@ namespace DMS.WebServices
         //    }
         //}
 
-        //[WebMethod]
-        //public Dictionary<string, object> saveTaxInfo(string TaxData)
-        //{
-        //    try
-        //    {
-        //        DataSet ds = CommonManger.FillDatasetWithParam("DMS_Customers", "@QueryType", "@TaxJson", "SaveTaxInfo", TaxData);
-        //        return ClsJson.JsonMethods.ToJson(ds);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw;
-        //    }
-        //}
+        [WebMethod]
+        public Dictionary<string, object> saveTaxInfo(string TaxData)
+        {
+            try
+            {
+                var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_Customers]").With<Flag>()
+                         .Execute("@QueryType", "@TaxJson", "SaveTaxInfo", TaxData));
+                return results;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
         //[WebMethod]
         //public Dictionary<string, object> saveTaxInfoVendor(string TaxData)
         //{
@@ -817,44 +846,46 @@ namespace DMS.WebServices
         //        throw;
         //    }
         //}
-        //[WebMethod]
-        //public Dictionary<string, object> BindExistingLocation(string Entity, string Country)
-        //{
-        //    try
-        //    {
+        [WebMethod]
+        public Dictionary<string, object> BindExistingLocation(string Entity, string Country)
+        {
+            try
+            {
+                var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_Customers]").With<BindExistingLocation>()
+                       .Execute("@QueryType", "@entityId", "@countryid", "BindExistingLocation", Entity, Country));
+                return results;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
 
-        //        DataSet ds = CommonManger.FillDatasetWithParam("DMS_Customers", "@QueryType", "@entityId", "@countryid", "BindExistingLocation", Entity, Country);
-        //        return ClsJson.JsonMethods.ToJson(ds);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw;
-        //    }
+        }
+        [WebMethod]
+        public Dictionary<string, object> BindPartner(string LoadData, string SearchValue)
+        {
+            try
+            {
+                if (SearchValue == "")
+                {
+                    var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_Customers]").With<BindPartnerGrid>().With<Flag>()
+                          .Execute("@QueryType", "@LoadMore", "Bindpartner", LoadData));
+                    return results;
+                }
+                else
+                {
 
-        //}
-        //[WebMethod]
-        //public Dictionary<string, object> BindPartner(string LoadData, string SearchValue)
-        //{
-        //    try
-        //    {
-        //        if (SearchValue == "")
-        //        {
-        //            DataSet dt = CommonManger.FillDatasetWithParam("DMS_Customers", "@QueryType", "@LoadMore", "Bindpartner", LoadData);
-        //            return ClsJson.JsonMethods.ToJson(dt);
-        //        }
-        //        else
-        //        {
-
-        //            string replacestring = SearchValue.Replace("$", "'");
-        //            DataSet ds = CommonManger.FillDatasetWithParam("DMS_Customers", "@QueryType", "@LoadMore", "@SearchValue", "Bindpartner", LoadData, replacestring);
-        //            return ClsJson.JsonMethods.ToJson(ds);
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw;
-        //    }
-        //}
+                    string replacestring = SearchValue.Replace("$", "'");
+                    var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_Customers]").With<BindPartnerGrid>().With<Flag>()
+                         .Execute("@QueryType", "@LoadMore", "@SearchValue", "Bindpartner", LoadData, replacestring));
+                    return results;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
         //[WebMethod]
         //public Dictionary<string, object> BindVendor(string LoadData, string SearchValue)
         //{
@@ -878,20 +909,20 @@ namespace DMS.WebServices
         //        throw;
         //    }
         //}
-        //[WebMethod]
-        //public Dictionary<string, object> BindPartnerOndblClick(string PartnerId)
-        //{
-        //    try
-        //    {
-        //        DataSet ds = CommonManger.FillDatasetWithParam("DMS_Customers", "@QueryType", "@PartId", "BindpartnerOndblClick", PartnerId);
-        //        return ClsJson.JsonMethods.ToJson(ds);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw;
-        //    }
+        [WebMethod]
+        public Dictionary<string, object> BindPartnerOndblClick(string PartnerId)
+        {
+            try
+            {
+                DataSet ds = CommonManger.FillDatasetWithParam("DMS_Customers", "@QueryType", "@PartId", "BindpartnerOndblClick", PartnerId);
+                return ClsJson.JsonMethods.ToJson(ds);
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
 
-        //}
+        }
 
         //[WebMethod]
         //public Dictionary<string, object> BindVendorOndblClick(string VendorId)
@@ -966,19 +997,20 @@ namespace DMS.WebServices
 
         //}
 
-        //[WebMethod]
-        //public Dictionary<string, object> BindAccount(string EntityId, string CountryId)
-        //{
-        //    try
-        //    {
-        //        DataSet ds = CommonManger.FillDatasetWithParam("DMS_Customers", "@QueryType", "@EntityId", "@CountryId", "BindAccount", EntityId, CountryId);
-        //        return ClsJson.JsonMethods.ToJson(ds);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw;
-        //    }
-        //}
+        [WebMethod]
+        public Dictionary<string, object> BindAccount(string EntityId, string CountryId)
+        {
+            try
+            {
+                var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_Customers]").With<BindAccount>()
+                       .Execute("@QueryType", "@EntityId", "@CountryId", "BindAccount", EntityId, CountryId));
+                return results;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
 
     }
 }
