@@ -1153,7 +1153,7 @@
                                             <h6 class="form-section">All Instructions</h6>
                                              </div> 
            <div class="col-md-12" >
-    <p>1. Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>  
+             <p>1. Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>  
                <p>2. Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>  
                  <p>3. Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>  
                                          </div>
