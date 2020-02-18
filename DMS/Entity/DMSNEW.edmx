@@ -1990,6 +1990,8 @@ warning 6002: The table/view 'DMSNEW.dbo.Taxgroupformula' does not have a primar
           <Parameter Name="groupId" Type="bigint" Mode="In" />
           <Parameter Name="AssignType" Type="bigint" Mode="In" />
         </Function>
+        <Function Name="DMS_BindPartnerGroupId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="DMS_BindPartnerTypeId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="DMS_COASetup" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="QueryType" Type="varchar" Mode="In" />
           <Parameter Name="LoadMore" Type="bigint" Mode="In" />
@@ -2095,6 +2097,14 @@ warning 6002: The table/view 'DMSNEW.dbo.Taxgroupformula' does not have a primar
           <Parameter Name="SkuId" Type="bigint" Mode="In" />
           <Parameter Name="LocationId" Type="bigint" Mode="In" />
         </Function>
+        <Function Name="DMS_ImporPartnerGroup" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PartnerType" Type="varchar" Mode="In" />
+          <Parameter Name="Description" Type="varchar" Mode="In" />
+          <Parameter Name="EntityId" Type="int" Mode="In" />
+          <Parameter Name="CountryId" Type="int" Mode="In" />
+          <Parameter Name="CreatedBy" Type="bigint" Mode="In" />
+          <Parameter Name="AccountId" Type="bigint" Mode="In" />
+        </Function>
         <Function Name="DMS_ImportBulkItem" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ItemName" Type="varchar" Mode="In" />
           <Parameter Name="ItemGroup" Type="bigint" Mode="In" />
@@ -2131,6 +2141,18 @@ warning 6002: The table/view 'DMSNEW.dbo.Taxgroupformula' does not have a primar
           <Parameter Name="GroupCode" Type="varchar" Mode="In" />
           <Parameter Name="GroupName" Type="varchar" Mode="In" />
           <Parameter Name="Description" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="DMS_ImportPartners" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PartnerCode" Type="varchar" Mode="In" />
+          <Parameter Name="PartnerName" Type="varchar" Mode="In" />
+          <Parameter Name="PartnerGroup" Type="int" Mode="In" />
+          <Parameter Name="PartnerType" Type="int" Mode="In" />
+          <Parameter Name="Description" Type="varchar" Mode="In" />
+          <Parameter Name="PartnerRepresentative" Type="varchar" Mode="In" />
+          <Parameter Name="EntityId" Type="int" Mode="In" />
+          <Parameter Name="PartnerStatus" Type="int" Mode="In" />
+          <Parameter Name="CreatedBy" Type="bigint" Mode="In" />
+          <Parameter Name="CountryId" Type="int" Mode="In" />
         </Function>
         <Function Name="DMS_ImportUnit" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="UnitCode" Type="varchar" Mode="In" />
@@ -5089,6 +5111,28 @@ warning 6002: The table/view 'DMSNEW.dbo.Taxgroupformula' does not have a primar
             <Parameter Name="ConvertedValue" Mode="In" Type="Decimal" />
             <Parameter Name="CreatedBy" Mode="In" Type="Int64" />
           </FunctionImport>
+          <FunctionImport Name="DMS_ImporPartnerGroup">
+            <Parameter Name="PartnerType" Mode="In" Type="String" />
+            <Parameter Name="Description" Mode="In" Type="String" />
+            <Parameter Name="EntityId" Mode="In" Type="Int32" />
+            <Parameter Name="CountryId" Mode="In" Type="Int32" />
+            <Parameter Name="CreatedBy" Mode="In" Type="Int64" />
+            <Parameter Name="AccountId" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="DMS_ImportPartners">
+            <Parameter Name="PartnerCode" Mode="In" Type="String" />
+            <Parameter Name="PartnerName" Mode="In" Type="String" />
+            <Parameter Name="PartnerGroup" Mode="In" Type="Int32" />
+            <Parameter Name="PartnerType" Mode="In" Type="Int32" />
+            <Parameter Name="Description" Mode="In" Type="String" />
+            <Parameter Name="PartnerRepresentative" Mode="In" Type="String" />
+            <Parameter Name="EntityId" Mode="In" Type="Int32" />
+            <Parameter Name="PartnerStatus" Mode="In" Type="Int32" />
+            <Parameter Name="CreatedBy" Mode="In" Type="Int64" />
+            <Parameter Name="CountryId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="DMS_BindPartnerGroupId" ReturnType="Collection(DMSNEWModel.DMS_BindPartnerGroupId_Result)" />
+          <FunctionImport Name="DMS_BindPartnerTypeId" ReturnType="Collection(DMSNEWModel.DMS_BindPartnerTypeId_Result)" />
         </EntityContainer>
         <ComplexType Name="AngularTest_Result">
           <Property Type="Int32" Name="Empid" Nullable="false" />
@@ -5218,6 +5262,14 @@ warning 6002: The table/view 'DMSNEW.dbo.Taxgroupformula' does not have a primar
         <ComplexType Name="DMS_BindItemcode_Result">
           <Property Type="Int64" Name="Itemid" Nullable="false" />
           <Property Type="String" Name="ItemCode" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="DMS_BindPartnerGroupId_Result">
+          <Property Type="Int64" Name="PartnerTypeId" Nullable="false" />
+          <Property Type="String" Name="PartnerType" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="DMS_BindPartnerTypeId_Result">
+          <Property Type="Int64" Name="PartnerTypeId" Nullable="false" />
+          <Property Type="String" Name="partnerType" Nullable="true" MaxLength="50" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -7512,6 +7564,24 @@ warning 6002: The table/view 'DMSNEW.dbo.Taxgroupformula' does not have a primar
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="DMS_ImportBulkOtherunit" FunctionName="DMSNEWModel.Store.DMS_ImportBulkOtherunit" />
           <FunctionImportMapping FunctionImportName="DMS_ImportItemConversion" FunctionName="DMSNEWModel.Store.DMS_ImportItemConversion" />
+          <FunctionImportMapping FunctionImportName="DMS_ImporPartnerGroup" FunctionName="DMSNEWModel.Store.DMS_ImporPartnerGroup" />
+          <FunctionImportMapping FunctionImportName="DMS_ImportPartners" FunctionName="DMSNEWModel.Store.DMS_ImportPartners" />
+          <FunctionImportMapping FunctionImportName="DMS_BindPartnerGroupId" FunctionName="DMSNEWModel.Store.DMS_BindPartnerGroupId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DMSNEWModel.DMS_BindPartnerGroupId_Result">
+                <ScalarProperty Name="PartnerTypeId" ColumnName="PartnerTypeId" />
+                <ScalarProperty Name="PartnerType" ColumnName="PartnerType" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="DMS_BindPartnerTypeId" FunctionName="DMSNEWModel.Store.DMS_BindPartnerTypeId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DMSNEWModel.DMS_BindPartnerTypeId_Result">
+                <ScalarProperty Name="PartnerTypeId" ColumnName="PartnerTypeId" />
+                <ScalarProperty Name="partnerType" ColumnName="partnerType" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

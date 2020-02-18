@@ -2474,6 +2474,12 @@
     <Compile Include="Entity\DMS_BindItemcode_Result.cs">
       <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entity\DMS_BindPartnerGroupId_Result.cs">
+      <DependentUpon>DMSNEW.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\DMS_BindPartnerTypeId_Result.cs">
+      <DependentUpon>DMSNEW.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entity\DMS_COASetup_Result.cs">
       <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
