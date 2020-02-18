@@ -1,13 +1,12 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/DMS.Master" AutoEventWireup="true" CodeBehind="Partner.aspx.cs" Inherits="DMS.Master.Partner" %>
 
-
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 <script src="../js/jquery-1.11.3.min.js" type="text/javascript"></script>
     <script>        var jquery_1_11_3_min_p = jQuery.noConflict();</script>
     <script src="../js/bootstrap.min.js" type="text/javascript"></script>
     <script>        var bootstrap_min_js = jQuery.noConflict();</script>
     <link href="/Telerix/Style/kendo.default.min.css" rel="stylesheet" type="text/css" /><link href="/Telerix/Style/kendo.dataviz.min.css" rel="stylesheet" type="text/css" /><link href="/Telerix/Style/kendo.dataviz.default.min.css" rel="stylesheet" type="text/css" /><link href="/Telerix/Style/kendo.common.min.css" rel="stylesheet" type="text/css" /><link href="/Telerix/Style/kendo.rtl.min.css" rel="stylesheet" type="text/css" />
-      <link href="../Telerix/Style/kendo.default.mobile.min.css" rel="stylesheet" type="text/css" />
+    <link href="../Telerix/Style/kendo.default.mobile.min.css" rel="stylesheet" type="text/css" />
     <link href="../Telerix/Style/kendo.common.min.css" rel="stylesheet" type="text/css" />
     <link href="../Telerix/Style/kendo.rtl.min.css" rel="stylesheet" type="text/css" />
     <link href="../Telerix/Style/kendo.default.min.css" rel="stylesheet" type="text/css" />
