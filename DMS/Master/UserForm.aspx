@@ -103,8 +103,12 @@
                                             <div class="col-md-3">
                                                 <div class="form-group">
                                                   <label for="Corporate Identity">Warehouse</label>
-                                                    <input type="text"  id="" autocomplete="off"  class="form-control" placeholder="Warehouse" />
-                                                </div>
+                                                   <%-- <input type="text"  id="" autocomplete="off"  class="form-control" placeholder="Warehouse" />--%>
+                                                <select  name="Partners" class="form-control">
+												<option value="Partners" >Warehouse1  </option>
+												<option value="Partners">Warehouse2</option>	
+                                                    </select>
+                                                    </div>
                                             </div>
                                                 <div class="col-md-3">
                                                 <div class="form-group mt-1">
