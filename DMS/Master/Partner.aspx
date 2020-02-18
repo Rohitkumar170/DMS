@@ -32,6 +32,13 @@
                 </div>
                 <div class="content-header-right col-md-6 col-12">
                     <div class="btn-group float-md-right" role="group" aria-label="Button group with nested dropdown">
+                         <span class="multifileupload" id="btnupload" > 
+                       <i class="fa fa-upload"></i>
+                  <%--   <input type="file" id='FileUpload' runat="server" class="custom-file-input multifileBtn" onchange="UploadFile(this);" />--%>
+                           <input type="button" id="upload" value="Import" class="custom-file-input multifileBtn" />
+                           <asp:FileUpload runat="server" Visible="true" ID="FileUpload"  style="display:none" />
+                           <asp:Button ID="btnUpload" runat="server" style="display:none" /> 
+                       </span>
                        <button type="button" id="btnNew" class="btn btn-primary">
                             <i class="fa fa-plus-square"></i> New</button>
                         <button type="button" id="btnSubmit" style="display:none"  class="btn btn-primary">
