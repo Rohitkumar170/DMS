@@ -91,6 +91,7 @@ namespace DMS.WebServices
                                     dt.Rows.Add(dr);
                                 }
                                 string savejson = DataTableToJSON(dt);
+                                DMSNEWEntities context = new DMSNEWEntities();
                                 var results1 = context.MultipleResults("[dbo].[DMS_TaxSetup]").With<Taxinfo>()
                       .Execute("@QueryType", "@Subcomponent", "@Fieldid", "InsertSubcomponent", savejson, FieldId);
                               
@@ -116,7 +117,7 @@ namespace DMS.WebServices
                 if (SearchValue == "")
                 {
                     LoadData = "100";
-                    var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_TaxSetup]").With<TaxSetup>().With<Count>()
+                    var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_TaxSetup]").With<Taxsetup1>().With<Count>()
                        .Execute("@QueryType", "@LoadMore", "BindTaxSetupGrid", LoadData));
                     return results;
                   
@@ -124,7 +125,7 @@ namespace DMS.WebServices
                 else
                 {
                     string replacestring = SearchValue.Replace("$", "'");
-                    var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_TaxSetup]").With<TaxSetup>().With<Count>()
+                    var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_TaxSetup]").With<Taxsetup1>().With<Count>()
                       .Execute("@QueryType", "@LoadMore", "@SearchValue", "SerarchBindPartners", LoadData, replacestring));
                     return results;
                 }
@@ -139,7 +140,7 @@ namespace DMS.WebServices
         {
             try
             {
-                var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_TaxSetup]").With<Taxfield>().With<TaxSetup>()
+                var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_TaxSetup]").With<Taxfield>().With<DblClicktaxSetup>()
                       .Execute("@QueryType", "@TaxFieldId", "BindTaxField", TaxSetupId));
                 return results;
 

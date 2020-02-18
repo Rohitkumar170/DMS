@@ -3147,6 +3147,7 @@
     <Compile Include="Models\TaxSetupClass\BindGST.cs" />
     <Compile Include="Models\TaxSetupClass\Bindlegalfieldvalue.cs" />
     <Compile Include="Models\TaxSetupClass\Calculatorout.cs" />
+    <Compile Include="Models\TaxSetupClass\DblClicktaxSetup.cs" />
     <Compile Include="Models\TaxSetupClass\InvoiceCMP.cs" />
     <Compile Include="Models\TaxSetupClass\Invoicecomponent.cs" />
     <Compile Include="Models\TaxSetupClass\Legalfieldgrid.cs" />
@@ -3157,7 +3158,7 @@
     <Compile Include="Models\TaxSetupClass\Taxgroupgridline.cs" />
     <Compile Include="Models\TaxSetupClass\Taxinfo.cs" />
     <Compile Include="Models\TaxSetupClass\Taxinfosubcomponenet.cs" />
-    <Compile Include="Models\TaxSetupClass\Taxsetup.cs" />
+    <Compile Include="Models\TaxSetupClass\Taxsetup1.cs" />
     <Compile Include="Models\TaxSetupClass\Taxsetupcompo.cs" />
     <Compile Include="Models\TaxSetupClass\Taxtype1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

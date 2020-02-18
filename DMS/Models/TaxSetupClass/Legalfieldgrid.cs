@@ -10,6 +10,6 @@ namespace DMS.Models.TaxSetupClass
         public Int64 LegalTaxHeadId { get; set; }
         public string CountryName { get; set; }
         public string Entityname { get; set; }
-        public Int64 columnCount { get; set; }
+        public Int32 columnCount { get; set; }
     }
 }
