@@ -62,7 +62,7 @@
     </Reference>
     <Reference Include="Ionic.Zip.Reduced, Version=1.9.1.8, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\BusinessLibrary\bin\Debug\Ionic.Zip.Reduced.dll</HintPath>
+      <HintPath>..\..\..\..\dll\Ionic.Zip.Reduced.dll</HintPath>
     </Reference>
     <Reference Include="itextsharp">
       <HintPath>..\..\..\VSS\DLL\itextsharp.dll</HintPath>
@@ -3627,6 +3627,7 @@
     <Content Include="Telerix\Style\vssver.scc" />
     <Content Include="PurchaseInvoice.ashx" />
     <Content Include="SaveInvoice.ashx" />
+    <Content Include="Templates\ImportExcelDocuments.zip" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
