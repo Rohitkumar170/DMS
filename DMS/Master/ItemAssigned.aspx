@@ -58,8 +58,8 @@
                     <div class="card">
                         <div class="card-content">
                         <div class="container">
-                      <div class="row   mt-1 headerDropdown ">
-    <div class="col-md-2 pull-left">    
+                      <div class="row    headerDropdown ">
+    <div class="col-md-4 pull-left">    
     <div class="pdfexport">
    <button type="button" id="btnAdd" onclick="AddRow()" class="btn btn-outline-primary" title="Add Line">
                             <i class="fa fa-plus"></i> </button>
@@ -77,15 +77,15 @@
     
 
                                             <div class="col-md-3 ">
-                                                <div class=" pull-right  ">                                                 
+                                                <div class=" pull-right  pt5">                                                 
                                                     <label class="customPadding"> Partner </label>
                                                     <input type="text" id="ddlpartnername"  autocomplete="off"  style="width: 145px!important;"/>
  
                                                 
                                                 </div>
                                             </div>
-       <div class="col-md-2 ">
-                                                <div class=" pull-right ">                                                 
+       <div class="col-md-3 ">
+                                                <div class="  pt5">                                                 
                                                     <label class="customPadding"> Location</label>
                                                     <input type="text" id="ddllocation"  autocomplete="off"  style="width: 75px!important;"/>
 <%--  <select id="Select4" name="interested" class="Operator">
@@ -97,6 +97,58 @@
                                                 
                                                 </div>
                                             </div>
+                            <div class="col-md-2  ">
+     <div class="searchbox">
+    <%--<button type="button" class="btn btn-primary  mr-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								 <i class="fa fa-search"></i>	Column Search		</button>--%>
+                                   <div class="dropdown " id="">
+							<div class="dropdown-menu checkboxSearch" >
+							<div class="columnList" id="DivSearch">
+								<%--<div class="dropdown-item">
+									<span class="skin skin-polaris">
+										<input type="checkbox" id="check3" checked>
+										<label for="check3" class="coldata">Address Line 1</label>
+									</span>
+								</div>
+								<div class="dropdown-item">
+									<span class="skin skin-polaris">
+										<input type="checkbox" id="check4">
+										<label for="check4" class="coldata">Address Line 1</label>
+									</span>
+								</div>
+                                	<div class="dropdown-item">
+									<span class="skin skin-polaris">
+										<input type="checkbox" id="Checkbox1">
+										<label for="check4" class="coldata">City</label>
+									</span>
+								</div>
+                                	<div class="dropdown-item">
+									<span class="skin skin-polaris">
+										<input type="checkbox" id="Checkbox2">
+										<label for="check4" class="coldata">State</label>
+									</span>
+								</div>
+                                	<div class="dropdown-item">
+									<span class="skin skin-polaris">
+										<input type="checkbox" id="Checkbox3">
+										<label for="check4" class="coldata">State</label>
+									</span>
+								</div>--%>
+                                </div>
+                                <%-- <div class="dropdownBottom">
+                                <label class="pull-left" id="selectall">Select All</label>
+                                  <label class="pull-right" id="reset">Reset</label>
+                                </div>--%>
+							</div>
+						</div>
+                        <fieldset class=" position-relative" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <input type="text" class="form-control round "  placeholder="Search" >
+                            <div class="form-control-position">
+                                <i class="fa fa-search"></i>
+                            </div>
+                            
+                        </fieldset></div>
+</div>
                                             </div></div>
                                             <div class="container">
           <div class="row">
@@ -116,14 +168,54 @@
                   </tr>
                 </thead>
               <tbody>
-                <tr>   
-              
+                <tr>  
                 <td><input type="checkbox" id="chk_1" class="chk_All" /></td>         
                 <td ><span class="customer"> <input type="text" id="txtItem_1"  placeholder="Enter item" onkeyup="RemoveClass(this)" class="fieldName" /></span></td>
                  <td ><span class="customer"> <input type="text" id="txtMinQty_1"  placeholder="Enter Minimum Qty" onkeyup="RemoveClass(this)" class="fieldName" /></span></td>
                   <td ><span class="customer"> <input type="text" id="txtMaxQty_1"  placeholder="Enter Maximum Qty" onkeyup="RemoveClass(this)" class="fieldName" /></span></td>
-                 <td style="opacity:0">1</td> 
-               
+                 <td style="opacity:0">1</td>                
+                </tr>
+                   <tr>  
+                <td><input type="checkbox" id="chk_1" class="chk_All" /></td>         
+                <td ><span class="customer"> <input type="text" id=""  placeholder="Enter item" onkeyup="RemoveClass(this)" class="fieldName" /></span></td>
+                 <td ><span class="customer"> <input type="text" id=""  placeholder="Enter Minimum Qty" onkeyup="RemoveClass(this)" class="fieldName" /></span></td>
+                  <td ><span class="customer"> <input type="text" id=""  placeholder="Enter Maximum Qty" onkeyup="RemoveClass(this)" class="fieldName" /></span></td>
+                 <td style="opacity:0">1</td>                
+                </tr>
+                   <tr>  
+                <td><input type="checkbox" id="chk_1" class="chk_All" /></td>         
+                <td ><span class="customer"> <input type="text" id=""  placeholder="Enter item" onkeyup="RemoveClass(this)" class="fieldName" /></span></td>
+                 <td ><span class="customer"> <input type="text" id=""  placeholder="Enter Minimum Qty" onkeyup="RemoveClass(this)" class="fieldName" /></span></td>
+                  <td ><span class="customer"> <input type="text" id=""  placeholder="Enter Maximum Qty" onkeyup="RemoveClass(this)" class="fieldName" /></span></td>
+                 <td style="opacity:0">1</td>                
+                </tr>
+                   <tr>  
+                <td><input type="checkbox" id="chk_1" class="chk_All" /></td>         
+                <td ><span class="customer"> <input type="text" id=""  placeholder="Enter item" onkeyup="RemoveClass(this)" class="fieldName" /></span></td>
+                 <td ><span class="customer"> <input type="text" id=""  placeholder="Enter Minimum Qty" onkeyup="RemoveClass(this)" class="fieldName" /></span></td>
+                  <td ><span class="customer"> <input type="text" id=""  placeholder="Enter Maximum Qty" onkeyup="RemoveClass(this)" class="fieldName" /></span></td>
+                 <td style="opacity:0">1</td>                
+                </tr>
+                   <tr>  
+                <td><input type="checkbox" id="chk_1" class="chk_All" /></td>         
+                <td ><span class="customer"> <input type="text" id=""  placeholder="Enter item" onkeyup="RemoveClass(this)" class="fieldName" /></span></td>
+                 <td ><span class="customer"> <input type="text" id=""  placeholder="Enter Minimum Qty" onkeyup="RemoveClass(this)" class="fieldName" /></span></td>
+                  <td ><span class="customer"> <input type="text" id=""  placeholder="Enter Maximum Qty" onkeyup="RemoveClass(this)" class="fieldName" /></span></td>
+                 <td style="opacity:0">1</td>                
+                </tr>
+                   <tr>  
+                <td><input type="checkbox" id="chk_1" class="chk_All" /></td>         
+                <td ><span class="customer"> <input type="text" id=""  placeholder="Enter item" onkeyup="RemoveClass(this)" class="fieldName" /></span></td>
+                 <td ><span class="customer"> <input type="text" id=""  placeholder="Enter Minimum Qty" onkeyup="RemoveClass(this)" class="fieldName" /></span></td>
+                  <td ><span class="customer"> <input type="text" id=""  placeholder="Enter Maximum Qty" onkeyup="RemoveClass(this)" class="fieldName" /></span></td>
+                 <td style="opacity:0">1</td>                
+                </tr>
+                   <tr>  
+                <td><input type="checkbox" id="chk_1" class="chk_All" /></td>         
+                <td ><span class="customer"> <input type="text" id=""  placeholder="Enter item" onkeyup="RemoveClass(this)" class="fieldName" /></span></td>
+                 <td ><span class="customer"> <input type="text" id=""  placeholder="Enter Minimum Qty" onkeyup="RemoveClass(this)" class="fieldName" /></span></td>
+                  <td ><span class="customer"> <input type="text" id=""  placeholder="Enter Maximum Qty" onkeyup="RemoveClass(this)" class="fieldName" /></span></td>
+                 <td style="opacity:0">1</td>                
                 </tr>
               </tbody>
               </table>

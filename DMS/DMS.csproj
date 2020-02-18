@@ -495,6 +495,7 @@
     <Content Include="Master\AddressFields.aspx" />
     <Content Include="Master\AddressFieldSetup.aspx" />
     <Content Include="Master\CreateSequence.aspx" />
+    <Content Include="Master\Employee.aspx" />
     <Content Include="Master\EntitySetup.aspx" />
     <Content Include="Master\ItemAssigned.aspx" />
     <Content Include="Master\ItemCreate.aspx" />
@@ -2934,6 +2935,13 @@
     </Compile>
     <Compile Include="Master\CreateSequence.aspx.designer.cs">
       <DependentUpon>CreateSequence.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Master\Employee.aspx.cs">
+      <DependentUpon>Employee.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master\Employee.aspx.designer.cs">
+      <DependentUpon>Employee.aspx</DependentUpon>
     </Compile>
     <Compile Include="Master\EntitySetup.aspx.cs">
       <DependentUpon>EntitySetup.aspx</DependentUpon>

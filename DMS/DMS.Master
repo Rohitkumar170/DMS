@@ -367,6 +367,11 @@
                   <li class=""><a class="menu-item" href="../Master/CreateSequence.aspx"><span >Create Sequence</span></a> </li>  
                     </ul>
                             </li> 
+                                      <li><a class="menu-item" href="#"><span>Employee</span></a>
+                  <ul class="menu-content">                  
+                  <li class=""><a class="menu-item" href="../Master/Employee.aspx"><span >Create Employee</span></a> </li>  
+                    </ul>
+                            </li> 
                         </ul>
                     </li>
                            <li class=" nav-item"><a href="#"><span

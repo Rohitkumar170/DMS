@@ -67,7 +67,7 @@
                                 <div class="card-body ">
                                     <div class="card-text">
  <div class="row headerDropdown ">
-                    <div class="content-header-left col-md-3 ">
+                    <div class="content-header-left col-md-6 ">
     <label class="textHeader" id="pCode" style="display:none">Partner Code:</label> <label class="pr-5" id="lblPCode"></label>
     <label class="textHeader" id="pName" style="display:none">Partner Name:</label> <label id="lblPName"></label>
                 </div>
@@ -96,13 +96,18 @@
                                                
                                                 </div>
                                             </div>--%>
-<div class="content-header-right col-md-3">
+<div class="content-header-right col-md-6">
                     <div class="btn-group float-md-right" role="group">
                      <button type="button" style="display:none" class="btn btn-primary " id="btntaxGrp">
                             <i class="fa fa-money"></i> Tax Group</button>
                       
-                        <button type="button" id="Button4" class="btn btn-primary waves-effect waves-light">
-                           <i class="fa fa-arrow-left"></i> Button3</button>
+                     <span class="multifileupload pb5" id="btnupload" > 
+                       <i class="fa fa-upload"></i>
+                  <%--   <input type="file" id='FileUpload' runat="server" class="custom-file-input multifileBtn" onchange="UploadFile(this);" />--%>
+                           <input type="button" id="upload" value="Import" class="custom-file-input multifileBtn" />
+                           <asp:FileUpload runat="server" Visible="true" ID="FileUpload1"  style="display:none" />
+                           <asp:Button ID="Button2" runat="server" style="display:none" /> 
+                       </span>
                       
                     </div>
                 </div>
@@ -354,20 +359,30 @@
                                      <div class="form-body" id="TaxDiv" style="display:none">
                                         <h6 class="form-section">Legal / Tax</h6>
                                         <div class="row   ">
-    <div class="col-md-12 ">    
+    <div class="col-md-6 ">    
     <div class="pdfexport tablebtn">
    <button type="button" id="btnAdd" onclick="AddRow()" class="btn btn-outline-primary" title="Add Line">
                             <i class="fa fa-plus"></i> </button>
                             <button type="button" id="btnDeleteLine" class="btn btn-outline-primary" title="Delete Line">
                             <i class="fa fa-trash"></i> </button>
                             <button type="button" id="Button1" class="btn btn-outline-primary" title="Export">
-                            <i class="fa fa-file"></i> </button>
+                            <i class="fa fa-file-excel-o"></i> </button>
                             <button type="button" id="Button1" class="btn btn-outline-primary" title="PDF">
-                            <i class="fa fa-print"></i> </button>    
+                            <i class="fa fa-file-pdf-o"></i> </button>    
                           
     </div>
+        </div>
+  <div class="col-md-6 "> 
+      <div class="pdfexport tablebtn ">
+<span class="multifileupload pb5 pull-right" id="btnupload" > 
+                       <i class="fa fa-upload"></i>
+                  <%--   <input type="file" id='FileUpload' runat="server" class="custom-file-input multifileBtn" onchange="UploadFile(this);" />--%>
+                           <input type="button" id="upload" value="Import" class="custom-file-input multifileBtn" />
+                           <asp:FileUpload runat="server" Visible="true" ID="FileUpload2"  style="display:none" />
+                           <asp:Button ID="Button3" runat="server" style="display:none" /> 
+                       </span>
   
-    
+      </div>
     </div>
     
     
@@ -384,6 +399,72 @@
                                 <th>Tax</th>
                                 <th>Addresses</th>
                                 <th>Input Value</th>
+                               
+                            </tr>
+                        </thead>
+                      <tbody>
+                      <tr>
+                      <td style="display:none">1</td>
+                      <td><input type="checkbox" id="cb_1" class="checkbox"/></td>
+                      <td><input type='text' id='ddlTaxCountry_1' class='fieldName' onchange=''  onkeyup='' autocomplete='off'/></td>
+                    <td><input type='text' placeholder='' class='fieldName' id='ddlTax_1' autocomplete='off' onchange='' onkeypress='' onkeyup='' /></td>
+                       <td><input type='text' placeholder='' class='fieldName' id='ddlAddress_1' autocomplete='off' onchange='' onkeypress='' onkeyup='' /></td>
+                       <td><input type='text' id='txtamt_1' class='fieldName'   autocomplete='off'/></td>
+                      </tr>
+                      </tbody>
+                          
+                    </table>
+                            </div>
+                                            </div>
+                                   
+
+                                        </div>
+                                       
+                                    </div>
+
+                                         <div class="form-body" id="empDiv" >
+                                        <h6 class="form-section">Employee</h6>
+                                        <div class="row   ">
+    <div class="col-md-6 ">    
+    <div class="pdfexport tablebtn">
+   <button type="button" id="btnAdd" onclick="AddRow()" class="btn btn-outline-primary" title="Add Line">
+                            <i class="fa fa-plus"></i> </button>
+                            <button type="button" id="btnDeleteLine" class="btn btn-outline-primary" title="Delete Line">
+                            <i class="fa fa-trash"></i> </button>
+                            <button type="button" id="Button1" class="btn btn-outline-primary" title="Export">
+                            <i class="fa fa-file-excel-o"></i> </button>
+                            <button type="button" id="Button1" class="btn btn-outline-primary" title="PDF">
+                            <i class="fa fa-file-pdf-o"></i> </button>    
+                          
+    </div>
+        </div>
+  <div class="col-md-6 "> 
+      <div class="pdfexport tablebtn ">
+<span class="multifileupload pb5 pull-right" id="btnupload" > 
+                       <i class="fa fa-upload"></i>
+                  <%--   <input type="file" id='FileUpload' runat="server" class="custom-file-input multifileBtn" onchange="UploadFile(this);" />--%>
+                           <input type="button" id="upload" value="Import" class="custom-file-input multifileBtn" />
+                           <asp:FileUpload runat="server" Visible="true" ID="FileUpload3"  style="display:none" />
+                           <asp:Button ID="Button4" runat="server" style="display:none" /> 
+                       </span>
+  
+      </div>
+    </div>
+    
+    
+                                            </div>
+                                        <div class="row">
+                                         <div class="col-md-12">
+                                                    <div  class="table-responsive" >
+                            <table class="table table-de"  id="tblTaxInfo" >
+                        <thead>
+                            <tr>
+                                <th style="display:none"></th>
+                                <th><input type="checkBox" id="checkAll"/> All</th>
+                                <th>Name</th>
+                                <th>Mobile</th>
+                                <th>Email</th>
+                                <th>Address</th>
                                
                             </tr>
                         </thead>
