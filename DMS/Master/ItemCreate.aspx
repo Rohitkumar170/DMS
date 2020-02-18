@@ -21,7 +21,7 @@
    <style>
    #instruction p{margin-bottom:5px !important;}
    #ItemGrid td:nth-child(3), #ItemGrid th:nth-child(3) {    white-space: nowrap; 
-  width: 250px; 
+  width: 220px; 
   overflow: hidden;
   text-overflow: ellipsis; }
       #ItemGrid td:nth-child(4), #ItemGrid th:nth-child(4) {    width: 250px;}
