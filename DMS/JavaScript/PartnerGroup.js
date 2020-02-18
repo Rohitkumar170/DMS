@@ -89,12 +89,6 @@ swal("Deleted Successfully","Your data deleted successfully!","success")
         jquery_1_11_3_min_p('#btnBack').css('display', 'block');
         jquery_1_11_3_min_p('#btnNew').css('display', 'none');
         jquery_1_11_3_min_p('#searchText').val("");
-       // BindEntity();
-         //kendo_all_min_js('#ddlentity').data("kendoDropDownList").value(entityid);
-         // kendo_all_min_js('#ddlentity').data("kendoDropDownList").readonly();
-         //BindCountry(entityid)
-         //kendo_all_min_js('#ddlcountry').data("kendoDropDownList").value(countryid);
-         // kendo_all_min_js('#ddlcountry').data("kendoDropDownList").readonly();
          $("#txtPartnerType_1").val( row.find('td:nth-child(6)').text().trim());
           $("#txtDescription_1").val( row.find('td:nth-child(7)').text().trim());
           BindAccount();
@@ -555,48 +549,6 @@ function UpdatePartnerGroup() {
 
 
 }
-
-
-//function BindCountry(entity) {
-// Country=[];
-//var Entity=[];
-//    jquery_1_11_3_min_p.ajax({
-//        type: "POST",
-//        contentType: "application/json; charset=utf-8",
-//        url: "../WebServices/Customer.asmx/BindCountry",
-//        data: "{'entity':'"+entity+"'}",
-//        dataType: "json",
-//        async: false,
-//        success: function (result) {
-//            jsonData = eval(result.d);
-
-           
-//            var i = 0;
-//           Country.push({ value: "0", text: "Select" });
-//            jQuery.each(jsonData.Table, function (rec) {
-//                Country.push({ value: jsonData.Table[i].CountryId, text: jsonData.Table[i].CountryName });
-//                i++;
-//            });
-       
-//        },
-//        error: function (result) {
-//        }
-//    });
-  
-
-//    kendo_all_min_js('#ddlcountry').kendoDropDownList({
-//        filter: "contains",
-//        dataTextField: "text",
-//        dataValueField: "value",
-//        dataSource: Country,
-//        change: function () {
-//            kendo_all_min_js('#ddlcountry').data("kendoDropDownList").span.css('background', 'none');
-//              BindAccount();
-//        }
-//    });
-
-//}
-
 function BindAccount() {
 if(counter==0)
     { counter++; }
@@ -638,47 +590,6 @@ if(counter==0)
     });
 
 }
-
-
-//function BindEntity() {
-//var Country=[];
-//var Entity=[];
-//    jquery_1_11_3_min_p.ajax({
-//        type: "POST",
-//        contentType: "application/json; charset=utf-8",
-//        url: "../WebServices/Customer.asmx/BindEntity",
-//        data: "{}",
-//        dataType: "json",
-//        async: false,
-//        success: function (result) {
-//            jsonData = eval(result.d);
-//            var i = 0;
-//           Entity.push({ value: "0", text: "Select" });
-//            jQuery.each(jsonData.Table, function (rec) {
-//                Entity.push({ value: jsonData.Table[i].Entityid, text: jsonData.Table[i].Entityname });
-//                i++;
-//            });
-//        },
-//        error: function (result) {
-//        }
-//    });
-
-//    kendo_all_min_js('#ddlentity').kendoDropDownList({
-//        filter: "contains",
-//        dataTextField: "text",
-//        dataValueField: "value",
-//        dataSource: Entity,
-//        change: function () {
-//            kendo_all_min_js('#ddlentity').data("kendoDropDownList").span.css('background', 'none');
-//          var entity=   kendo_all_min_js('#ddlentity').val();
-//            BindCountry(entity)
-//            BindAccount();
-//        }
-//    });
-
-//}
-
-
 function AddRow() {
     if (counter == 0) {
         counter++;

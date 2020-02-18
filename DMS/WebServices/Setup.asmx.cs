@@ -570,9 +570,6 @@ namespace DMS.WebServices
         {
             try
             {
-
-                //DataSet dt = CommonManger.FillDatasetWithParam("DMS_Transaction", "@QueryType", "@Partid", "@Entityid", "BindPartnerLocation", PartnerId, Entityid);
-                //return ClsJson.JsonMethods.ToJson(dt);
                 var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_Transaction]").With<BindLocation>()
                        .Execute("@QueryType", "@Partid", "@Entityid", "BindPartnerLocation", PartnerId, Entityid));
                 return results;
@@ -604,9 +601,6 @@ namespace DMS.WebServices
         {
             try
             {
-
-                //DataSet dt = CommonManger.FillDatasetWithParam("DMS_Transaction", "@QueryType", "@Assigneditemid", "BindItems", Assignedid);
-                //return ClsJson.JsonMethods.ToJson(dt);
                 var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_Transaction]").With<BindItems>()
                       .Execute("@QueryType", "@Assigneditemid", "BindItems", Assignedid));
                 return results;
@@ -664,20 +658,21 @@ namespace DMS.WebServices
             }
 
         }
-        //[WebMethod]
-        //public Dictionary<string, object> SaveAssigneditem(string Jsondata, string Jsonitems)
-        //{
-        //    try
-        //    {
-        //        DataSet dt = CommonManger.FillDatasetWithParam("DMS_AdminSetUp", "@QueryType", "@jsonData", "@JsonFields", "SaveAssignedItem", Jsondata, Jsonitems);
-        //        return ClsJson.JsonMethods.ToJson(dt);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw;
-        //    }
+        [WebMethod]
+        public Dictionary<string, object> SaveAssigneditem(string Jsondata, string Jsonitems)
+        {
+            try
+            {
+                var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_AdminSetUp]").With<Flag>()
+                        .Execute("@QueryType", "@jsonData", "@JsonFields", "SaveAssignedItem", Jsondata, Jsonitems));
+                return results;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
 
-        //}
+        }
 
         //[WebMethod]
         //public Dictionary<string, object> SaveAssigneditemVendor(string Jsondata, string Jsonitems)
@@ -855,8 +850,6 @@ namespace DMS.WebServices
             {
                 if (SearchValue == "")
                 {
-                    //DataSet dt = CommonManger.FillDatasetWithParam("DMS_AdminSetUp", "@QueryType", "@LoadMore", "@entityid", "BindAssignedDataSetupGrid", LoadData, EntityId);
-                    //return ClsJson.JsonMethods.ToJson(dt);
                     var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_AdminSetUp]").With<BindAssignedDataSetupGrid>().With<Count>()
                       .Execute("@QueryType", "@LoadMore", "@entityid", "BindAssignedDataSetupGrid", LoadData, EntityId));
                     return results;
@@ -865,8 +858,6 @@ namespace DMS.WebServices
                 {
 
                     string replacestring = SearchValue.Replace("$", "'");
-                    //DataSet ds = CommonManger.FillDatasetWithParam("DMS_AdminSetUp", "@QueryType", "@LoadMore", "@SearchValue", "BindAssignedDataSetupGrid", LoadData, replacestring);
-                    //return ClsJson.JsonMethods.ToJson(ds);
                     var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_AdminSetUp]").With<BindAssignedDataSetupGrid>().With<Count>()
                      .Execute("@QueryType", "@LoadMore", "@SearchValue", "BindAssignedDataSetupGrid", LoadData, replacestring));
                     return results;

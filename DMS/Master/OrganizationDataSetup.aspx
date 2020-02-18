@@ -19,7 +19,11 @@
     <script src="../Telerix/js/jszip.min.js" type="text/javascript"></script>
    
     <script src="../JavaScript/OrganizationDataSetup.js" type="text/javascript"></script>
-  
+  <style>
+      #TblOrgDataGrid td:nth-child(6), #TblOrgDataGrid th:nth-child(6) {
+    width: 50px !important;
+}
+  </style>
   
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -101,14 +105,14 @@
 <div class="row  pl-1 mt-1 headerDropdown ">
     <div class="col-md-12 pull-left">    
     <div class="pdfexport">
-   <button type="button" id="btnAdd" onclick="AddRow()" class="btn btn-primary waves-effect waves-light">
-                            <i class="fa fa-plus"></i> Add Line</button>
-                            <button type="button" id="btnDeleteLine" class="btn btn-primary waves-effect waves-light">
-                            <i class="fa fa-trash"></i> Delete Line</button>
-                            <button type="button" id="Button1" style="display:none" class="btn btn-primary waves-effect waves-light">
-                            <i class="fa fa-file"></i> Export</button>
-                            <button type="button" id="Button2" style="display:none" class="btn btn-primary waves-effect waves-light">
-                            <i class="fa fa-print"></i> PDF</button>    
+   <button type="button" id="btnAdd" onclick="AddRow()" class="btn btn-outline-primary" title="Add Line">
+                            <i class="fa fa-plus"></i> </button>
+                            <button type="button" id="btnDeleteLine" class="btn btn-outline-primary" title="Delete Line">
+                            <i class="fa fa-trash"></i> </button>
+                            <button type="button" id="Button1" style="display:none" class="btn btn-outline-primary" title="Export">
+                            <i class="fa fa-file-excel-o"></i> </button>
+                            <button type="button" id="Button2" style="display:none" class="btn btn-outline-primary" title="PDF">
+                            <i class="fa fa-file-pdf-o"></i> </button>    
                           
     </div>
   
@@ -259,12 +263,12 @@
 
     <div class="col-md-8 pull-left">    
     <div class="pdfexport">
-   <button type="button" id="btnExport" class="btn btn-primary waves-effect waves-light">
-                            <i class="fa fa-file"></i> Export</button>
-                            <button type="button" id="btnPdf" class="btn btn-primary waves-effect waves-light">
-                            <i class="fa fa-print"></i> PDF</button>
-                             <button type="button" id="btnUpdate" style="display:none" disabled class="btn btn-primary waves-effect waves-light">
-                            <i class="fa fa-edit"></i> Edit</button>
+   <button type="button" id="btnExport" class="btn btn-outline-primary" title="Export">
+                            <i class="fa fa-file-excel-o"></i> </button>
+                            <button type="button" id="btnPdf" class="btn btn-outline-primary" title="PDF">
+                            <i class="fa fa-file-pdf-o"></i> </button>
+                             <button type="button" id="btnUpdate" style="display:none" disabled class="btn btn-outline-primary" title="Edit">
+                            <i class="fa fa-edit"></i> </button>
                           
                           
     </div>

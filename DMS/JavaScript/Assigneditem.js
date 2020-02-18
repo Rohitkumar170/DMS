@@ -1,20 +1,15 @@
-﻿var LoadData = ''; var Assigned = []; var Country = []; Entity = [];var searchtxt = '';var ColumnName=[]; var Items=[]; var Itemcount=1; var PartnerLocation=[];
-var locationid = ''; var partnerid = ''; var SessionEntityId = 1; var SessionCountryId = 1;
+﻿var LoadData = ''; var Country = []; Entity = []; var searchtxt = ''; var ColumnName = []; var Items = []; var Itemcount = 1; var PartnerLocation = [];
+var locationid = ''; var partnerid = ''; var SessionEntityId = 1; var SessionCountryId = 1; var PartnerArr = [];
 jquery_1_11_3_min_p(document).ready(function () {
-//BindEntityForgrid();
     jquery_1_11_3_min_p("#hdnLoad").val(10);
     LoadData = jquery_1_11_3_min_p("#hdnLoad").val();
-     BindAssignedDataSetupGrid(searchtxt,kendo_all_min_js('#ddlgridEntity').val())
-    //BindEntity();
-    BindAssigned(SessionCountryId, SessionEntityId)
-    Assigned = [];
-    
-    Assigned.push({ value: "0", text: "Select" });
+    BindAssignedDataSetupGrid(searchtxt, kendo_all_min_js('#ddlgridEntity').val());
+    PartnerArr.push({ value: "0", text: "Select" });
     kendo_all_min_js('#ddlpartnername').kendoDropDownList({
         filter: "contains",
         dataTextField: "text",
         dataValueField: "value",
-        dataSource: Assigned,
+        dataSource: PartnerArr,
         change: function () {
             kendo_all_min_js('#ddlpartnername').data("kendoDropDownList").span.css('background', 'none');
         }
@@ -51,9 +46,7 @@ jquery_1_11_3_min_p(document).ready(function () {
    var countryid=row.find('td:nth-child(3)').text().trim();
    partnerid=row.find('td:nth-child(4)').text().trim();
    locationid=row.find('td:nth-child(5)').text().trim();
-   kendo_all_min_js('#ddlcountry').data("kendoDropDownList").value(countryid);
-   kendo_all_min_js('#ddlentity').data("kendoDropDownList").value(entityid);
-   BindPartnerLocation(partnerid,kendo_all_min_js('#ddlentity').val());
+        BindPartnerLocation(partnerid, entityid);
    BindAssigned(countryid, entityid)
    jquery_1_11_3_min_p('#PartnerItemAssignedForm').css('display', 'block');
    jquery_1_11_3_min_p('#PartnerItemAssignedGrid').css('display', 'none');
@@ -67,11 +60,11 @@ jquery_1_11_3_min_p(document).ready(function () {
         $("#PartnerItemAssignedForm").css('display', 'block');
         $("#PartnerItemAssignedGrid").css('display', 'none');
         jquery_1_11_3_min_p('#btnsubmit').css('display', 'block');
-        //jquery_1_11_3_min_p('#btnSubmit').prop('disabled', true);
         jquery_1_11_3_min_p('#btnback').css('display', 'block');
         jquery_1_11_3_min_p('#btnnew').css('display', 'none');
           jquery_1_11_3_min_p("#txtMinQty_1").val(0);
         jquery_1_11_3_min_p("#txtMaxQty_1").val(0);
+        BindAssigned(SessionCountryId, SessionEntityId);
     });
 
     jquery_1_11_3_min_p("#btnback").click(function () {
@@ -146,88 +139,6 @@ swal("Deleted Successfully","Items deleted successfully!","success")
 
 });
 
-//function BindEntity() {
-//    jquery_1_11_3_min_p.ajax({
-//        type: "POST",
-//        contentType: "application/json; charset=utf-8",
-//        url: "../WebServices/Setup.asmx/BindFieldDetails",
-//        data: "{}",
-//        dataType: "json",
-//        async: false,
-//        success: function (result) {
-//            jsonData = eval(result.d);
-//            Country = [];
-//            var i = 0;
-//            // Country.push({ value: "0", text: "Select" });
-//            jQuery.each(jsonData.Table1, function (rec) {
-//                Country.push({ value: jsonData.Table1[i].CountryId, text: jsonData.Table1[i].CountryName });
-//                i++;
-//            });
-//            Entity = [];
-//            var i = 0;
-//            Entity.push({ value: "0", text: "Select" });
-//            jQuery.each(jsonData.Table2, function (rec) {
-//                Entity.push({ value: jsonData.Table2[i].Entityid, text: jsonData.Table2[i].Entityname });
-//                i++;
-//            });
-//        },
-//        error: function (result) {
-//        }
-//    });
-
-
-//    kendo_all_min_js('#ddlcountry').kendoDropDownList({
-//        filter: "contains",
-//        dataTextField: "text",
-//        dataValueField: "value",
-//        dataSource: Country,
-//        change: function () {
-//            kendo_all_min_js('#ddlcountry').data("kendoDropDownList").span.css('background', 'none');
-//            var EntityId = kendo_all_min_js('#ddlentity').val();
-//            var CountryId = kendo_all_min_js('#ddlcountry').val();
-//            Assigned = [];
-//            Assigned.push({ value: "0", text: "Select" });
-//            kendo_all_min_js('#ddlpartnername').kendoDropDownList({
-//                filter: "contains",
-//                dataTextField: "text",
-//                dataValueField: "value",
-//                dataSource: Assigned,
-//                change: function () {
-//                    kendo_all_min_js('#ddlpartnername').data("kendoDropDownList").span.css('background', 'none');
-//                }
-//            });
-           
-//            BindAssigned(CountryId, EntityId)
-//        }
-//    });
-
-//    kendo_all_min_js('#ddlentity').kendoDropDownList({
-//        filter: "contains",
-//        dataTextField: "text",
-//        dataValueField: "value",
-//        dataSource: Entity,
-//        change: function () {
-//            kendo_all_min_js('#ddlentity').data("kendoDropDownList").span.css('background', 'none');
-//            Assigned = [];
-//            Assigned.push({ value: "0", text: "Select" });
-//            kendo_all_min_js('#ddlpartnername').kendoDropDownList({
-//                filter: "contains",
-//                dataTextField: "text",
-//                dataValueField: "value",
-//                dataSource: Assigned,
-//                change: function () {
-//                    kendo_all_min_js('#ddlpartnername').data("kendoDropDownList").span.css('background', 'none');
-//                }
-//            });
-//            var EntityId = kendo_all_min_js('#ddlentity').val();
-//           var CountryId = kendo_all_min_js('#ddlcountry').val();
-//          BindAssigned(CountryId, EntityId)
-           
-//        }
-//    });
-//}
-
-
 function BindAssigned(CountryId, EntityId) {
     jquery_1_11_3_min_p.ajax({
         type: "POST",
@@ -238,11 +149,11 @@ function BindAssigned(CountryId, EntityId) {
         async: false,
         success: function (result) {
             jsonData = eval(result.d);
-            Parameter = [];
+            PartnerArr = [];
             var i = 0;
-            Parameter.push({ value: "0", text: "Select" });
+            PartnerArr.push({ value: "0", text: "Select" });
             jQuery.each(jsonData.Table, function (rec) {
-                Parameter.push({ value: jsonData.Table[i].PartnerId, text: jsonData.Table[i].PartnerName });
+                PartnerArr.push({ value: jsonData.Table[i].PartnerId, text: jsonData.Table[i].PartnerName });
                 i++;
             });
 
@@ -268,15 +179,13 @@ function BindAssigned(CountryId, EntityId) {
           kendo_all_min_js('#'+itemid).data("kendoDropDownList").span.css('background', 'none');
         }
     });
-
       kendo_all_min_js('#ddlpartnername').kendoDropDownList({
         filter: "contains",
         dataTextField: "text",
         dataValueField: "value",
-        dataSource: Parameter,
+          dataSource: PartnerArr,
         change: function () {
           kendo_all_min_js('#ddlpartnername').data("kendoDropDownList").span.css('background', 'none');
-            // kendo_all_min_js('#'+itemid)
             BindPartnerLocation(kendo_all_min_js('#ddlpartnername').val(), SessionEntityId);
         }
     });
@@ -337,11 +246,6 @@ jquery_1_11_3_min_p("#tblitemassigned tbody").empty();
     });
    
 }
-
-
-
-
-
 function BindPartnerLocation(Partnerid ,Entityid) {
     jquery_1_11_3_min_p.ajax({
         type: "POST",
@@ -386,14 +290,6 @@ function BindPartnerLocation(Partnerid ,Entityid) {
 function ValidateHeaderDropDown() {
     var allow = true;
     var i = 0;
-    //if (kendo_all_min_js("#ddlcountry").val() == 0) {
-    //    kendo_all_min_js("#ddlcountry").data("kendoDropDownList").span.css('background', '#f9e5e5');
-    //    allow = false;
-    //}
-    //if (kendo_all_min_js("#ddlentity").val() == 0) {
-    //    kendo_all_min_js("#ddlentity").data("kendoDropDownList").span.css('background', '#f9e5e5');
-    //    allow = false;
-    //}
     if (kendo_all_min_js("#ddlpartnername").val() == 0) {
         kendo_all_min_js("#ddlpartnername").data("kendoDropDownList").span.css('background', '#f9e5e5');
         allow = false;
@@ -442,7 +338,7 @@ var jsonfield=[];var Jsonfdata='';
     success: function (result) {
             var i = 0;
             var jsonData = eval(result.d);
-            if(jsonData.Table1[0].Response==1)
+            if(jsonData.Table[0].Res=="1")
             {
              swal("Saved Successfully","Items Saved successfully!","success")
             .then((value) => {
@@ -524,7 +420,7 @@ function BindAssignedDataSetupGrid(searchtxt,entityid) {
             var Searchfinaldiv="<div class='dropdownBottom'><label class='pull-left' id='selectall' onclick='searchcheckAll()' >Select All</label><label class='pull-right' id='reset' onclick='searchUncheckAll()' >Reset</label></div>";
 jquery_1_11_3_min_p("#DivSearch").append(Searchfinaldiv);
             if (jsonData.Table.length >= jsonData.Table1[0].Totalcount) {
-                jquery_1_11_3_min_p('#lblRowCount').text(jsonData.Table1[0].Totalcount);
+                jquery_1_11_3_min_p('#lblRowCount').text(jsonData.Table1[0].length);
                 jquery_1_11_3_min_p('#lblTotalCount').text(jsonData.Table1[0].Totalcount);
                 jquery_1_11_3_min_p('#btnLoadMore').css('visibility', 'hidden');
             }

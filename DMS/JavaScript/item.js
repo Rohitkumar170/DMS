@@ -1921,7 +1921,7 @@ function BindItemGrid() {
 //            
             jQuery.each(jsonData.Table, function (rec) {
 //            <td style='display:none'> " + jsonData.Table[i].FieldId + "</td>
-                var markup = "<tr> <td style='display:none'> " + jsonData.Table[i].Itemid + "</td> <td> <input id='chkbox' type='checkbox' class='checkAll'  /></td><td>" + jsonData.Table[i].ItemName + "</td> <td >" + jsonData.Table[i].GroupName + "</td> <td >" + jsonData.Table[i].Itemtype + "</td> <td >" + jsonData.Table[i].CartPrice + "</td> <td >" + jsonData.Table[i].Description + "</td></tr>";
+                var markup = "<tr> <td style='display:none'> " + jsonData.Table[i].Itemid + "</td> <td> <input id='chkbox' type='checkbox' class='checkAll'  /></td><td title='" + jsonData.Table[i].ItemName + "'>" + jsonData.Table[i].ItemName + "</td> <td >" + jsonData.Table[i].GroupName + "</td> <td >" + jsonData.Table[i].Itemtype + "</td> <td >" + jsonData.Table[i].CartPrice + "</td> <td >" + jsonData.Table[i].Description + "</td></tr>";
 
                 jquery_1_11_3_min_p("#ItemGrid tbody").append(markup);
 
