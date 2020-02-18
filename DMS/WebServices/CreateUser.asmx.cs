@@ -25,10 +25,17 @@ namespace DMS.WebServices
         [WebMethod]
         public Dictionary<string, object> BindCountry()
         {
-           context  = new DMSNEWEntities();
-            var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_UserSetup]").With<Country>()
-                            .Execute("@QueryType","BindCountry"));
-            return results;
+            try
+            {
+                context = new DMSNEWEntities();
+                var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_UserSetup]").With<Country>()
+                                .Execute("@QueryType", "BindCountry"));
+                return results;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         [WebMethod]
@@ -43,7 +50,7 @@ namespace DMS.WebServices
             }
             catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
 
         }
@@ -60,7 +67,7 @@ namespace DMS.WebServices
             }
             catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
 
         }
@@ -93,7 +100,7 @@ namespace DMS.WebServices
             }
             catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
 
         }
@@ -112,7 +119,7 @@ namespace DMS.WebServices
             }
             catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
 
         }
@@ -133,7 +140,7 @@ namespace DMS.WebServices
             }
             catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
 
         }
@@ -149,7 +156,7 @@ namespace DMS.WebServices
             }
             catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
 
         }

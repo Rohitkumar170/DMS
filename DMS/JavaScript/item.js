@@ -1,9 +1,9 @@
 ﻿var Groups = [];var Itemtype = [];var variantcount=0;var isexist=0;var Tempvariantcount=1; var checkeddatajson=''; var variantcounter=1;var Existotherunitid = 0;
 var ColumnName = []; var SkillCount = []; var parentunitype = 0; var parentUnitclass = 0; var otherunitype = 0; var otherUnitclass = 0; var unitjson = ''; var SessionCountryId = 1; var SessionEntityId = 1;
-var SKUCOUNT = ''; var dblitemid = 0; var dbitemname = ''; var counter = 0; var editFlag = 0; var editflag = 0; var LoadData = '';
+var SKUCOUNT = ''; var dblitemid = 0; var dbitemname = ''; var counter = 0; var editFlag = 0; var editflag = 0; var LoadData = ''; var searchtxt = '';
 jquery_1_11_3_min_p(document).ready(function () {
     jquery_1_11_3_min_p("#hdnLoad").val(1000);
-    BindItemGrid();
+    BindItemGrid(searchtxt);
 
    
     //============================================================New Item Group===========================================
@@ -13,12 +13,14 @@ jquery_1_11_3_min_p(document).ready(function () {
         jquery_1_11_3_min_p('#btnsubmit').css('display', 'block');
         jquery_1_11_3_min_p('#btnback').css('display', 'block');
         jquery_1_11_3_min_p('#btnnew').css('display', 'none');
-        jquery_1_11_3_min_p('#btnupload1').css('display', 'block');
-        jquery_1_11_3_min_p('#btnupload3').css('display', 'block');
-        jquery_1_11_3_min_p('#btnupload5').css('display', 'block');
+        //jquery_1_11_3_min_p('#btnupload1').css('display', 'block');
+        //jquery_1_11_3_min_p('#btnupload3').css('display', 'block');
+        //jquery_1_11_3_min_p('#btnupload5').css('display', 'block');
+        jquery_1_11_3_min_p('#download').css('display', 'block');
+        
         BindFormdetails();
         editflag = 0;
-        
+         
 
     });
     //=========================================================End Item Group==============================================
@@ -139,6 +141,71 @@ $(document).on("dblclick","#ItemGrid tbody tr",function() {
  SaveUnit();
  }
  });
+
+
+    // =================================== start for search===========================
+    jquery_1_11_3_min_p('#searchText').keypress(function (event) {
+
+        var keycode = (event.keyCode ? event.keyCode : event.which);
+        if (keycode == '13') {
+
+            Querystring = ''; Searchcondition = '';
+            var flag = "";
+            $('#DivSearch input:checked').each(function () {
+                flag = 1;
+                var columname1 = this.id;
+                var splitval = columname1.split('_');
+                var colm = splitval[1];
+                if (colm == "Datatypename") {
+                    colm = "TFDT.Datatypename"
+                }
+                if (columname1 != 'chk_undefined') {
+                    var len = '';
+                    var searchvalue = jquery_1_11_3_min_p('#searchText').val().trim();
+                    var searchval = searchvalue.split('*');
+
+                    var FirstChar = searchvalue.substring(0, 1);
+                    var lastChar = searchvalue[searchvalue.length - 1];
+
+                    if (FirstChar != '*' && lastChar == '*') {
+                        //start with value
+
+                        var dd = searchval[0];
+                        Querystring += colm + ' like ' + "$" + dd + '%' + "$" + ' ' + 'or' + ' ';
+                    }
+                    if (FirstChar == '*' && lastChar == '*') {
+                        //end with value
+                        var dd = searchval[1];
+                        Querystring += colm + ' like ' + "$" + '%' + dd + '%' + "$" + ' ' + ' ' + 'or' + ' ';
+                    }
+                    if (FirstChar == '*' && lastChar != '*') {
+                        //between with value
+                        var dd = searchval[1];
+                        Querystring += colm + ' like ' + "$" + '%' + dd + "$" + ' ' + ' ' + 'or' + ' ';
+
+                    }
+                    else {
+                        // search for exact value
+                        var dd = searchval[0];
+                        Querystring += colm + '=' + "$" + dd + "$" + ' ' + ' ' + 'or' + ' ';
+                    }
+                }
+            });
+            if (flag == 1) {
+                var newquerystring = Querystring.substring(0, Querystring.length - 3);
+                searchtxt = ' and ' + newquerystring.trim();
+            }
+            else {
+                searchtxt = '';
+            }
+
+            BindItemGrid(searchtxt);
+            event.preventDefault();
+        }
+       
+    });
+    //===============================end for search========================================
+
 
 
      jquery_1_11_3_min_p('#btnconversionsub').click(function () {
@@ -319,10 +386,18 @@ $(document).on("dblclick","#ItemGrid tbody tr",function() {
         jquery_1_11_3_min_p("#hdnLoad").val(LoadData);
         jquery_1_11_3_min_p('#preloader').css('display', 'block');
         jquery_1_11_3_min_p('#Overlay_Load').css('display', 'block');
-        BindItemGrid();
+        BindItemGrid(searchtxt);
     });
    
 });
+
+function GetTemplates() {
+    $("#ancdownload")[0].click();
+    jquery_1_11_3_min_p('#btnupload1').css('display', 'block');
+    jquery_1_11_3_min_p('#btnupload3').css('display', 'block');
+    jquery_1_11_3_min_p('#btnupload5').css('display', 'block');
+    jquery_1_11_3_min_p('#download').css('display', 'none');
+}
 
 
 function ValidateUnitGrid() {
@@ -1885,13 +1960,13 @@ var result = Number(Num) + 1;
 
 
 
-function BindItemGrid() {
+function BindItemGrid(searchtxt) {
  jquery_1_11_3_min_p("#ItemGrid tbody").empty();
     var wh = jquery_1_11_3_min_p(document).height();
     var gh = wh - 260;
     var Partners = [];
 
-    var SearchValue = "";
+    var SearchValue = searchtxt;
     jquery_1_11_3_min_p('#preloader').css('display', 'block');
     jquery_1_11_3_min_p('#Overlay_Load').css('display', 'block');
   //  LoadData = jquery_1_11_3_min_p("#hdnLoad").val();

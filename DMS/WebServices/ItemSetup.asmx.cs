@@ -34,24 +34,11 @@ namespace DMS.WebServices
             }
             catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
 
         }
-        //[WebMethod]
-        //public Dictionary<string, object> BindGroupcode(string EntityId, string CountryId)
-        //{
-        //    try
-        //    {
-        //        DataSet ds = CommonManger.FillDatasetWithParam("DMS_ItemSetup", "@QueryType", "@Countryid", "@Entityid", "BindGroupcode", CountryId, EntityId);
-        //        return ClsJson.JsonMethods.ToJson(ds);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw;
-        //    }
-
-        //}
+        
         [WebMethod]
         public Dictionary<string, object> SaveGroupFields(string JsonFields, string EntityId, string CountryId, string CreatedBy)
         {
@@ -64,7 +51,7 @@ namespace DMS.WebServices
             }
             catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
 
         }
@@ -90,7 +77,7 @@ namespace DMS.WebServices
             }
             catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
         }
         [WebMethod]
@@ -104,7 +91,7 @@ namespace DMS.WebServices
             }
             catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
 
         }

@@ -36,7 +36,7 @@ namespace DMS.WebServices
             }
             catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
         }
 
@@ -51,7 +51,7 @@ namespace DMS.WebServices
             }
             catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
         }
         [WebMethod]
@@ -76,7 +76,7 @@ namespace DMS.WebServices
             }
             catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
         }
 
@@ -100,7 +100,7 @@ namespace DMS.WebServices
             }
             catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
         }
 
@@ -115,7 +115,7 @@ namespace DMS.WebServices
             }
             catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
         }
 

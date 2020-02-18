@@ -35,7 +35,7 @@ namespace DMS.WebServices
             }
             catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
 
         }
@@ -50,7 +50,7 @@ namespace DMS.WebServices
             }
             catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
 
         }
@@ -65,7 +65,7 @@ namespace DMS.WebServices
             }
             catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
 
         }
@@ -81,7 +81,7 @@ namespace DMS.WebServices
             }
             catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
 
         }
@@ -111,7 +111,7 @@ namespace DMS.WebServices
             }
             catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
 
         }
@@ -130,13 +130,13 @@ namespace DMS.WebServices
                 {
 
                     string replacestring = SearchValue.Replace("$", "'");
-                    DataSet ds = CommonManger.FillDatasetWithParam("DMS_Item", "@QueryType", "@LoadMore", "@SearchValue", "SerarchBindAddressFieldGrid", LoadData, replacestring);
+                    DataSet ds = CommonManger.FillDatasetWithParam("DMS_Item", "@QueryType", "@LoadMore", "@SearchValue", "SerarchBindItemGrid", LoadData, replacestring);
                     return ClsJson.JsonMethods.ToJson(ds);
                 }
             }
             catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
         }
         [WebMethod]
@@ -150,7 +150,7 @@ namespace DMS.WebServices
             }
             catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
 
         }
@@ -166,7 +166,7 @@ namespace DMS.WebServices
             }
             catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
 
         }
@@ -192,7 +192,7 @@ namespace DMS.WebServices
             }
             catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
         }
         [WebMethod]
@@ -207,7 +207,7 @@ namespace DMS.WebServices
             }
             catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
         }
 
@@ -224,7 +224,7 @@ namespace DMS.WebServices
             }
             catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
         }
         [WebMethod]
@@ -239,7 +239,7 @@ namespace DMS.WebServices
             }
             catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
         }
         [WebMethod]
@@ -256,7 +256,7 @@ namespace DMS.WebServices
             }
             catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
         }
         [WebMethod]
@@ -270,7 +270,7 @@ namespace DMS.WebServices
             }
             catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
 
         }
@@ -287,7 +287,7 @@ namespace DMS.WebServices
             }
             catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
 
         }

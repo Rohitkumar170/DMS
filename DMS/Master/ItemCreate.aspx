@@ -41,8 +41,13 @@
                 </div>
                 <div class="content-header-right col-md-6 col-12">
                     <div class="btn-group float-md-right" role="group" aria-label="Button group with nested dropdown">
-                         <button type="button" id="download" class="btn btn-primary" title="View & Download Template" data-toggle="modal" data-target="#instruction">
+
+                         <%--<button type="button" id="download" class="btn btn-primary" title="View & Download Template"  style="display:none"  data-toggle="modal" data-target="#instruction">
+                            <i class="fa fa-download"></i> Template</button>--%>
+                        <button type="button" id="download" class="btn btn-primary" title="View & Download Template" onclick="GetTemplates();" style="display:none" >
                             <i class="fa fa-download"></i> Template</button>
+                        <a id="ancdownload" href="../Templates/ImportExcelDocuments.zip" style="display:none"></a>
+                        
                       <span class="multifileupload" id="btnupload1" style="display:none" > 
                        <i class="fa fa-upload"></i>
                <input type="button" id="upload" value="Import" title="Import Items" class="custom-file-input multifileBtn" onclick="Findclick();" />

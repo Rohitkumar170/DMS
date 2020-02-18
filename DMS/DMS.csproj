@@ -3619,6 +3619,7 @@
     <Content Include="Telerix\Style\vssver.scc" />
     <Content Include="PurchaseInvoice.ashx" />
     <Content Include="SaveInvoice.ashx" />
+    <Content Include="Templates\ImportExcelDocuments.zip" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
