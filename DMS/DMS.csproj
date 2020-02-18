@@ -511,6 +511,7 @@
     <Content Include="Master\TaxFields.aspx" />
     <Content Include="Master\TaxSetup.aspx" />
     <Content Include="Master\Unit.aspx" />
+    <Content Include="Master\UserForm.aspx" />
     <Content Include="Master\Users.aspx" />
     <Content Include="Master\variantSetup.aspx" />
     <Content Include="Telerix\content\dataviz\dashboards\area-chart.png" />
@@ -3047,6 +3048,13 @@
     </Compile>
     <Compile Include="Master\Unit.aspx.designer.cs">
       <DependentUpon>Unit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Master\UserForm.aspx.cs">
+      <DependentUpon>UserForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master\UserForm.aspx.designer.cs">
+      <DependentUpon>UserForm.aspx</DependentUpon>
     </Compile>
     <Compile Include="Master\Users.aspx.cs">
       <DependentUpon>Users.aspx</DependentUpon>
