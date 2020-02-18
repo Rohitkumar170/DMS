@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="TaxFields.aspx.cs" Inherits="DMS.Master.TaxFields" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/DMS.Master" AutoEventWireup="true" CodeBehind="TaxFields.aspx.cs" Inherits="DMS.Master.TaxFields" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
  <script src="../js/jquery-1.11.3.min.js" type="text/javascript"></script>
