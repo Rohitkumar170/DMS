@@ -24,6 +24,7 @@
   width: 220px; 
   overflow: hidden;
   text-overflow: ellipsis; }
+   #rejectedTable td:nth-child(1), #rejectedTable th:nth-child(1) {    width: 50px;}
       #ItemGrid td:nth-child(4), #ItemGrid th:nth-child(4) {    width: 250px;}
        #ItemGrid td:nth-child(7), #ItemGrid th:nth-child(7) {    width: 130px;}
         #ItemGrid td:nth-child(5), #ItemGrid th:nth-child(5) {    width: 100px;}
@@ -1218,7 +1219,7 @@
 
     <div class="modal fade text-left" id="RejectedData" tabindex="-1" role="dialog" aria-labelledby="myModalLabel8"
 									 aria-hidden="true" >
-										<div class="modal-dialog" role="document">
+										<div class="modal-dialog modal-lg" role="document">
 											<div class="modal-content">
 												<div class="modal-header bg-primary white">
                                                     <h6 class="white" >  Rejected Data  <span class="white" ></span></h6>
@@ -1244,7 +1245,7 @@
                                             <div class="col-md-12">
     
                                                   <div class="table-responsive" >
-                              <table id="" class="table table-de mb-0">
+                              <table id="rejectedTable" class="table table-de mb-0">
                       <thead>
                             <tr>
                                 <th id="hidePselect_all"><input type="checkbox" id="chkPAll" onclick="">All</th>
