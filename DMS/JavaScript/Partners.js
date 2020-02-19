@@ -84,6 +84,10 @@ jquery_1_11_3_min_p(document).ready(function () {
         $("#partnerForm").css('display', 'block');
         $("#PartnerGrid").css('display', 'none');
         jquery_1_11_3_min_p('#btnupload').css('display', 'block');
+        jquery_1_11_3_min_p('#btnuploadAddress').css('display', 'block');
+        jquery_1_11_3_min_p('#btnuploadLegalField').css('display', 'block');
+        jquery_1_11_3_min_p("#TaxDiv").css('display', 'block');
+        jquery_1_11_3_min_p("#btnSubmit").css('display', 'block');
         BindPartnerCode();
     });
     //====================================== end code for  New Button click================================\\
@@ -1601,6 +1605,14 @@ function SaveTaxGroup() {
 function UploadFile() { $('#ContentPlaceHolder1_btnUpload').click(); }
 function Findclick() {
     $('#ContentPlaceHolder1_FileUpload').click();
+}
+function UploadFileAddress() { $('#ContentPlaceHolder1_btnUploadAddress').click(); }
+function FindclickAddress() {
+    $('#ContentPlaceHolder1_FileUploadAddress').click();
+}
+function UploadFileLegalField() { $('#ContentPlaceHolder1_btnUploadLegalField').click(); }
+function FindclickLegalField() {
+    $('#ContentPlaceHolder1_FileUploadLegalField').click();
 }
 
 

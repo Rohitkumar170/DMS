@@ -31,9 +31,15 @@
                 </div>
                 <div class="content-header-right col-md-6 col-12">
                     <div class="btn-group float-md-right" role="group" aria-label="Button group with nested dropdown">
-                          <span class="multifileupload" id="btnupload" style="display:none" > 
+                       <span class="multifileupload" id="btnuploadAddress" style="display:none"  > 
                        <i class="fa fa-upload"></i>
-               <input type="button" id="upload" value="Import" class="custom-file-input multifileBtn" onclick="Findclick();" />
+               <input type="button" id="uploadAddress" value="Import" title="Import Address" class="custom-file-input multifileBtn" onclick="FindclickAddress();" />
+                           <asp:FileUpload runat="server" Visible="true" ID="FileUploadAddress" onchange="UploadFileAddress(this);" style="display:none" />
+                           <asp:Button ID="btnUploadAddress" runat="server" OnClick="btnUploadAddress_Click" style="display:none" /> 
+                       </span>
+                          <span class="multifileupload" id="btnupload" style="display:none"  > 
+                       <i class="fa fa-upload"></i>
+               <input type="button" id="upload" value="Import" title="Import Partner" class="custom-file-input multifileBtn" onclick="Findclick();" />
                            <asp:FileUpload runat="server" Visible="true" ID="FileUpload" onchange="UploadFile(this);" style="display:none" />
                            <asp:Button ID="btnUpload" runat="server" OnClick="btnUpload_Click" style="display:none" /> 
                        </span>
@@ -100,13 +106,7 @@
                      <button type="button" style="display:none" class="btn btn-primary " id="btntaxGrp">
                             <i class="fa fa-money"></i> Tax Group</button>
                       
-                     <span class="multifileupload pb5" id="btnupload" > 
-                       <i class="fa fa-upload"></i>
-                  <%--   <input type="file" id='FileUpload' runat="server" class="custom-file-input multifileBtn" onchange="UploadFile(this);" />--%>
-                           <input type="button" id="upload" value="Import" class="custom-file-input multifileBtn" />
-                           <asp:FileUpload runat="server" Visible="true" ID="FileUpload1"  style="display:none" />
-                           <asp:Button ID="Button2" runat="server" style="display:none" /> 
-                       </span>
+                     
                       
                     </div>
                 </div>
@@ -373,12 +373,11 @@
         </div>
   <div class="col-md-6 "> 
       <div class="pdfexport tablebtn ">
-<span class="multifileupload pb5 pull-right" id="btnupload" > 
+                          <span class="multifileupload" id="btnuploadLegalField" style="display:none"  > 
                        <i class="fa fa-upload"></i>
-                  <%--   <input type="file" id='FileUpload' runat="server" class="custom-file-input multifileBtn" onchange="UploadFile(this);" />--%>
-                           <input type="button" id="upload" value="Import" class="custom-file-input multifileBtn" />
-                           <asp:FileUpload runat="server" Visible="true" ID="FileUpload2"  style="display:none" />
-                           <asp:Button ID="Button3" runat="server" style="display:none" /> 
+               <input type="button" id="uploadLegalField" value="Import" title="Import Legal Field" class="custom-file-input multifileBtn" onclick="FindclickLegalField();" />
+                           <asp:FileUpload runat="server" Visible="true" ID="FileUploadLegalField" onchange="UploadFileLegalField(this);" style="display:none" />
+                           <asp:Button ID="btnUploadLegalField" runat="server" OnClick="btnUploadLegalField_Click" style="display:none" /> 
                        </span>
   
       </div>
@@ -426,9 +425,9 @@
                                         <div class="row   ">
     <div class="col-md-6 ">    
     <div class="pdfexport tablebtn">
-   <button type="button" id="btnAdd" onclick="AddRow()" class="btn btn-outline-primary" title="Add Line">
+   <button type="button" id="btnAdd1" onclick="AddRow()" class="btn btn-outline-primary" title="Add Line">
                             <i class="fa fa-plus"></i> </button>
-                            <button type="button" id="btnDeleteLine" class="btn btn-outline-primary" title="Delete Line">
+                            <button type="button" id="btnDeleteLine1" class="btn btn-outline-primary" title="Delete Line">
                             <i class="fa fa-trash"></i> </button>
                             <button type="button" id="Button1" class="btn btn-outline-primary" title="Export">
                             <i class="fa fa-file-excel-o"></i> </button>
@@ -439,10 +438,10 @@
         </div>
   <div class="col-md-6 "> 
       <div class="pdfexport tablebtn ">
-<span class="multifileupload pb5 pull-right" id="btnupload" > 
+<span class="multifileupload pb5 pull-right" id="btnupload3" > 
                        <i class="fa fa-upload"></i>
                   <%--   <input type="file" id='FileUpload' runat="server" class="custom-file-input multifileBtn" onchange="UploadFile(this);" />--%>
-                           <input type="button" id="upload" value="Import" class="custom-file-input multifileBtn" />
+                           <input type="button" id="upload3" value="Import" class="custom-file-input multifileBtn" />
                            <asp:FileUpload runat="server" Visible="true" ID="FileUpload3"  style="display:none" />
                            <asp:Button ID="Button4" runat="server" style="display:none" /> 
                        </span>
