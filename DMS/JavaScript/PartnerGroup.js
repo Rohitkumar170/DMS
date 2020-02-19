@@ -178,7 +178,8 @@ swal("Deleted Successfully","Your data deleted successfully!","success")
         jquery_1_11_3_min_p('#btnSubmit').css('display', 'block');
         jquery_1_11_3_min_p('#btnBack').css('display', 'block');
         jquery_1_11_3_min_p('#btnNew').css('display', 'none');
-       jquery_1_11_3_min_p('#searchText').val("");
+        jquery_1_11_3_min_p('#searchText').val("");
+        jquery_1_11_3_min_p('#btnupload').css('display', 'block');
         BindAccount();
      
        
@@ -644,6 +645,21 @@ function ValidateGrid() {
         i++;
     });
     return allow;
+}
+
+
+function UploadFile() { $('#ContentPlaceHolder1_btnUpload').click(); }
+function Findclick() {
+    $('#ContentPlaceHolder1_FileUpload').click();
+}
+
+function Loader() {
+    jquery_1_11_3_min_p('#preloader').css('display', 'block');
+    jquery_1_11_3_min_p('#Overlay_Load').css('display', 'block');
+}
+function LoaderOff() {
+    jquery_1_11_3_min_p('#preloader').css('display', 'none');
+    jquery_1_11_3_min_p('#Overlay_Load').css('display', 'none');
 }
 
 

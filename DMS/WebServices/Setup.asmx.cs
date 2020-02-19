@@ -38,7 +38,7 @@ namespace DMS.WebServices
             }
             catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
 
         }
@@ -53,7 +53,7 @@ namespace DMS.WebServices
             }
             catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
 
         }
@@ -68,7 +68,7 @@ namespace DMS.WebServices
             }
             catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
 
         }
@@ -83,7 +83,7 @@ namespace DMS.WebServices
             }
             catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
 
         }
@@ -110,7 +110,7 @@ namespace DMS.WebServices
             }
             catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
         }
         [WebMethod]
@@ -135,7 +135,7 @@ namespace DMS.WebServices
             }
             catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
         }
         [WebMethod]
@@ -206,29 +206,6 @@ namespace DMS.WebServices
                 throw ex;
             }
 
-            //DataSet dt = CommonManger.FillDatasetWithParam("DMS_AdminSetUp", "@QueryType", "@TableName", "@ColumnName", "Createtable", tablename, columns);
-            //return ClsJson.JsonMethods.ToJson(dt);
-
-
-
-            //try
-            //{
-            //    if (editFlag == "0")
-            //    {
-            //        DataSet dt = CommonManger.FillDatasetWithParam("DMS_AdminSetUp", "@QueryType", "@JsonFields", "SaveAddressFields", JsonFields);
-            //        return ClsJson.JsonMethods.ToJson(dt);
-            //    }
-            //    else {
-            //        DataSet dt = CommonManger.FillDatasetWithParam("DMS_AdminSetUp", "@QueryType", "@JsonFields", "UpdateAddressFields", JsonFields);
-            //        return ClsJson.JsonMethods.ToJson(dt);
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    throw;
-            //}
-            //DataSet dt = CommonManger.FillDatasetWithParam("", "@QueryType", "@JsonFields", "UpdateAddressFields", JsonFields);
-            //return ClsJson.JsonMethods.ToJson(dt);
         }
         [WebMethod]
         public Dictionary<string, object> SaveFieldAssigned(string JsonFieldItems, string countryid, string entityid, string CreatedBy)
@@ -241,24 +218,11 @@ namespace DMS.WebServices
             }
             catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
 
         }
-        //[WebMethod]
-        //public Dictionary<string, object> SaveAddress(string AddressLineJson, string CountryJson)
-        //{
-        //    try
-        //    {
-        //        DataSet dt = CommonManger.FillDatasetWithParam("DMS_AdminSetUp", "@QueryType", "@AddressLineJson", "@CountryJson", "SaveAddress", AddressLineJson, CountryJson);
-        //        return ClsJson.JsonMethods.ToJson(dt);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw;
-        //    }
-
-        //}
+        
         [WebMethod]
         public Dictionary<string, object> DeleteEntity(string Country, string Entity)
         {
@@ -270,7 +234,7 @@ namespace DMS.WebServices
             }
             catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
 
         }
@@ -285,7 +249,7 @@ namespace DMS.WebServices
             }
             catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
 
         }
@@ -302,7 +266,7 @@ namespace DMS.WebServices
             }
             catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
 
         }
@@ -317,7 +281,7 @@ namespace DMS.WebServices
             }
             catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
 
         }
@@ -333,7 +297,7 @@ namespace DMS.WebServices
             }
             catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
 
 
@@ -367,7 +331,7 @@ namespace DMS.WebServices
             }
             catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
 
         }
@@ -382,7 +346,7 @@ namespace DMS.WebServices
             }
             catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
 
         }

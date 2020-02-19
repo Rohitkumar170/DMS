@@ -1862,5 +1862,89 @@ namespace DMS.Entity
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DMS_ImportItemConversion", itemIdParameter, valueParameter, toUnitParameter, fromUnitParameter, convertedValueParameter, createdByParameter);
         }
+    
+        public virtual int DMS_ImporPartnerGroup(string partnerType, string description, Nullable<int> entityId, Nullable<int> countryId, Nullable<long> createdBy, Nullable<long> accountId)
+        {
+            var partnerTypeParameter = partnerType != null ?
+                new ObjectParameter("PartnerType", partnerType) :
+                new ObjectParameter("PartnerType", typeof(string));
+    
+            var descriptionParameter = description != null ?
+                new ObjectParameter("Description", description) :
+                new ObjectParameter("Description", typeof(string));
+    
+            var entityIdParameter = entityId.HasValue ?
+                new ObjectParameter("EntityId", entityId) :
+                new ObjectParameter("EntityId", typeof(int));
+    
+            var countryIdParameter = countryId.HasValue ?
+                new ObjectParameter("CountryId", countryId) :
+                new ObjectParameter("CountryId", typeof(int));
+    
+            var createdByParameter = createdBy.HasValue ?
+                new ObjectParameter("CreatedBy", createdBy) :
+                new ObjectParameter("CreatedBy", typeof(long));
+    
+            var accountIdParameter = accountId.HasValue ?
+                new ObjectParameter("AccountId", accountId) :
+                new ObjectParameter("AccountId", typeof(long));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DMS_ImporPartnerGroup", partnerTypeParameter, descriptionParameter, entityIdParameter, countryIdParameter, createdByParameter, accountIdParameter);
+        }
+    
+        public virtual int DMS_ImportPartners(string partnerCode, string partnerName, Nullable<int> partnerGroup, Nullable<int> partnerType, string description, string partnerRepresentative, Nullable<int> entityId, Nullable<int> partnerStatus, Nullable<long> createdBy, Nullable<int> countryId)
+        {
+            var partnerCodeParameter = partnerCode != null ?
+                new ObjectParameter("PartnerCode", partnerCode) :
+                new ObjectParameter("PartnerCode", typeof(string));
+    
+            var partnerNameParameter = partnerName != null ?
+                new ObjectParameter("PartnerName", partnerName) :
+                new ObjectParameter("PartnerName", typeof(string));
+    
+            var partnerGroupParameter = partnerGroup.HasValue ?
+                new ObjectParameter("PartnerGroup", partnerGroup) :
+                new ObjectParameter("PartnerGroup", typeof(int));
+    
+            var partnerTypeParameter = partnerType.HasValue ?
+                new ObjectParameter("PartnerType", partnerType) :
+                new ObjectParameter("PartnerType", typeof(int));
+    
+            var descriptionParameter = description != null ?
+                new ObjectParameter("Description", description) :
+                new ObjectParameter("Description", typeof(string));
+    
+            var partnerRepresentativeParameter = partnerRepresentative != null ?
+                new ObjectParameter("PartnerRepresentative", partnerRepresentative) :
+                new ObjectParameter("PartnerRepresentative", typeof(string));
+    
+            var entityIdParameter = entityId.HasValue ?
+                new ObjectParameter("EntityId", entityId) :
+                new ObjectParameter("EntityId", typeof(int));
+    
+            var partnerStatusParameter = partnerStatus.HasValue ?
+                new ObjectParameter("PartnerStatus", partnerStatus) :
+                new ObjectParameter("PartnerStatus", typeof(int));
+    
+            var createdByParameter = createdBy.HasValue ?
+                new ObjectParameter("CreatedBy", createdBy) :
+                new ObjectParameter("CreatedBy", typeof(long));
+    
+            var countryIdParameter = countryId.HasValue ?
+                new ObjectParameter("CountryId", countryId) :
+                new ObjectParameter("CountryId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DMS_ImportPartners", partnerCodeParameter, partnerNameParameter, partnerGroupParameter, partnerTypeParameter, descriptionParameter, partnerRepresentativeParameter, entityIdParameter, partnerStatusParameter, createdByParameter, countryIdParameter);
+        }
+    
+        public virtual ObjectResult<DMS_BindPartnerGroupId_Result> DMS_BindPartnerGroupId()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DMS_BindPartnerGroupId_Result>("DMS_BindPartnerGroupId");
+        }
+    
+        public virtual ObjectResult<DMS_BindPartnerTypeId_Result> DMS_BindPartnerTypeId()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DMS_BindPartnerTypeId_Result>("DMS_BindPartnerTypeId");
+        }
     }
 }

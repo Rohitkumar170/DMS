@@ -112,17 +112,25 @@ namespace DMS.WebServices
         [WebMethod]
         public Dictionary<string, object> SeqDisabled(string seqId)
         {
-            var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_Sequenesetup]").With<Flag>()
+            try
+            {
+                var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_Sequenesetup]").With<Flag>()
               .Execute("@QueryType", "@seqId", "SeqDisabled", seqId));
-            return results;
+                return results;
+            }
+            catch (Exception ex) { throw ex; }
         }
         [WebMethod]
         public Dictionary<string, object> SeqActive(string seqId)
         {
-            var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_Sequenesetup]").With<Flag>()
+            try
+            {
+                var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_Sequenesetup]").With<Flag>()
             .Execute("@QueryType", "@seqId", "SeqActive", seqId));
-            return results;
-            
-        }
+                return results;
+            }
+            catch (Exception ex) { throw ex; }
+
+}
     }
 }
