@@ -879,7 +879,7 @@ namespace DMS.Entity
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("DMS_InsertRequisition", queryTypeParameter, requestNumberParameter, createdByParameter, requestedDateParameter, wareHouseIdParameter, submittedDateParameter, statusParameter, jsonRequestionItemsParameter, jsonUpdateRequestItemsParameter, updatedByParameter, requisitionIdParameter, loadMoreParameter);
         }
     
-        public virtual ObjectResult<DMS_Item_Result> DMS_Item(string queryType, Nullable<int> countryid, Nullable<int> entityid, Nullable<long> createdBy, Nullable<long> updatedBy, Nullable<long> unitclass, string jsonData, string itemJson, string baseUnit, string skuJson, string unit, string otherUnitJson, string convertedvalueJson, Nullable<long> itemsid, Nullable<long> itemIddbl, Nullable<long> loadMore)
+        public virtual ObjectResult<DMS_Item_Result> DMS_Item(string queryType, Nullable<int> countryid, Nullable<int> entityid, Nullable<long> createdBy, Nullable<long> updatedBy, Nullable<long> unitclass, string jsonData, string itemJson, string baseUnit, string skuJson, string unit, string otherUnitJson, string convertedvalueJson, Nullable<long> itemsid, Nullable<long> itemIddbl, string searchValue, Nullable<long> loadMore)
         {
             var queryTypeParameter = queryType != null ?
                 new ObjectParameter("QueryType", queryType) :
@@ -941,11 +941,15 @@ namespace DMS.Entity
                 new ObjectParameter("ItemIddbl", itemIddbl) :
                 new ObjectParameter("ItemIddbl", typeof(long));
     
+            var searchValueParameter = searchValue != null ?
+                new ObjectParameter("SearchValue", searchValue) :
+                new ObjectParameter("SearchValue", typeof(string));
+    
             var loadMoreParameter = loadMore.HasValue ?
                 new ObjectParameter("LoadMore", loadMore) :
                 new ObjectParameter("LoadMore", typeof(long));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DMS_Item_Result>("DMS_Item", queryTypeParameter, countryidParameter, entityidParameter, createdByParameter, updatedByParameter, unitclassParameter, jsonDataParameter, itemJsonParameter, baseUnitParameter, skuJsonParameter, unitParameter, otherUnitJsonParameter, convertedvalueJsonParameter, itemsidParameter, itemIddblParameter, loadMoreParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DMS_Item_Result>("DMS_Item", queryTypeParameter, countryidParameter, entityidParameter, createdByParameter, updatedByParameter, unitclassParameter, jsonDataParameter, itemJsonParameter, baseUnitParameter, skuJsonParameter, unitParameter, otherUnitJsonParameter, convertedvalueJsonParameter, itemsidParameter, itemIddblParameter, searchValueParameter, loadMoreParameter);
         }
     
         public virtual ObjectResult<DMS_ItemSetup_Result> DMS_ItemSetup(string queryType, Nullable<int> countryid, Nullable<int> entityid, Nullable<long> createdBy, Nullable<long> updatedBy, string jsonData, Nullable<long> loadMore)
@@ -1945,6 +1949,95 @@ namespace DMS.Entity
         public virtual ObjectResult<DMS_BindPartnerTypeId_Result> DMS_BindPartnerTypeId()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DMS_BindPartnerTypeId_Result>("DMS_BindPartnerTypeId");
+        }
+    
+        public virtual ObjectResult<DMS_GetPartnerId_Result> DMS_GetPartnerId()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DMS_GetPartnerId_Result>("DMS_GetPartnerId");
+        }
+    
+        public virtual int DMS_ImportPartnerAddress(Nullable<long> partnerId, string locationCode, string locationName, string description, string addressLine1, string street, string pOBox, string zipCode, string atolls, Nullable<long> createdBy)
+        {
+            var partnerIdParameter = partnerId.HasValue ?
+                new ObjectParameter("partnerId", partnerId) :
+                new ObjectParameter("partnerId", typeof(long));
+    
+            var locationCodeParameter = locationCode != null ?
+                new ObjectParameter("LocationCode", locationCode) :
+                new ObjectParameter("LocationCode", typeof(string));
+    
+            var locationNameParameter = locationName != null ?
+                new ObjectParameter("LocationName", locationName) :
+                new ObjectParameter("LocationName", typeof(string));
+    
+            var descriptionParameter = description != null ?
+                new ObjectParameter("Description", description) :
+                new ObjectParameter("Description", typeof(string));
+    
+            var addressLine1Parameter = addressLine1 != null ?
+                new ObjectParameter("AddressLine1", addressLine1) :
+                new ObjectParameter("AddressLine1", typeof(string));
+    
+            var streetParameter = street != null ?
+                new ObjectParameter("Street", street) :
+                new ObjectParameter("Street", typeof(string));
+    
+            var pOBoxParameter = pOBox != null ?
+                new ObjectParameter("POBox", pOBox) :
+                new ObjectParameter("POBox", typeof(string));
+    
+            var zipCodeParameter = zipCode != null ?
+                new ObjectParameter("ZipCode", zipCode) :
+                new ObjectParameter("ZipCode", typeof(string));
+    
+            var atollsParameter = atolls != null ?
+                new ObjectParameter("Atolls", atolls) :
+                new ObjectParameter("Atolls", typeof(string));
+    
+            var createdByParameter = createdBy.HasValue ?
+                new ObjectParameter("CreatedBy", createdBy) :
+                new ObjectParameter("CreatedBy", typeof(long));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DMS_ImportPartnerAddress", partnerIdParameter, locationCodeParameter, locationNameParameter, descriptionParameter, addressLine1Parameter, streetParameter, pOBoxParameter, zipCodeParameter, atollsParameter, createdByParameter);
+        }
+    
+        public virtual ObjectResult<DMS_GetLegalFieldId_Result> DMS_GetLegalFieldId()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DMS_GetLegalFieldId_Result>("DMS_GetLegalFieldId");
+        }
+    
+        public virtual ObjectResult<DMS_GetPartnerAddressId_Result> DMS_GetPartnerAddressId(Nullable<long> partnerId)
+        {
+            var partnerIdParameter = partnerId.HasValue ?
+                new ObjectParameter("partnerId", partnerId) :
+                new ObjectParameter("partnerId", typeof(long));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DMS_GetPartnerAddressId_Result>("DMS_GetPartnerAddressId", partnerIdParameter);
+        }
+    
+        public virtual int DMS_ImporPartnerLegalField(Nullable<long> taxTypeId, Nullable<long> addressId, string taxpercent, Nullable<long> partnerId, Nullable<long> createdBy)
+        {
+            var taxTypeIdParameter = taxTypeId.HasValue ?
+                new ObjectParameter("TaxTypeId", taxTypeId) :
+                new ObjectParameter("TaxTypeId", typeof(long));
+    
+            var addressIdParameter = addressId.HasValue ?
+                new ObjectParameter("AddressId", addressId) :
+                new ObjectParameter("AddressId", typeof(long));
+    
+            var taxpercentParameter = taxpercent != null ?
+                new ObjectParameter("Taxpercent", taxpercent) :
+                new ObjectParameter("Taxpercent", typeof(string));
+    
+            var partnerIdParameter = partnerId.HasValue ?
+                new ObjectParameter("PartnerId", partnerId) :
+                new ObjectParameter("PartnerId", typeof(long));
+    
+            var createdByParameter = createdBy.HasValue ?
+                new ObjectParameter("CreatedBy", createdBy) :
+                new ObjectParameter("CreatedBy", typeof(long));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DMS_ImporPartnerLegalField", taxTypeIdParameter, addressIdParameter, taxpercentParameter, partnerIdParameter, createdByParameter);
         }
     }
 }

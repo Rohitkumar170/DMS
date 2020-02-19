@@ -2097,6 +2097,11 @@ warning 6002: The table/view 'DMSNEW.dbo.Taxgroupformula' does not have a primar
           <Parameter Name="SkuId" Type="bigint" Mode="In" />
           <Parameter Name="LocationId" Type="bigint" Mode="In" />
         </Function>
+        <Function Name="DMS_GetLegalFieldId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="DMS_GetPartnerAddressId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="partnerId" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="DMS_GetPartnerId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="DMS_ImporPartnerGroup" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="PartnerType" Type="varchar" Mode="In" />
           <Parameter Name="Description" Type="varchar" Mode="In" />
@@ -2104,6 +2109,13 @@ warning 6002: The table/view 'DMSNEW.dbo.Taxgroupformula' does not have a primar
           <Parameter Name="CountryId" Type="int" Mode="In" />
           <Parameter Name="CreatedBy" Type="bigint" Mode="In" />
           <Parameter Name="AccountId" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="DMS_ImporPartnerLegalField" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TaxTypeId" Type="bigint" Mode="In" />
+          <Parameter Name="AddressId" Type="bigint" Mode="In" />
+          <Parameter Name="Taxpercent" Type="varchar" Mode="In" />
+          <Parameter Name="PartnerId" Type="bigint" Mode="In" />
+          <Parameter Name="CreatedBy" Type="bigint" Mode="In" />
         </Function>
         <Function Name="DMS_ImportBulkItem" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ItemName" Type="varchar" Mode="In" />
@@ -2141,6 +2153,18 @@ warning 6002: The table/view 'DMSNEW.dbo.Taxgroupformula' does not have a primar
           <Parameter Name="GroupCode" Type="varchar" Mode="In" />
           <Parameter Name="GroupName" Type="varchar" Mode="In" />
           <Parameter Name="Description" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="DMS_ImportPartnerAddress" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="partnerId" Type="bigint" Mode="In" />
+          <Parameter Name="LocationCode" Type="varchar" Mode="In" />
+          <Parameter Name="LocationName" Type="varchar" Mode="In" />
+          <Parameter Name="Description" Type="nvarchar" Mode="In" />
+          <Parameter Name="AddressLine1" Type="varchar" Mode="In" />
+          <Parameter Name="Street" Type="varchar" Mode="In" />
+          <Parameter Name="POBox" Type="nvarchar" Mode="In" />
+          <Parameter Name="ZipCode" Type="nvarchar" Mode="In" />
+          <Parameter Name="Atolls" Type="nvarchar" Mode="In" />
+          <Parameter Name="CreatedBy" Type="bigint" Mode="In" />
         </Function>
         <Function Name="DMS_ImportPartners" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="PartnerCode" Type="varchar" Mode="In" />
@@ -2190,6 +2214,7 @@ warning 6002: The table/view 'DMSNEW.dbo.Taxgroupformula' does not have a primar
           <Parameter Name="ConvertedvalueJson" Type="varchar(max)" Mode="In" />
           <Parameter Name="Itemsid" Type="bigint" Mode="In" />
           <Parameter Name="ItemIddbl" Type="bigint" Mode="In" />
+          <Parameter Name="SearchValue" Type="varchar" Mode="In" />
           <Parameter Name="LoadMore" Type="bigint" Mode="In" />
         </Function>
         <Function Name="DMS_ItemSetup" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -4864,6 +4889,7 @@ warning 6002: The table/view 'DMSNEW.dbo.Taxgroupformula' does not have a primar
             <Parameter Name="ConvertedvalueJson" Mode="In" Type="String" />
             <Parameter Name="Itemsid" Mode="In" Type="Int64" />
             <Parameter Name="ItemIddbl" Mode="In" Type="Int64" />
+            <Parameter Name="SearchValue" Mode="In" Type="String" />
             <Parameter Name="LoadMore" Mode="In" Type="Int64" />
           </FunctionImport>
           <FunctionImport Name="DMS_ItemSetup" ReturnType="Collection(DMSNEWModel.DMS_ItemSetup_Result)">
@@ -5133,6 +5159,30 @@ warning 6002: The table/view 'DMSNEW.dbo.Taxgroupformula' does not have a primar
           </FunctionImport>
           <FunctionImport Name="DMS_BindPartnerGroupId" ReturnType="Collection(DMSNEWModel.DMS_BindPartnerGroupId_Result)" />
           <FunctionImport Name="DMS_BindPartnerTypeId" ReturnType="Collection(DMSNEWModel.DMS_BindPartnerTypeId_Result)" />
+          <FunctionImport Name="DMS_GetPartnerId" ReturnType="Collection(DMSNEWModel.DMS_GetPartnerId_Result)" />
+          <FunctionImport Name="DMS_ImportPartnerAddress">
+            <Parameter Name="partnerId" Mode="In" Type="Int64" />
+            <Parameter Name="LocationCode" Mode="In" Type="String" />
+            <Parameter Name="LocationName" Mode="In" Type="String" />
+            <Parameter Name="Description" Mode="In" Type="String" />
+            <Parameter Name="AddressLine1" Mode="In" Type="String" />
+            <Parameter Name="Street" Mode="In" Type="String" />
+            <Parameter Name="POBox" Mode="In" Type="String" />
+            <Parameter Name="ZipCode" Mode="In" Type="String" />
+            <Parameter Name="Atolls" Mode="In" Type="String" />
+            <Parameter Name="CreatedBy" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="DMS_GetLegalFieldId" ReturnType="Collection(DMSNEWModel.DMS_GetLegalFieldId_Result)" />
+          <FunctionImport Name="DMS_GetPartnerAddressId" ReturnType="Collection(DMSNEWModel.DMS_GetPartnerAddressId_Result)">
+          <Parameter Name="partnerId" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="DMS_ImporPartnerLegalField">
+            <Parameter Name="TaxTypeId" Mode="In" Type="Int64" />
+            <Parameter Name="AddressId" Mode="In" Type="Int64" />
+            <Parameter Name="Taxpercent" Mode="In" Type="String" />
+            <Parameter Name="PartnerId" Mode="In" Type="Int64" />
+            <Parameter Name="CreatedBy" Mode="In" Type="Int64" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="AngularTest_Result">
           <Property Type="Int32" Name="Empid" Nullable="false" />
@@ -5270,6 +5320,18 @@ warning 6002: The table/view 'DMSNEW.dbo.Taxgroupformula' does not have a primar
         <ComplexType Name="DMS_BindPartnerTypeId_Result">
           <Property Type="Int64" Name="PartnerTypeId" Nullable="false" />
           <Property Type="String" Name="partnerType" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="DMS_GetPartnerId_Result">
+          <Property Type="Int64" Name="PartnerId" Nullable="false" />
+          <Property Type="String" Name="PartnerCode" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="DMS_GetLegalFieldId_Result">
+          <Property Type="Int64" Name="TaxSetupInfoId" Nullable="false" />
+          <Property Type="String" Name="FieldName" Nullable="true" MaxLength="150" />
+        </ComplexType>
+        <ComplexType Name="DMS_GetPartnerAddressId_Result">
+          <Property Type="Int32" Name="AutoId" Nullable="false" />
+          <Property Type="String" Name="LocationCode" Nullable="true" MaxLength="250" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -7582,6 +7644,32 @@ warning 6002: The table/view 'DMSNEW.dbo.Taxgroupformula' does not have a primar
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="DMS_GetPartnerId" FunctionName="DMSNEWModel.Store.DMS_GetPartnerId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DMSNEWModel.DMS_GetPartnerId_Result">
+                <ScalarProperty Name="PartnerId" ColumnName="PartnerId" />
+                <ScalarProperty Name="PartnerCode" ColumnName="PartnerCode" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="DMS_ImportPartnerAddress" FunctionName="DMSNEWModel.Store.DMS_ImportPartnerAddress" />
+          <FunctionImportMapping FunctionImportName="DMS_GetLegalFieldId" FunctionName="DMSNEWModel.Store.DMS_GetLegalFieldId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DMSNEWModel.DMS_GetLegalFieldId_Result">
+                <ScalarProperty Name="TaxSetupInfoId" ColumnName="TaxSetupInfoId" />
+                <ScalarProperty Name="FieldName" ColumnName="FieldName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="DMS_GetPartnerAddressId" FunctionName="DMSNEWModel.Store.DMS_GetPartnerAddressId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DMSNEWModel.DMS_GetPartnerAddressId_Result">
+                <ScalarProperty Name="AutoId" ColumnName="AutoId" />
+                <ScalarProperty Name="LocationCode" ColumnName="LocationCode" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="DMS_ImporPartnerLegalField" FunctionName="DMSNEWModel.Store.DMS_ImporPartnerLegalField" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
