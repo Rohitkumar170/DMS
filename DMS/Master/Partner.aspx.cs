@@ -114,6 +114,7 @@ namespace DMS.Master
                     context.DMS_ImportPartnerAddress(PartId,Convert.ToString(dr["LocationCode"].ToString().Trim()), Convert.ToString(dr["LocationName"].ToString().Trim()), Convert.ToString(dr["LocationDescription"].ToString().Trim()), Convert.ToString(dr["AddressLine1"].ToString().Trim()), Convert.ToString(dr["Street"].ToString().Trim()), Convert.ToString(dr["POBox"].ToString().Trim()), Convert.ToString(dr["ZipCode"].ToString().Trim()), Convert.ToString(dr["Atolls"].ToString().Trim()), Convert.ToInt64(Session["UserId"].ToString()));
                 }
                 context.SaveChanges();
+               
             }
             catch (Exception ex) { throw ex; }
 
@@ -188,6 +189,9 @@ namespace DMS.Master
                     context.DMS_ImporPartnerLegalField(Convert.ToInt64(FieldID), Convert.ToInt64(Address), Convert.ToString(dr["FieldValue"].ToString().Trim()), Convert.ToInt64(PartId),  Convert.ToInt64(Session["UserId"].ToString()));
                 }
                 context.SaveChanges();
+                grdpartner.DataSource = newTable;
+                grdpartner.DataBind();
+                ScriptManager.RegisterStartupScript(this, GetType(), "alertmsg", "showrejectedPopup();", false);
             }
             catch (Exception ex) { throw ex; }
 

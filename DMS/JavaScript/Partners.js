@@ -1615,4 +1615,8 @@ function FindclickLegalField() {
     $('#ContentPlaceHolder1_FileUploadLegalField').click();
 }
 
+function showrejectedPopup() {
+    $("#RejectedData").modal('show');
+}
+
 
