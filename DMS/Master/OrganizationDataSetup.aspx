@@ -172,7 +172,7 @@
                                       </div>
 
                                       </div>  
-                              <div class="form-body" id="empDiv" >
+                               <div class="form-body" id="empDiv" >
                                         <h6 class="form-section">Employee</h6>
                                         <div class="row   ">
     <div class="col-md-6 ">    
@@ -206,26 +206,83 @@
                                         <div class="row">
                                          <div class="col-md-12">
                                                     <div  class="table-responsive" >
-                            <table class="table table-de"  id="tblTaxInfo" >
+                            <table class="table table-de"  id="empTable" >
                         <thead>
                             <tr>
                                 <th style="display:none"></th>
-                                <th><input type="checkBox" id="checkAll"/> All</th>
+                                <th><input type="checkBox" id=""/> All</th>
                                 <th>Name</th>
                                 <th>Mobile</th>
                                 <th>Email</th>
                                 <th>Address</th>
-                               
+                                <th>Credentials</th>
                             </tr>
                         </thead>
                       <tbody>
                       <tr>
                       <td style="display:none">1</td>
-                      <td><input type="checkbox" id="cb_1" class="checkbox"/></td>
-                      <td><input type='text' id='ddlTaxCountry_1' class='fieldName' onchange=''  onkeyup='' autocomplete='off'/></td>
-                    <td><input type='text' placeholder='' class='fieldName' id='ddlTax_1' autocomplete='off' onchange='' onkeypress='' onkeyup='' /></td>
-                       <td><input type='text' placeholder='' class='fieldName' id='ddlAddress_1' autocomplete='off' onchange='' onkeypress='' onkeyup='' /></td>
-                       <td><input type='text' id='txtamt_1' class='fieldName'   autocomplete='off'/></td>
+                      <td><input type="checkbox" id="" class="checkbox"/></td>
+                      <td><input type='text' id='' class='fieldName' onchange=''  onkeyup='' autocomplete='off'/></td>
+                    <td><input type='text' placeholder='' class='fieldName' id='' autocomplete='off' onchange='' onkeypress='' onkeyup='' /></td>
+                       <td><input type='text' placeholder='' class='fieldName' id='' autocomplete='off' onchange='' onkeypress='' onkeyup='' /></td>
+                       <td><select id="" class="Operator">
+												<option value="Textbox">Address1</option>
+                                                <option value="Textbox">Address2</option>
+												<option value="Textbox">Address3</option>
+                                                </select></td>
+                          <td><input type="checkbox" id="" class="checkbox"/></td>
+                      </tr>
+                             <tr>
+                      <td style="display:none">1</td>
+                      <td><input type="checkbox" id="" class="checkbox"/></td>
+                      <td><input type='text' id='' class='fieldName' onchange=''  onkeyup='' autocomplete='off'/></td>
+                    <td><input type='text' placeholder='' class='fieldName' id='' autocomplete='off' onchange='' onkeypress='' onkeyup='' /></td>
+                       <td><input type='text' placeholder='' class='fieldName' id='' autocomplete='off' onchange='' onkeypress='' onkeyup='' /></td>
+                       <td><select id="" class="Operator">
+												<option value="Textbox">Address1</option>
+                                                <option value="Textbox">Address2</option>
+												<option value="Textbox">Address3</option>
+                                                </select></td>
+                          <td><input type="checkbox" id="" class="checkbox"/></td>
+                      </tr>
+                           <tr>
+                      <td style="display:none">1</td>
+                      <td><input type="checkbox" id="" class="checkbox"/></td>
+                      <td><input type='text' id='' class='fieldName' onchange=''  onkeyup='' autocomplete='off'/></td>
+                    <td><input type='text' placeholder='' class='fieldName' id='' autocomplete='off' onchange='' onkeypress='' onkeyup='' /></td>
+                       <td><input type='text' placeholder='' class='fieldName' id='' autocomplete='off' onchange='' onkeypress='' onkeyup='' /></td>
+                       <td><select id="" class="Operator">
+												<option value="Textbox">Address1</option>
+                                                <option value="Textbox">Address2</option>
+												<option value="Textbox">Address3</option>
+                                                </select></td>
+                          <td><input type="checkbox" id="" class="checkbox"/></td>
+                      </tr>
+                           <tr>
+                      <td style="display:none">1</td>
+                      <td><input type="checkbox" id="" class="checkbox"/></td>
+                      <td><input type='text' id='' class='fieldName' onchange=''  onkeyup='' autocomplete='off'/></td>
+                    <td><input type='text' placeholder='' class='fieldName' id='' autocomplete='off' onchange='' onkeypress='' onkeyup='' /></td>
+                       <td><input type='text' placeholder='' class='fieldName' id='' autocomplete='off' onchange='' onkeypress='' onkeyup='' /></td>
+                       <td><select id="" class="Operator">
+												<option value="Textbox">Address1</option>
+                                                <option value="Textbox">Address2</option>
+												<option value="Textbox">Address3</option>
+                                                </select></td>
+                          <td><input type="checkbox" id="" class="checkbox"/></td>
+                      </tr>
+                           <tr>
+                      <td style="display:none">1</td>
+                      <td><input type="checkbox" id="" class="checkbox"/></td>
+                      <td><input type='text' id='' class='fieldName' onchange=''  onkeyup='' autocomplete='off'/></td>
+                    <td><input type='text' placeholder='' class='fieldName' id='' autocomplete='off' onchange='' onkeypress='' onkeyup='' /></td>
+                       <td><input type='text' placeholder='' class='fieldName' id='' autocomplete='off' onchange='' onkeypress='' onkeyup='' /></td>
+                        <td><select id="" class="Operator">
+												<option value="Textbox">Address1</option>
+                                                <option value="Textbox">Address2</option>
+												<option value="Textbox">Address3</option>
+                                                </select></td>
+                          <td><input type="checkbox" id="" class="checkbox"/></td>
                       </tr>
                       </tbody>
                           
@@ -237,7 +294,6 @@
                                         </div>
                                        
                                     </div>
-                                        
                                           <%--  <div class="col-md-3">
                                              <div class="addressBg" id="AddressDiv">
                                              <div class="closeAddress pull-right"><i class="fa fa-close"></i></div>
