@@ -21,6 +21,9 @@
     <style>
 #empTable td:nth-child(7), #empTable th:nth-child(7) {   text-align:center;}
 #empTable td:nth-child(2), #empTable th:nth-child(2) {   width:50px;}
+        #accordionWrap1 .card-header {    color: #2D4D76!important;  padding: 5px 15px;
+    border-bottom: 1px solid #cfcdcd;      background: #f6f6f6;    }
+         #accordionWrap1 .card-title {    font-size:12px;      }
     </style>
   
 </asp:Content>
@@ -70,14 +73,7 @@
     <div class="">
         <div class="content-body">
             <section id="partnerForm" style=" display:none" >
-                <div class="row match-height">
-                    <div class="col-md-12">
-                        <div class="card">
-                      
-                            <div class="card-content collapse show cardScroll" >
-                                <div class="card-body ">
-                                    <div class="card-text">
- <div class="row headerDropdown ">
+                 <div class="row headerDropdown mb-1">
                     <div class="content-header-left col-md-6 ">
     <label class="textHeader" id="pCode" style="display:none">Partner Code:</label> <label class="pr-5" id="lblPCode"></label>
     <label class="textHeader" id="pName" style="display:none">Partner Name:</label> <label id="lblPName"></label>
@@ -117,9 +113,18 @@
                     </div>
                 </div>
 </div>
-                                    </div>
-                                    <form class="form ">
-                                    <div class="form-body lineSelection">
+                 <div class="row">
+                   <div class="col-lg-12 col-xl-12">
+		
+			<div id="accordionWrap1" role="tablist" aria-multiselectable="true">
+				<div class="card accordion collapse-icon accordion-icon-rotate">
+					<a id="heading11" class="card-header info" data-toggle="collapse" href="#accordion11" aria-expanded="true" aria-controls="accordion11">
+						<div class="card-title lead" >Partner Details</div>
+          </a>
+					<div id="accordion11" role="tabpanel" data-parent="#accordionWrap1" aria-labelledby="heading11" class="collapse show">
+						<div class="card-content">
+							<div class="card-body">
+							 <div class="form-body lineSelection">
                                         <h6 class="form-section">Partner  Details</h6>
                                         <div class="row">
                                          <div class="col-md-3">
@@ -175,7 +180,16 @@
 
                                         </div>
                                     </div>
-                                        <div class="form-body ">
+							</div>
+						</div>
+					</div>
+					<a id="heading12" class="card-header info" data-toggle="collapse" href="#accordion12" aria-expanded="false" aria-controls="accordion12">
+						<div class="card-title lead collapsed" >Locations</div>
+          </a>
+					<div id="accordion12" role="tabpanel" data-parent="#accordionWrap1" aria-labelledby="heading12" class="collapse" aria-expanded="false">
+						<div class="card-content">
+							<div class="card-body">
+								  <div class="form-body ">
                                         <h6 class="form-section">Locations</h6>
                                       <div class="row">
                                             <div class="col-md-3">
@@ -354,14 +368,16 @@
                                  
                                     </div>--%>
                                     </div>
-                          <%--           <div class="row"> 
-                                              <div class="col-md-12">    
-                                   <button type="button" id="Button1" class=" addIdentity btn btn-primary waves-effect waves-light pull-right">
-                            <i class="fa fa-plus-square"></i> Add Identity</button>
-                            </div>
-                            </div>--%>
-
-                                     <div class="form-body" id="TaxDiv" style="display:none">
+							</div>
+						</div>
+					</div>
+					<a id="heading13" class="card-header info" data-toggle="collapse" href="#accordion13" aria-expanded="false" aria-controls="accordion13">
+						<div class="card-title lead collapsed" >Legal / Tax</div>
+          </a>
+					<div id="accordion13" role="tabpanel" data-parent="#accordionWrap1" aria-labelledby="heading13" class="collapse" aria-expanded="false">
+						<div class="card-content">
+							<div class="card-body">
+								  <div class="form-body" id="TaxDiv" style="display:none">
                                         <h6 class="form-section">Legal / Tax</h6>
                                         <div class="row   ">
     <div class="col-md-6 ">    
@@ -425,8 +441,16 @@
                                         </div>
                                        
                                     </div>
-
-                                         <div class="form-body" id="empDiv" >
+							</div>
+						</div>
+					</div>
+					<a id="heading14" class="card-header info" data-toggle="collapse" href="#accordion14" aria-expanded="false" aria-controls="accordion14">
+						<div class="card-title lead collapsed" >Employee</div>
+          </a>
+					<div id="accordion14" role="tabpanel" data-parent="#accordionWrap1" aria-labelledby="heading14" class="collapse" aria-expanded="false">
+						<div class="card-content">
+							<div class="card-body">
+								  <div class="form-body" id="empDiv" >
                                         <h6 class="form-section">Employee</h6>
                                         <div class="row   ">
     <div class="col-md-6 ">    
@@ -548,12 +572,35 @@
                                         </div>
                                        
                                     </div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+                </div>
+              <%--  <div class="row match-height">
+                    <div class="col-md-12">
+                        <div class="card">
+                      
+                            <div class="card-content collapse show cardScroll" >
+                                <div class="card-body ">
+                                    <div class="card-text">
+
+                                    </div>
+                                    <form class="form ">
+                                   
+                  
+
+                                   
+
+                                       
                                     </form>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>--%>
               
             </section>
             <div class="row match-height" id="PartnerGrid" style="display:block">
