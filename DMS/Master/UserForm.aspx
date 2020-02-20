@@ -35,7 +35,7 @@
 <div id="Overlay_Load"></div>--%>
     <div class="">
         <div class="content-body">
-           <div class="row match-height" id="NewFields"  style="display:none" >
+           <div class="row match-height" id="NewFields"  style="display:block" >
           
                 <div class="">
                     <div class="col-md-12">
@@ -97,6 +97,7 @@
                                         
                                             <div class="col-md-3">
                                                 <div class="form-group">
+
                                                   <label for="Corporate Identity">Location</label>
                                                    <%-- <input type="text"  id="" autocomplete="off"  class="form-control" placeholder="Warehouse" />--%>
                                                      <select  name="Partners" class="form-control">
@@ -104,6 +105,8 @@
 												<option value="Partners">Location2 </option>												
                                                 </select>
                                                 </div>
+
+
                                             </div>
                                                 <div class="col-md-3">
                                                 <div class="form-group mt-1">
@@ -122,116 +125,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row match-height" id="SetUpGrid" >
-          
-                <div class="col-12 col-xl-12 ">                    
-                    <div class="card">
-                        <div class="card-content">
-                       <div class="container">
-                     <div class="row">
-    <div class="col-md-8 ">    
-    <div class="pdfexport">
-   <button type="button" id="btnExport" class="btn btn-outline-primary" title="Export">
-                            <i class="fa fa-file-excel-o"></i> </button>
-                            <button type="button" id="btnPdf" class="btn btn-outline-primary" title="PDF">
-                            <i class="fa fa-file-pdf-o"></i> </button>
-                             <button type="button" id="btnUpdate" style="display:none" disabled class="btn btn-outline-primary" title="Edit">
-                            <i class="fa fa-edit"></i> </button>
-                          
-                          
-    </div>
-    
-    
-    </div>
-    <div class="col-md-2">   <div class="searchDropdown">
          
-            <label class="showLebel">  Show Records :</label>
-			<select id="ddlLoadMore"  class=" form-control showrecords pull-right">
-												<option >2 </option>
-                                                <option >5 </option>
-                                                <option >50 </option>
-												<option >100 </option>
-												<option>150</option>
-                                                <option >200</option>
-                                                 <option>500</option>
-                                                </select>		
-					
-     </div>  </div>
-    <div class="col-md-2  ">
-    
-                           
-    <div class="searchbox">
-    <%--<button type="button" class="btn btn-primary  mr-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								 <i class="fa fa-search"></i>	Column Search		</button>--%>
-                                   <div class="dropdown " >
-							<div class="dropdown-menu checkboxSearch"  >
-							<div class="columnList" id="DivSearch">
-							
-                                </div>
-							</div>
-						</div>
-                        <fieldset class=" position-relative" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <input type="text" class="form-control round " id="searchText" autocomplete="off" placeholder="Search" >
-                            <div class="form-control-position">
-                                <i class="fa fa-search"></i>
-                            </div>
-                            
-                        </fieldset></div>
-</div>
-
-</div>
-</div>
-<div class="container">
-          <div class="row">
-    <div class="col-md-12 ">
-                           <div class="table-responsive full-width">
-                             <table  class="table table-de mb-0 clickableRow" id="">
-                <thead>
-                  <tr>
-                 
-                 <th ><input type="checkbox" id="chkAll" onclick="checkAll(this)"> All</th>
-                    <th id='' class='' >Employee Name</th>
-                    <th id='' class='' >Mobile</th>
-                   <th id='' class='' >Email</th>
-                    <th id='' class='' >Address</th>
-                  </tr>
-                </thead>
-               <tbody>
-                   <tr>
-                       <td><input type="checkbox" id="chkAll" ></td>
-                        <td>Abhishek</td>
-                        <td>+918885256</td>
-                        <td>abhi@gmail.com</td>
-                        <td>noida</td>
-                   </tr>
-                    <tr>
-                       <td><input type="checkbox" id="chkAll" ></td>
-                        <td>Abhishek</td>
-                        <td>+918885256</td>
-                        <td>abhi@gmail.com</td>
-                        <td>noida</td>
-                   </tr>
-                    <tr>
-                       <td><input type="checkbox" id="chkAll" ></td>
-                        <td>Abhishek</td>
-                        <td>+918885256</td>
-                        <td>abhi@gmail.com</td>
-                        <td>noida</td>
-                   </tr>
-               </tbody>
-              </table>
-
-              </div>
-                <span class="  pull-right">Showing <label id="lblRowCount"></label> of <label id="lblTotalCount"></label></span>
-                        <p class="text-center mt-1">
-                            <span class="load" id="btnLoadMore">Load More.....</span> </p>
-                               </div>
-                    </div>
-                </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
                
         </div>
     

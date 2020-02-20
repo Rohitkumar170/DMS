@@ -80,10 +80,14 @@ jquery_1_11_3_min_p(document).ready(function () {
 
     jquery_1_11_3_min_p("#btnNew").click(function () {
         jquery_1_11_3_min_p("#btnNew").css('display', 'none');
-
         jquery_1_11_3_min_p("#btnBack").css('display', 'block');
         $("#partnerForm").css('display', 'block');
         $("#PartnerGrid").css('display', 'none');
+        jquery_1_11_3_min_p('#btnupload').css('display', 'block');
+        jquery_1_11_3_min_p('#btnuploadAddress').css('display', 'block');
+        jquery_1_11_3_min_p('#btnuploadLegalField').css('display', 'block');
+        jquery_1_11_3_min_p("#TaxDiv").css('display', 'block');
+        jquery_1_11_3_min_p("#btnSubmit").css('display', 'block');
         BindPartnerCode();
     });
     //====================================== end code for  New Button click================================\\
@@ -624,6 +628,7 @@ function MakeAddressJson() {
 
 
 function MakeAddressJsonUpdate() {
+    var IsFirstCheck = 0;
     if (counter > OldAddressCounter) {
 
         var id = counter;
@@ -665,54 +670,95 @@ function MakeAddressJsonUpdate() {
             }
         }
     }
+    else if (counter == OldAddressCounter) {
+        IsFirstCheck = 1;
+        var id = counter;
+        var AddressData = [];
+        JsonAddress = [];
+        var tempJson = "";
+        if (CopyJson.Table.length > 0) {
+            for (var j =1; j <= counter; j++) {
 
-    // for old address json
-    counter = OldAddressCounter;
-    var id = counter;
-    var AddressDataUpdate = [];
-    JsonAddressUpdate = [];
-    var tempJsonUpdate = "";
-    if (CopyJson.Table.length > 0) {
-        for (var j = 1; j <= counter; j++) {
+                var columnName1 = '';
+                var columnName = '';
+                var i = 0;
+                columnName1 += '[{';
+                var LocationName = jquery_1_11_3_min_p("#txtLocation_" + j).val();
+                var LocationCode = jquery_1_11_3_min_p("#txtLocationCode_" + j).val();
+                var LocationDescription = "";
 
-            var columnName1 = '';
-            var columnName = '';
-            var i = 0;
-            columnName1 += '[{';
-            var LocationName = jquery_1_11_3_min_p("#txtLocation_" + j).val();
-            var LocationCode = jquery_1_11_3_min_p("#txtLocationCode_" + j).val();
-            var AutiId = jquery_1_11_3_min_p("#lblAutoId_" + j).text();
+                columnName1 += '" LocationCode "' + ':' + '"' + LocationCode + '"," LocationName "' + ':' + '"' + LocationName + '"," LocationDescription "' + ':' + '"' + LocationDescription + '",';
 
-            var LocationDescription = "";
-
-            columnName1 += '" LocationCode "' + ':' + '"' + LocationCode + '"," LocationName "' + ':' + '"' + LocationName + '"," LocationDescription "' + ':' + '"' + LocationDescription + '",';
-
-            jquery_1_11_3_min_p("#repeatArea_" + j).find('div :text').each(function () {
-                var fieldValue = $(this).val();
-                columnName = jquery_1_11_3_min_p("#lbl" + j + "_" + i).text();
-                columnName1 += '"' + columnName + '"' + ':' + '"' + fieldValue + '",';
-                i++;
-            });
-            var newcol = columnName1.slice(0, -1);
-            columnName1 = '';
-            columnName1 += newcol + '}]';
-            var arrkey = kendo_all_min_js("#ddlCountry_" + j).val();
-            var Countryname = kendo_all_min_js("#ddlCountry_" + j).data("kendoDropDownList").text();
-            var cName = Countryname.split(' ');
-            var EntityName = SessionEntityName;
-            var EName = EntityName.split(' ');
-            Tablename = 'tbl' + EName[0] + 'Address' + cName[0];
-            if (arrkey != undefined) {
-                if (dblclickFlag != 1) {
-                    JsonAddressUpdate.push(Tablename + ' ' + arrkey + '&' + columnName1);
-                }
-                else {
-                    JsonAddressUpdate.push(Tablename + ' ' + arrkey + '&' + columnName1 + '#' + AutiId);
+                jquery_1_11_3_min_p("#repeatArea_" + j).find('div :text').each(function () {
+                    var fieldValue = $(this).val();
+                    columnName = jquery_1_11_3_min_p("#lbl" + j + "_" + i).text();
+                    columnName1 += '"' + columnName + '"' + ':' + '"' + fieldValue + '",';
+                    i++;
+                });
+                var newcol = columnName1.slice(0, -1);
+                columnName1 = '';
+                columnName1 += newcol + '}]';
+                var arrkey = kendo_all_min_js("#ddlCountry_" + j).val();
+                var Countryname = kendo_all_min_js("#ddlCountry_" + j).data("kendoDropDownList").text();
+                var cName = Countryname.split(' ');
+                var EntityName = SessionEntityName;
+                var EName = EntityName.split(' ');
+                Tablename = 'tbl' + EName[0] + 'Address' + cName[0];
+                //           
+                if (arrkey != undefined) {
+                    JsonAddress.push(Tablename + ' ' + arrkey + '&' + columnName1);
                 }
             }
         }
     }
+    // for old address json
+    if (IsFirstCheck != 1) {
+        counter = OldAddressCounter;
+        var id = counter;
+        var AddressDataUpdate = [];
+        JsonAddressUpdate = [];
+        var tempJsonUpdate = "";
+        if (CopyJson.Table.length > 0) {
+            for (var j = 1; j <= counter; j++) {
 
+                var columnName1 = '';
+                var columnName = '';
+                var i = 0;
+                columnName1 += '[{';
+                var LocationName = jquery_1_11_3_min_p("#txtLocation_" + j).val();
+                var LocationCode = jquery_1_11_3_min_p("#txtLocationCode_" + j).val();
+                var AutiId = jquery_1_11_3_min_p("#lblAutoId_" + j).text();
+
+                var LocationDescription = "";
+
+                columnName1 += '" LocationCode "' + ':' + '"' + LocationCode + '"," LocationName "' + ':' + '"' + LocationName + '"," LocationDescription "' + ':' + '"' + LocationDescription + '",';
+
+                jquery_1_11_3_min_p("#repeatArea_" + j).find('div :text').each(function () {
+                    var fieldValue = $(this).val();
+                    columnName = jquery_1_11_3_min_p("#lbl" + j + "_" + i).text();
+                    columnName1 += '"' + columnName + '"' + ':' + '"' + fieldValue + '",';
+                    i++;
+                });
+                var newcol = columnName1.slice(0, -1);
+                columnName1 = '';
+                columnName1 += newcol + '}]';
+                var arrkey = kendo_all_min_js("#ddlCountry_" + j).val();
+                var Countryname = kendo_all_min_js("#ddlCountry_" + j).data("kendoDropDownList").text();
+                var cName = Countryname.split(' ');
+                var EntityName = SessionEntityName;
+                var EName = EntityName.split(' ');
+                Tablename = 'tbl' + EName[0] + 'Address' + cName[0];
+                if (arrkey != undefined) {
+                    if (dblclickFlag != 1) {
+                        JsonAddressUpdate.push(Tablename + ' ' + arrkey + '&' + columnName1);
+                    }
+                    else {
+                        JsonAddressUpdate.push(Tablename + ' ' + arrkey + '&' + columnName1 + '#' + AutiId);
+                    }
+                }
+            }
+        }
+    }
 
 
 }
@@ -1554,6 +1600,23 @@ function SaveTaxGroup() {
     else {
         alert("select TaxGroup");
     }
+}
+
+function UploadFile() { $('#ContentPlaceHolder1_btnUpload').click(); }
+function Findclick() {
+    $('#ContentPlaceHolder1_FileUpload').click();
+}
+function UploadFileAddress() { $('#ContentPlaceHolder1_btnUploadAddress').click(); }
+function FindclickAddress() {
+    $('#ContentPlaceHolder1_FileUploadAddress').click();
+}
+function UploadFileLegalField() { $('#ContentPlaceHolder1_btnUploadLegalField').click(); }
+function FindclickLegalField() {
+    $('#ContentPlaceHolder1_FileUploadLegalField').click();
+}
+
+function showrejectedPopup() {
+    $("#RejectedData").modal('show');
 }
 
 

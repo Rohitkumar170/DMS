@@ -31,12 +31,17 @@
                 </div>
                 <div class="content-header-right col-md-6 col-12">
                     <div class="btn-group float-md-right" role="group" aria-label="Button group with nested dropdown">
-                         <span class="multifileupload" id="btnupload" > 
+                       <span class="multifileupload" id="btnuploadAddress" style="display:none"  > 
                        <i class="fa fa-upload"></i>
-                  <%--   <input type="file" id='FileUpload' runat="server" class="custom-file-input multifileBtn" onchange="UploadFile(this);" />--%>
-                           <input type="button" id="upload" value="Import" class="custom-file-input multifileBtn" />
-                           <asp:FileUpload runat="server" Visible="true" ID="FileUpload"  style="display:none" />
-                           <asp:Button ID="btnUpload" runat="server" style="display:none" /> 
+               <input type="button" id="uploadAddress" value="Import" title="Import Address" class="custom-file-input multifileBtn" onclick="FindclickAddress();" />
+                           <asp:FileUpload runat="server" Visible="true" ID="FileUploadAddress" onchange="UploadFileAddress(this);" style="display:none" />
+                           <asp:Button ID="btnUploadAddress" runat="server" OnClick="btnUploadAddress_Click" style="display:none" /> 
+                       </span>
+                          <span class="multifileupload" id="btnupload" style="display:none"  > 
+                       <i class="fa fa-upload"></i>
+               <input type="button" id="upload" value="Import" title="Import Partner" class="custom-file-input multifileBtn" onclick="Findclick();" />
+                           <asp:FileUpload runat="server" Visible="true" ID="FileUpload" onchange="UploadFile(this);" style="display:none" />
+                           <asp:Button ID="btnUpload" runat="server" OnClick="btnUpload_Click" style="display:none" /> 
                        </span>
                        <button type="button" id="btnNew" class="btn btn-primary">
                             <i class="fa fa-plus-square"></i> New</button>
@@ -44,6 +49,8 @@
                             <i class="fa fa-save"></i> Submit</button>
                         <button type="button" id="btnBack" style="display:none"  class="btn btn-primary"   >
                            <i class="fa fa-arrow-left"></i> Back</button>
+                         <button type="button" id="" class="btn btn-primary" data-toggle="modal" data-target="#RejectedData">
+                            <i class="fa fa-plus-square"></i> pop</button>
                       
                     </div>
                 </div>
@@ -101,13 +108,7 @@
                      <button type="button" style="display:none" class="btn btn-primary " id="btntaxGrp">
                             <i class="fa fa-money"></i> Tax Group</button>
                       
-                     <span class="multifileupload pb5" id="btnupload" > 
-                       <i class="fa fa-upload"></i>
-                  <%--   <input type="file" id='FileUpload' runat="server" class="custom-file-input multifileBtn" onchange="UploadFile(this);" />--%>
-                           <input type="button" id="upload" value="Import" class="custom-file-input multifileBtn" />
-                           <asp:FileUpload runat="server" Visible="true" ID="FileUpload1"  style="display:none" />
-                           <asp:Button ID="Button2" runat="server" style="display:none" /> 
-                       </span>
+                     
                       
                     </div>
                 </div>
@@ -374,12 +375,11 @@
         </div>
   <div class="col-md-6 "> 
       <div class="pdfexport tablebtn ">
-<span class="multifileupload pb5 pull-right" id="btnupload" > 
+                          <span class="multifileupload" id="btnuploadLegalField" style="display:none"  > 
                        <i class="fa fa-upload"></i>
-                  <%--   <input type="file" id='FileUpload' runat="server" class="custom-file-input multifileBtn" onchange="UploadFile(this);" />--%>
-                           <input type="button" id="upload" value="Import" class="custom-file-input multifileBtn" />
-                           <asp:FileUpload runat="server" Visible="true" ID="FileUpload2"  style="display:none" />
-                           <asp:Button ID="Button3" runat="server" style="display:none" /> 
+               <input type="button" id="uploadLegalField" value="Import" title="Import Legal Field" class="custom-file-input multifileBtn" onclick="FindclickLegalField();" />
+                           <asp:FileUpload runat="server" Visible="true" ID="FileUploadLegalField" onchange="UploadFileLegalField(this);" style="display:none" />
+                           <asp:Button ID="btnUploadLegalField" runat="server" OnClick="btnUploadLegalField_Click" style="display:none" /> 
                        </span>
   
       </div>
@@ -427,9 +427,9 @@
                                         <div class="row   ">
     <div class="col-md-6 ">    
     <div class="pdfexport tablebtn">
-   <button type="button" id="btnAdd" onclick="AddRow()" class="btn btn-outline-primary" title="Add Line">
+   <button type="button" id="btnAdd1" onclick="AddRow()" class="btn btn-outline-primary" title="Add Line">
                             <i class="fa fa-plus"></i> </button>
-                            <button type="button" id="btnDeleteLine" class="btn btn-outline-primary" title="Delete Line">
+                            <button type="button" id="btnDeleteLine1" class="btn btn-outline-primary" title="Delete Line">
                             <i class="fa fa-trash"></i> </button>
                             <button type="button" id="Button1" class="btn btn-outline-primary" title="Export">
                             <i class="fa fa-file-excel-o"></i> </button>
@@ -440,10 +440,10 @@
         </div>
   <div class="col-md-6 "> 
       <div class="pdfexport tablebtn ">
-<span class="multifileupload pb5 pull-right" id="btnupload" > 
+<span class="multifileupload pb5 pull-right" id="btnupload3" > 
                        <i class="fa fa-upload"></i>
                   <%--   <input type="file" id='FileUpload' runat="server" class="custom-file-input multifileBtn" onchange="UploadFile(this);" />--%>
-                           <input type="button" id="upload" value="Import" class="custom-file-input multifileBtn" />
+                           <input type="button" id="upload3" value="Import" class="custom-file-input multifileBtn" />
                            <asp:FileUpload runat="server" Visible="true" ID="FileUpload3"  style="display:none" />
                            <asp:Button ID="Button4" runat="server" style="display:none" /> 
                        </span>
@@ -744,7 +744,73 @@
 
     
 
+      <div class="modal fade text-left" id="RejectedData" tabindex="-1" role="dialog" aria-labelledby="myModalLabel8"
+									 aria-hidden="true" >
+										<div class="modal-dialog modal-lg" role="document">
+											<div class="modal-content">
+												<div class="modal-header bg-primary white">
+                                                    <h6 class="white" >  Rejected Data  <span class="white" ></span></h6>
+													
+													<button type="button" id="" class="close" aria-label="Close">
+														<span aria-hidden="true">&times;</span>
+													</button>
+												</div>
+											<div class="modal-body">
+												    <div class="row">
+                                                                               
+    <div class="col-md-12">    
+    <div class="pdfexport tablebtn">
+                            <button type="button" id="Button1" class="btn btn-outline-primary" title="Export">
+                            <i class="fa fa-file-excel-o"></i> </button>
+                            <button type="button" id="Button1" class="btn btn-outline-primary" title="PDF">
+                            <i class="fa fa-file-pdf-o"></i> </button>  
+                          
+                          
+    </div>
 
+    </div>
+                                            <div class="col-md-12">
+    
+                                                  <div class="table-responsive" >
+                                                      <asp:GridView ID="grdpartner" runat="server" AutoGenerateColumns="False" BackColor="White"  
+BorderColor="#3366CC" BorderStyle="None" BorderWidth="1px" CellPadding="4"  ></asp:GridView>
+                              <%--<table id="rejectedTable" class="table table-de mb-0">
+                      <thead>
+                            <tr>
+                                <th id="hidePselect_all"><input type="checkbox" id="chkPAll" onclick="">All</th>
+                                 <th> Name</th>
+                                 <th>Mobile</th>  
+                                 <th>Email</th>  
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <tr>                       
+                        <td id="chkPtd"><input type="checkbox" id="cb_1" class="chk_PAll"></td>
+                         <td> Abhishek    </td>
+                         <td> 88825656  </td> 
+                         <td> abc@gmail.com  </td> 
+                        </tr>
+                         
+                           
+                        </tbody>
+                    </table>--%>
+                            </div>
+                                            </div>
+                                          
+                                        </div>
+                                        	    <%--<div class="row">
+                                         
+                                            <div class="col-md-12">
+                                            <div class="table-responsive">
+												 <button type="button"  id="btnsavepopupdata" class="btn btn-primary  pull-right">
+                            <i class="fa fa-save"></i> Submit</button>
+												</div>
+												</div></div>--%>
+
+											</div>
+											</div>
+										</div>
+									</div>
 
 
                                                               <script type="text/javascript">

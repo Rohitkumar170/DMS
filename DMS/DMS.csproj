@@ -2474,6 +2474,12 @@
     <Compile Include="Entity\DMS_BindItemcode_Result.cs">
       <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entity\DMS_BindPartnerGroupId_Result.cs">
+      <DependentUpon>DMSNEW.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\DMS_BindPartnerTypeId_Result.cs">
+      <DependentUpon>DMSNEW.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entity\DMS_COASetup_Result.cs">
       <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
@@ -2484,6 +2490,15 @@
       <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\DMS_GetItemMaster_Result.cs">
+      <DependentUpon>DMSNEW.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\DMS_GetLegalFieldId_Result.cs">
+      <DependentUpon>DMSNEW.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\DMS_GetPartnerAddressId_Result.cs">
+      <DependentUpon>DMSNEW.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\DMS_GetPartnerId_Result.cs">
       <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\DMS_ItemSetup_Result.cs">

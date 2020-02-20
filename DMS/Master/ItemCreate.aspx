@@ -24,6 +24,7 @@
   width: 220px; 
   overflow: hidden;
   text-overflow: ellipsis; }
+   #rejectedTable td:nth-child(1), #rejectedTable th:nth-child(1) {    width: 50px;}
       #ItemGrid td:nth-child(4), #ItemGrid th:nth-child(4) {    width: 250px;}
        #ItemGrid td:nth-child(7), #ItemGrid th:nth-child(7) {    width: 130px;}
         #ItemGrid td:nth-child(5), #ItemGrid th:nth-child(5) {    width: 100px;}
@@ -56,7 +57,8 @@
                        </span>
 
 
-
+                        <button type="button" id="" class="btn btn-primary" data-toggle="modal" data-target="#RejectedData">
+                            <i class="fa fa-plus-square"></i> pop</button>
 
                        <button type="button" id="btnnew" class="btn btn-primary">
                             <i class="fa fa-plus-square"></i> New</button>
@@ -1211,6 +1213,72 @@
 												
 												</div>
 												
+											</div>
+										</div>
+									</div>
+
+    <div class="modal fade text-left" id="RejectedData" tabindex="-1" role="dialog" aria-labelledby="myModalLabel8"
+									 aria-hidden="true" >
+										<div class="modal-dialog modal-lg" role="document">
+											<div class="modal-content">
+												<div class="modal-header bg-primary white">
+                                                    <h6 class="white" >  Rejected Data  <span class="white" ></span></h6>
+													
+													<button type="button" id="" class="close" aria-label="Close">
+														<span aria-hidden="true">&times;</span>
+													</button>
+												</div>
+											<div class="modal-body">
+												    <div class="row">
+                                                                               
+    <div class="col-md-12">    
+    <div class="pdfexport tablebtn">
+                            <button type="button" id="Button1" class="btn btn-outline-primary" title="Export">
+                            <i class="fa fa-file-excel-o"></i> </button>
+                            <button type="button" id="Button1" class="btn btn-outline-primary" title="PDF">
+                            <i class="fa fa-file-pdf-o"></i> </button>  
+                          
+                          
+    </div>
+
+    </div>
+                                            <div class="col-md-12">
+    
+                                                  <div class="table-responsive" >
+                              <table id="rejectedTable" class="table table-de mb-0">
+                      <thead>
+                            <tr>
+                                <th id="hidePselect_all"><input type="checkbox" id="chkPAll" onclick="">All</th>
+                                 <th> Name</th>
+                                 <th>Mobile</th>  
+                                 <th>Email</th>  
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <tr>                       
+                        <td id="chkPtd"><input type="checkbox" id="cb_1" class="chk_PAll"></td>
+                         <td> Abhishek    </td>
+                         <td> 88825656  </td> 
+                         <td> abc@gmail.com  </td> 
+                        </tr>
+                         
+                           
+                        </tbody>
+                    </table>
+                            </div>
+                                            </div>
+                                          
+                                        </div>
+                                        	    <%--<div class="row">
+                                         
+                                            <div class="col-md-12">
+                                            <div class="table-responsive">
+												 <button type="button"  id="btnsavepopupdata" class="btn btn-primary  pull-right">
+                            <i class="fa fa-save"></i> Submit</button>
+												</div>
+												</div></div>--%>
+
+											</div>
 											</div>
 										</div>
 									</div>
