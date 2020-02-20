@@ -173,12 +173,12 @@ $(document).on("dblclick","#ItemGrid tbody tr",function() {
                         var dd = searchval[0];
                         Querystring += colm + ' like ' + "$" + dd + '%' + "$" + ' ' + 'or' + ' ';
                     }
-                    if (FirstChar == '*' && lastChar == '*') {
+                   else if (FirstChar == '*' && lastChar == '*') {
                         //end with value
                         var dd = searchval[1];
                         Querystring += colm + ' like ' + "$" + '%' + dd + '%' + "$" + ' ' + ' ' + 'or' + ' ';
                     }
-                    if (FirstChar == '*' && lastChar != '*') {
+                   else if (FirstChar == '*' && lastChar != '*') {
                         //between with value
                         var dd = searchval[1];
                         Querystring += colm + ' like ' + "$" + '%' + dd + "$" + ' ' + ' ' + 'or' + ' ';

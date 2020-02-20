@@ -11,6 +11,10 @@ namespace DMS.Master
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                lblUserId.InnerText = Convert.ToString(Session["UserId"]);
+            }
 
         }
     }
