@@ -48,12 +48,7 @@
                                     <div class="form-body lineSelection">
                                         <h6 class="form-section">User  Details</h6>
                                         <div class="row">
-                                         <div class="col-md-3">
-                                                <div class="form-group">
-                                                  <label for="Partner Name">User Pin</label>
-                                                    <input type="text"  id="" autocomplete="off"  class="form-control" placeholder="User Pin" />
-                                                </div>
-                                            </div>
+                                       
                                          <div class="col-md-3">
                                                 <div class="form-group">
                                                   <label for="Partner Name">Employee ID</label>
@@ -78,16 +73,16 @@
                                                     <input type="text" id=""  class="form-control" placeholder="Email" />
                                                 </div>
                                             </div>
-                                           
-
-                                        </div>
-                                         <div class="row">
-                                          <div class="col-md-3">
+                                           <div class="col-md-3">
                                                 <div class="form-group">
                                                   <label for="Description">Mobile</label>
                                                     <input type="text"  id="" autocomplete="off"  class="form-control" placeholder="Mobile" />
                                                 </div>
                                             </div>
+
+                                        </div>
+                                         <div class="row">
+                                          
                                          <div class="col-md-3">
                                                 <div class="form-group">
                                                   <label for="Partner Name">User Role</label>
@@ -102,13 +97,16 @@
                                         
                                             <div class="col-md-3">
                                                 <div class="form-group">
-                                                  <label for="Corporate Identity">Warehouse</label>
+
+                                                  <label for="Corporate Identity">Location</label>
                                                    <%-- <input type="text"  id="" autocomplete="off"  class="form-control" placeholder="Warehouse" />--%>
-                                                <select  name="Partners" class="form-control">
-												<option value="Partners" >Warehouse1  </option>
-												<option value="Partners">Warehouse2</option>	
-                                                    </select>
-                                                    </div>
+                                                     <select  name="Partners" class="form-control">
+												<option value="Partners" >Location1  </option>
+												<option value="Partners">Location2 </option>												
+                                                </select>
+                                                </div>
+
+
                                             </div>
                                                 <div class="col-md-3">
                                                 <div class="form-group mt-1">

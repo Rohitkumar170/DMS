@@ -465,7 +465,7 @@ namespace DMS.WebServices
             }
             catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
         }
         [WebMethod]
@@ -479,7 +479,7 @@ namespace DMS.WebServices
             }
             catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
 
         }
@@ -494,26 +494,60 @@ namespace DMS.WebServices
             }
             catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
 
         }
         [WebMethod]
-        public Dictionary<string, object> BindAssigneditem(string CountryId, string EntityId)
+        public Dictionary<string, object> Assigneditemtopartner(string CountryId, string EntityId,string searchtxt)
         {
             try
             {
-                var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_AdminSetUp]").With<BindAssignPartner>().With<BindItem>()
-                         .Execute("@QueryType", "@countryid", "@entityid", "BindAssigned", CountryId, EntityId));
+                string replacestring = searchtxt.Replace("$", "'");
+                DataSet ds = CommonManger.FillDatasetWithParam("DMS_AdminSetUp", "@QueryType", "@countryid", "@entityid", "@SearchValue", "AssignedItmtopartner", CountryId, EntityId, replacestring);
+                return ClsJson.JsonMethods.ToJson(ds);
+            }
+
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+        [WebMethod]
+        public Dictionary<string, object> BindLocationwisedata(string CountryId, string EntityId, string Partnerlocation, string Partner)
+        {
+            try
+            {
+                DataSet ds = CommonManger.FillDatasetWithParam("DMS_AdminSetUp", "@QueryType", "@countryid", "@entityid", "@PartnerId", "@Location", "BindAssigneditem", CountryId, EntityId, Partner,Partnerlocation);
+                return ClsJson.JsonMethods.ToJson(ds);
+            }
+
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
+
+        [WebMethod]
+        public Dictionary<string, object> BindPartners(string CountryId, string EntityId)
+        {
+            try
+            {
+                var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_AdminSetUp]").With<BindAssignPartner>()
+                         .Execute("@QueryType", "@countryid", "@entityid", "BindPartner", CountryId, EntityId));
                 return results;
             }
 
             catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
 
         }
+
         //[WebMethod]
         //public Dictionary<string, object> BindAssigneditemVendor(string CountryId, string EntityId)
         //{
@@ -535,13 +569,13 @@ namespace DMS.WebServices
             try
             {
                 var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_Transaction]").With<BindLocation>()
-                       .Execute("@QueryType", "@Partid", "@Entityid", "BindPartnerLocation", PartnerId, Entityid));
+                       .Execute("@QueryType", "@Partid", "@Entityid", "ItemassignedtoPartnerLocation", PartnerId, Entityid));
                 return results;
 
             }
             catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
 
         }
@@ -571,7 +605,7 @@ namespace DMS.WebServices
             }
             catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
 
         }
@@ -602,7 +636,7 @@ namespace DMS.WebServices
             }
             catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
 
         }
@@ -623,21 +657,40 @@ namespace DMS.WebServices
 
         }
         [WebMethod]
+        public Dictionary<string, object> UpdateAssigneditem( string Jsonitems,string Assignedid)
+        {
+            try
+            {
+              
+                    var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_AdminSetUp]").With<Flag>()
+                           .Execute("@QueryType","@JsonFields", "@Assigneid", "UpdateAssignedItem", Jsonitems,Assignedid));
+                    return results;
+                
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+        [WebMethod]
         public Dictionary<string, object> SaveAssigneditem(string Jsondata, string Jsonitems)
         {
             try
             {
-                var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_AdminSetUp]").With<Flag>()
-                        .Execute("@QueryType", "@jsonData", "@JsonFields", "SaveAssignedItem", Jsondata, Jsonitems));
-                return results;
+               
+                    var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_AdminSetUp]").With<Flag>()
+                            .Execute("@QueryType", "@jsonData", "@JsonFields", "SaveAssignedItem", Jsondata, Jsonitems));
+                    return results;
+                
+              
             }
             catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
 
         }
-
         //[WebMethod]
         //public Dictionary<string, object> SaveAssigneditemVendor(string Jsondata, string Jsonitems)
         //{
@@ -753,7 +806,7 @@ namespace DMS.WebServices
             }
             catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
 
         }
@@ -779,7 +832,7 @@ namespace DMS.WebServices
             }
             catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
         }
         [WebMethod]
@@ -804,7 +857,7 @@ namespace DMS.WebServices
             }
             catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
         }
         [WebMethod]
@@ -829,7 +882,7 @@ namespace DMS.WebServices
             }
             catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
         }
 
@@ -866,7 +919,7 @@ namespace DMS.WebServices
             }
             catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
 
         }
