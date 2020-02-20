@@ -199,7 +199,7 @@ namespace DMS.Entity
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AngularTest_Result>("AngularTest", queryTypeParameter, nameParameter, mobileParameter, emailParameter, passwordParameter, empidParameter);
         }
     
-        public virtual ObjectResult<DMS_AdminSetUp_Result> DMS_AdminSetUp(string queryType, Nullable<long> loadMore, string ddlvalue, Nullable<long> userId, Nullable<long> fieldid, Nullable<long> partnerId, Nullable<int> countryid, Nullable<int> entityid, Nullable<long> createdBy, Nullable<long> partnerType, string partnerName, string contact, string location, string tableName, string parameterId, Nullable<long> updatedBy, Nullable<long> dataType, string addressLineJson, string countryJson, string jsonData, string jsonFields, string searchValue, string columnName, string insertQuery, string checkExist, string selectQuery, Nullable<int> orgflag, string partid, string ta, string column)
+        public virtual ObjectResult<DMS_AdminSetUp_Result> DMS_AdminSetUp(string queryType, Nullable<long> loadMore, string ddlvalue, Nullable<long> userId, Nullable<long> fieldid, Nullable<long> partnerId, Nullable<int> countryid, Nullable<int> entityid, Nullable<long> createdBy, Nullable<long> partnerType, string partnerName, string contact, string location, string tableName, string parameterId, Nullable<long> updatedBy, Nullable<long> dataType, string addressLineJson, string countryJson, string jsonData, string jsonFields, string searchValue, string columnName, string insertQuery, string checkExist, string selectQuery, Nullable<int> orgflag, string partid, string ta, string column, Nullable<long> assigneid)
         {
             var queryTypeParameter = queryType != null ?
                 new ObjectParameter("QueryType", queryType) :
@@ -321,7 +321,11 @@ namespace DMS.Entity
                 new ObjectParameter("column", column) :
                 new ObjectParameter("column", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DMS_AdminSetUp_Result>("DMS_AdminSetUp", queryTypeParameter, loadMoreParameter, ddlvalueParameter, userIdParameter, fieldidParameter, partnerIdParameter, countryidParameter, entityidParameter, createdByParameter, partnerTypeParameter, partnerNameParameter, contactParameter, locationParameter, tableNameParameter, parameterIdParameter, updatedByParameter, dataTypeParameter, addressLineJsonParameter, countryJsonParameter, jsonDataParameter, jsonFieldsParameter, searchValueParameter, columnNameParameter, insertQueryParameter, checkExistParameter, selectQueryParameter, orgflagParameter, partidParameter, taParameter, columnParameter);
+            var assigneidParameter = assigneid.HasValue ?
+                new ObjectParameter("Assigneid", assigneid) :
+                new ObjectParameter("Assigneid", typeof(long));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DMS_AdminSetUp_Result>("DMS_AdminSetUp", queryTypeParameter, loadMoreParameter, ddlvalueParameter, userIdParameter, fieldidParameter, partnerIdParameter, countryidParameter, entityidParameter, createdByParameter, partnerTypeParameter, partnerNameParameter, contactParameter, locationParameter, tableNameParameter, parameterIdParameter, updatedByParameter, dataTypeParameter, addressLineJsonParameter, countryJsonParameter, jsonDataParameter, jsonFieldsParameter, searchValueParameter, columnNameParameter, insertQueryParameter, checkExistParameter, selectQueryParameter, orgflagParameter, partidParameter, taParameter, columnParameter, assigneidParameter);
         }
     
         public virtual ObjectResult<DMS_AllItems_Result> DMS_AllItems(string queryType, Nullable<long> loadMore, Nullable<long> updatedBy, string jsonData, string searchValue)
@@ -2038,6 +2042,53 @@ namespace DMS.Entity
                 new ObjectParameter("CreatedBy", typeof(long));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DMS_ImporPartnerLegalField", taxTypeIdParameter, addressIdParameter, taxpercentParameter, partnerIdParameter, createdByParameter);
+        }
+    
+        public virtual ObjectResult<DMS_Locationid_Result> DMS_Locationid()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DMS_Locationid_Result>("DMS_Locationid");
+        }
+    
+        public virtual ObjectResult<DMS_Partner_Result> DMS_Partner()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DMS_Partner_Result>("DMS_Partner");
+        }
+    
+        public virtual int DMS_IMPORTBULKAssigneditem(Nullable<long> partnerid, Nullable<long> createdBy, Nullable<long> locationid, Nullable<int> entityId, Nullable<int> countryId, Nullable<long> itemId, Nullable<decimal> minimumQty, Nullable<decimal> maximumQty)
+        {
+            var partneridParameter = partnerid.HasValue ?
+                new ObjectParameter("Partnerid", partnerid) :
+                new ObjectParameter("Partnerid", typeof(long));
+    
+            var createdByParameter = createdBy.HasValue ?
+                new ObjectParameter("CreatedBy", createdBy) :
+                new ObjectParameter("CreatedBy", typeof(long));
+    
+            var locationidParameter = locationid.HasValue ?
+                new ObjectParameter("Locationid", locationid) :
+                new ObjectParameter("Locationid", typeof(long));
+    
+            var entityIdParameter = entityId.HasValue ?
+                new ObjectParameter("EntityId", entityId) :
+                new ObjectParameter("EntityId", typeof(int));
+    
+            var countryIdParameter = countryId.HasValue ?
+                new ObjectParameter("CountryId", countryId) :
+                new ObjectParameter("CountryId", typeof(int));
+    
+            var itemIdParameter = itemId.HasValue ?
+                new ObjectParameter("ItemId", itemId) :
+                new ObjectParameter("ItemId", typeof(long));
+    
+            var minimumQtyParameter = minimumQty.HasValue ?
+                new ObjectParameter("MinimumQty", minimumQty) :
+                new ObjectParameter("MinimumQty", typeof(decimal));
+    
+            var maximumQtyParameter = maximumQty.HasValue ?
+                new ObjectParameter("MaximumQty", maximumQty) :
+                new ObjectParameter("MaximumQty", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DMS_IMPORTBULKAssigneditem", partneridParameter, createdByParameter, locationidParameter, entityIdParameter, countryIdParameter, itemIdParameter, minimumQtyParameter, maximumQtyParameter);
         }
     }
 }

@@ -4,6 +4,8 @@ var Assignedid = 0;
 jquery_1_11_3_min_p(document).ready(function () {
     jquery_1_11_3_min_p("#hdnLoad").val(10);
     LoadData = jquery_1_11_3_min_p("#hdnLoad").val();
+    jquery_1_11_3_min_p('#preloader').css('display', 'block');
+    jquery_1_11_3_min_p('#Overlay_Load').css('display', 'block');
     BindAssignedDataSetupGrid(searchtxt, SessionEntityId);
     PartnerArr.push({ value: "0", text: "Select" });
     kendo_all_min_js('#ddlpartnername').kendoDropDownList({
@@ -36,6 +38,7 @@ jquery_1_11_3_min_p(document).ready(function () {
         jquery_1_11_3_min_p("#txtMaxQty_1").val(0);
         BindPartner(SessionCountryId, SessionEntityId);
         jquery_1_11_3_min_p('#DivNewitemsearch').css('display', 'block');
+        jquery_1_11_3_min_p('#btnupload1').css('display', 'block');
     });
     jquery_1_11_3_min_p("#btnback").click(function () {
         window.location.replace("ItemAssigned.aspx");
@@ -166,6 +169,13 @@ jquery_1_11_3_min_p(document).ready(function () {
     });
     //===============================end for search========================================
 });
+
+function UploadFile() { $('#ContentPlaceHolder1_btnUpload4').click(); }
+function Findclick() {
+    $('#ContentPlaceHolder1_FileUpload').click();
+}
+
+
 function BindLocationwisedata(CountryId, EntityId, Partnerlocation,Partner) {
     jquery_1_11_3_min_p.ajax({
         type: "POST",
@@ -465,6 +475,18 @@ function BindAssignedDataSetupGrid(searchtxt, entityid) {
 
     });
 }
+
+function Load() {
+    jquery_1_11_3_min_p('#preloader').css('display', 'block');
+    jquery_1_11_3_min_p('#Overlay_Load').css('display', 'block');
+}
+
+function Unload() {
+    jquery_1_11_3_min_p('#preloader').css('display', 'none');
+    jquery_1_11_3_min_p('#Overlay_Load').css('display', 'none');
+}
+
+
 function Addclasstocolumnforitem(Data) {
     var state = $(Data).is(':checked');
     // var grid = $('#tblFields').data('kendoGrid');
