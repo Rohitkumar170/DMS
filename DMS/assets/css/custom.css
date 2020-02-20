@@ -1158,7 +1158,7 @@ table tr:nth-child(even) {    background: #eff8f7 ;}
 #tbltaxGroupGrid td:nth-child(1), #tbltaxGroupGrid th:nth-child(1){width:50px;}
 #AllRequests  td:last-child, #AllRequests th:last-child {  width: 150px;  }
 #tblRequisitionDetail .k-dropdown{    width: 140px;}
-.cardScroll{max-height: 475px;
+.cardScroll{max-height: 500px;
     overflow-y: auto;
     overflow-x: hidden;}
 #DivRequestKendo td:nth-child(5),#tblRequisitionDetail td:nth-child(3) label,#RequestLine td:nth-child(4) {    white-space: nowrap;
