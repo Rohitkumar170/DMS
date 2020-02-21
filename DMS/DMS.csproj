@@ -300,6 +300,7 @@
     <Content Include="assets\img\sidebar.jpg" />
     <Content Include="assets\img\sidebar3.jpg" />
     <Content Include="assets\img\sidebar3.png" />
+    <Content Include="assets\img\tick.png" />
     <Content Include="assets\img\ui-icons_ffffff_256x240.png" />
     <Content Include="assets\img\user.png" />
     <Content Include="assets\js\app-menu.min.js" />

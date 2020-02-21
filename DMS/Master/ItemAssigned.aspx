@@ -74,9 +74,9 @@
                             <button type="button"  id="btnDeleteLine" class="btn btn-outline-primary" title="Delete Line">
                             <i class="fa fa-trash"></i> </button>--%>
                             <button type="button" id="Button1" class="btn btn-outline-primary" title="Export">
-                            <i class="fa fa-file"></i> </button>
-                            <button type="button" id="Button2" class="btn btn-primary waves-effect waves-light">
-                            <i class="fa fa-print"></i> </button>    
+                            <i class="fa fa-file-excel-o"></i> </button>
+                            <button type="button" id="Button2" class="btn btn-primary" title="PDF">
+                            <i class="fa fa-file-pdf-o"></i> </button>    
                           
     </div>
   

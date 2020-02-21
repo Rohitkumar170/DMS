@@ -456,7 +456,8 @@
                         </button>
                     </div>
                     <div class="modal-body text-center">
-                        <h6>     Record succesfully added     </h6>
+                         <img src="../assets/img/tick.png" height="60" width="60">
+                        <h6 class="mt-1">     Record succesfully added     </h6>
                         <div class="modal-footer">
                             <button type="button" id="btnnew" class="btn btn-primary waves-effect waves-light">
                             OK</button>
