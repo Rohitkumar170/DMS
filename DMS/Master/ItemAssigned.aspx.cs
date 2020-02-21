@@ -20,7 +20,8 @@ namespace DMS.Master
             if (!IsPostBack)
             {
                 lblUserId.InnerText = Convert.ToString(Session["UserId"]);
-               
+                preloader.Style.Add("display", "block");
+                Overlay_Load.Style.Add("display", "block");
             }
 
         }
