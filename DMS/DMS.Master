@@ -82,7 +82,11 @@
     data-open="click" data-menu="vertical-menu" data-col="2-columns">
     <form id="form1" runat="server">
     <div>
-        
+<%--<div id="preloader" runat="server" style="display:block" >
+<div id="showPreloader"> <img src="../../assets/img/preloader.gif" > </div>
+</div>
+<div id="Overlay_Load" runat="server" style="display:none" ></div>--%>
+
         <nav class="header-navbar navbar-expand-md navbar navbar-with-menu navbar-without-dd-arrow fixed-top navbar-semi-light bg-primary navbar-shadow">
       <div class="navbar-wrapper">
         <div class="navbar-header">
@@ -442,22 +446,22 @@
     </footer>
         <div class="modal fade text-left" id="success" tabindex="-1" role="dialog" aria-labelledby="myModalLabel8"
             aria-hidden="true">
-            <div class="modal-dialog" role="document">
+            <div class="modal-dialog modal-sm" role="document">
                 <div class="modal-content">
                     <div class="modal-header bg-primary white">
-                        <h4 class="modal-title white" id="myModalLabel8">
+                        <h4 class=" white" id="myModalLabel8">
                             Success Message</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body">
-                        <p>
-                            Record succesfully added
-                        </p>
+                    <div class="modal-body text-center">
+                        <h6>     Record succesfully added     </h6>
                         <div class="modal-footer">
-                            <button type="button" class="btn grey btn-outline-secondary" data-dismiss="modal">
-                                Close</button>
+                            <button type="button" id="btnnew" class="btn btn-primary waves-effect waves-light">
+                            OK</button>
+                            <%--<button type="button" class="btn grey btn-outline-secondary" data-dismiss="modal">
+                                Close</button>--%>
                         </div>
                     </div>
                 </div>

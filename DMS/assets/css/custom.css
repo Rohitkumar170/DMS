@@ -315,41 +315,41 @@ body.vertical-layout.vertical-menu.menu-expanded .main-menu .navigation li.has-s
     .h6, h6 {
     font-size: 12px;
     font-weight: 500;}
-    
-        #preloader {
-  background: #fff none repeat scroll 0 0;
-  color: #2D4D76;
-  height: 100%;
-  left: 0;
-  position: fixed;
-  text-align: center;
-  top: 0;
-  width: 100%;
-  z-index: 9999999;
+
+#preloader, #ContentPlaceHolder1_preloader {
+    background: #fff none repeat scroll 0 0;
+    color: #2D4D76;
+    height: 100%;
+    left: 0;
+    position: fixed;
+    text-align: center;
+    top: 0;
+    width: 100%;
+    z-index: 9999999;
 }
 
-#preloader #showPreloader {
-  left: 46%;
-  position: absolute;
-  top: 40%;
-  max-width: 100px;
-  width: 40%;
-}
+    #preloader #showPreloader, #ContentPlaceHolder1_preloader #showPreloader {
+        left: 46%;
+        position: absolute;
+        top: 40%;
+        max-width: 100px;
+        width: 40%;
+    }
 
-#preloader #showPreloader img {
-  display: block;
-  width: 100%;
-  margin: 0 auto;
-}
+        #preloader #showPreloader img, #ContentPlaceHolder1_preloader #showPreloader img {
+            display: block;
+            width: 100%;
+            margin: 0 auto;
+        }
 
-#Overlay_Load {
-  height: 100%;
-  left: 0;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 99998;
-}
+    #ContentPlaceHolder1_preloader #Overlay_Load {
+        height: 100%;
+        left: 0;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 99998;
+    }
 
 
 .k-state-selected .grdicon

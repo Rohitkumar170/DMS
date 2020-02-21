@@ -44,6 +44,7 @@
                             <i class="fa fa-save"></i> Submit</button>
                         <button type="button" id="btnback"  class="btn btn-primary"   >
                            <i class="fa fa-arrow-left"></i> Back</button>
+                         
                       
                     </div>
                 </div>
@@ -347,6 +348,7 @@
         <label id="partnerid" style="display: none"></label>
     </div>
     </div>
+    
        <%--<script type="text/javascript">
 
                            jquery_1_11_3_min_p(document).ready(function () {
@@ -366,5 +368,10 @@
             jquery_1_11_3_min_p(document).ready(function () {
                 jquery_1_11_3_min_p(".footerDropdown").hide();
             });
+</script>
+    <script type="text/javascript">
+    function ShowPopup(title, body) {
+        $("#success").modal("show");
+    }
 </script>
 </asp:Content>
