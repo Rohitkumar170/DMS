@@ -1543,3 +1543,6 @@ form .form-control{    color: #2c2c2c;}
 .pb5 {
     padding-bottom: 5px;
 }
+#success .modal-footer {
+    display: block;
+}
