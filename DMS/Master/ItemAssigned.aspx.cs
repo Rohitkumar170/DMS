@@ -20,8 +20,11 @@ namespace DMS.Master
             if (!IsPostBack)
             {
                 lblUserId.InnerText = Convert.ToString(Session["UserId"]);
-                preloader.Style.Add("display", "block");
-                Overlay_Load.Style.Add("display", "block");
+                string title = "Greetings";
+                string body = "Welcome to ASPSnippets.com";
+                ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup('" + title + "', '" + body + "');", true);
+               
+
             }
 
         }
@@ -29,23 +32,23 @@ namespace DMS.Master
         {
             try
             {
-                //preloader.Style.Add("display", "block");
-                //Overlay_Load.Style.Add("display", "block");
+                preloader.Style.Add("display", "block");
+                Overlay_Load.Style.Add("display", "block");
                 DataTable dt = Commonmanager.ExcelImport(Path.GetExtension(FileUpload.PostedFile.FileName), FileUpload.PostedFile.FileName, Server.MapPath("../Import"), FileUpload);
                 if (dt.Rows.Count == 0)
                 {
                     string Message = "Please upload excel file";
                     ScriptManager.RegisterStartupScript(this, GetType(), "alertmsg", "Showpopup('" + Message + "');", true);
-                    //preloader.Style.Add("display", "none");
-                    //Overlay_Load.Style.Add("display", "none");
+                    preloader.Style.Add("display", "none");
+                    Overlay_Load.Style.Add("display", "none");
                     return;
                 }
                 if (dt.Columns.Count != 5)
                 {
                     string Message = "Excel is not in Proper format";
                     ScriptManager.RegisterStartupScript(this, GetType(), "alertmsg", "Showpopup('" + Message + "');", true);
-                    //preloader.Style.Add("display", "none");
-                    //Overlay_Load.Style.Add("display", "none");
+                    preloader.Style.Add("display", "none");
+                    Overlay_Load.Style.Add("display", "none");
                     return;
                 }
 
@@ -78,8 +81,8 @@ namespace DMS.Master
                     context.DMS_IMPORTBULKAssigneditem(Partner, Convert.ToInt64(Session["UserId"].ToString()), Location, Convert.ToInt32(1), Convert.ToInt32(1), Item, Convert.ToDecimal(dr["MinimumQty"]), Convert.ToDecimal(dr["MaximumQty"]));
                 }
                 context.SaveChanges();
-                //preloader.Style.Add("display", "none");
-                //Overlay_Load.Style.Add("display", "none");
+                preloader.Style.Add("display", "none");
+                Overlay_Load.Style.Add("display", "none");
 
             }
             catch (Exception ex) { throw ex; }
