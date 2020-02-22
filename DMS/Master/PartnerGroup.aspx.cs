@@ -27,21 +27,27 @@ namespace DMS.Master
                     DataTable dt = Commonmanager.ExcelImport(Path.GetExtension(FileUpload.PostedFile.FileName), FileUpload.PostedFile.FileName, Server.MapPath("../Import"), FileUpload);
                     if (dt.Rows.Count == 0)
                     {
-                        string Message = "Please upload excel file";
-                        ScriptManager.RegisterStartupScript(this, GetType(), "alertmsg", "Showpopup('" + Message + "');", true);
-                        return;
+                    preloader.Style.Add("display", "none");
+                    Overlay_Load.Style.Add("display", "none");
+                    string Message = "Please upload excel file";
+                    ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup('" + Message + "');", true);
+                    return;
                     }
                     if (dt.Columns.Count != 2)
                     {
-                        string Message = "Excel is not in Proper format";
-                        ScriptManager.RegisterStartupScript(this, GetType(), "alertmsg", "Showpopup('" + Message + "');", true);
-                        return;
+                    preloader.Style.Add("display", "none");
+                    Overlay_Load.Style.Add("display", "none");
+                    string Message = "Excel is not in Proper format";
+                    ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup('" + Message + "');", true);
+                    return;
                     }
                     if (dt.Columns.Count <= 1)
                     {
-                        string Message = "Excel is not in Proper format";
-                        ScriptManager.RegisterStartupScript(this, GetType(), "alertmsg", "Showpopup('" + Message + "');", false);
-                        return;
+                    preloader.Style.Add("display", "none");
+                    Overlay_Load.Style.Add("display", "none");
+                    string Message = "Excel is not in Proper format";
+                    ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup('" + Message + "');", true);
+                    return;
                     }
                     DMSNEWEntities context = new DMSNEWEntities();
                
@@ -50,7 +56,9 @@ namespace DMS.Master
                         context.DMS_ImporPartnerGroup(Convert.ToString(dr["PartnerType"].ToString().Trim()), Convert.ToString(dr["Description"].ToString().Trim()), Convert.ToInt32(1), Convert.ToInt32(1), Convert.ToInt64(Session["UserId"].ToString()), Convert.ToInt64(0));
                     }
                     context.SaveChanges();
-                }
+                preloader.Style.Add("display", "none");
+                Overlay_Load.Style.Add("display", "none");
+            }
                 catch (Exception ex) { throw ex; }
 
             }

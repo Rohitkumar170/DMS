@@ -43,13 +43,13 @@
                        <i class="fa fa-upload"></i>
                <input type="button" id="uploadAddress" value="Import" title="Import Address" class="custom-file-input multifileBtn" onclick="FindclickAddress();" />
                            <asp:FileUpload runat="server" Visible="true" ID="FileUploadAddress" onchange="UploadFileAddress(this);" style="display:none" />
-                           <asp:Button ID="btnUploadAddress" runat="server" OnClick="btnUploadAddress_Click" style="display:none" /> 
+                           <asp:Button ID="btnUploadAddress" runat="server" OnClick="btnUploadAddress_Click" OnClientClick="Showloader();"  style="display:none" /> 
                        </span>
                           <span class="multifileupload" id="btnupload" style="display:none"  > 
                        <i class="fa fa-upload"></i>
                <input type="button" id="upload" value="Import" title="Import Partner" class="custom-file-input multifileBtn" onclick="Findclick();" />
                            <asp:FileUpload runat="server" Visible="true" ID="FileUpload" onchange="UploadFile(this);" style="display:none" />
-                           <asp:Button ID="btnUpload" runat="server" OnClick="btnUpload_Click" style="display:none" /> 
+                           <asp:Button ID="btnUpload" runat="server" OnClick="btnUpload_Click" OnClientClick="Showloader();"  style="display:none" /> 
                        </span>
                        <button type="button" id="btnNew" class="btn btn-primary">
                             <i class="fa fa-plus-square"></i> New</button>
@@ -66,11 +66,12 @@
         </div>
     </div>
     <div class="content-wrapper">
-<%--<div id="preloader">
+<div id="preloader" runat="server" style="display:none" >
   <div id="showPreloader"> <img src="../../assets/img/preloader.gif" > </div>
 </div>
 
-<div id="Overlay_Load"></div>--%>
+<div id="Overlay_Load" runat="server" style="display:none" ></div>
+
     <div class="">
         <div class="content-body">
             <section id="partnerForm" style=" display:none" >
@@ -400,7 +401,7 @@
                        <i class="fa fa-upload"></i>
                <input type="button" id="uploadLegalField" value="Import" title="Import Legal Field" class="custom-file-input multifileBtn" onclick="FindclickLegalField();" />
                            <asp:FileUpload runat="server" Visible="true" ID="FileUploadLegalField" onchange="UploadFileLegalField(this);" style="display:none" />
-                           <asp:Button ID="btnUploadLegalField" runat="server" OnClick="btnUploadLegalField_Click" style="display:none" /> 
+                           <asp:Button ID="btnUploadLegalField" runat="server" OnClick="btnUploadLegalField_Click" OnClientClick="Showloader();"  style="display:none" /> 
                        </span>
   
       </div>
@@ -949,8 +950,20 @@ BorderColor="#3366CC" BorderStyle="None" BorderWidth="1px" CellPadding="4"  ></a
          
 </script>
         <script>
+            
+ function Showloader() {
+                
+                 jquery_1_11_3_min_p('#ContentPlaceHolder1_preloader').css('display', 'block');
+                jquery_1_11_3_min_p('#ContentPlaceHolder1_Overlay_Load').css('display', 'block');
+}
             jquery_1_11_3_min_p(document).ready(function () {
                 jquery_1_11_3_min_p(".footerDropdown").hide();
             });
+</script>
+        <script type="text/javascript">
+        function ShowPopup(text) {
+        swal(text, "warning")
+        
+    }
 </script>
 </asp:Content>

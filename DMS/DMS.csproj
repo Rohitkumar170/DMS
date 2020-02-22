@@ -495,6 +495,7 @@
     <Content Include="Master\AddressDataSetup.aspx" />
     <Content Include="Master\AddressFields.aspx" />
     <Content Include="Master\AddressFieldSetup.aspx" />
+    <Content Include="Master\AllRequisition.aspx" />
     <Content Include="Master\CreateSequence.aspx" />
     <Content Include="Master\Employee.aspx" />
     <Content Include="Master\EntitySetup.aspx" />
@@ -508,6 +509,7 @@
     <Content Include="Master\PartnerDataSetup.aspx" />
     <Content Include="Master\PartnerGroup.aspx" />
     <Content Include="Master\PartnerPara.aspx" />
+    <Content Include="Master\RequestControl.aspx" />
     <Content Include="Master\SystemParameterSetup.aspx" />
     <Content Include="Master\TaxFields.aspx" />
     <Content Include="Master\TaxSetup.aspx" />
@@ -2417,10 +2419,12 @@
     <Content Include="Telerix\Style\Uniform\sprite_kpi.png" />
     <Content Include="Telerix\Style\Uniform\sprite_kpi_2x.png" />
     <Content Include="Web.config" />
+    <Content Include="WebServices\AxPosting.asmx" />
     <Content Include="WebServices\CreateUser.asmx" />
     <Content Include="WebServices\Customer.asmx" />
     <Content Include="WebServices\Dashboard.asmx" />
     <Content Include="WebServices\Item.asmx" />
+    <Content Include="WebServices\ItemRequisition.asmx" />
     <Content Include="WebServices\ItemSetup.asmx" />
     <Content Include="WebServices\LegalTaxField.asmx" />
     <Content Include="WebServices\Sequence.asmx" />
@@ -2952,6 +2956,13 @@
     <Compile Include="Master\AddressFieldSetup.aspx.designer.cs">
       <DependentUpon>AddressFieldSetup.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Master\AllRequisition.aspx.cs">
+      <DependentUpon>AllRequisition.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master\AllRequisition.aspx.designer.cs">
+      <DependentUpon>AllRequisition.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Master\CreateSequence.aspx.cs">
       <DependentUpon>CreateSequence.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -3042,6 +3053,13 @@
     </Compile>
     <Compile Include="Master\PartnerPara.aspx.designer.cs">
       <DependentUpon>PartnerPara.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Master\RequestControl.aspx.cs">
+      <DependentUpon>RequestControl.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master\RequestControl.aspx.designer.cs">
+      <DependentUpon>RequestControl.aspx</DependentUpon>
     </Compile>
     <Compile Include="Master\SystemParameterSetup.aspx.cs">
       <DependentUpon>SystemParameterSetup.aspx</DependentUpon>
@@ -3206,6 +3224,10 @@
     <Compile Include="SaveInvoice.ashx.cs">
       <DependentUpon>SaveInvoice.ashx</DependentUpon>
     </Compile>
+    <Compile Include="WebServices\AxPosting.asmx.cs">
+      <DependentUpon>AxPosting.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="WebServices\CreateUser.asmx.cs">
       <DependentUpon>CreateUser.asmx</DependentUpon>
       <SubType>Component</SubType>
@@ -3220,6 +3242,10 @@
     </Compile>
     <Compile Include="WebServices\Item.asmx.cs">
       <DependentUpon>Item.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WebServices\ItemRequisition.asmx.cs">
+      <DependentUpon>ItemRequisition.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="WebServices\ItemSetup.asmx.cs">
@@ -3658,6 +3684,7 @@
     <Content Include="PurchaseInvoice.ashx" />
     <Content Include="SaveInvoice.ashx" />
     <Content Include="Templates\ImportExcelDocuments.zip" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
