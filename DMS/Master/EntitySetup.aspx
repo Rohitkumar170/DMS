@@ -43,7 +43,7 @@
                   <%--   <input type="file" id='FileUpload' runat="server" class="custom-file-input multifileBtn" onchange="UploadFile(this);" />--%>
                            <input type="button" id="upload" value="Import" class="custom-file-input multifileBtn" onclick="Findclick();" />
                            <asp:FileUpload runat="server" Visible="true" ID="FileUpload" onchange="UploadFile(this);" style="display:none" />
-                           <asp:Button ID="btnUpload" runat="server" OnClick="btnUpload_Click" style="display:none" /> 
+                           <asp:Button ID="btnUpload" runat="server" OnClick="btnUpload_Click" OnClientClick="Showloader();"  style="display:none" /> 
                        </span>
                      
                           <%--  <asp:FileUpload runat="server" Visible="true" ID="FileUpload" onchange="UploadFile(this);" />--%>
@@ -59,11 +59,12 @@
         </div>
     </div>
     <div class="content-wrapper">
-<%--<div id="preloader">
+<div id="preloader" runat="server" style="display:none" >
   <div id="showPreloader"> <img src="../../assets/img/preloader.gif" > </div>
 </div>
 
-<div id="Overlay_Load"></div>--%>
+<div id="Overlay_Load" runat="server" style="display:none" ></div>
+
     <div class="">
         <div class="content-body">
             <section id="createusserForm" style=" display:none" >
@@ -343,4 +344,10 @@
      jquery_1_11_3_min_p(".footerDropdown").hide();
        });
 </script
+                 <script type="text/javascript">
+        function ShowPopup(text) {
+        swal(text, "warning")
+        
+    }
+</script>
 </asp:Content>

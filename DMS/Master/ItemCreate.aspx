@@ -53,7 +53,7 @@
                        <i class="fa fa-upload"></i>
                <input type="button" id="upload" value="Import" title="Import Items" class="custom-file-input multifileBtn" onclick="Findclick();" />
                            <asp:FileUpload runat="server" Visible="true" ID="FileUpload" onchange="UploadFile(this);" style="display:none" />
-                           <asp:Button ID="btnUpload4" runat="server" OnClick="btnUpload4_Click"  style="display:none" /> 
+                           <asp:Button ID="btnUpload4" runat="server" OnClick="btnUpload4_Click" OnClientClick="Showloader();"   style="display:none" /> 
                        </span>
 
 
@@ -73,11 +73,12 @@
         </div>
     </div>
     <div class="content-wrapper">
-<div id="preloader">
+<div id="preloader" runat="server" style="display:none" >
   <div id="showPreloader"> <img src="../../assets/img/preloader.gif" > </div>
 </div>
 
-<div id="Overlay_Load"></div>
+<div id="Overlay_Load" runat="server" style="display:none" ></div>
+
     <div class="">
         <div class="content-body">
             <section id="variantForm" style=" display:none" >
@@ -110,14 +111,14 @@
                        <i class="fa fa-upload"></i>
                <input type="button" id="upload3" value="Import" title="Import Other Units" class="custom-file-input multifileBtn" onclick="Findclick3();" />
                            <asp:FileUpload runat="server" Visible="true" ID="FileUpload3" onchange="UploadFile3(this);" style="display:none" />
-                           <asp:Button ID="btnUpload3" runat="server" OnClick="btnUpload3_Click"  style="display:none" /> 
+                           <asp:Button ID="btnUpload3" runat="server" OnClick="btnUpload3_Click" OnClientClick="Showloader();"   style="display:none" /> 
                        </span>
 
                           <span class="multifileupload" id="btnupload5" style="display:none" > 
                        <i class="fa fa-upload"></i>
                <input type="button" id="upload5" value="Import" title="Import Unit Conversions" class="custom-file-input multifileBtn" onclick="Findclick5();" />
                            <asp:FileUpload runat="server" Visible="true" ID="FileUpload5" onchange="UploadFile5(this);" style="display:none" />
-                           <asp:Button ID="btnUpload5" runat="server" OnClick="btnUpload5_Click"  style="display:none" /> 
+                           <asp:Button ID="btnUpload5" runat="server" OnClick="btnUpload5_Click" OnClientClick="Showloader();"   style="display:none" /> 
                        </span>
 
                       
@@ -837,7 +838,7 @@
                        <i class="fa fa-upload"></i>
                <input type="button" id="upload2" value="Import" class="custom-file-input multifileBtn" onclick="Findclick();" />
                            <asp:FileUpload runat="server" Visible="true" ID="FileUpload2" onchange="UploadFile(this);" style="display:none" />
-                           <asp:Button ID="btnUpload2" runat="server" OnClick="btnUpload2_Click" style="display:none" /> 
+                           <asp:Button ID="btnUpload2" runat="server" OnClick="btnUpload2_Click" OnClientClick="Showloader();"  style="display:none" /> 
                        </span>
      </div>
                        
@@ -1293,8 +1294,19 @@
           });
       </script>  
      <script>
+          function Showloader() {
+                
+                 jquery_1_11_3_min_p('#ContentPlaceHolder1_preloader').css('display', 'block');
+                jquery_1_11_3_min_p('#ContentPlaceHolder1_Overlay_Load').css('display', 'block');
+}
  jquery_1_11_3_min_p(document).ready(function () {
      jquery_1_11_3_min_p(".footerDropdown").hide();
        });
+</script>
+        <script type="text/javascript">
+        function ShowPopup(text) {
+        swal(text, "warning")
+        
+    }
 </script>
 </asp:Content>
