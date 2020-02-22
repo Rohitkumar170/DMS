@@ -74,7 +74,7 @@
                             <i class="fa fa-trash"></i> </button>--%>
                             <button type="button" id="Button1" class="btn btn-outline-primary" title="Export">
                             <i class="fa fa-file-excel-o"></i> </button>
-                            <button type="button" id="Button2" class="btn btn-primary" title="PDF">
+                            <button type="button" id="Button2" class="btn btn-outline-primary" title="PDF">
                             <i class="fa fa-file-pdf-o"></i> </button>    
                           
     </div>

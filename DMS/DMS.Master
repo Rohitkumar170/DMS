@@ -111,7 +111,15 @@
               <li class="nav-item d-none d-lg-block d-none">
               <a class="nav-link nav-link-expand" > <i class="fa fa-expand"></i></a>
               </li>
-           
+           <li class="nav-item d-none d-lg-block d-none">
+               <div id="partnerName">
+                   <label > Partner Name</label> 
+                   <label>:</label>
+                   <label > Amarjeet Kumar</label>
+
+               </div>
+             
+              </li>
             </ul>
             <ul class="nav navbar-nav float-right">
               <li class="dropdown dropdown-user nav-item"><a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown"><span class="mr-1 user-name text-bold-600" id="lb1" runat="server" ></span><span class="avatar avatar-online">
@@ -220,7 +228,7 @@
                    </ul>
                     </li>
 
-<%--                              <li class=" nav-item"><a href="#"><span class="menu-title">Requisition Center</span></a>
+                              <li class=" nav-item"><a href="#"><span class="menu-title">Requisition Center</span></a>
                    <ul class="menu-content">
                      <li><a class="menu-item" href="#"><span>Sub-menu</span></a>
                          <ul class="menu-content">
@@ -229,7 +237,7 @@
                          </ul>
                      </li>
                    </ul>
-                    </li>--%>
+                    </li>
                        <%-- <li class=" nav-item"><a href="#"><span
                         class="menu-title">Requisition Center</span></a>                    </li>--%>
                                          <%--  <li class=" nav-item"><a href="#"><span class="menu-title">Inventory</span></a>

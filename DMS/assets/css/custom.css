@@ -1546,3 +1546,11 @@ form .form-control{    color: #2c2c2c;}
 #success .modal-footer {
     display: block;
 }
+#partnerName label {
+    color: #fff !important;
+    padding: 0 4px;
+}
+#partnerName {
+    line-height: 50px;
+    padding: 0 50px;
+}
