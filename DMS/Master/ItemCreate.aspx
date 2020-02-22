@@ -826,12 +826,12 @@
                                         
                                       
  <div class="table-responsive">
- <div class=" ">    
+ <div class="pdfexport ">    
     
-       <button type="button" id="Button1" class="btn btn-primary waves-effect waves-light">
-                            <i class="fa fa-file"></i> Export</button>
-                            <button type="button" id="Button1" class="btn btn-primary waves-effect waves-light">
-                            <i class="fa fa-print"></i> PDF</button>    
+       <button type="button" id="Button1" class="btn btn-outline-primary" title="Export">
+                            <i class="fa fa-file-excel-o"></i> </button>
+                            <button type="button" id="Button1" class="btn btn-outline-primary" title="PDF">
+                            <i class="fa fa-file-pdf-o"></i> </button>    
      <div style="display:inline-block">
       <span class="multifileupload" id="btnupload2" style="display:none" > 
                        <i class="fa fa-upload"></i>
@@ -897,10 +897,10 @@
                                                                                
     <div class="col-md-12">    
     <div class="pdfexport tablebtn">
-                            <button type="button" id="btnpopupaddline" onclick="AddRow()" class="btn btn-primary waves-effect waves-light">
-                            <i class="fa fa-plus"></i> Add Line</button>
-                            <button type="button" id="btnpopupDeleteLine" class="btn btn-primary waves-effect waves-light">
-                            <i class="fa fa-trash"></i> Delete Line</button>
+                            <button type="button" id="btnpopupaddline" onclick="AddRow()" class="btn btn-outline-primary" title="Add Line">
+                            <i class="fa fa-plus"></i> </button>
+                            <button type="button" id="btnpopupDeleteLine" class="btn btn-outline-primary" title="Delete Line">
+                            <i class="fa fa-trash"></i> </button>
                           
                           
     </div>

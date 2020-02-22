@@ -19,7 +19,11 @@
     <script src="../Telerix/js/jszip.min.js" type="text/javascript"></script>
    
     <script src="../JavaScript/PartnerDataSetup.js" type="text/javascript"></script>
-  
+  <style>
+      #ParameterSetupTable td:nth-child(4), #ParameterSetupTable th:nth-child(4) {
+    width: 50px;
+}
+  </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
  <input type="hidden" id="hdnLoad"/>
@@ -222,12 +226,12 @@
 
     <div class="col-md-8 ">    
     <div class="pdfexport">
-   <button type="button" id="btnExport" class="btn btn-primary waves-effect waves-light">
-                            <i class="fa fa-file"></i> Export</button>
-                            <button type="button" id="btnPdf" class="btn btn-primary waves-effect waves-light">
-                            <i class="fa fa-print"></i> PDF</button>
-                             <button type="button" id="btnUpdate" style="display:none" disabled class="btn btn-primary waves-effect waves-light">
-                            <i class="fa fa-edit"></i> Edit</button>
+   <button type="button" id="btnExport" class="btn  btn-outline-primary" title="Export">
+                            <i class="fa fa-file-excel-o"></i> </button>
+                            <button type="button" id="btnPdf" class="btn btn-outline-primary" title="PDF">
+                            <i class="fa fa-file-pdf-o"></i> </button>
+                             <button type="button" id="btnUpdate" style="display:none" disabled class="btn btn-outline-primary" title="Edit">
+                            <i class="fa fa-edit"></i> </button>
                           
                           
     </div>

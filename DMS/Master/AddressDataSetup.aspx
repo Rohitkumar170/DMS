@@ -18,6 +18,10 @@
     <script src="../Telerix/js/jquery.min.js"></script>
     <script src="../Telerix/js/jszip.min.js" type="text/javascript"></script>
    <script src="../JavaScript/Setup.js" type="text/javascript"></script>
+    <style>
+        .subGridBtn .btn{    margin: 0 5px 0 0;
+    padding: 4px 8px !important;}
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 <input type="hidden" id="hdnLoad"/>
@@ -590,11 +594,11 @@
 			<div class="card mainHeight">
 				<div class="card-header">
 					<div class="row">
-                    <div class="content-header-left col-md-6 pt-1">
-                       <button type="button" id="Button13" class="btn btn-primary waves-effect waves-light">
-                            <i class="fa fa-file"></i> Export</button>
-                            <button type="button" id="Button17" class="btn btn-primary waves-effect waves-light">
-                            <i class="fa fa-print"></i> PDF</button>
+                    <div class="content-header-left col-md-6 pt-1 subGridBtn" >
+                       <button type="button" id="Button13" class="btn btn-outline-primary " title="Export">
+                            <i class="fa fa-file-excel-o"></i> </button>
+                            <button type="button" id="Button17" class="btn btn-outline-primary" title="PDF">
+                            <i class="fa fa-file-pdf-o"></i> </button>
                     </div>
                     <div class="content-header-right col-md-6 pt-1">
                     <div class="pull-right pr-1">
