@@ -384,8 +384,8 @@ $(document).on("dblclick","#ItemGrid tbody tr",function() {
     jquery_1_11_3_min_p('#btnLoadMore').click(function () {
         LoadData = parseInt(LoadData) + 500;
         jquery_1_11_3_min_p("#hdnLoad").val(LoadData);
-        jquery_1_11_3_min_p('#preloader').css('display', 'block');
-        jquery_1_11_3_min_p('#Overlay_Load').css('display', 'block');
+        jquery_1_11_3_min_p('#ContentPlaceHolder1_preloader').css('display', 'block');
+        jquery_1_11_3_min_p('#ContentPlaceHolder1_Overlay_Load').css('display', 'block');
         BindItemGrid(searchtxt);
     });
    
@@ -1967,8 +1967,8 @@ function BindItemGrid(searchtxt) {
     var Partners = [];
 
     var SearchValue = searchtxt;
-    jquery_1_11_3_min_p('#preloader').css('display', 'block');
-    jquery_1_11_3_min_p('#Overlay_Load').css('display', 'block');
+    jquery_1_11_3_min_p('#ContentPlaceHolder1_preloader').css('display', 'block');
+    jquery_1_11_3_min_p('#ContentPlaceHolder1_Overlay_Load').css('display', 'block');
   //  LoadData = jquery_1_11_3_min_p("#hdnLoad").val();
      LoadData = jquery_1_11_3_min_p("#hdnLoad").val();
     jquery_1_11_3_min_p.ajax({
@@ -1978,8 +1978,8 @@ function BindItemGrid(searchtxt) {
         data: "{'LoadData':'" + LoadData + "','SearchValue':'" + SearchValue + "'}",
         dataType: "json",
         success: function (result) {
-            jquery_1_11_3_min_p('#preloader').css('display', 'none');
-            jquery_1_11_3_min_p('#Overlay_Load').css('display', 'none');
+            jquery_1_11_3_min_p('#ContentPlaceHolder1_preloader').css('display', 'none');
+            jquery_1_11_3_min_p('#ContentPlaceHolder1_Overlay_Load').css('display', 'none');
             jquery_1_11_3_min_p('#divGrid').css('display', 'block');
             var i = 0;
             var jsonData = result.d;

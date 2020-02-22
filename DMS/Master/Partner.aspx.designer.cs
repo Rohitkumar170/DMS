@@ -49,6 +49,24 @@ namespace DMS.Master {
         protected global::System.Web.UI.WebControls.Button btnUpload;
         
         /// <summary>
+        /// preloader control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl preloader;
+        
+        /// <summary>
+        /// Overlay_Load control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Overlay_Load;
+        
+        /// <summary>
         /// FileUploadLegalField control.
         /// </summary>
         /// <remarks>

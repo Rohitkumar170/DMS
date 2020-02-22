@@ -1,3 +1,4 @@
+
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/DMS.Master" AutoEventWireup="true" CodeBehind="AllRequisition.aspx.cs" Inherits="DMS.Master.AllRequisition" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style>
@@ -33,12 +34,15 @@
                         <button type="button" id="btnBack" class="btn btn-primary"   >
                            <i class="fa fa-arrow-left"></i> Back</button>
                       
+
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <div class="content-wrapper">
+
 <%--<div id="preloader">
   <div id="showPreloader"> <img src="../../assets/img/preloader.gif" > </div>
 </div>
@@ -272,10 +276,13 @@
                  <%--<asp:LinkButton ID="btnpdf1" runat="server" OnClick="Exportpdf_Click" OnClientClick="SetHTML()"  class="btn btn-primary waves-effect waves-light"><i class="fa fa-print"></i> PDF</asp:LinkButton>--%>
 
                  <button type="button" id="btnexportpdf"  class="btn btn-outline-primary" title="PDF">
+
+
                            <i class="fa fa-file-pdf-o"></i> </button>
                        
                          
     </div></div>
+
     <div class="col-md-2 pull-left"> 
       <div class="searchDropdown">
             <label class="showLebel">  Show Records :</label>
@@ -299,6 +306,8 @@
 								<%--<div class="dropdown-item">
 									<span class="skin skin-polaris">
 										<input type="checkbox" id="check3" checked>
+
+   
 										<label for="check3" class="coldata">Address Line 1</label>
 									</span>
 								</div>
@@ -310,18 +319,24 @@
 								</div>
                                 	<div class="dropdown-item">
 									<span class="skin skin-polaris">
+
 										<input type="checkbox" id="Checkbox1">
+
 										<label for="check4" class="coldata">City</label>
 									</span>
 								</div>
                                 	<div class="dropdown-item">
 									<span class="skin skin-polaris">
+
 										<input type="checkbox" id="Checkbox2">
+
+										
 										<label for="check4" class="coldata">State</label>
 									</span>
 								</div>
                                 	<div class="dropdown-item">
 									<span class="skin skin-polaris">
+
 										<input type="checkbox" id="Checkbox3">
 										<label for="check4" class="coldata">State</label>
 									</span>
@@ -335,6 +350,8 @@
 						</div>
                         <fieldset class=" position-relative" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <input type="text" class="form-control round "  placeholder="Search" >
+
+									
                             <div class="form-control-position">
                                 <i class="fa fa-search"></i>
                             </div>
@@ -343,6 +360,7 @@
 </div>
 </div>
 </div>
+
                                 <%--===================== start table for content=========================--%>
                          <%-- <div style="display:none" class="table-responsive" id="pdfDiv">--%>
                             <table class="table table-de mb-0" id="pdftable" style="display:none">
@@ -353,11 +371,14 @@
                                 <th><span class="customer">Partner </span></th>
                                 <th>Contact</th>
                              
+
+
                             </tr>
                         </thead>
                       <tbody></tbody>
                           
                     </table>
+
 
                            <%-- </div>--%>
 
@@ -412,10 +433,13 @@
                     </div>
                 </div>
                  </div>
+
+                    
                     </div>
                 </div>
             </div>
         </div>
+
         <label id="lblUserId" runat="server" style="display: none"></label>
         <label id="partnerid" style="display: none"></label>
     </div>
@@ -436,3 +460,4 @@
 
 </script>
 </asp:Content>
+

@@ -35,7 +35,7 @@
                        <i class="fa fa-upload"></i>
                <input type="button" id="upload" value="Import" class="custom-file-input multifileBtn" onclick="Findclick();" />
                            <asp:FileUpload runat="server" Visible="true" ID="FileUpload" onchange="UploadFile(this);" style="display:none" />
-                           <asp:Button ID="btnUpload" runat="server" OnClick="btnUpload_Click" style="display:none" /> 
+                           <asp:Button ID="btnUpload" runat="server" OnClick="btnUpload_Click" OnClientClick="Showloader();"  style="display:none" /> 
                        </span>
                        <button type="button" id="btnnew" class="btn btn-primary">
                             <i class="fa fa-plus-square"></i> New</button>
@@ -52,11 +52,12 @@
         </div>
     </div>
     <div class="content-wrapper">
-<div id="preloader" style="display:none">
+<div id="preloader" runat="server" style="display:none" >
   <div id="showPreloader"> <img src="../../assets/img/preloader.gif" > </div>
 </div>
 
-<div id="Overlay_Load" style="display:none"></div>
+<div id="Overlay_Load" runat="server" style="display:none" ></div>
+
     <div class="">
         <div class="content-body">
             <section id="itemGroupForm" style=" display:none" >
@@ -280,9 +281,20 @@
 </script>
 --%>
  <script>
+      function Showloader() {
+                
+                 jquery_1_11_3_min_p('#ContentPlaceHolder1_preloader').css('display', 'block');
+                jquery_1_11_3_min_p('#ContentPlaceHolder1_Overlay_Load').css('display', 'block');
+}
      jquery_1_11_3_min_p(document).ready(function () {
          jquery_1_11_3_min_p(".footerDropdown").hide();
      });
+</script>
+        <script type="text/javascript">
+        function ShowPopup(text) {
+        swal(text, "warning")
+        
+    }
 </script>
 </asp:Content>
 

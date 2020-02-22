@@ -6,8 +6,8 @@ jquery_1_11_3_min_p(document).ready(function () {
        jquery_1_11_3_min_p('#btnLoadMore1').click(function () {
         LoadData = parseInt(LoadData) + 10;
         jquery_1_11_3_min_p("#hdnLoad").val(LoadData);
-        jquery_1_11_3_min_p('#preloader').css('display', 'block');
-        jquery_1_11_3_min_p('#Overlay_Load').css('display', 'block');
+           jquery_1_11_3_min_p('#ContentPlaceHolder1_preloader').css('display', 'block');
+           jquery_1_11_3_min_p('#ContentPlaceHolder1_Overlay_Load').css('display', 'block');
          BindUnitGrid();
     });
     BindUnitGrid();
@@ -125,12 +125,12 @@ function Findclick() {
 }
 
 function Loader() {
-    jquery_1_11_3_min_p('#preloader').css('display', 'block');
-    jquery_1_11_3_min_p('#Overlay_Load').css('display', 'block');
+    jquery_1_11_3_min_p('#ContentPlaceHolder1_preloader').css('display', 'block');
+    jquery_1_11_3_min_p('#ContentPlaceHolder1_Overlay_Load').css('display', 'block');
 }
 function LoaderOff() {
-    jquery_1_11_3_min_p('#preloader').css('display', 'none');
-    jquery_1_11_3_min_p('#Overlay_Load').css('display', 'none');
+    jquery_1_11_3_min_p('#ContentPlaceHolder1_preloader').css('display', 'none');
+    jquery_1_11_3_min_p('#ContentPlaceHolder1_Overlay_Load').css('display', 'none');
 }
 
 function AddRow() {
@@ -270,8 +270,8 @@ function BindUnitGrid() {
         data: "{'LoadData':'" + LoadData + "','SearchValue':'" + SearchValue + "'}",
         dataType: "json",
         success: function (result) {
-            jquery_1_11_3_min_p('#preloader').css('display', 'none');
-            jquery_1_11_3_min_p('#Overlay_Load').css('display', 'none');
+            jquery_1_11_3_min_p('#ContentPlaceHolder1_preloader').css('display', 'none');
+            jquery_1_11_3_min_p('#ContentPlaceHolder1_Overlay_Load').css('display', 'none');
             jquery_1_11_3_min_p('#divGrid').css('display', 'block');
             var i = 0;
             var jsonData = result.d;

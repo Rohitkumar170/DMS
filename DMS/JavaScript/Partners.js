@@ -22,6 +22,8 @@ var JsonAddressUpdate = [];
 var SessionEntityId = 1;
 var SessionCountryId = 1;
 var SessionEntityName = "Dhiraagu";
+var EmployeeArray = [];
+var EmpWareHouse = [];
 
 
 jquery_1_11_3_min_p(document).ready(function () {
@@ -42,14 +44,14 @@ jquery_1_11_3_min_p(document).ready(function () {
     BindddlCountry(SessionEntityId);
     jquery_1_11_3_min_p("#hdnLoad").val(10);
     LoadData = jquery_1_11_3_min_p("#hdnLoad").val();
-    jquery_1_11_3_min_p('#preloader').css('display', 'block');
-    jquery_1_11_3_min_p('#Overlay_Load').css('display', 'block');
+    jquery_1_11_3_min_p('#ContentPlaceHolder1_preloader').css('display', 'block');
+    jquery_1_11_3_min_p('#ContentPlaceHolder1_Overlay_Load').css('display', 'block');
     BindAllPartner(searchtxt);
     jquery_1_11_3_min_p('#btnLoadMore').click(function () {
         LoadData = parseInt(LoadData) + 10;
         jquery_1_11_3_min_p("#hdnLoad").val(LoadData);
-        jquery_1_11_3_min_p('#preloader').css('display', 'block');
-        jquery_1_11_3_min_p('#Overlay_Load').css('display', 'block');
+        jquery_1_11_3_min_p('#ContentPlaceHolder1_preloader').css('display', 'block');
+        jquery_1_11_3_min_p('#ContentPlaceHolder1_Overlay_Load').css('display', 'block');
         BindAllPartner(searchtxt);
     });
 
@@ -89,6 +91,7 @@ jquery_1_11_3_min_p(document).ready(function () {
         jquery_1_11_3_min_p("#TaxDiv").css('display', 'block');
         jquery_1_11_3_min_p("#btnSubmit").css('display', 'block');
         BindPartnerCode();
+        BindEmpAddress();
     });
     //====================================== end code for  New Button click================================\\
 
@@ -101,7 +104,22 @@ jquery_1_11_3_min_p(document).ready(function () {
     //====================================== start code for  Submit Button click================================\\
 
     jquery_1_11_3_min_p('#btnSubmit').click(function () {
-        if (ValidateTaxGrid() == true) {
+        //if (ValidateTaxGrid() == true) {
+        //    swal({
+        //        title: "Do you want to Submit?",
+        //        text: "",
+        //        icon: "warning",
+        //        buttons: true,
+        //        dangerMode: true,
+        //    })
+        //        .then((willDelete) => {
+        //            if (willDelete) {
+        //                SaveTaxInfo();
+
+        //            }
+        //        });
+        //}
+        if (validateEmpLoyeeForm() == true) {
             swal({
                 title: "Do you want to Submit?",
                 text: "",
@@ -111,7 +129,8 @@ jquery_1_11_3_min_p(document).ready(function () {
             })
                 .then((willDelete) => {
                     if (willDelete) {
-                        SaveTaxInfo();
+                        
+                        saveEmployee();
 
                     }
                 });
@@ -128,6 +147,7 @@ jquery_1_11_3_min_p(document).ready(function () {
         dblclickFlag = 1;
         BindPartnerOndblClick(PartnerIddblclick);
         $("#btntaxGrp").css("display", "block");
+        BindEmpAddress();
     });
 
     //====================================== start code for  Proceed Button click================================\\
@@ -1278,8 +1298,8 @@ function BindAllPartner(searchtxt) {
         data: "{'LoadData':'" + LoadData + "','SearchValue':'" + SearchValue + "'}",
         dataType: "json",
         success: function (result) {
-            jquery_1_11_3_min_p('#preloader').css('display', 'none');
-            jquery_1_11_3_min_p('#Overlay_Load').css('display', 'none');
+            jquery_1_11_3_min_p('#ContentPlaceHolder1_preloader').css('display', 'none');
+            jquery_1_11_3_min_p('#ContentPlaceHolder1_Overlay_Load').css('display', 'none');
             //jquery_1_11_3_min_p('#divGrid').css('display', 'block');
             var i = 0;
             var jsonData = result.d;
@@ -1620,3 +1640,182 @@ function showrejectedPopup() {
 }
 
 
+function BindEmpAddress() {
+
+    Address.push({ value: "0", text: "Select" });
+    jquery_1_11_3_min_p('#empTable tbody').find('tr').each(function () {
+        var row = jquery_1_11_3_min_p(this);
+        var rowNumber = row.find('td:nth-child(1)').text().trim();
+        kendo_all_min_js("#empaddress_" + rowNumber).kendoDropDownList({
+       filter: "contains",
+       template: "<input type='checkbox' id='chk_OtherUnit_#=data.value #' class='clsSkillInner' value='#=data.value #' name='OtherUnit' />" + " " + "${ data.text }",
+        dataTextField: "text",
+        dataValueField: "value",
+         dataSource: Address,
+          close: onClose,
+         dataBound: onOtherUnitBound,
+        change: function () {
+            kendo_all_min_js('#empaddress_' + rowNumber).data("kendoDropDownList").span.css('background', 'none');
+        }
+        });
+    });
+
+}
+function validateEmpLoyeeForm() {
+    var allow = true;
+    jquery_1_11_3_min_p('#empTable tbody').find('tr').each(function () {
+        var row = jquery_1_11_3_min_p(this);
+        var rowNumber = row.find('td:nth-child(1)').text().trim();
+        if (kendo_all_min_js('#empaddress_' + rowNumber).val() != 0) {
+            if (jquery_1_11_3_min_p("#empname_" + rowNumber).val() == "") {
+                jquery_1_11_3_min_p("#empname_" + rowNumber).addClass('validate');
+                jquery_1_11_3_min_p("#empname_" + rowNumber).attr("placeholder", "Location Name!");
+                allow = false;
+            }
+            if (jquery_1_11_3_min_p("#empmobile_" + rowNumber).val() == "") {
+                jquery_1_11_3_min_p("#empmobile_" + rowNumber).addClass('validate');
+                jquery_1_11_3_min_p("#empmobile_" + rowNumber).attr("placeholder", "Location Name!");
+                allow = false;
+            }
+            if (jquery_1_11_3_min_p("#empemail_" + rowNumber).val() == "") {
+                jquery_1_11_3_min_p("#empemail_" + rowNumber).addClass('validate');
+                jquery_1_11_3_min_p("#empemail_" + rowNumber).attr("placeholder", "Location Name!");
+                allow = false;
+            }
+        }
+    });
+    return allow;
+
+}
+function CreateEmployeeJson() {
+    CreatedBy = jquery_1_11_3_min_p('#ContentPlaceHolder1_lblUserId').text();
+    EmployeeArray = [];
+    EmpWareHouse = [];
+    jquery_1_11_3_min_p('#empTable tbody').find('tr').each(function () {
+        var row = jquery_1_11_3_min_p(this);
+        var rowNumber = row.find('td:nth-child(1)').text().trim();
+        if (kendo_all_min_js('#empaddress_' + rowNumber).val() != 0) {
+            var EmailId = jquery_1_11_3_min_p("#empemail_" + rowNumber).val();
+            EmployeeArray.push({ name: jquery_1_11_3_min_p("#empname_" + rowNumber).val(), MobileNo: jquery_1_11_3_min_p("#empmobile_" + rowNumber).val(), EmailId: EmailId, createdBy: CreatedBy });
+            $(kendo_all_min_js('#empaddress_' + rowNumber).data("kendoDropDownList").dataItems()).each(function () {
+                var b = this;
+                var c = b.value;
+                if ($("#chk_OtherUnit_" + c).prop("checked")) {
+                    EmpWareHouse.push({ Emailid: EmailId, AddressId: c, createdBy:CreatedBy})  
+                }
+            });
+        }
+    });
+}
+
+function saveEmployee() {
+    CreateEmployeeJson();
+    var EmpJson = JSON.stringify(EmployeeArray);
+    var AddressJson = JSON.stringify(EmpWareHouse);
+    alert(AddressJson);
+    alert(EmpJson);
+    jquery_1_11_3_min_p.ajax({
+        type: "POST",
+        contentType: "application/json; charset=utf-8",
+        url: "../WebServices/Customer.asmx/SaveEmployee",
+        data: "{'EmpJson':'" + EmpJson + "','AddressJson':'" + AddressJson + "'}",
+        dataType: "json",
+        success: function (result) {
+            var i = 0;
+            var jsonData = eval(result.d);
+            if (jsonData.Table.length > 0) {
+               
+            }
+        }
+    });
+
+}
+
+
+function onOtherUnitBound(e) {
+
+    $(".clsSkillInner").on("click", function (e) {
+        var obj = this;
+        var id = $(obj).attr('id');
+        var name = 'OtherUnit';
+        var value = $(obj).attr('value');
+        var IsChecked = $(obj).is(':checked');
+        var hf = $("#hf").get(0);
+
+            if (value != 0) {
+                UpdateIdInHiddenField(hf, value, IsChecked);
+                var totalchk = $('input[id*="chk_' + name + '"]').not("#chk_" + name + "_0").length;
+                var checkedchk = $('input[id*="chk_' + name + '"]:checked').not("#chk_" + name + "_0").length;
+
+                if (totalchk == checkedchk) {
+                    $("#chk_" + name + "_0").prop("checked", true);
+                }
+                else {
+                    $("#chk_" + name + "_0").prop("checked", false);
+                }
+
+                SkillCount = $("#hf").val().split(',').length - 1;
+                //  }
+
+            }
+            else {
+
+            }
+            IsItemChecked = true;
+       
+
+    });
+  bindSkillChk();
+
+}
+
+function bindSkillChk() {
+    var chkInner = $("#hf").val().split(',');
+    chkInner = chkInner.filter(a => a != '');
+    $.each(chkInner, function (index, data) {
+        $('input[id*="chk_OtherUnit_' + data + '"]').prop("checked", true);
+    })
+} 
+
+function onClose(e) {
+    var obj = this;
+    var id = $(obj).attr('id');
+    if (IsItemChecked == true) {
+        IsItemChecked = false;
+        e.preventDefault();
+    }
+    else {
+
+        if (dblclickFlag == 0) {
+                var Otherunitdata = $("#hf").val().split(',');
+                var getlastele = Otherunitdata.length - 2;
+                var lastelement = Otherunitdata[getlastele];
+                if (lastelement == '' || lastelement == undefined) {
+                    kendo_all_min_js('#' + id).data("kendoDropDownList").value(0);
+                }
+                else {
+                    kendo_all_min_js('#' + id).data("kendoDropDownList").value(lastelement);
+                }
+            }
+
+        
+    }
+}
+
+var IsItemChecked = false;
+function UpdateIdInHiddenField(hf, id, IsAdd) {
+    if (hf.value == "") {
+        hf.value = ",";
+    }
+    if (IsAdd == true) {
+        if (hf.value.indexOf("," + id + ",") == -1) {
+            hf.value = hf.value + id + ",";
+        }
+    }
+    else if (IsAdd == false) {
+        if (hf.value.indexOf("," + id + ",") >= 0) {
+            hf.value = hf.value.replace("," + id + ",", ",");
+        }
+    }
+
+}  

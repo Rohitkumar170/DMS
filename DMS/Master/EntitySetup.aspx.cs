@@ -78,14 +78,18 @@ namespace DMS.Master
                 connExcel.Close();
                 if (dt.Rows.Count == 0)
                 {
+                    preloader.Style.Add("display", "none");
+                    Overlay_Load.Style.Add("display", "none");
                     string Message = "Please upload excel file";
-                    ScriptManager.RegisterStartupScript(this, GetType(), "alertmsg", "Showpopup('" + Message + "');", true);
+                    ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup('" + Message + "');", true);
                     return;
                 }
                 if (dt.Columns.Count != 4)
                 {
+                    preloader.Style.Add("display", "none");
+                    Overlay_Load.Style.Add("display", "none");
                     string Message = "Excel is not in Proper format";
-                    ScriptManager.RegisterStartupScript(this, GetType(), "alertmsg", "Showpopup('" + Message + "');", true);
+                    ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup('" + Message + "');", true);
                     return;
                 }
 
@@ -99,7 +103,7 @@ namespace DMS.Master
                     if (isNumeric == false)
                     {
                         string Message = "Invalid Mobile No.";
-                        ScriptManager.RegisterStartupScript(this, GetType(), "alertmsg", "Showpopup('"+Message+"');", true);
+                        ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup('" + Message + "');", true);
                         return;
                     }
                     context.DMS_ImportExcel(Convert.ToString(dr["Entityname"]),
@@ -108,7 +112,8 @@ namespace DMS.Master
                    
                 }
                 context.SaveChanges();
-               
+                preloader.Style.Add("display", "none");
+                Overlay_Load.Style.Add("display", "none");
             }
             catch (Exception ex) { throw ex; }
         }

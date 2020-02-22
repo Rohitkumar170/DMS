@@ -35,7 +35,7 @@
                        <i class="fa fa-upload"></i>
                <input type="button" id="upload" value="Import" title="Import Items" class="custom-file-input multifileBtn" onclick="Findclick();" />
                            <asp:FileUpload runat="server" Visible="true" ID="FileUpload" onchange="UploadFile(this);" style="display:none" />
-                           <asp:Button ID="btnUpload4" runat="server" OnClick="btnUpload4_Click"  style="display:none" /> 
+                           <asp:Button ID="btnUpload4" runat="server"  OnClick="btnUpload4_Click" OnClientClick="Showloader();"    style="display:none" />
                        </span>
                        <button type="button" id="btnnew" class="btn btn-primary">
                             <i class="fa fa-plus-square"></i> New</button>
@@ -364,13 +364,20 @@
 
 </script>--%>
         <script>
+            function Showloader() {
+                
+                 jquery_1_11_3_min_p('#ContentPlaceHolder1_preloader').css('display', 'block');
+                jquery_1_11_3_min_p('#ContentPlaceHolder1_Overlay_Load').css('display', 'block');
+}
             jquery_1_11_3_min_p(document).ready(function () {
                 jquery_1_11_3_min_p(".footerDropdown").hide();
             });
+
 </script>
     <script type="text/javascript">
-    function ShowPopup(title, body) {
-        $("#success").modal("show");
+        function ShowPopup(text) {
+        swal(text, "warning")
+        
     }
 </script>
 </asp:Content>

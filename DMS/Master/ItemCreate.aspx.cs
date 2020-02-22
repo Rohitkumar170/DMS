@@ -35,14 +35,18 @@ namespace DMS.Master
                 DataTable dt = Commonmanager.ExcelImport(Path.GetExtension(FileUpload.PostedFile.FileName), FileUpload.PostedFile.FileName, Server.MapPath("../Import"), FileUpload);
                 if (dt.Rows.Count == 0)
                 {
+                    preloader.Style.Add("display", "none");
+                    Overlay_Load.Style.Add("display", "none");
                     string Message = "Please upload excel file";
-                    ScriptManager.RegisterStartupScript(this, GetType(), "alertmsg", "Showpopup('" + Message + "');", true);
+                    ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup('" + Message + "');", true);
                     return;
                 }
                 if (dt.Columns.Count != 8)
                 {
+                    preloader.Style.Add("display", "none");
+                    Overlay_Load.Style.Add("display", "none");
                     string Message = "Excel is not in Proper format";
-                    ScriptManager.RegisterStartupScript(this, GetType(), "alertmsg", "Showpopup('" + Message + "');", true);
+                    ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup('" + Message + "');", true);
                     return;
                 }
                 DMSNEWEntities context = new DMSNEWEntities();
@@ -78,6 +82,8 @@ namespace DMS.Master
                      context.DMS_ImportBulkItem(Convert.ToString(dr["Itemname"]), Groupid, Itemtyped, Convert.ToString(dr["Description"]),Convert.ToDecimal(dr["CartPrice"]), Convert.ToInt64(Session["UserId"].ToString()), Convert.ToInt32(Itemtrackd), Convert.ToString(dr["ItemCode"]), baseunitd);
                 }
                 context.SaveChanges();
+                preloader.Style.Add("display", "none");
+                Overlay_Load.Style.Add("display", "none");
             }
             catch (Exception ex) { throw ex; }
            
@@ -89,14 +95,18 @@ namespace DMS.Master
                 DataTable dt = Commonmanager.ExcelImport(Path.GetExtension(FileUpload3.PostedFile.FileName), FileUpload3.PostedFile.FileName, Server.MapPath("../Import"), FileUpload3);
                 if (dt.Rows.Count == 0)
                 {
+                    preloader.Style.Add("display", "none");
+                    Overlay_Load.Style.Add("display", "none");
                     string Message = "Please upload excel file";
-                    ScriptManager.RegisterStartupScript(this, GetType(), "alertmsg", "Showpopup('" + Message + "');", true);
+                    ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup('" + Message + "');", true);
                     return;
                 }
                 if (dt.Columns.Count != 2)
                 {
+                    preloader.Style.Add("display", "none");
+                    Overlay_Load.Style.Add("display", "none");
                     string Message = "Excel is not in Proper format";
-                    ScriptManager.RegisterStartupScript(this, GetType(), "alertmsg", "Showpopup('" + Message + "');", true);
+                    ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup('" + Message + "');", true);
                     return;
                 }
                 DMSNEWEntities context = new DMSNEWEntities();
@@ -120,6 +130,8 @@ namespace DMS.Master
                   context.DMS_ImportBulkOtherunit(ItemCoded,  Convert.ToInt64(Session["UserId"].ToString()), baseunitd);
                 }
                 context.SaveChanges();
+                preloader.Style.Add("display", "none");
+                Overlay_Load.Style.Add("display", "none");
             }
             catch (Exception ex) { throw ex; }
         }
@@ -130,14 +142,18 @@ namespace DMS.Master
                 DataTable dt = Commonmanager.ExcelImport(Path.GetExtension(FileUpload5.PostedFile.FileName), FileUpload5.PostedFile.FileName, Server.MapPath("../Import"), FileUpload5);
                 if (dt.Rows.Count == 0)
                 {
+                    preloader.Style.Add("display", "none");
+                    Overlay_Load.Style.Add("display", "none");
                     string Message = "Please upload excel file";
-                    ScriptManager.RegisterStartupScript(this, GetType(), "alertmsg", "Showpopup('" + Message + "');", true);
+                    ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup('" + Message + "');", true);
                     return;
                 }
                 if (dt.Columns.Count != 5)
                 {
+                    preloader.Style.Add("display", "none");
+                    Overlay_Load.Style.Add("display", "none");
                     string Message = "Excel is not in Proper format";
-                    ScriptManager.RegisterStartupScript(this, GetType(), "alertmsg", "Showpopup('" + Message + "');", true);
+                    ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup('" + Message + "');", true);
                     return;
                 }
                 DMSNEWEntities context = new DMSNEWEntities();
@@ -166,6 +182,8 @@ namespace DMS.Master
                     context.DMS_ImportItemConversion(ItemCoded, Convert.ToDecimal(dr["Value"]),baseunitd,Otherunitd, Convert.ToDecimal(dr["ConvertedValue"]), Convert.ToInt64(Session["UserId"].ToString()));
                 }
                 context.SaveChanges();
+                preloader.Style.Add("display", "none");
+                Overlay_Load.Style.Add("display", "none");
             }
             catch (Exception ex) { throw ex; }
         }
