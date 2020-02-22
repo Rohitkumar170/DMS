@@ -131,10 +131,10 @@
 								 <div class="">
     <div class="col-md-7 pull-left">    
     <div class="pdfexport">
-   <button type="button" id="Button3" class="btn btn-primary waves-effect waves-light">
-                            <i class="fa fa-file"></i> Export</button>
-                            <button type="button" id="Button4" class="btn btn-primary waves-effect waves-light">
-                            <i class="fa fa-print"></i> PDF</button>
+   <button type="button" id="Button3" class="btn btn-outline-primary " title="Export">
+                            <i class="fa fa-file-excel-o"></i> </button>
+                            <button type="button" id="Button4" class="btn btn-outline-primary" title="PDF">
+                            <i class="fa fa-file-pdf-o"></i> </button>
                           
                           
     </div>
@@ -217,12 +217,12 @@
 								 <div class="row">
     <div class="col-md-6 pull-left">    
     <div class="pdfexport pl-1">
-   <button type="button" id="btnExport" class="btn btn-primary waves-effect waves-light">
-                            <i class="fa fa-file"></i> Export</button>
-                            <button type="button" id="btnPdf" class="btn btn-primary ">
-                            <i class="fa fa-print"></i> PDF</button>
-                             <button type="button" id="btnShowUnitConv" class="btn btn-primary ">
-                            <i class="fa fa-exchange"></i> Unit Conversion</button>
+   <button type="button" id="btnExport" class="btn btn-outline-primary" title="Export">
+                            <i class="fa fa-file-excel-o"></i> </button>
+                            <button type="button" id="btnPdf" class="btn btn-outline-primary " title="PDF">
+                            <i class="fa fa-file-pdf-o"></i> </button>
+                             <button type="button" id="btnShowUnitConv" class="btn btn-outline-primary " title="Unit Conversion">
+                            <i class="fa fa-exchange"></i> </button>
                           
                           
     </div>
@@ -526,12 +526,12 @@
 												   
 												  <div class="row" id="viewList">
                                          <div class="  pl-1   ">
-    <div class=" pull-left">    
+    <div class=" pull-left pdfexport ">    
    
-       <button type="button" id="Button10" class="btn btn-primary waves-effect waves-light">
-                            <i class="fa fa-file"></i> Export</button>
-                            <button type="button" id="Button11" class="btn btn-primary waves-effect waves-light">
-                            <i class="fa fa-print"></i> PDF</button>    
+       <button type="button" id="Button10" class="btn btn-outline-primary" title="Export">
+                            <i class="fa fa-file-excel-o"></i> </button>
+                            <button type="button" id="Button11" class="btn btn-outline-primary"  title="PDF">
+                            <i class="fa fa-file-pdf-o"></i> </button>    
                         
     </div>
     

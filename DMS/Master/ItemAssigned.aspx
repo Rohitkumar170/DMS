@@ -1,6 +1,5 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/DMS.Master" AutoEventWireup="true" CodeBehind="ItemAssigned.aspx.cs" Inherits="DMS.Master.ItemAssigned" %>
 
-
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 <script src="../js/jquery-1.11.3.min.js" type="text/javascript"></script>
     <script>        var jquery_1_11_3_min_p = jQuery.noConflict();</script>

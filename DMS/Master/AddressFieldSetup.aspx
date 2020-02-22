@@ -49,7 +49,7 @@
                              <button type="button" id="btnSubmit" style="display:none" class="btn btn-primary">
                             <i class="fa fa-save"></i> Submit</button>
                               <button type="button" id="btndesable" style="display:none"  class="btn btn-primary">
-                            <i class="fa fa-ban"></i>Disable</button>
+                            <i class="fa fa-ban"></i> Disable</button>
                         <button type="button" id="btnback" style="display:none"  class="btn btn-primary" >
                            <i class="fa fa-arrow-left"></i> Back</button>
                       
@@ -80,9 +80,9 @@
                             <button type="button" id="btnDeleteLine" class="btn btn-outline-primary" title="Delete Line">
                             <i class="fa fa-trash"></i> </button>
                             <button type="button" id="dblbtnExport" class="btn btn-outline-primary" title="Export">
-                            <i class="fa fa-file"></i> </button>
+                            <i class="fa fa-file-excel-o"></i> </button>
                             <button type="button" id="dblbtnPdf" class="btn btn-outline-primary" title="PDF">
-                            <i class="fa fa-print"></i> </button>    
+                            <i class="fa fa-file-pdf-o"></i> </button>    
                           
     </div>
      <div class="searchDropdown">
