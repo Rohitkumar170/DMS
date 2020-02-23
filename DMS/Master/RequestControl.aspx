@@ -22,416 +22,282 @@
 
      <script src="../JavaScript/RequestControl.js" type="text/javascript"></script>
     
-     <style>
-          #AllRequests tbody td, #AllRequests thead th {      width: 105px;    }
-     #tblRequisitionDetail td:nth-child(3), #tblRequisitionDetail th:nth-child(3) {
-    width: 50px;
-}
-#tblRequisitionDetail td:nth-child(5) {    white-space: nowrap;
-    width: 150px;
-    overflow: hidden;
-    text-overflow: ellipsis;}
-     </style>
+    <style>
+         #RequisitionLineForm td:nth-child(1), #RequisitionLineForm th:nth-child(1) {    width: 50px;} 
+         #RequisitionLineForm td:nth-child(6) input[type="text"]{    text-align:right; width: 90px;} 
+         #RequisitionLineForm td:nth-child(5), #RequisitionLineForm th:nth-child(5) {    text-align:right; width: 90px;} 
+         .table td:last-child, .table th:last-child {    width: 120px;}
+         .headerPropery{width: 100px;}
+         .headerValue{width: 100px;}
+         #AllRequisitionGrid td:nth-child(1), #AllRequisitionGrid th:nth-child(1) {    width: 50px;}
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
- <input type="hidden" id="hdnLoad"/>
- <div class="content-header row">
-        <div class="content-header-light col-12" >
-            <div class="row" id="">
+<div class="content-header row">
+        <div class="content-header-light col-12">
+            <div class="row">
                 <div class="content-header-left col-md-6 col-12 mb-2">
                     <h4 class="content-header-title mainheading">
-                       Request Control</h4>
+                         <span class="customer">Request Control</span></h4>
                 </div>
-                <div class="content-header-right col-md-6 col-12" id="divbtn" style="display:none">
+                <div class="content-header-right col-md-6 col-12">
                     <div class="btn-group float-md-right" role="group" aria-label="Button group with nested dropdown">
-                        <button type="button" id="btnApprove" class="btn btn-primary">
-                            <i class="fa fa-plus-square"></i> Approve</button>
-                       <%-- <button type="button" id="btnReject" class="btn btn-primary">
-                            <i class="fa fa-save"></i> Reject</button>--%>
+                    
+                       <button type="button" id="btnNew" class="btn btn-primary">
+                            <i class="fa fa-plus-square"></i> New</button>                        
+                         <button type="button"  id=""  class="btn btn-primary">
+                            <i class="fa fa-save"></i> Save</button>
+                         <%--<button type="button"  id=""  class="btn btn-primary">
+                            <i class="fa fa-repeat"></i> Recall</button>--%>
+                             <%-- <button type="button" id="" class="btn btn-primary">
+                            <i class="fa fa-remove"></i> Cancel</button>--%>
+                        <button type="button" id="btnBack" class="btn btn-primary"   >
+                           <i class="fa fa-arrow-left"></i> Back</button>
+                            <button type="button" id="btnsummary" data-toggle="modal" data-target="#AllLeaveRequestPopup" class="btn btn-primary">
+                            <i class="fa fa-arrow-left"></i> pop</button>
 
-                        <button type="button" id="btnRecall" style="display:none"  class="btn btn-primary">
-                            <i class="fa fa-edit"></i> Recall</button>
-                         <button type="button" id="btnShip"  class="btn btn-primary">
-                            <i class="fa fa-edit"></i> Ship</button>
-                        <button type="button" id="btnback" class="btn btn-primary">
-                            <i class="fa fa-arrow-left"></i> Back</button>
-                          <%--  <button type="button" id="Button1" class="btn btn-primary" data-toggle="modal" data-target="#RequisitionApproval">
-                            <i class="fa fa-arrow-left"></i> pop</button>--%>
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <div class="content-wrapper">
-<div id="preloader" style="display: none;">
+
+<%--<div id="preloader">
   <div id="showPreloader"> <img src="../../assets/img/preloader.gif" > </div>
 </div>
 
-<div id="Overlay_Load" style="display: none;"></div>
+<div id="Overlay_Load"></div>--%>
     <div class="">
         <div class="content-body">
-         <%--   <section id="RequestControlDetail" style="display:none" >
+            <section id="RequisitionForm" style=" display:none" >
                 <div class="row match-height">
-                    <div class="col-md-12">
-                        <div class="card">
-                          
-                            <div class=" collapse show" >
-                              
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>--%>
-              <div class="row match-height" id="createNewItem" style="display:none">
-          
-                <div class="col-12 col-xl-12 ">                    
+                   <div class="col-12 col-xl-12 ">                    
                     <div class="card">
-                   <div class="card-body">
-                                 
-                                    <form class="form">
-                                    <div class="form-body" id="Reqheader" >
-                                      
-                                        <div class="row lebels borderBottom">
-                                            <div class="col-md-3">
-                                                <div class="form-group">
-                                                  
-                                                    <label for="RequestNo">Request No. </label>
-                                                 <span  > : <label id="lblReqNum"></label></span>
-                                                </div>
-                                            </div>
-                                             
-                                            <div class="col-md-3">
-                                                <div class="form-group">
-                                                  <label for="CreatedBy">Created By </label>
-                                                   <span> : <label id="lblCreatedBy"></label></span>
-                                                </div>
-                                            </div>
-                                           
-                                                   <div class="col-md-3">
-                                                <div class="form-group">
-                                                  <label for="CreatedDate">Requested Date </label>
-                                                    <span > : <label id="lblReqDate"></label></span>
-                                                </div>
-                                            </div>
-                                             <div class="col-md-3">
-                                                <div class="form-group">
-                                                  
-                                                    <label for="Status">Status </label>
-                                                   <span > : <label id="lblStatus"></label> </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                       
-                                    </div>
-                                    
-                                    </form>
-                                </div>
                         <div class="card-content">
+                      <div class="container">
+                          <h6 class="form-section">Requisition  Header</h6>
+                      <div class="row  mt-1 ">
+                      <div class="col-md-3"> 
+                          <label class="headerPropery">Request No.</label>
+                           : <label class="headerValue">0001</label>
+                      </div>
+                      
+                           <div class="col-md-3"> 
+                          <label class="headerPropery">Request Date</label>
+                                : <label class="headerValue">01-Feb-2020 4:08pm</label>
+                      </div>
+                      
+                           <div class="col-md-3"> 
+                          <label class="headerPropery">Location</label>
+                                : <label class="headerValue">Delhi</label>
+                      </div>
+                       <div class="col-md-3"> 
+                          <label class="headerPropery">Creation Date</label>
+                                : <label class="headerValue">01-Feb-2020 4:08pm</label>
+                      </div>
+                      </div>
+                           <div class="row pt5 ">
+                      <div class="col-md-3"> 
+                          <label class="headerPropery">Submission Date</label>
+                           : <label class="headerValue">01-Feb-2020 4:08pm</label>
+                      </div>
+                      
+                           <div class="col-md-3"> 
+                          <label class="headerPropery">Cancel Request Date</label>
+                                : <label class="headerValue">01-Feb-2020 4:08pm</label>
+                      </div>
+                      
+                           <div class="col-md-3"> 
+                          <label class="headerPropery">Last Activity Date</label>
+                                : <label class="headerValue"> 01-Feb-2020 4:08pm</label>
+                      </div>
+                       <div class="col-md-3"> 
+                          <label class="headerPropery">Total Time</label>
+                                : <label class="headerValue">24:10:12 Hours</label>
+                      </div>
+                      </div>
+                           <div class="row  pt5 ">
+                      <div class="col-md-3"> 
+                          <label class="headerPropery">Last Activity Status</label>
+                           : <label class="headerValue">01-Feb-2020 4:08pm</label>
+                      </div>
+                      
+                           <div class="col-md-3"> 
+                          <label class="headerPropery">Last Activity By</label>
+                                : <label class="headerValue">Mobile</label>
+                      </div>
+                      
+                      
+                      </div>
+                      </div>
                         <div class="container">
-                        <div class="row">
-    <div class="col-md-8">    
+                              <h6 class="form-section mt-1"></h6>
+                      <div class="row  headerDropdown ">
+    <div class="col-md-6 ">    
     <div class="pdfexport">
-   <button type="button" id="Button1" class="btn btn-primary ">
-                            <i class="fa fa-file"></i> Export</button>
-                          
-                 
-
-                 <button type="button" id="Button2" class="btn btn-primary ">
-                           <i class="fa fa-print"></i> PDF</button>
-                       
-                         
-    </div></div>
-    <div class="col-md-2 "> 
-      <div class="searchDropdown">
-            <label class="showLebel">  Show Records :</label>
-			<select id="Select1" class=" form-control showrecords pull-right">
-												<option>2 </option>
-                                                <option>5 </option>
-                                                <option>50 </option>
-												<option>100 </option>
-												<option>150</option>
-                                                <option>200</option>
-                                                 <option>500</option>
-                                                </select>	
-     </div>  </div>
-    <div class="col-md-2  ">
-     <div class="searchbox ">
-    
-                                   <div class="dropdown">
-							<div class="dropdown-menu checkboxSearch" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(15px, 28px, 0px);">
-							<div class="columnList">
-								<div class="dropdown-item">
-									<span class="skin skin-polaris">
-										<input type="checkbox" id="Checkbox6" checked="">
-										<label for="check3" class="coldata">Address Line 1</label>
-									</span>
-								</div>
-								<div class="dropdown-item">
-									<span class="skin skin-polaris">
-										<input type="checkbox" id="Checkbox7">
-										<label for="check4" class="coldata">Address Line 1</label>
-									</span>
-								</div>
-                                	<div class="dropdown-item">
-									<span class="skin skin-polaris">
-										<input type="checkbox" id="Checkbox8">
-										<label for="check4" class="coldata">City</label>
-									</span>
-								</div>
-                                	<div class="dropdown-item">
-									<span class="skin skin-polaris">
-										<input type="checkbox" id="Checkbox9">
-										<label for="check4" class="coldata">State</label>
-									</span>
-								</div>
-                                	<div class="dropdown-item">
-									<span class="skin skin-polaris">
-										<input type="checkbox" id="Checkbox10">
-										<label for="check4" class="coldata">State</label>
-									</span>
-								</div>
-                                </div>
-                                 <div class="dropdownBottom">
-                                <label class="pull-left" id="Label2">Select All</label>
-                                  <label class="pull-right" id="Label3">Reset</label>
-                                </div>
-							</div>
-						</div>
-                        <fieldset class=" position-relative" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <input type="text" class="form-control round " placeholder="Search">
-                            <div class="form-control-position">
-                                <i class="fa fa-search"></i>
-                            </div>
-                            
-                        </fieldset></div>
-</div>
-</div>
-</div>
-<div class="container">
-          <div class="row">
-    <div class="col-md-12 ">  
-                            <div class="table-responsive full-width">
-                            <table class="table table-de mb-0 clickableRow" id="tblRequisitionDetail">
-                        <thead>
-                            <tr>
-                             <th style="Display:none" >RequisitiondetId</th>
-                             <th style="Display:none" >RequisitionId</th>
-                                <th> <input id='Checkbox1' type='checkbox' class='checkboxcls' onclick='checkAllHeaderGrid(this)'/> All</th>
-                                 <th>Location</th>
-                                <th>Item No.</th>
-                                <th>Item Name</th>
-                                <th>Requester</th>
-                                <th>Inventory Unit</th>
-                                <th>Requested Qty</th>
-                                <th>Approved Qty</th>
-                                 <th>Status</th>
-                                <th>Remaining Qty</th>
-                                 <th>Remarks</th>
-                            </tr>
-                        </thead>
-                      <tbody></tbody>
-                          
-                    </table>
-                            </div>
-                            </div>
-                    </div>
-                </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-             <div class="row mt-1" id="availableWarehouse" style="display:none">
-          
-                <div class="col-12 col-xl-12 ">                    
-                    <div class="card">
-                    <div class="card-header "><h6 class="form-section">Available Quantity Location Wise</h6>    </div>
-                        <div class="card-content">
-                        <div class="container">
-                        <div class="row lebels mb-1">
-                                            <div class="col-md-3">
-                                                <div class=" ">
-                                                  
-                                                    <label for="RequestNo">Item No. </label>
-                                                 <span> : <label id="lblWReqNum"></label></span>
-                                                </div>
-                                            </div>
-                                             
-                                            <div class="col-md-5">
-                                                <div class="">
-                                                  <label for="CreatedBy">Item Name </label>
-                                                    <span> : <label id="lblWReqName"></label></span>
-                                                </div>
-                                            </div>
-                                           
-                                                   <div class="col-md-3">
-                                                <div class="">
-                                                  <label for="CreatedDate">Requested Quantity </label>
-                                                     <span> : <label id="lblWReqqty"></label></span>
-                                                </div>
-                                            </div>
-                                            </div>
-                                        </div>
-                                        <div class="container">
-                                        <div class="row">
-    <div class="col-md-8">    
-    <div class="pdfexport ">
-   <button type="button" id="Button3" class="btn btn-outline-primary" title="Export">
+   <button type="button" id="btnAdd" onclick="AddRow()" class="btn btn-outline-primary" title="Add Line">
+                            <i class="fa fa-plus"></i> </button>
+                            <button type="button"  id="btnDeleteLine" class="btn btn-outline-primary" title="Delete Line">
+                            <i class="fa fa-trash"></i> </button>
+                            <button type="button" id="Button1" class="btn btn-outline-primary" title="Export">
                             <i class="fa fa-file-excel-o"></i> </button>
+                            <button type="button" id="Button2" class="btn btn-outline-primary" title="PDF">
+                            <i class="fa fa-file-pdf-o"></i> </button>    
                           
-                 
-
-                 <button type="button" id="Button4" class="btn btn-outline-primary" title="PDF">
-                           <i class="fa fa-file-pdf-o"></i> </button>
-                       
-                         
-    </div></div>
-    <div class="col-md-2 "> 
-      <div class="searchDropdown">
-            <label class="showLebel">  Show Records :</label>
-			<select id="Select2" class=" form-control showrecords pull-right">
-												<option>2 </option>
-                                                <option>5 </option>
-                                                <option>50 </option>
-												<option>100 </option>
-												<option>150</option>
-                                                <option>200</option>
-                                                 <option>500</option>
-                                                </select>	
-     </div>  </div>
-    <div class="col-md-2  ">
-     <div class="searchbox">
+    </div>
+  
     
-                                   <div class="dropdown">
-							<div class="dropdown-menu checkboxSearch" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(15px, 28px, 0px);">
-							<div class="columnList">
-								<div class="dropdown-item">
-									<span class="skin skin-polaris">
-										<input type="checkbox" id="Checkbox11" checked="">
-										<label for="check3" class="coldata">Address Line 1</label>
-									</span>
-								</div>
-								<div class="dropdown-item">
-									<span class="skin skin-polaris">
-										<input type="checkbox" id="Checkbox12">
-										<label for="check4" class="coldata">Address Line 1</label>
-									</span>
-								</div>
-                                	<div class="dropdown-item">
-									<span class="skin skin-polaris">
-										<input type="checkbox" id="Checkbox13">
-										<label for="check4" class="coldata">City</label>
-									</span>
-								</div>
-                                	<div class="dropdown-item">
-									<span class="skin skin-polaris">
-										<input type="checkbox" id="Checkbox14">
-										<label for="check4" class="coldata">State</label>
-									</span>
-								</div>
-                                	<div class="dropdown-item">
-									<span class="skin skin-polaris">
-										<input type="checkbox" id="Checkbox15">
-										<label for="check4" class="coldata">State</label>
-									</span>
-								</div>
-                                </div>
-                                 <div class="dropdownBottom">
-                                <label class="pull-left" id="Label4">Select All</label>
-                                  <label class="pull-right" id="Label5">Reset</label>
-                                </div>
-							</div>
-						</div>
-                        <fieldset class=" position-relative" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <input type="text" class="form-control round " placeholder="Search">
-                            <div class="form-control-position">
-                                <i class="fa fa-search"></i>
-                            </div>
-                            
-                        </fieldset></div>
-</div>
-</div>
-</div>
-<div class="container">
+    </div>
+                           <div class="col-md-3"  ></div>
+                         <div class="col-md-3"  >
+                                          <%--<div class="input-group input-group-sm">
+								                   <div class="input-group-prepend ">
+								                     <span class="input-group-text">Select Location</span>
+								                   </div>                                               
+								                 <select  class="Operator">
+												<option value="Item">Location1</option>
+                                                <option value="Group">Location2</option>
+												<option value="All">Location3</option>                                        
+                                                </select>
+							                    </div>--%>
+                                          </div>
+    
+      <%-- <div class="col-md-3">
+                                                <div class="form-group pull-right pr-1">
+                                                   <label class="pr-1">Select Entity</label>
+                                                   
+                                                 <input type="text" id="ddlentity"  autocomplete="off"  style="width: 95px;"/>
+                                                </div>
+                                            </div>
+    <div class="col-md-3 ">
+                                                <div class="form-group pull-right  ">                                                 
+                                                    <label class="pr-1">Select Country</label>
+<input type="text" id="ddlcountry"  autocomplete="off"  style="width: 100px;"/>
+                                                
+                                                </div>
+                                            </div>--%>
+ 
+                                          </div>
+                                             </div>
+                                             <div class="container">
           <div class="row">
     <div class="col-md-12 ">  
+                           <div class="table-responsive full-width" >
+                             <table  class="table table-de mb-0"  id="RequisitionLineForm">
+                <thead>
+                  <tr>                    
+                    <th><input type="checkbox" id="" onclick="InputcheckAll(this)"/> All</th>
+                   
+                    <th>Item No.</th>
+                    <th>Item Name</th>
+                    <th>Onhand</th>
+                    <th>Requested Quantity</th>                   
+                  </tr>
+                </thead>
+              <tbody>
+                <tr> 
+                <td> <input type="checkbox" id="" class="chk_All" /></td>        
+            
+                <td> <label>0001</label> </td> 
+                <td> <label>Bottle</label> </td> 
+                <td> <label>25</label> </td> 
+                <td> 520 </td>  
+                </tr>
+                <tr> 
+                <td> <input type="checkbox" id="" class="chk_All" /></td>         
+                   
+                <td> <label>0002</label> </td> 
+                <td> <label>Bottle2</label> </td> 
+                <td> <label>252</label> </td> 
+                <td> 50 </td>  
+                </tr>
+                <tr> 
+                <td> <input type="checkbox" id="" class="chk_All" /></td>         
+                 
+                <td> <label>0003</label> </td> 
+                <td> <label>Bottle3</label> </td> 
+                <td> <label>235</label> </td> 
+                <td> 501 </td>    
+                </tr>
+                   <tr> 
+                <td> <input type="checkbox" id="" class="chk_All" /></td>         
+                 
+                <td> <label>0004</label> </td> 
+                <td> <label>Bottle4</label> </td> 
+                <td> <label>425</label> </td> 
+                <td> 510 </td>  
+                </tr>
+                <tr> 
+                <td> <input type="checkbox" id="" class="chk_All" /></td>         
+                 
+                <td> <label>0005</label> </td> 
+                <td> <label>Bottle5</label> </td> 
+                <td> <label>255</label> </td> 
+                <td> 150 </td>  
+                </tr>
+              </tbody>
+              </table>
 
-
-                                        <div class="table-responsive full-width">
-                                        <table class="table table-de mb-0" id="RequestLine">
-                        <thead>
-                            <tr>
-                           
-                                <th> <input id='Checkbox2' type='checkbox' class='checkboxcls' onclick='checkAllHeaderGrid(this)'/> All</th>
-                                <th>S.No</th>
-                                <th>Location Code</th>
-                                <th>Location Name</th>
-                                <th>Onhand</th>
-                                <th>Approve Qty</th>
-                                
-                            </tr>
-                        </thead>
-                      <tbody></tbody>
-                          
-                    </table>
-                                        
-                                        </div>
+              </div>
+           
                              </div>
                     </div>
                 </div>
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="row match-height" id="Al">
-         <%--   <div class="col-12 col-xl-12 selectAll ">
-                        
-                      <div class="custom-control">                     
-											<input type="checkbox" class="" id="chkall"/>
-											<label class="custom-control-label" for="chkall">Select All </label>
-										</div>
-                    </div>--%>
+                </div>
+            </section>
+            <div class="row match-height" id="RequisitionGrid" style="display:block">
+          
                 <div class="col-12 col-xl-12 ">                    
                     <div class="card">
-                   
-                        <div class="card-content" id ="MainGrid">
-                        <div class="container">
-                        <div class="row">
-    <div class="col-md-8">    
-    <div class="pdfexport ">
-   <button type="button" id="btnExcel" class="btn btn-outline-primary" title="Export">
-                            <i class="fa fa-file"></i> </button>
-                          
-                 
+                        <div class="card-content">
+                     <div class="container">
+          <div class="row">
 
-                 <button type="button" id="btnexportpdf" class="btn btn-outline-primary" title="PDF">
-                           <i class="fa fa-print"></i> </button>
+    <div class="col-md-8 pull-left">    
+    <div class="pdfexport">
+   <button type="button" id="btnExcel"  class="btn btn-outline-primary" title="Export">
+                            <i class="fa fa-file-excel-o"></i> </button>
+                          <%--   <asp:LinkButton ID="btnExcel" runat="server" OnClick="btnExcel_Click"   class="btn btn-primary waves-effect waves-light"><i class="fa fa-print"></i> Export</asp:LinkButton>--%>
+                 <%--<asp:LinkButton ID="btnpdf1" runat="server" OnClick="Exportpdf_Click" OnClientClick="SetHTML()"  class="btn btn-primary waves-effect waves-light"><i class="fa fa-print"></i> PDF</asp:LinkButton>--%>
+
+                 <button type="button" id="btnexportpdf"  class="btn btn-outline-primary" title="PDF">
+
+
+                           <i class="fa fa-file-pdf-o"></i> </button>
                        
                          
     </div></div>
-    <div class="col-md-2 "> 
+
+    <div class="col-md-2 pull-left"> 
       <div class="searchDropdown">
             <label class="showLebel">  Show Records :</label>
 			<select id="ddlLoadMore" class=" form-control showrecords pull-right">
-												<option>2 </option>
-                                                <option>5 </option>
-                                                <option>50 </option>
-												<option>100 </option>
+												<option >2 </option>
+                                                <option >5 </option>
+                                                <option >50 </option>
+												<option >100 </option>
 												<option>150</option>
-                                                <option>200</option>
+                                                <option >200</option>
                                                  <option>500</option>
                                                 </select>	
      </div>  </div>
-    <div class="col-md-2  ">
-     <div class="searchbox ">
-    
-                                   <div class="dropdown">
-							<div class="dropdown-menu checkboxSearch">
-							<div class="columnList">
-								<div class="dropdown-item">
+    <div class="col-md-2 pull-right ">
+     <div class="searchbox">
+    <%--<button type="button" class="btn btn-primary  mr-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								 <i class="fa fa-search"></i>	Column Search		</button>--%>
+                                   <div class="dropdown " id="">
+							<div class="dropdown-menu checkboxSearch" >
+							<div class="columnList" id="DivSearch">
+								<%--<div class="dropdown-item">
 									<span class="skin skin-polaris">
-										<input type="checkbox" id="check3" checked="">
+										<input type="checkbox" id="check3" checked>
+
+   
 										<label for="check3" class="coldata">Address Line 1</label>
 									</span>
 								</div>
@@ -443,31 +309,39 @@
 								</div>
                                 	<div class="dropdown-item">
 									<span class="skin skin-polaris">
-										<input type="checkbox" id="Checkbox3">
+
+										<input type="checkbox" id="Checkbox1">
+
 										<label for="check4" class="coldata">City</label>
 									</span>
 								</div>
                                 	<div class="dropdown-item">
 									<span class="skin skin-polaris">
-										<input type="checkbox" id="Checkbox4">
+
+										<input type="checkbox" id="Checkbox2">
+
+										
 										<label for="check4" class="coldata">State</label>
 									</span>
 								</div>
                                 	<div class="dropdown-item">
 									<span class="skin skin-polaris">
-										<input type="checkbox" id="Checkbox5">
+
+										<input type="checkbox" id="Checkbox3">
 										<label for="check4" class="coldata">State</label>
 									</span>
-								</div>
+								</div>--%>
                                 </div>
-                                 <div class="dropdownBottom">
+                                <%-- <div class="dropdownBottom">
                                 <label class="pull-left" id="selectall">Select All</label>
                                   <label class="pull-right" id="reset">Reset</label>
-                                </div>
+                                </div>--%>
 							</div>
 						</div>
                         <fieldset class=" position-relative" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <input type="text" class="form-control round " placeholder="Search">
+                            <input type="text" class="form-control round "  placeholder="Search" >
+
+									
                             <div class="form-control-position">
                                 <i class="fa fa-search"></i>
                             </div>
@@ -476,183 +350,200 @@
 </div>
 </div>
 </div>
-<div class="container">
-          <div class="row">
-    <div class="col-md-12 ">  
 
-                            <div class="table-responsive full-width">
-                             <table class="table table-de mb-0 clickableRow" id="AllRequests">
+                                <%--===================== start table for content=========================--%>
+                         <%-- <div style="display:none" class="table-responsive" id="pdfDiv">--%>
+                            <table class="table table-de mb-0" id="pdftable" style="display:none">
                         <thead>
                             <tr>
-                              <th style="Display:none" >RequisitionId</th>
-                                <th> <input id='chkall' type='checkbox' class='checkboxcls' onclick='checkAllHeaderGrid(this)'/> All</th>
-                                <th>Request Number</th>
-                                <th>Warehouse Name</th>
-                                <th>Created By</th>
-                                <th>Created On</th>
-                                <th>Submitted Date</th>
-                                <th>Status</th>
-                                <th>Last Activtity By</th>
-                                <th>Last Activtity Date</th>
-                                </tr>
-                                 </thead>
+                                
+                                <th><span class="customer">Partner Type</span></th>
+                                <th><span class="customer">Partner </span></th>
+                                <th>Contact</th>
+                             
+
+
+                            </tr>
+                        </thead>
                       <tbody></tbody>
                           
                     </table>
+
+
+                           <%-- </div>--%>
+
+      <%-- =======================end table for content===================--%>
+                           <%-- table for content--%>
+                           <div class="container">
+                             <div class="row">
+                               <div class="col-md-12 ">
+                            <div class="table-responsive full-width">
+                            <table class="table table-de mb-0" id="AllRequisitionGrid">
+                        <thead>
+                            <tr>
+                                
+                                <th><input Type="checkbox" id="chkall"/> All</th>
+                                <th>Request No.</th>
+                                <th>Request Date</th>
+                                <th>Location</th>
+                                <th>Creation Date</th>
+                                <th>Submission Date</th>
+                                <th>Cancel Request Date</th>
+                                <th>Last Activity Date</th>
+                                <th>Total Time</th>
+                                <th>Last Activity Status</th>
+                                <th>Last Activity By</th>
+                               
+                            </tr>
+                        </thead>
+                      <tbody>
+                            <tr>  
+                                 <td><input Type="checkbox"/></td>
+                                 <td>0001</td>
+                                 <td>01-Feb-2020 4:08pm</td>
+                                <td>Noida</td>
+                                <td>01-Feb-2020 4:08pm</td>
+                                <td>01-Feb-2020 4:08pm</td>
+                                <td>01-Feb-2020 4:08pm</td>
+                                <td>01-Feb-2020 4:08pm</td>
+                                <td>2:2:08 Hours</td>
+                                <td>01-Feb-2020 4:08pm</td>
+                                <td>01-Feb-2020 4:08pm</td>
+                            </tr>
+                             <tr>  
+                                 <td><input Type="checkbox"/></td>
+                                 <td>0002</td>
+                                 <td>01-Feb-2020 4:08pm</td>
+                                <td>Noida</td>
+                                <td>01-Feb-2020 4:08pm</td>
+                                <td>01-Feb-2020 4:08pm</td>
+                                <td>01-Feb-2020 4:08pm</td>
+                                <td>01-Feb-2020 4:08pm</td>
+                                <td>2:2:08 Hours</td>
+                                <td>01-Feb-2020 4:08pm</td>
+                                <td>01-Feb-2020 4:08pm</td>
+                            </tr>
+                            <tr>  
+                                 <td><input Type="checkbox"/></td>
+                                 <td>0003</td>
+                                 <td>01-Feb-2020 4:08pm</td>
+                                <td>Noida</td>
+                                <td>01-Feb-2020 4:08pm</td>
+                                <td>01-Feb-2020 4:08pm</td>
+                                <td>01-Feb-2020 4:08pm</td>
+                                <td>01-Feb-2020 4:08pm</td>
+                                <td>2:2:08 Hours</td>
+                                <td>01-Feb-2020 4:08pm</td>
+                                <td>01-Feb-2020 4:08pm</td>
+                            </tr>
+                      </tbody>
+                          
+                    </table>
+                       
                             </div>
-                           
-                 <span class="showMsg  pull-right">Showing <label id="lblRowCount"></label> of <label id="lblTotalCount"></label></span>
+                            <span class="  pull-right">Showing <label id="lblRowCount"></label> of <label id="lblTotalCount"></label></span>
                         <p class="text-center mt-1">
                             <span class="load" id="btnLoadMore">Load More.....</span> </p>
-                             </div>
+                        </div>
                     </div>
                 </div>
-                        </div>
+                 </div>
+
+                    
                     </div>
                 </div>
             </div>
         </div>
-        <label id="lblUserId" runat="server" style="display: none">
-        
-        </label>
-         <label id="lblRequestedWareHouseId" style="display: none">
-        
-        
-        </label>
-         <label id="lblreqdetid" style="display: none"></label>
-         <label id="lblrequitionid" style="display: none"></label>
-            </div>
-           
 
+        <label id="lblUserId" runat="server" style="display: none"></label>
+        <label id="partnerid" style="display: none"></label>
     </div>
-      <div class="modal fade text-left summery" id="RequisitionApproval" tabindex="-1" role="dialog" aria-labelledby="myModalLabel8"
+    </div>
+     <div class="modal fade text-left" id="AllLeaveRequestPopup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel8"
 									 aria-hidden="true" data-backdrop="static" data-keyboard="false">
 										<div class="modal-dialog modal-lg" role="document">
 											<div class="modal-content">
-												<div class="modal-header  white">
-													<h4 class="modal-title black" id="calname">Requisition Approval Summary</h4>
-													<button type="button" id="closeApprovePop"  class="close" data-dismiss="modal" aria-label="Close">
+												<div class="modal-header bg-primary white">
+                                                    <h6 class="white" id="H1">Item Name : <span class="white" id="ColumnName"> Bottle</span></h6>
+													
+													<button type="button" id="btnclosedata" class="close" aria-label="Close">
 														<span aria-hidden="true">&times;</span>
 													</button>
 												</div>
 											<div class="modal-body">
 												    <div class="row">
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <label>Request No. :</label>
-                                                    <span id="VoucherNo"><label  id="lblSReqNum"></label></span>
-                                                </div>
-                                            </div>
-                                                <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <label>Created By:</label>
-                                                    <span  id="Span1"><label  id="lblSCreatedBy"></label></span>
-                                                </div>
-                                            </div>
-                                             <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <label>Requested Date  :</label>
-                                                    <span id="Span2"><label  id="lblSReqDate"></label></span>
-                                                </div>
-                                            </div>
-                                               
-                                      
-                                        </div>
-
-                                        <div class="row">
-                                          <div class="col-md-12">
-                                         <div class="table-responsive" id="">
-                              <table id="tblrowappend" class="table table-de mb-0">
+                                         
+                                            <div class="col-md-12">
+                                           
+    <div class="pdfexport">
+                            <button type="button" id="btnpopupaddline" onclick="Addpopuprow()" class="btn btn-outline-primary" title="Add Line">
+                            <i class="fa fa-plus"></i></button>
+                            <button type="button" id="btnpopupdeleteline" class="btn btn-outline-primary" title="Delete Line">
+                            <i class="fa fa-trash"></i> </button>
+                           <button type="button"  id="btnsavepopupdata" class="btn btn-outline-primary" title="Submit">
+                            <i class="fa fa-save"></i> </button>
+    </div>
+    </div>
+     <div class="col-md-12">
+                                                  <div class="table-responsive full-width" id="Div1">
+                              <table id="" class="table table-de mb-0">
                         <thead>
                             <tr>
-                                <th>Item No.</th>                               
-                                <th>Item Name</th>
-                                <th>Requester</th>
-                                 <th>Inventory Unit</th>
-                                 <th>Requested Quantity</th>
-                                 <th>Approved Quantity</th>                                  
-                                  <th>Remark </th>
+                                 <%--<th>S. No.</th>--%>
+                                   <th id="hidePselect_all"  ><input type="checkbox" id="chkPAll" onclick="checkPAll(this)" /> All</th>
+                                <th>Location</th>  
+                                <th>Onhand</th>  
+                                <th>Approve Qty</th>                                
+                                  
                             </tr>
                         </thead>
                         <tbody>
-                          <%--  <tr class="">
-                              
-                                <td> 10001</td>
-                                <td>3 PAIR PLAIN SCREENED INDOOR </td>
-                                 <td>Partner Shops</td>
-                                 <td>Mtr</td>
-                                 <td>44</td>
-                                 <td>30</td>
-                                 <td>14</td>
-                                 <td>In Progress</td>
-                                 <td>Urgent</td>
-                            </tr>
-                      <tr class="">
-                              
-                                <td> 10001</td>
-                                <td>3 PAIR PLAIN SCREENED INDOOR </td>
-                                 <td>Partner Shops</td>
-                                 <td>Mtr</td>
-                                 <td>44</td>
-                                 <td>30</td>
-                                 <td>14</td>
-                                 <td>In Progress</td>
-                                 <td>Urgent</td>
-                            </tr>
-                              <tr class="">
-                              
-                                <td> 10001</td>
-                                <td>3 PAIR PLAIN SCREENED INDOOR </td>
-                                 <td>Partner Shops</td>
-                                 <td>Mtr</td>
-                                 <td>44</td>
-                                 <td>30</td>
-                                 <td>14</td>
-                                 <td>In Progress</td>
-                                 <td>Urgent</td>
-                            </tr>--%>
+                        <tr>
+                        <td id=""><input type="checkbox" id=""  class="chk_PAll"/></td>
+                        <td >Noida</td> 
+                        <td >510</td> 
+                        <td > <input type="text"  placeholder="Enter Quantity" autocomplete="off"  /></td>  
+                        </tr>
+                        <tr>
+                        <td id=""><input type="checkbox" id=""  class="chk_PAll"/></td>
+                        <td >Delhi</td> 
+                        <td >501</td> 
+                        <td > <input type="text"  placeholder="Enter Quantity" autocomplete="off"  /></td>  
+                        </tr>
+                         <tr>
+                        <td id=""><input type="checkbox" id=""  class="chk_PAll"/></td>
+                        <td >Noida</td> 
+                        <td >150</td> 
+                        <td > <input type="text"  placeholder="Enter Quantity" autocomplete="off"  /></td>  
+                        </tr>
+                           
                         </tbody>
                     </table>
                             </div>
+                            </div>
+                                            </div>
+                                          
                                         </div>
-                                        </div>
-													<hr>
-													
+												
 												</div>
-												<div class="modal-footer">
-													
-													 <button type="button" id="print" class="btn btn-primary btngrid waves-effect waves-light">
-                            Print </button>
-
-                                                    <button type="button" id="btnconfirm"  class="btn btn-primary btngrid waves-effect waves-light">
-                            Close </button>
-												</div>
+												
 											</div>
 										</div>
-                                        <label id="Label1" runat="server" style="display: none">
-        
-        </label>
-         
-									</div>
-        <script>
-            kendo_all_min_js("#tblRequisitionDetail").kendoTooltip({
-                filter: "td:nth-child(6)",
-                position: "right",
-                content: function (e) {
-                    var text = kendo_all_min_js(e.target).text();
-                    return '<div style="width: ' + text.length * .6 + 'em; max-width: 18em">' + text + '</div>';
-                }
-            })
-            kendo_all_min_js("#RequestLine").kendoTooltip({
-                filter: "td:nth-child(4)",
-                position: "right",
-                content: function (e) {
-                    var text = kendo_all_min_js(e.target).text();
-                    return '<div style="width: ' + text.length * .6 + 'em; max-width: 14em">' + text + '</div>';
-                }
-            })
-          
-    </script>
+        <script type="text/javascript">
+
+                    jquery_1_11_3_min_p(document).ready(function () {
+
+                        jquery_1_11_3_min_p("#btnNew").click(function () {
+                            $("#RequisitionForm").css('display', 'block');
+                            $("#RequisitionGrid").css('display', 'none');
+                        })
+                        jquery_1_11_3_min_p("#btnBack").click(function () {
+                            $("#RequisitionGrid").css('display', 'block');
+                            $("#RequisitionForm").css('display', 'none');
+                        })
+                    })
+
+</script>
 </asp:Content>
 
 
