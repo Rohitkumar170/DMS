@@ -1,5 +1,4 @@
-
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/DMS.Master" AutoEventWireup="true" CodeBehind="AllRequisition.aspx.cs" Inherits="DMS.Master.AllRequisition" %>
+<%@ Page Language="C#" MasterPageFile="~/DMS.Master" AutoEventWireup="true" CodeBehind="AllRequisition.aspx.cs" Inherits="DMS.Master.AllRequisition" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style>
          #RequisitionLineForm td:nth-child(1), #RequisitionLineForm th:nth-child(1) {    width: 50px;} 
