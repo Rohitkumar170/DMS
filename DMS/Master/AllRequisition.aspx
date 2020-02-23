@@ -5,11 +5,10 @@
          #RequisitionLineForm td:nth-child(1), #RequisitionLineForm th:nth-child(1) {    width: 50px;} 
          #RequisitionLineForm td:nth-child(6) input[type="text"]{    text-align:right; width: 90px;} 
          #RequisitionLineForm td:nth-child(5), #RequisitionLineForm th:nth-child(5) {    text-align:right; width: 90px;} 
-         .table td:last-child, .table th:last-child {
-    width: 100px;
-}
+         .table td:last-child, .table th:last-child {    width: 120px;}
          .headerPropery{width: 100px;}
          .headerValue{width: 100px;}
+         #AllRequisitionGrid td:nth-child(1), #AllRequisitionGrid th:nth-child(1) {    width: 50px;}
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -65,7 +64,7 @@
                       
                            <div class="col-md-3"> 
                           <label class="headerPropery">Request Date</label>
-                                : <label class="headerValue">01-Feb-2020</label>
+                                : <label class="headerValue">01-Feb-2020 4:08pm</label>
                       </div>
                       
                            <div class="col-md-3"> 
@@ -74,33 +73,33 @@
                       </div>
                        <div class="col-md-3"> 
                           <label class="headerPropery">Creation Date</label>
-                                : <label class="headerValue">01-Feb-2020</label>
+                                : <label class="headerValue">01-Feb-2020 4:08pm</label>
                       </div>
                       </div>
                            <div class="row pt5 ">
                       <div class="col-md-3"> 
                           <label class="headerPropery">Submission Date</label>
-                           : <label class="headerValue">01-Feb-2020</label>
+                           : <label class="headerValue">01-Feb-2020 4:08pm</label>
                       </div>
                       
                            <div class="col-md-3"> 
                           <label class="headerPropery">Cancel Request Date</label>
-                                : <label class="headerValue">01-Feb-2020</label>
+                                : <label class="headerValue">01-Feb-2020 4:08pm</label>
                       </div>
                       
                            <div class="col-md-3"> 
                           <label class="headerPropery">Last Activity Date</label>
-                                : <label class="headerValue"> 01-Feb-2020</label>
+                                : <label class="headerValue"> 01-Feb-2020 4:08pm</label>
                       </div>
                        <div class="col-md-3"> 
                           <label class="headerPropery">Total Time</label>
-                                : <label class="headerValue">24:10:12</label>
+                                : <label class="headerValue">24:10:12 Hours</label>
                       </div>
                       </div>
                            <div class="row  pt5 ">
                       <div class="col-md-3"> 
                           <label class="headerPropery">Last Activity Status</label>
-                           : <label class="headerValue">01-Feb-2020</label>
+                           : <label class="headerValue">01-Feb-2020 4:08pm</label>
                       </div>
                       
                            <div class="col-md-3"> 
@@ -388,7 +387,7 @@
                              <div class="row">
                                <div class="col-md-12 ">
                             <div class="table-responsive full-width">
-                            <table class="table table-de mb-0" id="">
+                            <table class="table table-de mb-0" id="AllRequisitionGrid">
                         <thead>
                             <tr>
                                 
@@ -410,17 +409,42 @@
                             <tr>  
                                  <td><input Type="checkbox"/></td>
                                  <td>0001</td>
-                                 <td>01-Feb-2020</td>
-                                <td>01-Feb-2020</td>
-                                <td>01-Feb-2020</td>
-                                <td>01-Feb-2020</td>
-                                <td>01-Feb-2020</td>
-                                <td>01-Feb-2020</td>
-                                <td>01-Feb-2020</td>
-                                <td>01-Feb-2020</td>
-                                <td>01-Feb-2020</td>
+                                 <td>01-Feb-2020 4:08pm</td>
+                                <td>Noida</td>
+                                <td>01-Feb-2020 4:08pm</td>
+                                <td>01-Feb-2020 4:08pm</td>
+                                <td>01-Feb-2020 4:08pm</td>
+                                <td>01-Feb-2020 4:08pm</td>
+                                <td>2:2:08 Hours</td>
+                                <td>01-Feb-2020 4:08pm</td>
+                                <td>01-Feb-2020 4:08pm</td>
                             </tr>
-                           
+                             <tr>  
+                                 <td><input Type="checkbox"/></td>
+                                 <td>0002</td>
+                                 <td>01-Feb-2020 4:08pm</td>
+                                <td>Noida</td>
+                                <td>01-Feb-2020 4:08pm</td>
+                                <td>01-Feb-2020 4:08pm</td>
+                                <td>01-Feb-2020 4:08pm</td>
+                                <td>01-Feb-2020 4:08pm</td>
+                                <td>2:2:08 Hours</td>
+                                <td>01-Feb-2020 4:08pm</td>
+                                <td>01-Feb-2020 4:08pm</td>
+                            </tr>
+                            <tr>  
+                                 <td><input Type="checkbox"/></td>
+                                 <td>0003</td>
+                                 <td>01-Feb-2020 4:08pm</td>
+                                <td>Noida</td>
+                                <td>01-Feb-2020 4:08pm</td>
+                                <td>01-Feb-2020 4:08pm</td>
+                                <td>01-Feb-2020 4:08pm</td>
+                                <td>01-Feb-2020 4:08pm</td>
+                                <td>2:2:08 Hours</td>
+                                <td>01-Feb-2020 4:08pm</td>
+                                <td>01-Feb-2020 4:08pm</td>
+                            </tr>
                       </tbody>
                           
                     </table>
