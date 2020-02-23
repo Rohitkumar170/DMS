@@ -16,15 +16,15 @@ jquery_1_11_3_min_p(document).ready(function () {
    
     jquery_1_11_3_min_p("#hdnLoad").val(2);
     LoadData = jquery_1_11_3_min_p("#hdnLoad").val();
-   jquery_1_11_3_min_p('#preloader').css('display', 'block');
-   jquery_1_11_3_min_p('#Overlay_Load').css('display', 'block');
+    jquery_1_11_3_min_p('#ContentPlaceHolder1_preloader').css('display', 'block');
+    jquery_1_11_3_min_p('#ContentPlaceHolder1_Overlay_Load').css('display', 'block');
     BindPartnerGroup(searchtxt);
   
     jquery_1_11_3_min_p('#btnLoadMore').click(function () {
         LoadData = parseInt(LoadData) + 2;
         jquery_1_11_3_min_p("#hdnLoad").val(LoadData);
-//        jquery_1_11_3_min_p('#preloader').css('display', 'block');
-//        jquery_1_11_3_min_p('#Overlay_Load').css('display', 'block');
+//        jquery_1_11_3_min_p('#ContentPlaceHolder1_preloader').css('display', 'block');
+//        jquery_1_11_3_min_p('#ContentPlaceHolder1_Overlay_Load').css('display', 'block');
         BindPartnerGroup(searchtxt);
     });
 
@@ -354,8 +354,8 @@ function BindPartnerGroup(searchtxt) {
         data: "{'LoadData':'" + LoadData + "','SearchValue':'" + SearchValue + "','CountryId':'" + CountryId + "','EntityId':'" + EntityId + "'}",
         dataType: "json",
         success: function (result) {
-            jquery_1_11_3_min_p('#preloader').css('display', 'none');
-            jquery_1_11_3_min_p('#Overlay_Load').css('display', 'none');
+            jquery_1_11_3_min_p('#ContentPlaceHolder1_preloader').css('display', 'none');
+            jquery_1_11_3_min_p('#ContentPlaceHolder1_Overlay_Load').css('display', 'none');
             jquery_1_11_3_min_p('#divGrid').css('display', 'block');
             var i = 0;
             var jsonData = result.d;
@@ -654,12 +654,12 @@ function Findclick() {
 }
 
 function Loader() {
-    jquery_1_11_3_min_p('#preloader').css('display', 'block');
-    jquery_1_11_3_min_p('#Overlay_Load').css('display', 'block');
+    jquery_1_11_3_min_p('#ContentPlaceHolder1_preloader').css('display', 'block');
+    jquery_1_11_3_min_p('#ContentPlaceHolder1_Overlay_Load').css('display', 'block');
 }
 function LoaderOff() {
-    jquery_1_11_3_min_p('#preloader').css('display', 'none');
-    jquery_1_11_3_min_p('#Overlay_Load').css('display', 'none');
+    jquery_1_11_3_min_p('#ContentPlaceHolder1_preloader').css('display', 'none');
+    jquery_1_11_3_min_p('#ContentPlaceHolder1_Overlay_Load').css('display', 'none');
 }
 
 

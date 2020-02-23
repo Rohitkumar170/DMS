@@ -26,20 +26,27 @@ namespace DMS.Master
                 DataTable dt = Commonmanager.ExcelImport(Path.GetExtension(FileUpload.PostedFile.FileName), FileUpload.PostedFile.FileName, Server.MapPath("../Import"), FileUpload);
                 if (dt.Rows.Count == 0)
                 {
+                    preloader.Style.Add("display", "none");
+                    Overlay_Load.Style.Add("display", "none");
                     string Message = "Please upload excel file";
-                    ScriptManager.RegisterStartupScript(this, GetType(), "alertmsg", "Showpopup('" + Message + "');", true);
+                    ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup('" + Message + "');", true);
+
                     return;
                 }
                 if (dt.Columns.Count != 3)
                 {
+                    preloader.Style.Add("display", "none");
+                    Overlay_Load.Style.Add("display", "none");
                     string Message = "Excel is not in Proper format";
-                    ScriptManager.RegisterStartupScript(this, GetType(), "alertmsg", "Showpopup('" + Message + "');", true);
+                    ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup('" + Message + "');", true);
                     return;
                 }
                 if (dt.Columns.Count <= 1)
                 {
+                    preloader.Style.Add("display", "none");
+                    Overlay_Load.Style.Add("display", "none");
                     string Message = "Excel is not in Proper format";
-                    ScriptManager.RegisterStartupScript(this, GetType(), "alertmsg", "Showpopup('" + Message + "');", false);
+                    ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup('" + Message + "');", true);
                     return;
                 }
                 DMSNEWEntities context = new DMSNEWEntities();
@@ -48,6 +55,8 @@ namespace DMS.Master
                     context.DMS_ImportUnit(Convert.ToString(dr["UnitCode"].ToString().Trim()), Convert.ToString(dr["UnitName"].ToString().Trim()), Convert.ToString(dr["Description"].ToString().Trim()), Convert.ToInt64(Session["UserId"].ToString()));
                 }
                 context.SaveChanges();
+                preloader.Style.Add("display", "none");
+                Overlay_Load.Style.Add("display", "none");
             }
             catch (Exception ex) { throw ex; }
 

@@ -29,6 +29,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 <input type="hidden" id="hdnLoad"/>
+ <input type="hidden" id="hf"/>
 <div class="content-header row">
         <div class="content-header-light col-12">
             <div class="row">
@@ -42,13 +43,13 @@
                        <i class="fa fa-upload"></i>
                <input type="button" id="uploadAddress" value="Import" title="Import Address" class="custom-file-input multifileBtn" onclick="FindclickAddress();" />
                            <asp:FileUpload runat="server" Visible="true" ID="FileUploadAddress" onchange="UploadFileAddress(this);" style="display:none" />
-                           <asp:Button ID="btnUploadAddress" runat="server" OnClick="btnUploadAddress_Click" style="display:none" /> 
+                           <asp:Button ID="btnUploadAddress" runat="server" OnClick="btnUploadAddress_Click" OnClientClick="Showloader();"  style="display:none" /> 
                        </span>
                           <span class="multifileupload" id="btnupload" style="display:none"  > 
                        <i class="fa fa-upload"></i>
                <input type="button" id="upload" value="Import" title="Import Partner" class="custom-file-input multifileBtn" onclick="Findclick();" />
                            <asp:FileUpload runat="server" Visible="true" ID="FileUpload" onchange="UploadFile(this);" style="display:none" />
-                           <asp:Button ID="btnUpload" runat="server" OnClick="btnUpload_Click" style="display:none" /> 
+                           <asp:Button ID="btnUpload" runat="server" OnClick="btnUpload_Click" OnClientClick="Showloader();"  style="display:none" /> 
                        </span>
                        <button type="button" id="btnNew" class="btn btn-primary">
                             <i class="fa fa-plus-square"></i> New</button>
@@ -65,11 +66,12 @@
         </div>
     </div>
     <div class="content-wrapper">
-<%--<div id="preloader">
+<div id="preloader" runat="server" style="display:none" >
   <div id="showPreloader"> <img src="../../assets/img/preloader.gif" > </div>
 </div>
 
-<div id="Overlay_Load"></div>--%>
+<div id="Overlay_Load" runat="server" style="display:none" ></div>
+
     <div class="">
         <div class="content-body">
             <section id="partnerForm" style=" display:none" >
@@ -399,7 +401,7 @@
                        <i class="fa fa-upload"></i>
                <input type="button" id="uploadLegalField" value="Import" title="Import Legal Field" class="custom-file-input multifileBtn" onclick="FindclickLegalField();" />
                            <asp:FileUpload runat="server" Visible="true" ID="FileUploadLegalField" onchange="UploadFileLegalField(this);" style="display:none" />
-                           <asp:Button ID="btnUploadLegalField" runat="server" OnClick="btnUploadLegalField_Click" style="display:none" /> 
+                           <asp:Button ID="btnUploadLegalField" runat="server" OnClick="btnUploadLegalField_Click" OnClientClick="Showloader();"  style="display:none" /> 
                        </span>
   
       </div>
@@ -494,73 +496,84 @@
                                 <th>Email</th>
                                 <th>Address</th>
                                 <th>Credentials</th>
+                                <th>IsActive</th>
                             </tr>
                         </thead>
                       <tbody>
                       <tr>
                       <td style="display:none">1</td>
-                      <td><input type="checkbox" id="" class="checkbox"/></td>
-                      <td><input type='text' id='' class='fieldName' onchange=''  onkeyup='' autocomplete='off'/></td>
-                    <td><input type='text' placeholder='' class='fieldName' id='' autocomplete='off' onchange='' onkeypress='' onkeyup='' /></td>
-                       <td><input type='text' placeholder='' class='fieldName' id='' autocomplete='off' onchange='' onkeypress='' onkeyup='' /></td>
-                       <td><select id="" class="Operator">
+                      <td><input type="checkbox" id="chk_1" class="checkbox"/></td>
+                      <td><input type='text' id='empname_1' class='fieldName' onchange=''  onkeyup='' autocomplete='off'/></td>
+                      <td><input type='text' placeholder='' class='fieldName' id='empmobile_1' autocomplete='off' onchange='' onkeypress='' onkeyup='' /></td>
+                       <td><input type='text' placeholder='' class='fieldName' id='empemail_1' autocomplete='off' onchange='' onkeypress='' onkeyup='' /></td>
+                       <td><input type='text' id='empaddress_1' class='fieldName'  autocomplete='off'/>
+                           <%--<select id="" class="Operator">
 												<option value="Textbox">Address1</option>
                                                 <option value="Textbox">Address2</option>
 												<option value="Textbox">Address3</option>
-                                                </select></td>
-                          <td><input type="checkbox" id="" class="checkbox"/></td>
-                      </tr>
-                             <tr>
-                      <td style="display:none">1</td>
-                      <td><input type="checkbox" id="" class="checkbox"/></td>
-                      <td><input type='text' id='' class='fieldName' onchange=''  onkeyup='' autocomplete='off'/></td>
-                    <td><input type='text' placeholder='' class='fieldName' id='' autocomplete='off' onchange='' onkeypress='' onkeyup='' /></td>
-                       <td><input type='text' placeholder='' class='fieldName' id='' autocomplete='off' onchange='' onkeypress='' onkeyup='' /></td>
-                       <td><select id="" class="Operator">
-												<option value="Textbox">Address1</option>
-                                                <option value="Textbox">Address2</option>
-												<option value="Textbox">Address3</option>
-                                                </select></td>
-                          <td><input type="checkbox" id="" class="checkbox"/></td>
+                                                </select>--%></td>
+                          <td><input type="checkbox" id="chkcredential_1" class="checkbox"/></td>
+                          <td><input type="checkbox" id="chkisactive_1" class="checkbox"/></td>
                       </tr>
                            <tr>
-                      <td style="display:none">1</td>
-                      <td><input type="checkbox" id="" class="checkbox"/></td>
-                      <td><input type='text' id='' class='fieldName' onchange=''  onkeyup='' autocomplete='off'/></td>
-                    <td><input type='text' placeholder='' class='fieldName' id='' autocomplete='off' onchange='' onkeypress='' onkeyup='' /></td>
-                       <td><input type='text' placeholder='' class='fieldName' id='' autocomplete='off' onchange='' onkeypress='' onkeyup='' /></td>
-                       <td><select id="" class="Operator">
+                      <td style="display:none">2</td>
+                      <td><input type="checkbox" id="chk_2" class="checkbox"/></td>
+                      <td><input type='text' id='empname_2' class='fieldName' onchange=''  onkeyup='' autocomplete='off'/></td>
+                      <td><input type='text' placeholder='' class='fieldName' id='empmobile_2' autocomplete='off' onchange='' onkeypress='' onkeyup='' /></td>
+                       <td><input type='text' placeholder='' class='fieldName' id='empemail_2' autocomplete='off' onchange='' onkeypress='' onkeyup='' /></td>
+                       <td><input type='text' id='empaddress_2' class='fieldName'  autocomplete='off'/>
+                           <%--<select id="" class="Operator">
 												<option value="Textbox">Address1</option>
                                                 <option value="Textbox">Address2</option>
 												<option value="Textbox">Address3</option>
-                                                </select></td>
-                          <td><input type="checkbox" id="" class="checkbox"/></td>
+                                                </select>--%></td>
+                          <td><input type="checkbox" id="chkcredential_2" class="checkbox"/></td>
+                          <td><input type="checkbox" id="chkisactive_2" class="checkbox"/></td>
                       </tr>
-                           <tr>
-                      <td style="display:none">1</td>
-                      <td><input type="checkbox" id="" class="checkbox"/></td>
-                      <td><input type='text' id='' class='fieldName' onchange=''  onkeyup='' autocomplete='off'/></td>
-                    <td><input type='text' placeholder='' class='fieldName' id='' autocomplete='off' onchange='' onkeypress='' onkeyup='' /></td>
-                       <td><input type='text' placeholder='' class='fieldName' id='' autocomplete='off' onchange='' onkeypress='' onkeyup='' /></td>
-                       <td><select id="" class="Operator">
+                            <tr>
+                      <td style="display:none">3</td>
+                      <td><input type="checkbox" id="chk_3" class="checkbox"/></td>
+                      <td><input type='text' id='empname_3' class='fieldName' onchange=''  onkeyup='' autocomplete='off'/></td>
+                      <td><input type='text' placeholder='' class='fieldName' id='empmobile_3' autocomplete='off' onchange='' onkeypress='' onkeyup='' /></td>
+                       <td><input type='text' placeholder='' class='fieldName' id='empemail_3' autocomplete='off' onchange='' onkeypress='' onkeyup='' /></td>
+                       <td><input type='text' id='empaddress_3' class='fieldName'  autocomplete='off'/>
+                           <%--<select id="" class="Operator">
 												<option value="Textbox">Address1</option>
                                                 <option value="Textbox">Address2</option>
 												<option value="Textbox">Address3</option>
-                                                </select></td>
-                          <td><input type="checkbox" id="" class="checkbox"/></td>
+                                                </select>--%></td>
+                          <td><input type="checkbox" id="chkcredential_3" class="checkbox"/></td>
+                          <td><input type="checkbox" id="chkisactive_3" class="checkbox"/></td>
                       </tr>
-                           <tr>
-                      <td style="display:none">1</td>
-                      <td><input type="checkbox" id="" class="checkbox"/></td>
-                      <td><input type='text' id='' class='fieldName' onchange=''  onkeyup='' autocomplete='off'/></td>
-                    <td><input type='text' placeholder='' class='fieldName' id='' autocomplete='off' onchange='' onkeypress='' onkeyup='' /></td>
-                       <td><input type='text' placeholder='' class='fieldName' id='' autocomplete='off' onchange='' onkeypress='' onkeyup='' /></td>
-                        <td><select id="" class="Operator">
+                          <tr>
+                      <td style="display:none">4</td>
+                      <td><input type="checkbox" id="chk_4" class="checkbox"/></td>
+                      <td><input type='text' id='empname_4' class='fieldName' onchange=''  onkeyup='' autocomplete='off'/></td>
+                      <td><input type='text' placeholder='' class='fieldName' id='empmobile_4' autocomplete='off' onchange='' onkeypress='' onkeyup='' /></td>
+                       <td><input type='text' placeholder='' class='fieldName' id='empemail_4' autocomplete='off' onchange='' onkeypress='' onkeyup='' /></td>
+                       <td><input type='text' id='empaddress_4' class='fieldName'  autocomplete='off'/>
+                           <%--<select id="" class="Operator">
 												<option value="Textbox">Address1</option>
                                                 <option value="Textbox">Address2</option>
 												<option value="Textbox">Address3</option>
-                                                </select></td>
-                          <td><input type="checkbox" id="" class="checkbox"/></td>
+                                                </select>--%></td>
+                          <td><input type="checkbox" id="chkcredential_4" class="checkbox"/></td>
+                          <td><input type="checkbox" id="chkisactive_4" class="checkbox"/></td>
+                      </tr>
+                          <tr>
+                      <td style="display:none">5</td>
+                      <td><input type="checkbox" id="chk_5" class="checkbox"/></td>
+                      <td><input type='text' id='empname_5' class='fieldName' onchange=''  onkeyup='' autocomplete='off'/></td>
+                      <td><input type='text' placeholder='' class='fieldName' id='empmobile_5' autocomplete='off' onchange='' onkeypress='' onkeyup='' /></td>
+                       <td><input type='text' placeholder='' class='fieldName' id='empemail_5' autocomplete='off' onchange='' onkeypress='' onkeyup='' /></td>
+                       <td><input type='text' id='empaddress_5' class='fieldName'  autocomplete='off'/>
+                           <%--<select id="" class="Operator">
+												<option value="Textbox">Address1</option>
+                                                <option value="Textbox">Address2</option>
+												<option value="Textbox">Address3</option>
+                                                </select>--%></td>
+                          <td><input type="checkbox" id="chkcredential_5" class="checkbox"/></td>
+                          <td><input type="checkbox" id="chkisactive_5" class="checkbox"/></td>
                       </tr>
                       </tbody>
                           
@@ -937,8 +950,20 @@ BorderColor="#3366CC" BorderStyle="None" BorderWidth="1px" CellPadding="4"  ></a
          
 </script>
         <script>
+            
+ function Showloader() {
+                
+                 jquery_1_11_3_min_p('#ContentPlaceHolder1_preloader').css('display', 'block');
+                jquery_1_11_3_min_p('#ContentPlaceHolder1_Overlay_Load').css('display', 'block');
+}
             jquery_1_11_3_min_p(document).ready(function () {
                 jquery_1_11_3_min_p(".footerDropdown").hide();
             });
+</script>
+        <script type="text/javascript">
+        function ShowPopup(text) {
+        swal(text, "warning")
+        
+    }
 </script>
 </asp:Content>

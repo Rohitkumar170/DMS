@@ -81,20 +81,26 @@ namespace DMS.Master
                 DataTable dt = Commonmanager.ExcelImport(Path.GetExtension(FileUploadAddress.PostedFile.FileName), FileUploadAddress.PostedFile.FileName, Server.MapPath("../Import"), FileUploadAddress);
                 if (dt.Rows.Count == 0)
                 {
+                    preloader.Style.Add("display", "none");
+                    Overlay_Load.Style.Add("display", "none");
                     string Message = "Please upload excel file";
-                    ScriptManager.RegisterStartupScript(this, GetType(), "alertmsg", "Showpopup('" + Message + "');", true);
+                    ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup('" + Message + "');", true);
                     return;
                 }
                 if (dt.Columns.Count != 9)
                 {
+                    preloader.Style.Add("display", "none");
+                    Overlay_Load.Style.Add("display", "none");
                     string Message = "Excel is not in Proper format";
-                    ScriptManager.RegisterStartupScript(this, GetType(), "alertmsg", "Showpopup('" + Message + "');", true);
+                    ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup('" + Message + "');", true);
                     return;
                 }
                 if (dt.Columns.Count <= 1)
                 {
+                    preloader.Style.Add("display", "none");
+                    Overlay_Load.Style.Add("display", "none");
                     string Message = "Excel is not in Proper format";
-                    ScriptManager.RegisterStartupScript(this, GetType(), "alertmsg", "Showpopup('" + Message + "');", false);
+                    ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup('" + Message + "');", true);
                     return;
                 }
                 DMSNEWEntities context = new DMSNEWEntities();
@@ -114,7 +120,8 @@ namespace DMS.Master
                     context.DMS_ImportPartnerAddress(PartId,Convert.ToString(dr["LocationCode"].ToString().Trim()), Convert.ToString(dr["LocationName"].ToString().Trim()), Convert.ToString(dr["LocationDescription"].ToString().Trim()), Convert.ToString(dr["AddressLine1"].ToString().Trim()), Convert.ToString(dr["Street"].ToString().Trim()), Convert.ToString(dr["POBox"].ToString().Trim()), Convert.ToString(dr["ZipCode"].ToString().Trim()), Convert.ToString(dr["Atolls"].ToString().Trim()), Convert.ToInt64(Session["UserId"].ToString()));
                 }
                 context.SaveChanges();
-               
+                preloader.Style.Add("display", "none");
+                Overlay_Load.Style.Add("display", "none");
             }
             catch (Exception ex) { throw ex; }
 
@@ -130,19 +137,19 @@ namespace DMS.Master
                 if (dt.Rows.Count == 0)
                 {
                     string Message = "Please upload excel file";
-                    ScriptManager.RegisterStartupScript(this, GetType(), "alertmsg", "Showpopup('" + Message + "');", true);
+                    ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup('" + Message + "');", true);
                     return;
                 }
                 if (dt.Columns.Count != 4)
                 {
                     string Message = "Excel is not in Proper format";
-                    ScriptManager.RegisterStartupScript(this, GetType(), "alertmsg", "Showpopup('" + Message + "');", true);
+                    ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup('" + Message + "');", true);
                     return;
                 }
                 if (dt.Columns.Count <= 1)
                 {
                     string Message = "Excel is not in Proper format";
-                    ScriptManager.RegisterStartupScript(this, GetType(), "alertmsg", "Showpopup('" + Message + "');", false);
+                    ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup('" + Message + "');", true);
                     return;
                 }
                 DMSNEWEntities context = new DMSNEWEntities();
