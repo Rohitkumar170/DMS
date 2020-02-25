@@ -331,6 +331,12 @@
                     <li class=""><a class="menu-item" href="../Master/TaxSetup.aspx"><span >Setup</span></a> </li>  
                     </ul>
                             </li> 
+                           <li><a class="menu-item" href="#"><span>Requisition Setup</span></a>
+                  <ul class="menu-content">
+                     <li class="">  <a class="menu-item" href="../Master/RequisitionSetup.aspx"><span >  Requisition</span></a> </li> 
+                       <li class="">  <a class="menu-item" href="../Master/RequestControlSetup.aspx"><span >  Request Control </span></a> </li> 
+                  </ul>
+                  </li> 
                          <%--   <li><a class="menu-item" href="#"><span>Discount</span></a>
                   <ul class="menu-content">
                      <li class="">  <a class="menu-item" href="../Master/DiscountSetup.aspx"><span >  Setup</span></a> </li> 
