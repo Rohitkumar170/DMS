@@ -16,9 +16,7 @@
     <script src="../Telerix/js/kendo.all.min.js"></script>
     <script>        var kendo_all_min_js = jQuery.noConflict();</script>
     <script src="../Telerix/js/jquery.min.js"></script>
-    <script src="../Telerix/js/jszip.min.js" type="text/javascript"></script>
-
-   
+    <script src="../Telerix/js/jszip.min.js" type="text/javascript"></script>   
     <script src="../JavaScript/OrganizationDataSetup.js" type="text/javascript"></script>
   <style>
       #TblOrgDataGrid td:nth-child(6), #TblOrgDataGrid th:nth-child(6) {
