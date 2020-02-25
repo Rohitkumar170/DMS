@@ -1052,7 +1052,7 @@ var counter=0;
            }
            else
            {
-            jquery_1_11_3_min_p('#btnSubmit').css('display', 'block');
+                jquery_1_11_3_min_p('#btnSubmit').css('display', 'block');
                 jquery_1_11_3_min_p('#btnSubmit').prop('disabled', true);
                 jquery_1_11_3_min_p('#btnback').css('display', 'block');
                jquery_1_11_3_min_p('#btnnew').css('display', 'none');
@@ -1112,7 +1112,7 @@ var counter=0;
             jquery_1_11_3_min_p(".addressDiv").append("<div class='col-md-3 mb-1' id='addressdiv_" + RowId + "' ><div class='addressBg' id='AddressDiv'><div id='btnClosr_" + RowId + "' class='closeAddress pull-right' onclick='deleteAddress(this)'><i  class='fa fa-close'></i></div><div class='AllAddress form-group'> <label class='textHeader' id='lbladdress'>Address " + RowId + "</label></div>  <div class='form-group'><label for='Country'>Location Code</label><input type='text'  id='txtLocationCode_"+RowId+"'  autocomplete='off' placeholder='Enter Location Name' class='form-control'/> </div><div class='form-group'><label for='Country'>Location Name</label><input type='text' id='txtLocatuion_"+RowId+"' autocomplete='off' placeholder='Enter Location Name' class='form-control'/> </div><div class='form-group'> <label for='Country'>Location Description</label><input type='text'  id='txtLocDesc_"+RowId+"' autocomplete='off' placeholder='Enter Location Description' class='form-control'/> </div><div id='repeatArea_" + RowId + "'></div></div> </div>");
             counter = RowId;
               var EntityId = kendo_all_min_js('#ddlentity').val();
-                var CountryId = kendo_all_min_js('#ddlcountry').val();
+             var CountryId = kendo_all_min_js('#ddlcountry').val();
              jquery_1_11_3_min_p("#repeatArea_" + counter).empty();
     jquery_1_11_3_min_p.ajax({
         type: "POST",
@@ -1149,25 +1149,26 @@ var counter=0;
     }
     if(jsonData.Table.length>1)
     {
-      var m=1;
+        var m = 1;
+        var newcounter = 2;
         
          if(counter==0)
       {
       counter++
       }
          jQuery.each(jsonData.Table, function (rec) {
-          var LocationCode= jquery_1_11_3_min_p("#txtLocationCode_" +counter).val(jsonData.Table[m].LocationCode); 
-                 var LocationName= jquery_1_11_3_min_p("#txtLocatuion_" +counter).val(jsonData.Table[m].LocationName); 
-               var LocationDescription= jquery_1_11_3_min_p("#txtLocDesc_" +counter).val(jsonData.Table[m].LocationDescription); 
+             var LocationCode = jquery_1_11_3_min_p("#txtLocationCode_" + newcounter).val(jsonData.Table[m].LocationCode); 
+             var LocationName = jquery_1_11_3_min_p("#txtLocatuion_" + newcounter).val(jsonData.Table[m].LocationName); 
+             var LocationDescription = jquery_1_11_3_min_p("#txtLocDesc_" + newcounter).val(jsonData.Table[m].LocationDescription); 
                  var l=0
-             jquery_1_11_3_min_p("#repeatArea_" + counter).find('div').each(function () {
-                 jquery_1_11_3_min_p("#txt_" + CopyJson.Table[l].TxtId + counter).val(jsonData.Table[m][CopyJson.Table[l].FieldName]);
+             jquery_1_11_3_min_p("#repeatArea_" + newcounter).find('div').each(function () {
+                 jquery_1_11_3_min_p("#txt_" + CopyJson.Table[l].TxtId + newcounter).val(jsonData.Table[m][CopyJson.Table[l].FieldName]);
              if (CopyJson.Table[l].FieldDataType == "2") {
                  kendo_all_min_js("#txt_" + CopyJson.Table[l].TxtId+counter).data("kendoDropDownList").value(jsonData.Table[m][CopyJson.Table[l].FieldName]); 
             }
             l++;
         });
-
+             newcounter++;
             m++;
            
          });

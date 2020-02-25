@@ -466,7 +466,7 @@
                                         <div class="row   ">
     <div class="col-md-6 ">    
     <div class="pdfexport tablebtn">
-   <button type="button" id="btnAdd1" onclick="AddRow()" class="btn btn-outline-primary" title="Add Line">
+   <button type="button" id="btnAddEmp" onclick="AddRowEmployee()" class="btn btn-outline-primary" title="Add Line">
                             <i class="fa fa-plus"></i> </button>
                             <button type="button" id="btnDeleteLine1" class="btn btn-outline-primary" title="Delete Line">
                             <i class="fa fa-trash"></i> </button>

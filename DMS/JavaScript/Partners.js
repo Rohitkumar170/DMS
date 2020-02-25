@@ -1661,7 +1661,7 @@ function showrejectedPopup() {
 
 function BindEmpAddress() {
 
-    Address.push({ value: "0", text: "Select" });
+    
     jquery_1_11_3_min_p('#empTable tbody').find('tr').each(function () {
         var row = jquery_1_11_3_min_p(this);
         var rowNumber = row.find('td:nth-child(1)').text().trim();
@@ -1837,19 +1837,11 @@ function UpdateIdInHiddenField(hf, id, IsAdd) {
 
 }  
 
-//function AddRowEmployee() {
-//    if (EmpCounter == 5) { EmpCounter++; }
+function AddRowEmployee() {
+    if (EmpCounter == 5) { EmpCounter++; }
+    var markup = "<tr><td style='display:none'>" + EmpCounter + "</td><td><input type='checkbox' id='chk_" + EmpCounter + "' class='checkbox'/></td><td><input type='text' id='empname_" + EmpCounter + "' class='fieldName' onchange='' onkeyup='' autocomplete='off' /></td><td><input type='text' placeholder='' class='fieldName' id='empmobile_" + EmpCounter + "' autocomplete='off' onchange='' onkeypress='' onkeyup='' /></td><td><input type='text' placeholder='' class='fieldName' id='empemail_" + EmpCounter + "' autocomplete='off' onchange='' onkeypress='' onkeyup='' /></td><td><input type='text' id='empaddress_" + EmpCounter + "' class='fieldName' autocomplete='off' /></td><td><input type='checkbox' id='chkcredential_" + EmpCounter + "' class='checkbox' /></td><td><input type='checkbox' id='chkisactive_" + EmpCounter + "' class='checkbox' /></td></tr>"
+    $("#empTable tbody").append(markup);
+    BindEmpAddress();
+    EmpCounter++;
 
-//    var markup = "<tr><td style='display:none'>" + EmpCounter + "</td><td><input type='checkbox' id='chk_" + EmpCounter + "' class='checkbox'/></td><td><input type='text' id='empname_" + EmpCounter + "' class='fieldName' onchange='' onkeyup='' autocomplete='off' /></td><td><input type='text' placeholder='' class='fieldName' id='empmobile_1' autocomplete='off' onchange='' onkeypress='' onkeyup='' /></td>
-//        <td><input type='text' placeholder='' class='fieldName' id='empemail_1' autocomplete='off' onchange='' onkeypress='' onkeyup='' /></td>
-//        <td><input type='text' id='empaddress_1' class='fieldName' autocomplete='off' />
-//            <%--<select id="" class="Operator">
-//                <option value="Textbox">Address1</option>
-//                <option value="Textbox">Address2</option>
-//                <option value="Textbox">Address3</option>
-//            </select>--%></td>
-//        <td><input type="checkbox" id="chkcredential_1" class="checkbox" /></td>
-//        <td><input type="checkbox" id="chkisactive_1" class="checkbox" /></td>
-//    </tr>"
-
-//}
+}
