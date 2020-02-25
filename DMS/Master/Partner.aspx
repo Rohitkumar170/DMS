@@ -57,7 +57,7 @@
                             <i class="fa fa-save"></i> Submit</button>
                         <button type="button" id="btnBack" style="display:none"  class="btn btn-primary"   >
                            <i class="fa fa-arrow-left"></i> Back</button>
-                         <button type="button" id="" class="btn btn-primary" data-toggle="modal" data-target="#RejectedData">
+                         <button type="button" id="" class="btn btn-primary" style="display:none" data-toggle="modal" data-target="#RejectedData">
                             <i class="fa fa-plus-square"></i> pop</button>
                       
                     </div>
@@ -202,7 +202,7 @@
                                                      <label for="Self">New Location</label>
                                                 </div>
                                             </div>
-                                              <div class="col-md-3">
+                                              <div class="col-md-3" style="display:none">
                                                 <div class="form-group">
                                                    
                                                       <input type="checkbox" class="ExistingCheck"  onchange="valueChanged()" >
@@ -444,6 +444,15 @@
                                        
                                     </div>
 							</div>
+                             <div class="row " id="proceedDiveLegafield">
+                                       <div class="col-md-12">
+                                    <button type="button" id="btnProceedLegal" class=" btn btn-primary mt-1 pull-right">
+                            <i class="fa fa-arrow-right"></i> Proceed</button>
+                                       
+                                   
+
+                                       </div>
+                                       </div>    
 						</div>
 					</div>
 					<a id="heading14" class="card-header info" data-toggle="collapse" href="#accordion14" aria-expanded="false" aria-controls="accordion14">
