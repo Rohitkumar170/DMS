@@ -239,7 +239,7 @@
    
     </div>
      
-      <script type="text/javascript">
+      <script >
 
           jquery_1_11_3_min_p(document).ready(function () {
 
@@ -254,7 +254,7 @@
           })
 
 </script>
-    </script>
+   
          <script>
  jquery_1_11_3_min_p(document).ready(function () {
      jquery_1_11_3_min_p(".footerDropdown").hide();

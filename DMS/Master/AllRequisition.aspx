@@ -8,10 +8,12 @@
          .headerPropery{width: 100px;}
          .headerValue{width: 100px;}
          #AllRequisitionGrid td:nth-child(1), #AllRequisitionGrid th:nth-child(1) {    width: 50px;}
-        .ColorStatus span{height:14px;width:14px;display: inline-block;}
-        #greenStatus{background:green;}
-        #orangeStatus{background:orange;}
-        #redStatus{background:red;}
+        .ColorStatus span{height:12px;width:14px;display: inline-block;}
+        #greenStatus{background:green;opacity: .8;}
+        #orangeStatus{background:orange;opacity: .8;}
+        #redStatus{background:red;opacity: .8;}
+          #defaultStatus{background:#bbb;opacity: .8;}
+          .ColorStatus {padding-top: 10px;}
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -132,10 +134,13 @@
     
     </div>
                            <div class="col-md-3"  >
-                               <div class="ColorStatus pt5">
+                                
+                               <div class="ColorStatus">
+                                   <label class="headerPropery">Process Graph :</label>
+                                    <span id="defaultStatus" class="colors" title="Danger"></span>
                                    <span id="greenStatus" class="colors" title="Normal"></span>
                                    <span id="orangeStatus" class="colors" title="Average"></span>
-                                   <span id="redStatus" class="colors" title="Danger"></span>
+                                   <span id="redStatus" class="colors" title="Default"></span>
                                </div>
                            </div>
                          <div class="col-md-3"  >
