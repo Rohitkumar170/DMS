@@ -11,6 +11,7 @@ namespace DMS.Master
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
             if (Session["UserId"] == null)
             {
                 Response.Redirect("../login.aspx");
@@ -21,6 +22,7 @@ namespace DMS.Master
                 lblUserId.InnerText = Convert.ToString(Session["UserId"]);
                 lblwarehouseid.InnerText = Convert.ToString(Session["WareHouseId"]);
             }
+
         }
     }
 }

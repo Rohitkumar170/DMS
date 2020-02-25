@@ -175,7 +175,23 @@ namespace DMS.WebServices
             }
 
         }
-        
+
+        [WebMethod]
+        public Dictionary<string, object> SaveEmployee(string Empjson,string EmpAddressjson)
+        {
+            try
+            {
+                var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_Customers]").With<Flag>()
+                        .Execute("@QueryType", "@Empjson", "@EmpAddressjson", "SaveEmployeeData", Empjson,EmpAddressjson));
+                return results;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
         [WebMethod]
         public Dictionary<string, object> SavePartner(List<Object> AddressJson, string PGroup, string PType, string PDescription, string Status, string CreatedBy, string entityid, string PCode, string PName, string PRepresetative, string EntityCountryId, string jsonExistingLocdata)
         {
@@ -207,7 +223,7 @@ namespace DMS.WebServices
                         {
 
                             List<string> COLUMN = new List<string>();
-                            string Address = Convert.ToString(AddressJson[i]);
+                            string Address = Convert.ToString(AddressJson[i]).Trim();
                             string[] Address1 = Address.Split('&');
                             string Jsondata = Address1[1];
                             string Table = Address1[0];
@@ -231,7 +247,7 @@ namespace DMS.WebServices
                             for (int c = 0; c < COLUMN.Count; c++)
                             {
 
-                                columns += COLUMN[c] + " " + "[varchar](250) NULL" + ",";
+                                columns +=COLUMN[c].Trim()+ " " + "[varchar](250) NULL" + ",";
 
                             }
                             columns += "[CountryId] [bigint]" + ' ' + " NULL" + ',';
@@ -250,8 +266,8 @@ namespace DMS.WebServices
                             Query = "";
                             for (int d = 0; d < COLUMN.Count; d++)
                             {
-                                InsertColumn += COLUMN[d] + ",";
-                                selectJson += " max(case when name=''" + COLUMN[d] + "'' then convert(nvarchar(100),StringValue) else '''' end) as " + COLUMN[d] + ",";
+                                InsertColumn += COLUMN[d].Trim()+",";
+                                selectJson += " max(case when name=''"+ COLUMN[d].Trim()+ "'' then convert(nvarchar(100),StringValue) else '''' end) as " +COLUMN[d].Trim()+",";
 
                             }
 
@@ -262,8 +278,6 @@ namespace DMS.WebServices
                             // ds = CommonManger.FillDatasetWithParam("DMS_Customers", "@QueryType", "@countryid", "@entityid", "@CreatedBy", "@InsertQuery", "@TableName", "@ColumnName", "@PartnerId", "@ExistingLocation", "SaveAddressPartner", countryId, entityid, CreatedBy, Query, Tablename, columns, partnerId, jsonExistingLocdata);
                             results = Common.Getdata(context.MultipleResults("[dbo].[DMS_Customers]").With<PartnerSaveRes>()
                         .Execute("@QueryType", "@countryid", "@entityid", "@CreatedBy", "@InsertQuery", "@TableName", "@ColumnName", "@PartnerId", "@ExistingLocation", "SaveAddressPartner", countryId, entityid, CreatedBy, Query, Tablename, columns, partnerId, jsonExistingLocdata));
-
-
 
                         }
 
@@ -334,7 +348,7 @@ namespace DMS.WebServices
                             for (int c = 0; c < COLUMN.Count; c++)
                             {
 
-                                columns += COLUMN[c] + " " + "[varchar](250) NULL" + ",";
+                                columns +="["+ COLUMN[c]+"]" + " " + "[varchar](250) NULL" + ",";
 
                             }
                             columns += "[CountryId] [bigint]" + ' ' + " NULL" + ',';

@@ -24,6 +24,7 @@ var SessionCountryId = 1;
 var SessionEntityName = "Dhiraagu";
 var EmployeeArray = [];
 var EmpWareHouse = [];
+var EmpCounter = 5;
 
 
 jquery_1_11_3_min_p(document).ready(function () {
@@ -89,7 +90,6 @@ jquery_1_11_3_min_p(document).ready(function () {
         jquery_1_11_3_min_p('#btnuploadAddress').css('display', 'block');
         jquery_1_11_3_min_p('#btnuploadLegalField').css('display', 'block');
         jquery_1_11_3_min_p("#TaxDiv").css('display', 'block');
-        jquery_1_11_3_min_p("#btnSubmit").css('display', 'block');
         BindPartnerCode();
         BindEmpAddress();
     });
@@ -101,8 +101,25 @@ jquery_1_11_3_min_p(document).ready(function () {
     });
     //====================================== end code for  new Button click================================\\
 
-    //====================================== start code for  Submit Button click================================\\
+    //====================================== start code for  Submit Button click================================\\btnProceedLegal
 
+    jquery_1_11_3_min_p('#btnProceedLegal').click(function () {
+        if (ValidateTaxGrid() == true) {
+            swal({
+                title: "Do you want to proceed?",
+                text: "",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        SaveTaxInfo();
+
+                    }
+                });
+        }
+    });
     jquery_1_11_3_min_p('#btnSubmit').click(function () {
         //if (ValidateTaxGrid() == true) {
         //    swal({
@@ -254,7 +271,7 @@ function BindAddressFields(entityId, countryId) {
             var a = 0;
 
             jQuery.each(jsonData.Table, function (rec) {
-                var markup = "<div class='form-group'> <label id='lbl" + counter + "_" + i + "' for='Address'>" + jsonData.Table[i].FieldName + "</label><input type='text'  id='txt_" + jsonData.Table[i].FieldName + counter + "' autocomplete='off'  class='form-control' onkeypress='RemoveClass(this)' placeholder=' Enter " + jsonData.Table[i].FieldName + "'/></div>";
+                var markup = "<div class='form-group'> <label id='lbl" + counter + "_" + i + "' for='Address'>" + jsonData.Table[i].FieldName + "</label><input type='text'  id='txt_" + jsonData.Table[i].TxtId + counter + "' autocomplete='off'  class='form-control' onkeypress='RemoveClass(this)' placeholder=' Enter " + jsonData.Table[i].FieldName + "'/></div>";
                 jquery_1_11_3_min_p("#repeatArea_" + counter).append(markup);
                 if (jsonData.Table[i].FieldDataType == "2") {
                     var TableName = jsonData.Table1[a].TablesName;
@@ -464,14 +481,14 @@ function ValidateAddress() {
     }
     if (CopyJson.Table.length > 0) {
         jquery_1_11_3_min_p("#repeatArea_" + counter).find('div').each(function () {
-            if (jquery_1_11_3_min_p("#txt_" + CopyJson.Table[i].FieldName + counter).val() == "") {
-                jquery_1_11_3_min_p("#txt_" + CopyJson.Table[i].FieldName + counter).addClass('validate');
-                jquery_1_11_3_min_p("#txt_" + CopyJson.Table[i].FieldName + counter).attr("placeholder", "Enter Field value!");
+            if (jquery_1_11_3_min_p("#txt_" + CopyJson.Table[i].TxtId + counter).val() == "") {
+                jquery_1_11_3_min_p("#txt_" + CopyJson.Table[i].TxtId + counter).addClass('validate');
+                jquery_1_11_3_min_p("#txt_" + CopyJson.Table[i].TxtId + counter).attr("placeholder", "Enter Field value!");
                 allow = false;
             }
             if (CopyJson.Table[i].FieldDataType == "2") {
-                if (kendo_all_min_js("#txt_" + CopyJson.Table[i].FieldName + counter).val() == 0) {
-                    kendo_all_min_js("#txt_" + CopyJson.Table[i].FieldName + counter).data("kendoDropDownList").span.css('background', '#f9e5e5');
+                if (kendo_all_min_js("#txt_" + CopyJson.Table[i].TxtId + counter).val() == 0) {
+                    kendo_all_min_js("#txt_" + CopyJson.Table[i].TxtId + counter).data("kendoDropDownList").span.css('background', '#f9e5e5');
                     allow = false;
                 }
             }
@@ -619,12 +636,12 @@ function MakeAddressJson() {
             var LocationCode = jquery_1_11_3_min_p("#txtLocationCode_" + j).val();
             var LocationDescription = "";
 
-            columnName1 += '" LocationCode "' + ':' + '"' + LocationCode + '"," LocationName "' + ':' + '"' + LocationName + '"," LocationDescription "' + ':' + '"' + LocationDescription + '",';
+            columnName1 += '"[LocationCode]"' + ':' + '"' + LocationCode + '","[LocationName]"' + ':' + '"' + LocationName + '","[LocationDescription]"'+':' + '"' + LocationDescription + '",';
 
             jquery_1_11_3_min_p("#repeatArea_" + j).find('div :text').each(function () {
                 var fieldValue = $(this).val();
                 columnName = jquery_1_11_3_min_p("#lbl" + j + "_" + i).text();
-                columnName1 += '"' + columnName + '"' + ':' + '"' + fieldValue + '",';
+                columnName1 += '"[' + columnName + ']"' + ':' + '"' + fieldValue + '",';
                 i++;
             });
             var newcol = columnName1.slice(0, -1);
@@ -1114,7 +1131,9 @@ function SaveTaxInfo() {
 
                 swal("Saved Successfully", "Your data Saved successfully!", "success")
                     .then((value) => {
-                        window.location.replace("Partner.aspx");
+                        $("#proceedDiveLegafield").css("display", "none");
+                        $("#btnSubmit").css("display", "block");
+                       // window.location.replace("Partner.aspx");
                     });
             }
 
@@ -1409,10 +1428,10 @@ function BindPartnerOndblClick(PartnerId) {
                                 if (CopyJson.Table.length > 0) {
                                     var l = 0
                                     jquery_1_11_3_min_p("#repeatArea_" + counter).find('div').each(function () {
-                                        jquery_1_11_3_min_p("#txt_" + CopyJson.Table[l].FieldName + Counterflag).val(jsonData[Tabs[j]][i][CopyJson.Table[l].FieldName]);
+                                        jquery_1_11_3_min_p("#txt_" + CopyJson.Table[l].TxtId + Counterflag).val(jsonData[Tabs[j]][i][CopyJson.Table[l].TxtId]);
                                         if (CopyJson.Table[l].FieldDataType == "2") {
                                             //  kendo_all_min_js("#txt_" + CopyJson.Table[i].FieldName + counter).val()
-                                            kendo_all_min_js("#txt_" + CopyJson.Table[l].FieldName + Counterflag).data("kendoDropDownList").value(jsonData[Tabs[j]][i][CopyJson.Table[l].FieldName]);
+                                            kendo_all_min_js("#txt_" + CopyJson.Table[l].TxtId + Counterflag).data("kendoDropDownList").value(jsonData[Tabs[j]][i][CopyJson.Table[l].TxtId]);
                                         }
                                         l++;
                                     });
@@ -1441,9 +1460,9 @@ function BindPartnerOndblClick(PartnerId) {
                                 if (CopyJson.Table.length > 0) {
                                     var l = 0
                                     jquery_1_11_3_min_p("#repeatArea_" + counter).find('div').each(function () {
-                                        jquery_1_11_3_min_p("#txt_" + CopyJson.Table[l].FieldName + counter).val(jsonData[Tabs[j]][i][CopyJson.Table[l].FieldName]);
+                                        jquery_1_11_3_min_p("#txt_" + CopyJson.Table[l].TxtId + counter).val(jsonData[Tabs[j]][i][CopyJson.Table[l].TxtId]);
                                         if (CopyJson.Table[l].FieldDataType == "2") {
-                                            kendo_all_min_js("#txt_" + CopyJson.Table[l].FieldName + counter).data("kendoDropDownList").value(jsonData[Tabs[j]][i][CopyJson.Table[l].FieldName]);
+                                            kendo_all_min_js("#txt_" + CopyJson.Table[l].TxtId + counter).data("kendoDropDownList").value(jsonData[Tabs[j]][i][CopyJson.Table[l].TxtId]);
                                         }
                                         l++;
                                     });
@@ -1648,7 +1667,7 @@ function BindEmpAddress() {
         var rowNumber = row.find('td:nth-child(1)').text().trim();
         kendo_all_min_js("#empaddress_" + rowNumber).kendoDropDownList({
        filter: "contains",
-       template: "<input type='checkbox' id='chk_OtherUnit_#=data.value #' class='clsSkillInner' value='#=data.value #' name='OtherUnit' />" + " " + "${ data.text }",
+            template: "<input type='checkbox' id='" + rowNumber+"chk_OtherUnit_#=data.value #' class='clsSkillInner' value='#=data.value #' name='OtherUnit' />" + " " + "${ data.text }",
         dataTextField: "text",
         dataValueField: "value",
          dataSource: Address,
@@ -1696,11 +1715,11 @@ function CreateEmployeeJson() {
         var rowNumber = row.find('td:nth-child(1)').text().trim();
         if (kendo_all_min_js('#empaddress_' + rowNumber).val() != 0) {
             var EmailId = jquery_1_11_3_min_p("#empemail_" + rowNumber).val();
-            EmployeeArray.push({ name: jquery_1_11_3_min_p("#empname_" + rowNumber).val(), MobileNo: jquery_1_11_3_min_p("#empmobile_" + rowNumber).val(), EmailId: EmailId, createdBy: CreatedBy });
+            EmployeeArray.push({ name: jquery_1_11_3_min_p("#empname_" + rowNumber).val(), MobileNo: jquery_1_11_3_min_p("#empmobile_" + rowNumber).val(), EmailId: EmailId, CountryId: SessionCountryId, EntityId: SessionEntityId, createdBy: CreatedBy });
             $(kendo_all_min_js('#empaddress_' + rowNumber).data("kendoDropDownList").dataItems()).each(function () {
                 var b = this;
                 var c = b.value;
-                if ($("#chk_OtherUnit_" + c).prop("checked")) {
+                if ($("#" + rowNumber + "chk_OtherUnit_" + c).prop("checked")) {
                     EmpWareHouse.push({ Emailid: EmailId, AddressId: c, createdBy:CreatedBy})  
                 }
             });
@@ -1712,13 +1731,11 @@ function saveEmployee() {
     CreateEmployeeJson();
     var EmpJson = JSON.stringify(EmployeeArray);
     var AddressJson = JSON.stringify(EmpWareHouse);
-    alert(AddressJson);
-    alert(EmpJson);
     jquery_1_11_3_min_p.ajax({
         type: "POST",
         contentType: "application/json; charset=utf-8",
         url: "../WebServices/Customer.asmx/SaveEmployee",
-        data: "{'EmpJson':'" + EmpJson + "','AddressJson':'" + AddressJson + "'}",
+        data: "{'Empjson':'" + EmpJson + "','EmpAddressjson':'" + AddressJson + "'}",
         dataType: "json",
         success: function (result) {
             var i = 0;
@@ -1819,3 +1836,20 @@ function UpdateIdInHiddenField(hf, id, IsAdd) {
     }
 
 }  
+
+//function AddRowEmployee() {
+//    if (EmpCounter == 5) { EmpCounter++; }
+
+//    var markup = "<tr><td style='display:none'>" + EmpCounter + "</td><td><input type='checkbox' id='chk_" + EmpCounter + "' class='checkbox'/></td><td><input type='text' id='empname_" + EmpCounter + "' class='fieldName' onchange='' onkeyup='' autocomplete='off' /></td><td><input type='text' placeholder='' class='fieldName' id='empmobile_1' autocomplete='off' onchange='' onkeypress='' onkeyup='' /></td>
+//        <td><input type='text' placeholder='' class='fieldName' id='empemail_1' autocomplete='off' onchange='' onkeypress='' onkeyup='' /></td>
+//        <td><input type='text' id='empaddress_1' class='fieldName' autocomplete='off' />
+//            <%--<select id="" class="Operator">
+//                <option value="Textbox">Address1</option>
+//                <option value="Textbox">Address2</option>
+//                <option value="Textbox">Address3</option>
+//            </select>--%></td>
+//        <td><input type="checkbox" id="chkcredential_1" class="checkbox" /></td>
+//        <td><input type="checkbox" id="chkisactive_1" class="checkbox" /></td>
+//    </tr>"
+
+//}
