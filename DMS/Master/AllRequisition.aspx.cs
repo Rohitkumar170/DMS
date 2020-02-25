@@ -18,9 +18,9 @@ namespace DMS.Master
             }
             if (!IsPostBack)
             {
-                lblUserName.InnerText = Convert.ToString(Session["UserName"]);
-                lblUserId.InnerText = Convert.ToString(Session["UserId"]);
-                lblwarehouseid.InnerText = Convert.ToString(Session["WareHouseId"]);
+                //lblUserName.InnerText = Convert.ToString(Session["UserName"]);
+                //lblUserId.InnerText = Convert.ToString(Session["UserId"]);
+                //lblwarehouseid.InnerText = Convert.ToString(Session["WareHouseId"]);
             }
 
         }
