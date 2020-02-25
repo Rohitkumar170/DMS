@@ -131,7 +131,16 @@
                                         </div>--%>
                                       
                                           <div class="row">
-                                       <div class="col-md-12"  >
+                                       <div class="col-md-12 headerDropdown "  >
+                                              
+                                           <div class=" pull-right ">
+                                                   <label class="pr-1">Select Entity</label>
+                                                    <input type="text" id="ddlentity"  autocomplete="off"  style="width: 100px;"/>   
+                                                </div>
+                                            <div class=" pull-right pr-1">
+                                                   <label class="pr-1">Select Country</label>
+                                                    <input type="text" id="ddlcountry"  autocomplete="off"  style="width: 100px;"/>
+                                                </div>
                                        <h6 class="form-section">Tax Setup <label id="lblfieldname"></label></h6>
                                          </div>
                                           <div class="col-md-3"  >
@@ -790,6 +799,12 @@
       //  })
 
 //</script>
+    </script>
+         <script>
+ jquery_1_11_3_min_p(document).ready(function () {
+     jquery_1_11_3_min_p(".footerDropdown").hide();
+       });
+</script>
  <script>
      jquery_1_11_3_min_p(document).ready(function () {
          $(function () {
