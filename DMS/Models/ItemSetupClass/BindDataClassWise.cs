@@ -9,5 +9,6 @@ namespace DMS.Models.ItemSetupClass
     {
         public Int32 Unitid { get; set; }
         public string Unitname { get; set; }
+        public string UnitCode { get; set; }
     }
 }

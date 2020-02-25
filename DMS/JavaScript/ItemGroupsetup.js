@@ -21,6 +21,7 @@ jquery_1_11_3_min_p(document).ready(function () {
         jquery_1_11_3_min_p('#btnback').css('display', 'block');
         jquery_1_11_3_min_p('#btnnew').css('display', 'none');
         jquery_1_11_3_min_p('#btnupload1').css('display', 'block');
+       // BindGroupCode();
        
     });
     //=========================================================End Item Group==============================================
@@ -368,18 +369,18 @@ function ValidateGroupMasterGrid() {
     var i = 1;
     jquery_1_11_3_min_p('#tblgroups tbody').find('tr').each(function () {
         var row = jquery_1_11_3_min_p(this);
-        if (jquery_1_11_3_min_p("#txtgroup_" + row.find('td:nth-child(4)').text().trim()).val() == "") {
-            jquery_1_11_3_min_p("#txtgroup_" + row.find('td:nth-child(4)').text().trim()).addClass('validate');
-            jquery_1_11_3_min_p("#txtgroup_" + row.find('td:nth-child(4)').text().trim()).attr("placeholder", "Enter Group!");
+        if (jquery_1_11_3_min_p("#txtgroup_" + row.find('td:nth-child(5)').text().trim()).val() == "") {
+            jquery_1_11_3_min_p("#txtgroup_" + row.find('td:nth-child(5)').text().trim()).addClass('validate');
+            jquery_1_11_3_min_p("#txtgroup_" + row.find('td:nth-child(5)').text().trim()).attr("placeholder", "Enter Group Name!");
             allow = false;
         }
 
-//        if(jquery_1_11_3_min_p("#txtgroupname_" + row.find('td:nth-child(4)').text().trim()).val() == 0)
-//        {
-//          jquery_1_11_3_min_p("#txtgroupname_" + row.find('td:nth-child(4)').text().trim()).addClass('validate');
-//            jquery_1_11_3_min_p("#txtgroupname_" + row.find('td:nth-child(4)').text().trim()).attr("placeholder", "Enter Description!");
-//            allow = false;
-//        }
+        if (jquery_1_11_3_min_p("#txtgroupcode_" + row.find('td:nth-child(5)').text().trim()).val() == 0)
+        {
+            jquery_1_11_3_min_p("#txtgroupcode_" + row.find('td:nth-child(5)').text().trim()).addClass('validate');
+            jquery_1_11_3_min_p("#txtgroupcode_" + row.find('td:nth-child(5)').text().trim()).attr("placeholder", "Enter Group Code!");
+            allow = false;
+        }
        
         i++;
     });
@@ -412,7 +413,7 @@ function AddRow() {
         }
         if (jquery_1_11_3_min_p("#txtgroupname_" + groupcount).val() == '') {
             jquery_1_11_3_min_p("#txtgroupname_" + groupcount).addClass("validate");
-            jquery_1_11_3_min_p("#txtgroupname_" + groupcount).attr("placeholder", "Enter Description!");
+            jquery_1_11_3_min_p("#txtgroupname_" + groupcount).attr("placeholder", "Enter Group Name!");
         }
        
     }

@@ -118,7 +118,7 @@
                 <tr>   
                
                 <td><input type="checkbox" id="chk_1" class="chk_All"></td>     
-                 <td > <input type="text" id="txtgroupcode_1" class="fieldName" />      </td>    
+                 <td > <input type="text" id="txtgroupcode_1" class="fieldName" placeholder="Enter Group Code" />      </td>    
                 <td > <input type="text" id="txtgroup_1" onkeyup='Comparevalue(this)' placeholder="Enter Group Name" class="fieldName" />      </td>
                 <td > <input type="text" id="txtgroupname_1" placeholder="Enter Description"  class="fieldName"  autocomplete="off" /> </td>  
                 <td  style="opacity: 0;">1</td>

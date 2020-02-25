@@ -273,6 +273,7 @@
                                  <th style="display:none"></th>
                                 <th><input type="checkBox" id="chkAll" > All</th>
                                 <th>UnitName</th>
+                                 <th>UnitCode</th>
                             </tr>
                         </thead>
                       <tbody>
