@@ -15,6 +15,10 @@ namespace DMS.Master
         BindADOResultset Commonmanager = new BindADOResultset();
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Convert.ToString(Session["UserId"]) == null)
+            {
+                Response.Redirect("../login.aspx");
+            }
 
             if (!IsPostBack)
             {
