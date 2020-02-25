@@ -172,7 +172,7 @@
                                       </div>
 
                                       </div>  
-                               <div class="form-body" id="empDiv" >
+                               <div class="form-body" id="empDiv" style="display:none" >
                                         <h6 class="form-section">Employee</h6>
                                         <div class="row   ">
     <div class="col-md-6 ">    
@@ -181,9 +181,9 @@
                             <i class="fa fa-plus"></i> </button>
                             <button type="button" id="btnDeleteLine1" class="btn btn-outline-primary" title="Delete Line">
                             <i class="fa fa-trash"></i> </button>
-                            <button type="button" id="Button1" class="btn btn-outline-primary" title="Export">
+                            <button type="button" id="btn6" class="btn btn-outline-primary" title="Export">
                             <i class="fa fa-file-excel-o"></i> </button>
-                            <button type="button" id="Button1" class="btn btn-outline-primary" title="PDF">
+                            <button type="button" id="btn7" class="btn btn-outline-primary" title="PDF">
                             <i class="fa fa-file-pdf-o"></i> </button>    
                           
     </div>
@@ -221,68 +221,73 @@
                       <tbody>
                       <tr>
                       <td style="display:none">1</td>
-                      <td><input type="checkbox" id="" class="checkbox"/></td>
-                      <td><input type='text' id='' class='fieldName' onchange=''  onkeyup='' autocomplete='off'/></td>
-                    <td><input type='text' placeholder='' class='fieldName' id='' autocomplete='off' onchange='' onkeypress='' onkeyup='' /></td>
-                       <td><input type='text' placeholder='' class='fieldName' id='' autocomplete='off' onchange='' onkeypress='' onkeyup='' /></td>
-                       <td><select id="" class="Operator">
-												<option value="Textbox">Address1</option>
-                                                <option value="Textbox">Address2</option>
-												<option value="Textbox">Address3</option>
-                                                </select></td>
-                          <td><input type="checkbox" id="" class="checkbox"/></td>
-                      </tr>
-                             <tr>
-                      <td style="display:none">1</td>
-                      <td><input type="checkbox" id="" class="checkbox"/></td>
-                      <td><input type='text' id='' class='fieldName' onchange=''  onkeyup='' autocomplete='off'/></td>
-                    <td><input type='text' placeholder='' class='fieldName' id='' autocomplete='off' onchange='' onkeypress='' onkeyup='' /></td>
-                       <td><input type='text' placeholder='' class='fieldName' id='' autocomplete='off' onchange='' onkeypress='' onkeyup='' /></td>
-                       <td><select id="" class="Operator">
-												<option value="Textbox">Address1</option>
-                                                <option value="Textbox">Address2</option>
-												<option value="Textbox">Address3</option>
-                                                </select></td>
-                          <td><input type="checkbox" id="" class="checkbox"/></td>
+                      <td><input type="checkbox" id="chk_1" class="checkbox"/></td>
+                      <td><input type='text' id='empname_1' class='fieldName' onchange=''  onkeyup='' autocomplete='off'/></td>
+                      <td><input type='text' placeholder='' class='fieldName' id='empmobile_1' autocomplete='off' onchange='' onkeypress='' onkeyup='' /></td>
+                       <td><input type='text' placeholder='' class='fieldName' id='empemail_1' autocomplete='off' onchange='' onkeypress='' onkeyup='' /></td>
+                       <td><input type='text' id='empaddress_1' class='fieldName'  autocomplete='off'/></td>
+                          <td><input type="checkbox" id="chkcredential_1" class="checkbox"/></td>
+                          <td><input type="checkbox" id="chkisactive_1" class="checkbox"/></td>
                       </tr>
                            <tr>
-                      <td style="display:none">1</td>
-                      <td><input type="checkbox" id="" class="checkbox"/></td>
-                      <td><input type='text' id='' class='fieldName' onchange=''  onkeyup='' autocomplete='off'/></td>
-                    <td><input type='text' placeholder='' class='fieldName' id='' autocomplete='off' onchange='' onkeypress='' onkeyup='' /></td>
-                       <td><input type='text' placeholder='' class='fieldName' id='' autocomplete='off' onchange='' onkeypress='' onkeyup='' /></td>
-                       <td><select id="" class="Operator">
+                      <td style="display:none">2</td>
+                      <td><input type="checkbox" id="chk_2" class="checkbox"/></td>
+                      <td><input type='text' id='empname_2' class='fieldName' onchange=''  onkeyup='' autocomplete='off'/></td>
+                      <td><input type='text' placeholder='' class='fieldName' id='empmobile_2' autocomplete='off' onchange='' onkeypress='' onkeyup='' /></td>
+                       <td><input type='text' placeholder='' class='fieldName' id='empemail_2' autocomplete='off' onchange='' onkeypress='' onkeyup='' /></td>
+                       <td><input type='text' id='empaddress_2' class='fieldName'  autocomplete='off'/>
+                           <%--<select id="" class="Operator">
 												<option value="Textbox">Address1</option>
                                                 <option value="Textbox">Address2</option>
 												<option value="Textbox">Address3</option>
-                                                </select></td>
-                          <td><input type="checkbox" id="" class="checkbox"/></td>
+                                                </select>--%></td>
+                          <td><input type="checkbox" id="chkcredential_2" class="checkbox"/></td>
+                          <td><input type="checkbox" id="chkisactive_2" class="checkbox"/></td>
                       </tr>
-                           <tr>
-                      <td style="display:none">1</td>
-                      <td><input type="checkbox" id="" class="checkbox"/></td>
-                      <td><input type='text' id='' class='fieldName' onchange=''  onkeyup='' autocomplete='off'/></td>
-                    <td><input type='text' placeholder='' class='fieldName' id='' autocomplete='off' onchange='' onkeypress='' onkeyup='' /></td>
-                       <td><input type='text' placeholder='' class='fieldName' id='' autocomplete='off' onchange='' onkeypress='' onkeyup='' /></td>
-                       <td><select id="" class="Operator">
+                            <tr>
+                      <td style="display:none">3</td>
+                      <td><input type="checkbox" id="chk_3" class="checkbox"/></td>
+                      <td><input type='text' id='empname_3' class='fieldName' onchange=''  onkeyup='' autocomplete='off'/></td>
+                      <td><input type='text' placeholder='' class='fieldName' id='empmobile_3' autocomplete='off' onchange='' onkeypress='' onkeyup='' /></td>
+                       <td><input type='text' placeholder='' class='fieldName' id='empemail_3' autocomplete='off' onchange='' onkeypress='' onkeyup='' /></td>
+                       <td><input type='text' id='empaddress_3' class='fieldName'  autocomplete='off'/>
+                           <%--<select id="" class="Operator">
 												<option value="Textbox">Address1</option>
                                                 <option value="Textbox">Address2</option>
 												<option value="Textbox">Address3</option>
-                                                </select></td>
-                          <td><input type="checkbox" id="" class="checkbox"/></td>
+                                                </select>--%></td>
+                          <td><input type="checkbox" id="chkcredential_3" class="checkbox"/></td>
+                          <td><input type="checkbox" id="chkisactive_3" class="checkbox"/></td>
                       </tr>
-                           <tr>
-                      <td style="display:none">1</td>
-                      <td><input type="checkbox" id="" class="checkbox"/></td>
-                      <td><input type='text' id='' class='fieldName' onchange=''  onkeyup='' autocomplete='off'/></td>
-                    <td><input type='text' placeholder='' class='fieldName' id='' autocomplete='off' onchange='' onkeypress='' onkeyup='' /></td>
-                       <td><input type='text' placeholder='' class='fieldName' id='' autocomplete='off' onchange='' onkeypress='' onkeyup='' /></td>
-                        <td><select id="" class="Operator">
+                          <tr>
+                      <td style="display:none">4</td>
+                      <td><input type="checkbox" id="chk_4" class="checkbox"/></td>
+                      <td><input type='text' id='empname_4' class='fieldName' onchange=''  onkeyup='' autocomplete='off'/></td>
+                      <td><input type='text' placeholder='' class='fieldName' id='empmobile_4' autocomplete='off' onchange='' onkeypress='' onkeyup='' /></td>
+                       <td><input type='text' placeholder='' class='fieldName' id='empemail_4' autocomplete='off' onchange='' onkeypress='' onkeyup='' /></td>
+                       <td><input type='text' id='empaddress_4' class='fieldName'  autocomplete='off'/>
+                           <%--<select id="" class="Operator">
 												<option value="Textbox">Address1</option>
                                                 <option value="Textbox">Address2</option>
 												<option value="Textbox">Address3</option>
-                                                </select></td>
-                          <td><input type="checkbox" id="" class="checkbox"/></td>
+                                                </select>--%></td>
+                          <td><input type="checkbox" id="chkcredential_4" class="checkbox"/></td>
+                          <td><input type="checkbox" id="chkisactive_4" class="checkbox"/></td>
+                      </tr>
+                          <tr>
+                      <td style="display:none">5</td>
+                      <td><input type="checkbox" id="chk_5" class="checkbox"/></td>
+                      <td><input type='text' id='empname_5' class='fieldName' onchange=''  onkeyup='' autocomplete='off'/></td>
+                      <td><input type='text' placeholder='' class='fieldName' id='empmobile_5' autocomplete='off' onchange='' onkeypress='' onkeyup='' /></td>
+                       <td><input type='text' placeholder='' class='fieldName' id='empemail_5' autocomplete='off' onchange='' onkeypress='' onkeyup='' /></td>
+                       <td><input type='text' id='empaddress_5' class='fieldName'  autocomplete='off'/>
+                           <%--<select id="" class="Operator">
+												<option value="Textbox">Address1</option>
+                                                <option value="Textbox">Address2</option>
+												<option value="Textbox">Address3</option>
+                                                </select>--%></td>
+                          <td><input type="checkbox" id="chkcredential_5" class="checkbox"/></td>
+                          <td><input type="checkbox" id="chkisactive_5" class="checkbox"/></td>
                       </tr>
                       </tbody>
                           
@@ -294,59 +299,7 @@
                                         </div>
                                        
                                     </div>
-                                          <%--  <div class="col-md-3">
-                                             <div class="addressBg" id="AddressDiv">
-                                             <div class="closeAddress pull-right"><i class="fa fa-close"></i></div>
-                                             <div class="AllAddress form-group">
-                                          <label class="textHeader">Address 1</label>
-                                          </div>
-                                                <div class="form-group">
-                                                   
-                                                    <label for="ItemName">Country</label>
-                                                     <input type="text" id="txtitemname" onkeyup="RemoveClassItem(this)" class="form-control" placeholder="Enter Country">
-                                                </div>
-                                                <div class="repeatAddress">
-                                                <div class="form-group">
-                                                  <label for="Address1">Address 1</label>
-                                                    <input type="text" id="txtdescription"  class="form-control" placeholder="Enter Address 1">
-                                                </div>
-                                                <div class="form-group">
-                                                  <label for="Address2">Address 2</label>
-                                                    <input type="text" id="Text1"  class="form-control" placeholder="Enter Address 2">
-                                                </div>
-                                                    <div class="form-group">
-                                                  <label for="state">State</label>
-                                                    <select type="select" class="form-control">
-                                                    <option value="type1">Uttarpardesh</option>
-                                                     <option value="type2">Uttrakhand</option>
-                                                      <option value="type3">Delhi</option>
-                                                    </select>
-                                                </div>
-                                                  <div class="form-group">
-                                                  <label for="state">City</label>
-                                                    <select type="select" class="form-control">
-                                                    <option value="type1">Noida</option>
-                                                     <option value="type2">Delhi</option>
-                                                      <option value="type3">Meerut</option>
-                                                      <option value="type1">Hapur</option>
-                                                     <option value="type2">G.noida</option>
-                                                      <option value="type3">Mathura</option>
-                                                    </select>
-                                                </div>
-                                                  <div class="form-group">
-                                                  <label for="state">Pincode</label>
-                                                    <select type="select" class="form-control">
-                                                    <option value="type1">245101</option>
-                                                     <option value="type2">250001</option>
-                                                      <option value="type3">201313</option>
-                                                      <option value="type1">201315</option>
-                                                     <option value="type2">110001</option>
-                                                      <option value="type3">110005</option>
-                                                    </select>
-                                                </div>
-                                                </div>
-                                                </div>
-                                            </div>--%>
+                                          
                                        
                                            
                                        
@@ -509,7 +462,7 @@
    <label id="lblUserId" runat="server" style="display: none"> </label>
     <script>
         jquery_1_11_3_min_p(document).ready(function () {
-            jquery_1_11_3_min_p(".footerDropdown").hide();
+            jquery_1_11_3_min_p(".footerDropdown").css('visibility', 'hidden');
         });
 </script>
 </asp:Content>
