@@ -197,7 +197,7 @@ namespace DMS.WebServices
 
                     #endregion
                 }
-                return results;
+                return Common.Getdata(results1);
 
                 #endregion
             }
@@ -427,7 +427,7 @@ namespace DMS.WebServices
 
 
                 }
-                return results;
+                return Common.Getdata(results1);
 
 
             }
@@ -714,7 +714,7 @@ namespace DMS.WebServices
                 string jsonString = "";
                 for (int k = 0; k < AddressJson.Count; k++)
                 {
-                    string a = Convert.ToString(AddressJson[k]);
+                    string a = Convert.ToString(AddressJson[k]).Trim();
                     string str = a.Remove(a.Length - 1, 1);
                     string finalstr = str.Remove(0, 1);
 
@@ -742,7 +742,8 @@ namespace DMS.WebServices
                 for (int c = 0; c < COLUMN.Count; c++)
                 {
 
-                    columns += COLUMN[c] + " " + "[varchar](250) NULL" + ",";
+                    // columns +="["+ COLUMN[c] +"]" + " " + "[varchar](250) NULL" + ",";
+                    columns += COLUMN[c].Trim() + " " + "[varchar](250) NULL" + ",";
 
                 }
                 columns += "[CountryId] [bigint]" + ' ' + " NULL" + ',';
@@ -762,13 +763,13 @@ namespace DMS.WebServices
 
                 for (int d = 0; d < COLUMN.Count; d++)
                 {
-                    InsertColumn += COLUMN[d] + ",";
-                    selectJson += " max(case when name=''" + COLUMN[d] + "'' then convert(nvarchar(100),StringValue) else '''' end) as " + COLUMN[d] + ",";
+                    InsertColumn += COLUMN[d].Trim()  + ",";
+                    selectJson += "max(case when name=''" + COLUMN[d].Trim() + "'' then convert(nvarchar(100),StringValue) else '''' end) as " + COLUMN[d].Trim() + ",";
 
                 }
                 string NewInsCols = InsertColumn.Remove(InsertColumn.Length - 1, 1);
                 string NewselectJson = selectJson.Remove(selectJson.Length - 1, 1);
-                Query = "insert Into " + Tablename + "(" + NewInsCols + ",IsActive,IsDeleted,CreatedOn,EntityId,CreatedBy,CountryId,LocationFlag)" + selectJson + " 1,0,getdate()," + entityid + "," + CreatedBy + "," + CountryId + ",1 FROM parseJSON(" + "''" + Jsondata + "''" + ") where ValueType = ''string'' OR  ValueType = ''int''group by parent_ID ";
+                Query = "insert Into " + Tablename + "(" + NewInsCols + ",IsActive,IsDeleted,CreatedOn,EntityId,CreatedBy,CountryId,LocationFlag)" + selectJson.Trim() + " 1,0,getdate()," + entityid + "," + CreatedBy + "," + CountryId + ",1 FROM parseJSON(" + "''" +Jsondata.Trim()+ "''" + ") where ValueType = ''string'' OR  ValueType = ''int''group by parent_ID ";
                 var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_Customers]").With<Flag>()
                           .Execute("@QueryType", "@countryid", "@entityid", "@CreatedBy", "@InsertQuery", "@TableName", "@ColumnName", "SaveLocation", CountryId, entityid, CreatedBy, Query, Tablename, columns));
                 return results;

@@ -374,7 +374,7 @@
                                       <li><a class="menu-item" href="#"><span>Employee</span></a>
                   <ul class="menu-content">                  
                   <li class=""><a class="menu-item" href="../Master/Employee.aspx"><span >Create Employee</span></a> </li> 
-                       <li class=""><a class="menu-item" href="../Master/UserForm.aspx"><span >User Form</span></a> </li>  
+                    <%--   <li class=""><a class="menu-item" href="../Master/UserForm.aspx"><span >User Form</span></a> </li>  --%>
                     </ul>
                             </li> 
                         </ul>
@@ -394,14 +394,14 @@
                                    
                     </ul>
                             </li>
-                 <li><a class="menu-item" href="#"><span>Partner</span></a>
+                <%-- <li><a class="menu-item" href="#"><span>Partner</span></a>
                   <ul class="menu-content">
                   <li class=""><a class="menu-item" href="../Master/PartnerPara.aspx"><span >Partner Parameter</span></a> </li>   
                  
                    <li class=""><a class="menu-item" href="../Master/PartnerDataSetup.aspx"><span >Partner Data Setup</span></a> </li>  
-                    <%-- <li class=""><a class="menu-item" href="../Master/test.aspx"><span >Test</span></a> </li>  --%>     
+                   
                     </ul>
-                            </li>
+                            </li>--%>
                         
                         </ul>
                     </li>
@@ -429,13 +429,13 @@
     <div class="col-md-4 footerDropdown">
                   <div class=" pull-right pr-1">
                                                    <label class="pr-1">Select Country</label>
-                                                    <input type="text" id="ddlcountry"  autocomplete="off"  style="width: 100px;"/>
+                                                    <input type="text" id="ddlcountry1"  autocomplete="off"  style="width: 100px;"/>
                                                 </div>                              
                                             </div>
 <div class="col-md-4 footerDropdown">
 <div class=" pull-right ">
                                                    <label class="pr-1">Select Entity</label>
-                                                    <input type="text" id="ddlentity"  autocomplete="off"  style="width: 100px;"/>
+                                                    <input type="text" id="ddlentity1"  autocomplete="off"  style="width: 100px;"/>
    
                                                 </div>
                                                 
@@ -459,7 +459,7 @@
                          <img src="../assets/img/tick.png" height="60" width="60">
                         <h6 class="mt-1">     Record succesfully added     </h6>
                         <div class="modal-footer">
-                            <button type="button" id="btnnew" class="btn btn-primary waves-effect waves-light">
+                            <button type="button" id="btnnew1" class="btn btn-primary waves-effect waves-light">
                             OK</button>
                             <%--<button type="button" class="btn grey btn-outline-secondary" data-dismiss="modal">
                                 Close</button>--%>

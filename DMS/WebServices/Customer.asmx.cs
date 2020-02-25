@@ -56,6 +56,23 @@ namespace DMS.WebServices
             }
 
         }
+
+        [WebMethod]
+        public Dictionary<string, object> BindAddressDropDowns(string entityId, string CountryId)
+        {
+            try
+            {
+                var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_Customers]").With<BindAddressForTax>()
+                     .Execute("@QueryType", "@entityId", "@countryId", "BindORGAddress", entityId, CountryId));
+                return results;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
         [WebMethod]
         public Dictionary<string, object> UpdatePartnerGroup(string PartnerType, string PartnerDescription, string AccountId, string dblclickGroupId, string userId)
         {

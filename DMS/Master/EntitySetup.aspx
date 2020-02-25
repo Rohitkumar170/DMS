@@ -343,7 +343,7 @@
  jquery_1_11_3_min_p(document).ready(function () {
      jquery_1_11_3_min_p(".footerDropdown").hide();
        });
-</script
+</script>
                  <script type="text/javascript">
         function ShowPopup(text) {
         swal(text, "warning")
