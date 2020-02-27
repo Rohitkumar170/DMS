@@ -8,6 +8,12 @@
          .headerPropery{width: 100px;}
          .headerValue{width: 100px;}
          #AllRequisitionGrid td:nth-child(1), #AllRequisitionGrid th:nth-child(1) {    width: 50px;}
+        .ColorStatus span{height:12px;width:14px;display: inline-block;}
+        #greenStatus{background:green;opacity: .8;}
+        #orangeStatus{background:orange;opacity: .8;}
+        #redStatus{background:red;opacity: .8;}
+          #defaultStatus{background:#bbb;opacity: .8;}
+          .ColorStatus {padding-top: 10px;}
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -127,7 +133,16 @@
   
     
     </div>
-                           <div class="col-md-3"  ></div>
+                           <div class="col-md-3"  >
+                                
+                               <div class="ColorStatus">
+                                   <label class="headerPropery">Process Graph :</label>
+                                    <span id="defaultStatus" class="colors" title="Danger"></span>
+                                   <span id="greenStatus" class="colors" title="Normal"></span>
+                                   <span id="orangeStatus" class="colors" title="Average"></span>
+                                   <span id="redStatus" class="colors" title="Default"></span>
+                               </div>
+                           </div>
                          <div class="col-md-3"  >
                                           <div class="input-group input-group-sm">
 								                   <div class="input-group-prepend ">
@@ -392,6 +407,7 @@
                                 
                                 <th><input Type="checkbox" id="chkall"/> All</th>
                                 <th>Request No.</th>
+                                <th>Requested Qty</th>
                                 <th>Request Date</th>
                                 <th>Location</th>
                                 <th>Creation Date</th>
@@ -408,6 +424,7 @@
                             <tr>  
                                  <td><input Type="checkbox"/></td>
                                  <td>0001</td>
+                                <td>1000</td>
                                  <td>01-Feb-2020 4:08pm</td>
                                 <td>Noida</td>
                                 <td>01-Feb-2020 4:08pm</td>
@@ -421,6 +438,7 @@
                              <tr>  
                                  <td><input Type="checkbox"/></td>
                                  <td>0002</td>
+                                 <td>500</td>
                                  <td>01-Feb-2020 4:08pm</td>
                                 <td>Noida</td>
                                 <td>01-Feb-2020 4:08pm</td>
@@ -434,6 +452,7 @@
                             <tr>  
                                  <td><input Type="checkbox"/></td>
                                  <td>0003</td>
+                                <td>3000</td>
                                  <td>01-Feb-2020 4:08pm</td>
                                 <td>Noida</td>
                                 <td>01-Feb-2020 4:08pm</td>

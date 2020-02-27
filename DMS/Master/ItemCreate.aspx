@@ -290,6 +290,14 @@
                                                 
                                                 </div>
                                             </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                   
+                                                   
+                                                     <input type="checkbox" class="checkLocation" >
+                                                     <label for="Self">Auto Requisition</label>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="row mt-1" id="Displaychkvariant" style="display:none">
                            

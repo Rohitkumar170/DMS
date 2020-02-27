@@ -529,7 +529,21 @@ namespace DMS.WebServices
             }
 
         }
+        [WebMethod]
+        public Dictionary<string, object> DisableLocation(string entityid, string CountryId, string Columnid)
+        {
+            try
+            {
+                var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_AdminSetUp]").With<Flag>()
+                              .Execute("@QueryType", "@countryid", "@entityid", "@Columnid", "Disableaddress", CountryId, entityid, Columnid));
+                return results;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
 
+        }
 
         [WebMethod]
         public Dictionary<string, object> BindPartners(string CountryId, string EntityId)
@@ -772,6 +786,45 @@ namespace DMS.WebServices
                 Query = "insert Into " + Tablename + "(" + NewInsCols + ",IsActive,IsDeleted,CreatedOn,EntityId,CreatedBy,CountryId,LocationFlag)" + selectJson.Trim() + " 1,0,getdate()," + entityid + "," + CreatedBy + "," + CountryId + ",1 FROM parseJSON(" + "''" +Jsondata.Trim()+ "''" + ") where ValueType = ''string'' OR  ValueType = ''int''group by parent_ID ";
                 var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_Customers]").With<Flag>()
                           .Execute("@QueryType", "@countryid", "@entityid", "@CreatedBy", "@InsertQuery", "@TableName", "@ColumnName", "SaveLocation", CountryId, entityid, CreatedBy, Query, Tablename, columns));
+                return results;
+            }
+
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+        [WebMethod]
+        public Dictionary<string, object> UpdateLocation(List<Object> AddressJson, string CreatedBy, string entityid, string CountryId, string Tablename)
+        {
+            try
+            {
+                Dictionary<string, object> results = new Dictionary<string, object>();
+                string Query = "";
+                for (int i = 0; i < AddressJson.Count; i++)
+                {
+                    string COLUMN = "";
+                    string Address = Convert.ToString(AddressJson[i]);
+                    string[] Address1 = Address.Split('&');
+                    string autoId = Address1[0];   
+                    JArray ar = JArray.Parse(Address1[1]);
+                    foreach (JObject content in ar.Children<JObject>())
+                    {
+                        foreach (JProperty prop in content.Properties())
+                        {
+
+                            COLUMN += prop.Name + "=" + "''" + prop.Value + "''" + " ,";
+                        }
+                    }
+
+
+                    Query = "Update " + Tablename + " set" + COLUMN + "UpdatedBy=" + CreatedBy + ",UpdatedOn=getdate()" + ",CountryId=" + CountryId + ",EntityId=" + entityid + " where AutoId=" + autoId;
+                    DMSNEWEntities context = new DMSNEWEntities();
+                    results = Common.Getdata(context.MultipleResults("[dbo].[DMS_Customers]").With<Flag>()
+                              .Execute("@QueryType", "@countryid", "@entityid", "@CreatedBy", "@InsertQuery", "@TableName", "UpdateLocation", CountryId, entityid, CreatedBy, Query, Tablename));
+
+                }
                 return results;
             }
 

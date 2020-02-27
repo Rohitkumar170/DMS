@@ -30,6 +30,7 @@
          .headerPropery{width: 100px;}
          .headerValue{width: 100px;}
          #AllRequisitionGrid td:nth-child(1), #AllRequisitionGrid th:nth-child(1) {    width: 50px;}
+         #QtyAssignTable td:nth-child(1), #QtyAssignTable th:nth-child(1) {    width: 50px;}
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -384,6 +385,7 @@
                                 
                                 <th><input Type="checkbox" id="chkall"/> All</th>
                                 <th>Request No.</th>
+                                  <th>Requested Qty</th>
                                 <th>Request Date</th>
                                 <th>Location</th>
                                 <th>Creation Date</th>
@@ -400,6 +402,7 @@
                             <tr>  
                                  <td><input Type="checkbox"/></td>
                                  <td>0001</td>
+                                <td>3000</td>
                                  <td>01-Feb-2020 4:08pm</td>
                                 <td>Noida</td>
                                 <td>01-Feb-2020 4:08pm</td>
@@ -413,8 +416,9 @@
                              <tr>  
                                  <td><input Type="checkbox"/></td>
                                  <td>0002</td>
+                                 <td>2000</td>
                                  <td>01-Feb-2020 4:08pm</td>
-                                <td>Noida</td>
+                                <td>Delhi</td>
                                 <td>01-Feb-2020 4:08pm</td>
                                 <td>01-Feb-2020 4:08pm</td>
                                 <td>01-Feb-2020 4:08pm</td>
@@ -426,6 +430,7 @@
                             <tr>  
                                  <td><input Type="checkbox"/></td>
                                  <td>0003</td>
+                                <td>1000</td>
                                  <td>01-Feb-2020 4:08pm</td>
                                 <td>Noida</td>
                                 <td>01-Feb-2020 4:08pm</td>
@@ -473,7 +478,7 @@
 											<div class="modal-body">
 												    <div class="row">
                                          
-                                            <div class="col-md-12">
+                                            <div class="col-md-4">
                                            
     <div class="pdfexport">
                             <button type="button" id="btnpopupaddline" onclick="Addpopuprow()" class="btn btn-outline-primary" title="Add Line">
@@ -484,8 +489,20 @@
                             <i class="fa fa-save"></i> </button>
     </div>
     </div>
+                                                           <div class="col-md-4">
+                                                               <div class="pull-right pt-1">
+                                                                <label class="headerPropery">Request No.</label>
+                           : <label class="headerValue">0001</label>
+
+                                                               </div>
+                                                           </div>
+                                                        <div class="col-md-4">
+                                                            <div class="pull-right pt-1">
+                                                                <label class="headerPropery">Requested Quantity</label>
+                           : <label class="headerValue">1000</label>
+                                                           </div> </div>
      <div class="col-md-12">
-                                                  <div class="table-responsive full-width" id="Div1">
+                                                  <div class="table-responsive full-width" id="QtyAssignTable">
                               <table id="" class="table table-de mb-0">
                         <thead>
                             <tr>
