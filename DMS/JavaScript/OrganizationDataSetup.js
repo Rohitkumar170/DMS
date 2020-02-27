@@ -1,5 +1,5 @@
 ﻿var Parameter = []; var counter = 0; var CopyJson = []; var JsonLocation = []; var DataTypeId = 0; var copyColumnJson = []; var otherFieldsCounter = 0; var countercheck = 1; var searchtxt = ''; var LoadData = ''; var ColumnName = [];
-var GlobalEntityId = 1;var GlobalCountryId = 1;
+var GlobalEntityId = 1; var GlobalCountryId = 1; var dblclickFlag = 0; var dblRowid = 0; var Globalcounter = 1;
 jquery_1_11_3_min_p(document).ready(function () {
  jquery_1_11_3_min_p("#hdnLoad").val(10);
     LoadData = jquery_1_11_3_min_p("#hdnLoad").val();
@@ -32,6 +32,7 @@ jquery_1_11_3_min_p(document).ready(function () {
    var row = jquery_1_11_3_min_p(this);
    $("#TblOrgDataGrid tbody tr").removeClass("selectedRow"); 
     row.addClass("selectedRow");
+ dblclickFlag = 1;
    var DataType= row.find('td:nth-child(2)').text().trim();
     var EntityId= row.find('td:nth-child(3)').text().trim();
      var CountryId= row.find('td:nth-child(4)').text().trim();
@@ -87,46 +88,90 @@ swal("Deleted Successfully","Your data deleted successfully!","success")
 
     //====================================== start code for  Submit Button click================================\\
 
-      jquery_1_11_3_min_p('#btnSubmit').click(function () {
-      if(DataTypeId==1)
-      {
-        if (ValidateHeaderDropDown()==true && ValidateAddress() == true ) {
-         swal({
-                 title: "Do you want to Submit?",
-                 text: "",
-                 icon: "warning",
-                 buttons: true,
-                 dangerMode: true,
-                 })
-                 .then((willDelete) => {
-                 if (willDelete) {
-                 MakeAddressJson();
-                 SaveLocation();
+    jquery_1_11_3_min_p('#btnSubmit').click(function () {
+       
+        if (ValidateHeaderDropDown() == true && ValidateAddress() == true) {
+            if (dblclickFlag == 0) {
+                swal({
+                    title: "Do you want to Submit?",
+                    text: "",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                    .then((willDelete) => {
+                        if (willDelete) {
+                            MakeAddressJson();
+                            SaveLocation();
+
+
+                        }
+                    });
+            }
+            else {
+                swal({
+                    title: "Do you want to Submit?",
+                    text: "",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                    .then((willDelete) => {
+                        if (willDelete) {
+                            UpdateMakeAddressJson();
+                           UpdateLocation();
+
+
+                        }
+                    });
+
+            }
+        }
+     
+
+      //if(DataTypeId==1)
+      //{
+      //    if (ValidateHeaderDropDown() == true && ValidateAddress() == true) {
+
+              
+      //            swal({
+      //                title: "Do you want to Submit?",
+      //                text: "",
+      //                icon: "warning",
+      //                buttons: true,
+      //                dangerMode: true,
+      //            })
+      //                .then((willDelete) => {
+      //                    if (willDelete) {
+      //                        MakeAddressJson();
+      //                        SaveLocation();
+
+
+      //                    }
+      //                });
+          
+           
+      //  }
+      //  }
+      //  else{
+      //   swal({
+      //           title: "Do you want to Submit?",
+      //           text: "",
+      //           icon: "warning",
+      //           buttons: true,
+      //           dangerMode: true,
+      //           })
+      //           .then((willDelete) => {
+      //           if (willDelete) {
+      //          // MakeAddressJson();
+      //          // SaveOtherParameter();
+      //         SaveParameterData();
                
 
-             }
-                 });
-        }
-        }
-        else{
-         swal({
-                 title: "Do you want to Submit?",
-                 text: "",
-                 icon: "warning",
-                 buttons: true,
-                 dangerMode: true,
-                 })
-                 .then((willDelete) => {
-                 if (willDelete) {
-                // MakeAddressJson();
-                // SaveOtherParameter();
-               SaveParameterData();
-               
-
-             }
-                 });
+      //       }
+      //           });
         
-        }
+      //  }
     });
 //====================================== End code for  Submit Button click================================\\
 
@@ -361,9 +406,11 @@ function BindAddressFields(entityId, countryId) {
             var jsonData = result.d;
             CopyJson = jsonData;
             var a = 0;
+            
 
             jQuery.each(jsonData.Table, function (rec) {
-                var markup = "<div class='form-group'> <label id='lbl_" + i + "' for='Address'>" + jsonData.Table[i].FieldName + "</label><input type='text'  id='txt_" + jsonData.Table[i].TxtId + counter + "' autocomplete='off'  class='form-control' onkeypress='RemoveClassAddressDiv(this)' placeholder=' Enter " + jsonData.Table[i].FieldName + "'/></div>";
+                
+                var markup = "<div class='form-group'><label id='lbl_" + i + "' for='Address'>" + jsonData.Table[i].FieldName + "</label><input type='text'  id='txt_" + jsonData.Table[i].TxtId + counter + "' autocomplete='off'  class='form-control' onkeypress='RemoveClassAddressDiv(this)' placeholder=' Enter " + jsonData.Table[i].FieldName + "'/></div>";
                 jquery_1_11_3_min_p("#repeatArea_" + counter).append(markup);
                 if (jsonData.Table[i].FieldDataType == "2") {
                     var TableName = jsonData.Table1[a].TablesName;
@@ -512,11 +559,12 @@ function ValidateHeaderDropDown() {
 //====================================== start code for Delete Address Box ================================\\
 function  deleteAddress(ele) { 
 
-var id=ele.id;
+    var id = ele.id;
+    
 var arr=[];
 arr=id.split('_');
  swal({
-       title: "Do you want to Delete?",
+       title: "Do you want to Proceed?",
        text: "",
        icon: "warning",
         buttons: true,
@@ -524,13 +572,38 @@ arr=id.split('_');
          })
        .then((willDelete) => {
         if (willDelete) {  
-         jquery_1_11_3_min_p("#addressdiv_"+arr[1]).remove();
-       
+            
+            var EntityId = kendo_all_min_js('#ddlentity').val();
+            var CountryId = kendo_all_min_js('#ddlcountry').val();
+            Deleteaddress(EntityId, CountryId, arr[2], arr[1]);
+
+
           }
                  });
 }
 //====================================== end code for Delete Address Box ================================\\
 
+function Deleteaddress(Entityid, Countryid, Autoid,Deletediv) {
+    jquery_1_11_3_min_p.ajax({
+        type: "POST",
+        contentType: "application/json; charset=utf-8",
+        url: "../WebServices/Setup.asmx/DisableLocation",
+        data: "{'entityid':'" + Entityid + "','CountryId':'" + Countryid + "','Columnid':'" + Autoid + "'}",
+        dataType: "json",
+        success: function (result) {
+           var jsonData = eval(result.d);
+            if (jsonData.Table[0].Res == "1") {
+                
+                swal("Deleted", "Address deleted successfully!", "success")
+                    .then((value) => {
+                        var divid = 'addressdiv_' + Deletediv;
+                        jquery_1_11_3_min_p('#' + divid).remove();
+                       
+                    });
+            }
+        }
+    });
+}
 
 //====================================== start code for Remove validate Class ================================\\
 function RemoveClassAddressDiv(data) {
@@ -580,7 +653,8 @@ function MakeAddressJson() {
         });
          var newcol = columnName1.slice(0, -1);
           columnName1 = '';
-          columnName1 += newcol+'}]';
+         columnName1 += newcol + '}]';
+
          var arrkey=jquery_1_11_3_min_p("#txtLocatuion_"+j).val();
          if(arrkey!=undefined)
           {
@@ -589,6 +663,41 @@ function MakeAddressJson() {
          }
          
     }
+}
+function UpdateMakeAddressJson() {
+    var id = Globalcounter;
+    JsonLocation = [];
+    var tempJson = "";
+    if (CopyJson.Table.length > 0) {
+        for (var j = 1; j <= Globalcounter; j++) {
+
+            var columnName1 = '';
+            var columnName = '';
+            var i = 0;
+            columnName1 += '[{';
+            var LocationCode = jquery_1_11_3_min_p("#txtLocationCode_" + j).val();
+            var LocationName = jquery_1_11_3_min_p("#txtLocatuion_" + j).val();
+            var LocationDescription = jquery_1_11_3_min_p("#txtLocDesc_" + j).val();
+           var LocationAutoid = jquery_1_11_3_min_p("#lblAutoid_" + j).text();
+            columnName1 += '"[LocationCode]"' + ':' + '"' + LocationCode + '","[LocationName]"' + ':' + '"' + LocationName + '","[LocationDescription]"' + ':' + '"' + LocationDescription + '",';
+
+            jquery_1_11_3_min_p("#repeatArea_" + j).find('div :text').each(function () {
+                var fieldValue = $(this).val();
+                columnName = jquery_1_11_3_min_p("#lbl_" + i).text();
+                columnName1 += '"[' + columnName + ']"' + ':' + '"' + fieldValue + '",';
+                i++;
+            });
+            var newcol = columnName1.slice(0, -1);
+            columnName1 = '';
+            columnName1 += newcol + '}]';
+            var arrkey = jquery_1_11_3_min_p("#txtLocatuion_" + j).val();
+            if (arrkey != undefined) {
+                JsonLocation.push(LocationAutoid+'&'+columnName1);
+            }
+        }
+      
+    }
+    
 }
 //====================================== end code for Create Json Of Address Data ================================\\
 
@@ -621,6 +730,40 @@ function SaveLocation(){
              window.location.replace("OrganizationDataSetup.aspx");
             });
         }
+        }
+    });
+
+}
+
+function UpdateLocation() {
+
+    var CreatedBy = jquery_1_11_3_min_p('#ContentPlaceHolder1_lblUserId').text();
+    var CountryId = kendo_all_min_js("#ddlcountry").val();
+    var entityid = kendo_all_min_js("#ddlentity").val();
+    var Countryname = kendo_all_min_js("#ddlcountry").data("kendoDropDownList").text();
+    var cName = Countryname.split(' ');
+    var EntityName = kendo_all_min_js("#ddlentity").data("kendoDropDownList").text();
+    var EName = EntityName.split(' ');
+    Tablename = 'tbl' + EName[0] + 'Address' + cName[0];
+    //  var ParameterId=jquery_1_11_3_min_p('#ddlOrgPara').value();
+
+    var a = JSON.stringify(JsonLocation);
+    jquery_1_11_3_min_p.ajax({
+        type: "POST",
+        contentType: "application/json; charset=utf-8",
+        url: "../WebServices/Setup.asmx/UpdateLocation",
+        data: "{'AddressJson':" + a + ",'CreatedBy':'" + CreatedBy + "','entityid':'" + entityid + "','CountryId':'" + CountryId + "','Tablename':'" + Tablename + "'}",
+        dataType: "json",
+        success: function (result) {
+            var i = 0;
+            var jsonData = eval(result.d);
+            if (jsonData.Table.length > 0) {
+
+                swal("Updated Successfully", "Data Updated successfully!", "success")
+                    .then((value) => {
+                        window.location.replace("OrganizationDataSetup.aspx");
+                    });
+            }
         }
     });
 
@@ -872,116 +1015,117 @@ function BindEmpAddress(Entityid,countryid) {
                 i++;
             });
         
-    //        jquery_1_11_3_min_p('#empTable tbody').find('tr').each(function () {
-    //            var row = jquery_1_11_3_min_p(this);
-    //            var rowNumber = row.find('td:nth-child(1)').text().trim();
-    //            kendo_all_min_js("#empaddress_" + rowNumber).kendoDropDownList({
-    //                filter: "contains",
-    //                template: "<input type='checkbox' id='chk_OtherUnit_#=data.value #' class='clsSkillInner' value='#=data.value #' name='OtherUnit' />" + " " + "${ data.text }",
-    //                dataTextField: "text",
-    //                dataValueField: "value",
-    //                dataSource: Address,
-    //                close: onClose,
-    //                dataBound: onOtherUnitBound,
-    //                change: function () {
-    //                    kendo_all_min_js('#empaddress_' + rowNumber).data("kendoDropDownList").span.css('background', 'none');
-    //                }
-    //            });
-    //        });
+            jquery_1_11_3_min_p('#empTable tbody').find('tr').each(function () {
+                var row = jquery_1_11_3_min_p(this);
+                var rowNumber = row.find('td:nth-child(1)').text().trim();
+
+
+                kendo_all_min_js("#empaddress_" + rowNumber).kendoDropDownList({
+                    filter: "contains",
+                    template: "<input type='checkbox' id='chk_OtherUnit_#=data.value #' class='clsSkillInner' value='#=data.value #' name='OtherUnit' />" + " " + "${ data.text }",
+                    dataTextField: "text",
+                    dataValueField: "value",
+                    dataSource: Address,
+                    close: onClose,
+                    dataBound: onOtherUnitBound,
+                    change: function () {
+                        kendo_all_min_js('#empaddress_' + rowNumber).data("kendoDropDownList").span.css('background', 'none');
+                    }
+                });
+            });
 
         }
     });
 
     
 }
+function onOtherUnitBound(e) {
 
-//function onOtherUnitBound(e) {
+    $(".clsSkillInner").on("click", function (e) {
+        var obj = this;
+        var id = $(obj).attr('id');
+        var name = 'OtherUnit';
+        var value = $(obj).attr('value');
+        var IsChecked = $(obj).is(':checked');
+        var hf = $("#hf").get(0);
 
-//    $(".clsSkillInner").on("click", function (e) {
-//        var obj = this;
-//        var id = $(obj).attr('id');
-//        var name = 'OtherUnit';
-//        var value = $(obj).attr('value');
-//        var IsChecked = $(obj).is(':checked');
-//        var hf = $("#hf").get(0);
+        if (value != 0) {
+            UpdateIdInHiddenField(hf, value, IsChecked);
+            var totalchk = $('input[id*="chk_' + name + '"]').not("#chk_" + name + "_0").length;
+            var checkedchk = $('input[id*="chk_' + name + '"]:checked').not("#chk_" + name + "_0").length;
 
-//        if (value != 0) {
-//            UpdateIdInHiddenField(hf, value, IsChecked);
-//            var totalchk = $('input[id*="chk_' + name + '"]').not("#chk_" + name + "_0").length;
-//            var checkedchk = $('input[id*="chk_' + name + '"]:checked').not("#chk_" + name + "_0").length;
+            if (totalchk == checkedchk) {
+                $("#chk_" + name + "_0").prop("checked", true);
+            }
+            else {
+                $("#chk_" + name + "_0").prop("checked", false);
+            }
 
-//            if (totalchk == checkedchk) {
-//                $("#chk_" + name + "_0").prop("checked", true);
-//            }
-//            else {
-//                $("#chk_" + name + "_0").prop("checked", false);
-//            }
+            SkillCount = $("#hf").val().split(',').length - 1;
+            //  }
 
-//            SkillCount = $("#hf").val().split(',').length - 1;
-//            //  }
+        }
+        else {
 
-//        }
-//        else {
-
-//        }
-//        IsItemChecked = true;
-
-
-//    });
-//    bindSkillChk();
-
-//}
-
-//function bindSkillChk() {
-//    var chkInner = $("#hf").val().split(',');
-//    chkInner = chkInner.filter(a => a != '');
-//    $.each(chkInner, function (index, data) {
-//        $('input[id*="chk_OtherUnit_' + data + '"]').prop("checked", true);
-//    })
-//}
-
-//function onClose(e) {
-//    var obj = this;
-//    var id = $(obj).attr('id');
-//    if (IsItemChecked == true) {
-//        IsItemChecked = false;
-//        e.preventDefault();
-//    }
-//    else {
-
-//        if (dblclickFlag == 0) {
-//            var Otherunitdata = $("#hf").val().split(',');
-//            var getlastele = Otherunitdata.length - 2;
-//            var lastelement = Otherunitdata[getlastele];
-//            if (lastelement == '' || lastelement == undefined) {
-//                kendo_all_min_js('#' + id).data("kendoDropDownList").value(0);
-//            }
-//            else {
-//                kendo_all_min_js('#' + id).data("kendoDropDownList").value(lastelement);
-//            }
-//        }
+        }
+        IsItemChecked = true;
 
 
-//    }
-//}
+    });
+    bindSkillChk();
 
-//var IsItemChecked = false;
-//function UpdateIdInHiddenField(hf, id, IsAdd) {
-//    if (hf.value == "") {
-//        hf.value = ",";
-//    }
-//    if (IsAdd == true) {
-//        if (hf.value.indexOf("," + id + ",") == -1) {
-//            hf.value = hf.value + id + ",";
-//        }
-//    }
-//    else if (IsAdd == false) {
-//        if (hf.value.indexOf("," + id + ",") >= 0) {
-//            hf.value = hf.value.replace("," + id + ",", ",");
-//        }
-//    }
+}
 
-//}  
+function bindSkillChk() {
+    var chkInner = $("#hf").val().split(',');
+    chkInner = chkInner.filter(a => a != '');
+    $.each(chkInner, function (index, data) {
+        $('input[id*="chk_OtherUnit_' + data + '"]').prop("checked", true);
+    })
+}
+
+function onClose(e) {
+    var obj = this;
+    var id = $(obj).attr('id');
+    if (IsItemChecked == true) {
+        IsItemChecked = false;
+        e.preventDefault();
+    }
+    else {
+
+        if (dblclickFlag == 0) {
+            var Otherunitdata = $("#hf").val().split(',');
+            var getlastele = Otherunitdata.length - 2;
+            var lastelement = Otherunitdata[getlastele];
+            if (lastelement == '' || lastelement == undefined) {
+                kendo_all_min_js('#' + id).data("kendoDropDownList").value(0);
+            }
+            else {
+                kendo_all_min_js('#' + id).data("kendoDropDownList").value(lastelement);
+            }
+        }
+
+
+    }
+}
+
+var IsItemChecked = false;
+function UpdateIdInHiddenField(hf, id, IsAdd) {
+    if (hf.value == "") {
+        hf.value = ",";
+    }
+    if (IsAdd == true) {
+        if (hf.value.indexOf("," + id + ",") == -1) {
+            hf.value = hf.value + id + ",";
+        }
+    }
+    else if (IsAdd == false) {
+        if (hf.value.indexOf("," + id + ",") >= 0) {
+            hf.value = hf.value.replace("," + id + ",", ",");
+        }
+    }
+
+}  
 
 function DisplayOrgLocation(DataType,EntityId, countryId,ParameterId) {
  jquery_1_11_3_min_p('.noData').css('display', 'none');
@@ -1042,7 +1186,7 @@ var counter=0;
                i++;
              });
                 jquery_1_11_3_min_p('#btnSubmit').css('display', 'block');
-                jquery_1_11_3_min_p('#btnSubmit').prop('disabled', true);
+               // jquery_1_11_3_min_p('#btnSubmit').prop('disabled', true);
                 jquery_1_11_3_min_p('#btnback').css('display', 'block');
                jquery_1_11_3_min_p('#btnnew').css('display', 'none');
               jquery_1_11_3_min_p('#btnDeleteLine').css('display', 'none');
@@ -1052,8 +1196,10 @@ var counter=0;
            }
            else
            {
-                jquery_1_11_3_min_p('#btnSubmit').css('display', 'block');
-                jquery_1_11_3_min_p('#btnSubmit').prop('disabled', true);
+
+            jquery_1_11_3_min_p('#btnSubmit').css('display', 'block');
+               // jquery_1_11_3_min_p('#btnSubmit').prop('disabled', true);
+
                 jquery_1_11_3_min_p('#btnback').css('display', 'block');
                jquery_1_11_3_min_p('#btnnew').css('display', 'none');
               jquery_1_11_3_min_p('#btnDeleteLine').css('display', 'none');
@@ -1076,7 +1222,8 @@ var counter=0;
                    var CountryId = kendo_all_min_js('#ddlcountry').val();
                   counter=0; 
            for(var j=1;j<=jsonData.Table.length;j++ )
-               {
+           {
+              
                if(j==1)
                {
                 var EntityId = kendo_all_min_js('#ddlentity').val();
@@ -1088,19 +1235,21 @@ var counter=0;
       counter++
       }
          jQuery.each(jsonData.Table, function (rec) {
-          var LocationCode= jquery_1_11_3_min_p("#txtLocationCode_" +counter).val(jsonData.Table[0].LocationCode); 
+             var LocationCode = jquery_1_11_3_min_p("#txtLocationCode_" + counter).val(jsonData.Table[0].LocationCode); 
+             jquery_1_11_3_min_p("#lblAutoid_" + counter).text(jsonData.Table[0].AutoId);
                  var LocationName= jquery_1_11_3_min_p("#txtLocatuion_" +counter).val(jsonData.Table[0].LocationName); 
                var LocationDescription= jquery_1_11_3_min_p("#txtLocDesc_" +counter).val(jsonData.Table[0].LocationDescription); 
                  var l=0
              jquery_1_11_3_min_p("#repeatArea_" + counter).find('div').each(function () {
                  jquery_1_11_3_min_p("#txt_" + CopyJson.Table[l].TxtId + counter).val(jsonData.Table[0][CopyJson.Table[l].FieldName]);
+                // jquery_1_11_3_min_p("#lblAutoid").text(jsonData.Table[j].AutoId);
              if (CopyJson.Table[l].FieldDataType == "2") {
                  kendo_all_min_js("#txt_" + CopyJson.Table[l].TxtId+counter).data("kendoDropDownList").value(jsonData.Table[0][CopyJson.Table[l].FieldName]); 
             }
             l++;
         });
 
-         });
+        });
                }
                else{
 
@@ -1109,7 +1258,8 @@ var counter=0;
             }
          
             var RowId = counter + 1;
-            jquery_1_11_3_min_p(".addressDiv").append("<div class='col-md-3 mb-1' id='addressdiv_" + RowId + "' ><div class='addressBg' id='AddressDiv'><div id='btnClosr_" + RowId + "' class='closeAddress pull-right' onclick='deleteAddress(this)'><i  class='fa fa-close'></i></div><div class='AllAddress form-group'> <label class='textHeader' id='lbladdress'>Address " + RowId + "</label></div>  <div class='form-group'><label for='Country'>Location Code</label><input type='text'  id='txtLocationCode_"+RowId+"'  autocomplete='off' placeholder='Enter Location Name' class='form-control'/> </div><div class='form-group'><label for='Country'>Location Name</label><input type='text' id='txtLocatuion_"+RowId+"' autocomplete='off' placeholder='Enter Location Name' class='form-control'/> </div><div class='form-group'> <label for='Country'>Location Description</label><input type='text'  id='txtLocDesc_"+RowId+"' autocomplete='off' placeholder='Enter Location Description' class='form-control'/> </div><div id='repeatArea_" + RowId + "'></div></div> </div>");
+                   jquery_1_11_3_min_p(".addressDiv").append("<div class='col-md-3 mb-1' id='addressdiv_" + RowId + "' > <div class='addressBg' id='AddressDiv'><div id='btnClosr_" + RowId + "_" + jsonData.Table[j - 1].AutoId + "' class='closeAddress pull-right' onclick='deleteAddress(this)'><i  class='fa fa-close'></i></div><div class='AllAddress form-group'> <label class='textHeader' id='lbladdress'>Address " + RowId + "</label></div>  <div class='form-group'><label for='Country'>Location Code</label><input type='text'  id='txtLocationCode_" + RowId + "'  autocomplete='off' placeholder='Enter Location Name' class='form-control'/> <label id='lblAutoid_" + RowId+"' style='display: none;' />  </div><div class='form-group'><label for='Country'>Location Name</label><input type='text' id='txtLocatuion_" + RowId + "' autocomplete='off' placeholder='Enter Location Name' class='form-control'/> </div><div class='form-group'> <label for='Country'>Location Description</label><input type='text'  id='txtLocDesc_" + RowId + "' autocomplete='off' placeholder='Enter Location Description' class='form-control'/> </div><div id='repeatArea_" + RowId + "'></div></div> </div>");
+                  
             counter = RowId;
               var EntityId = kendo_all_min_js('#ddlentity').val();
              var CountryId = kendo_all_min_js('#ddlcountry').val();
@@ -1149,30 +1299,35 @@ var counter=0;
     }
     if(jsonData.Table.length>1)
     {
-        var m = 1;
+
+      
+      var Bindcounter=1;
         var newcounter = 2;
-        
          if(counter==0)
       {
       counter++
         }
-       
+        Globalcounter = counter;
         jQuery.each(jsonData.Table, function (rec) {
-           
-             var LocationCode = jquery_1_11_3_min_p("#txtLocationCode_" + newcounter).val(jsonData.Table[m].LocationCode); 
-             var LocationName = jquery_1_11_3_min_p("#txtLocatuion_" + newcounter).val(jsonData.Table[m].LocationName); 
-             var LocationDescription = jquery_1_11_3_min_p("#txtLocDesc_" + newcounter).val(jsonData.Table[m].LocationDescription); 
-                 var l=0
-             jquery_1_11_3_min_p("#repeatArea_" + newcounter).find('div').each(function () {
-                 jquery_1_11_3_min_p("#txt_" + CopyJson.Table[l].TxtId + newcounter).val(jsonData.Table[m][CopyJson.Table[l].FieldName]);
-             if (CopyJson.Table[l].FieldDataType == "2") {
-                 kendo_all_min_js("#txt_" + CopyJson.Table[l].TxtId+counter).data("kendoDropDownList").value(jsonData.Table[m][CopyJson.Table[l].FieldName]); 
+            if (jsonData.Table.length != Bindcounter) {
+                var LocationCode = jquery_1_11_3_min_p("#txtLocationCode_" + newcounter).val(jsonData.Table[Bindcounter].LocationCode);
+                jquery_1_11_3_min_p("#lblAutoid_" + newcounter).text(jsonData.Table[Bindcounter].AutoId);
+                var LocationName = jquery_1_11_3_min_p("#txtLocatuion_" + newcounter).val(jsonData.Table[Bindcounter].LocationName);
+                var LocationDescription = jquery_1_11_3_min_p("#txtLocDesc_" + newcounter).val(jsonData.Table[Bindcounter].LocationDescription);
+                var l = 0
+                jquery_1_11_3_min_p("#repeatArea_" + newcounter).find('div').each(function () {
+                    jquery_1_11_3_min_p("#txt_" + CopyJson.Table[l].TxtId + newcounter).val(jsonData.Table[Bindcounter][CopyJson.Table[l].FieldName]);
+                   // jquery_1_11_3_min_p("#lblAutoid").text(jsonData.Table[j - 1].AutoId);
+                    if (CopyJson.Table[l].FieldDataType == "2") {
+                        kendo_all_min_js("#txt_" + CopyJson.Table[l].TxtId + newcounter).data("kendoDropDownList").value(jsonData.Table[Bindcounter][CopyJson.Table[l].FieldName]);
+                    }
+                    l++;
+                });
+
+                Bindcounter++;
+                newcounter++;
             }
-            l++;
-        });
-             newcounter++;
-            m++;
-           
+
          });
      }
           

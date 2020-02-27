@@ -510,6 +510,8 @@
     <Content Include="Master\PartnerGroup.aspx" />
     <Content Include="Master\PartnerPara.aspx" />
     <Content Include="Master\RequestControl.aspx" />
+    <Content Include="Master\RequestControlSetup.aspx" />
+    <Content Include="Master\RequisitionSetup.aspx" />
     <Content Include="Master\SystemParameterSetup.aspx" />
     <Content Include="Master\TaxFields.aspx" />
     <Content Include="Master\TaxSetup.aspx" />
@@ -3060,6 +3062,20 @@
     </Compile>
     <Compile Include="Master\RequestControl.aspx.designer.cs">
       <DependentUpon>RequestControl.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Master\RequestControlSetup.aspx.cs">
+      <DependentUpon>RequestControlSetup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master\RequestControlSetup.aspx.designer.cs">
+      <DependentUpon>RequestControlSetup.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Master\RequisitionSetup.aspx.cs">
+      <DependentUpon>RequisitionSetup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master\RequisitionSetup.aspx.designer.cs">
+      <DependentUpon>RequisitionSetup.aspx</DependentUpon>
     </Compile>
     <Compile Include="Master\SystemParameterSetup.aspx.cs">
       <DependentUpon>SystemParameterSetup.aspx</DependentUpon>
