@@ -28,6 +28,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
  <input type="hidden" id="hdnLoad"/>
+    <input type="hidden" id="hf" />
 <div class="content-header row">
         <div class="content-header-light col-12">
             <div class="row">
@@ -146,15 +147,18 @@
                         <div class="form-body lineSelection">
                                         <h6 class="form-section">Address</h6>
                                         <div class="row addressDiv" >
+                                         
                                           <div class="col-md-3 mb-1" >
                                           <div class="addressBg" id="AddressDiv">
                                           <div class="closeAddress pull-right"><i class="fa fa-close"></i></div>
                                           <div class="AllAddress form-group">
                                           <label class="textHeader">Address 1</label>
+                                          
                                           </div> 
                                                 <div class="form-group">
                                                 <label for="Country">Location Code</label>
                                                   <input type="text"  id="txtLocationCode_1"  autocomplete="off" placeholder="Enter Location Name" class="form-control"/>
+                                                     <label id='lblAutoid_1' style='display: none;' />
                                                 </div>
                                                 <div class="form-group">
                                                 <label for="Country">Location Name</label>
@@ -165,7 +169,7 @@
                                                   <input type="text"  id="txtLocDesc_1" autocomplete="off" placeholder="Enter Location Description" class="form-control"/>
                                                 </div>
                                                 <div id="repeatArea_1">
-                                            
+                                           
                                                 </div>
                                                 </div>
                                             </div>
