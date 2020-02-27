@@ -1623,7 +1623,7 @@ function AllowNumeric(Data) {
     }
 }
 
-
+    
 function BindTaxGroup() {
     var countryid = SessionCountryId;
     var entityid = SessionEntityId;
