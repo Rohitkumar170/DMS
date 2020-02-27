@@ -1155,8 +1155,10 @@ var counter=0;
          if(counter==0)
       {
       counter++
-      }
-         jQuery.each(jsonData.Table, function (rec) {
+        }
+       
+        jQuery.each(jsonData.Table, function (rec) {
+           
              var LocationCode = jquery_1_11_3_min_p("#txtLocationCode_" + newcounter).val(jsonData.Table[m].LocationCode); 
              var LocationName = jquery_1_11_3_min_p("#txtLocatuion_" + newcounter).val(jsonData.Table[m].LocationName); 
              var LocationDescription = jquery_1_11_3_min_p("#txtLocDesc_" + newcounter).val(jsonData.Table[m].LocationDescription); 

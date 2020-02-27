@@ -373,7 +373,7 @@
 							</div>
 						</div>
 					</div>
-					<a id="heading13" class="card-header info" data-toggle="collapse" href="#accordion13" aria-expanded="false" aria-controls="accordion13">
+					<a id="heading13" class="card-header info" data-toggle="collapse" href="#accordion13" aria-expanded="false" aria-controls="accordion13" style="pointer-events: none;">
 						<div class="card-title lead collapsed" >Legal / Tax</div>
           </a>
 					<div id="accordion13" role="tabpanel" data-parent="#accordionWrap1" aria-labelledby="heading13" class="collapse" aria-expanded="false">
@@ -455,7 +455,7 @@
                                        </div>    
 						</div>
 					</div>
-					<a id="heading14" class="card-header info" data-toggle="collapse" href="#accordion14" aria-expanded="false" aria-controls="accordion14">
+					<a id="heading14" class="card-header info" data-toggle="collapse" href="#accordion14" aria-expanded="false" aria-controls="accordion14" style="pointer-events: none;">
 						<div class="card-title lead collapsed" >Employee</div>
           </a>
 					<div id="accordion14" role="tabpanel" data-parent="#accordionWrap1" aria-labelledby="heading14" class="collapse" aria-expanded="false">
@@ -468,7 +468,7 @@
     <div class="pdfexport tablebtn">
    <button type="button" id="btnAddEmp" onclick="AddRowEmployee()" class="btn btn-outline-primary" title="Add Line">
                             <i class="fa fa-plus"></i> </button>
-                            <button type="button" id="btnDeleteLine1" class="btn btn-outline-primary" title="Delete Line">
+                            <button type="button" id="btnDeleteLineEmp" class="btn btn-outline-primary" title="Delete Line">
                             <i class="fa fa-trash"></i> </button>
                             <button type="button" id="Button1" class="btn btn-outline-primary" title="Export">
                             <i class="fa fa-file-excel-o"></i> </button>
@@ -512,76 +512,76 @@
                       <tr>
                       <td style="display:none">1</td>
                       <td><input type="checkbox" id="chk_1" class="checkbox"/></td>
-                      <td><input type='text' id='empname_1' class='fieldName' onchange=''  onkeyup='' autocomplete='off'/></td>
-                      <td><input type='text' placeholder='' class='fieldName' id='empmobile_1' autocomplete='off' onchange='' onkeypress='' onkeyup='' /></td>
-                       <td><input type='text' placeholder='' class='fieldName' id='empemail_1' autocomplete='off' onchange='' onkeypress='' onkeyup='' /></td>
+                      <td><label id="empid_1" style='display:none'></label><input type='text'  id='empname_1' class='fieldName' onchange=''   onkeyup='RemoveClassEmp(this)' autocomplete='off'/></td>
+                      <td><input type='text' placeholder='' class='fieldName' id='empmobile_1' autocomplete='off' onchange='' onkeypress='return isNumber(event)'  onkeyup='RemoveClassEmp(this)' /></td>
+                       <td><input type='text' placeholder='' class='fieldName' id='empemail_1' autocomplete='off' onchange='' onkeypress='' onkeyup='RemoveClassEmp(this)' /></td>
                        <td><input type='text' id='empaddress_1' class='fieldName'  autocomplete='off'/>
                            <%--<select id="" class="Operator">
 												<option value="Textbox">Address1</option>
                                                 <option value="Textbox">Address2</option>
 												<option value="Textbox">Address3</option>
                                                 </select>--%></td>
-                          <td><input type="checkbox" id="chkcredential_1" class="checkbox"/></td>
+                          <td><input type="checkbox" id="chkcredential_1" class="checkbox" disabled = "disabled" onclick="showCredentialpopup()"  /></td>
                           <td><input type="checkbox" id="chkisactive_1" class="checkbox"/></td>
                       </tr>
                            <tr>
                       <td style="display:none">2</td>
                       <td><input type="checkbox" id="chk_2" class="checkbox"/></td>
-                      <td><input type='text' id='empname_2' class='fieldName' onchange=''  onkeyup='' autocomplete='off'/></td>
-                      <td><input type='text' placeholder='' class='fieldName' id='empmobile_2' autocomplete='off' onchange='' onkeypress='' onkeyup='' /></td>
-                       <td><input type='text' placeholder='' class='fieldName' id='empemail_2' autocomplete='off' onchange='' onkeypress='' onkeyup='' /></td>
+                      <td><label id="empid_2" style='display:none'></label><input type='text' id='empname_2' class='fieldName' onchange=''  onkeyup='RemoveClassEmp(this)' autocomplete='off'/></td>
+                      <td><input type='text' placeholder='' class='fieldName' id='empmobile_2' autocomplete='off' onchange=''  onkeypress='return isNumber(event)' onkeyup='RemoveClassEmp(this)' /></td>
+                       <td><input type='text' placeholder='' class='fieldName' id='empemail_2' autocomplete='off' onchange='' onkeypress='' onkeyup='RemoveClassEmp(this)' /></td>
                        <td><input type='text' id='empaddress_2' class='fieldName'  autocomplete='off'/>
                            <%--<select id="" class="Operator">
 												<option value="Textbox">Address1</option>
                                                 <option value="Textbox">Address2</option>
 												<option value="Textbox">Address3</option>
                                                 </select>--%></td>
-                          <td><input type="checkbox" id="chkcredential_2" class="checkbox"/></td>
-                          <td><input type="checkbox" id="chkisactive_2" class="checkbox"/></td>
+                          <td><input type="checkbox" id="chkcredential_2" class="checkbox" disabled = "disabled" onclick='showCredentialpopup()' /></td>
+                          <td><input type="checkbox" id="chkisactive_2" class="checkbox" /></td>
                       </tr>
                             <tr>
                       <td style="display:none">3</td>
                       <td><input type="checkbox" id="chk_3" class="checkbox"/></td>
-                      <td><input type='text' id='empname_3' class='fieldName' onchange=''  onkeyup='' autocomplete='off'/></td>
-                      <td><input type='text' placeholder='' class='fieldName' id='empmobile_3' autocomplete='off' onchange='' onkeypress='' onkeyup='' /></td>
-                       <td><input type='text' placeholder='' class='fieldName' id='empemail_3' autocomplete='off' onchange='' onkeypress='' onkeyup='' /></td>
+                      <td><label id="empid_3" style='display:none'></label><input type='text' id='empname_3' class='fieldName' onchange=''   onkeyup='RemoveClassEmp(this)' autocomplete='off'/></td>
+                      <td><input type='text' placeholder='' class='fieldName' id='empmobile_3' autocomplete='off' onchange=''  onkeypress='return isNumber(event)' onkeyup='RemoveClassEmp(this)' /></td>
+                       <td><input type='text' placeholder='' class='fieldName' id='empemail_3' autocomplete='off' onchange='' onkeypress='' onkeyup='RemoveClassEmp(this)' /></td>
                        <td><input type='text' id='empaddress_3' class='fieldName'  autocomplete='off'/>
                            <%--<select id="" class="Operator">
 												<option value="Textbox">Address1</option>
                                                 <option value="Textbox">Address2</option>
 												<option value="Textbox">Address3</option>
                                                 </select>--%></td>
-                          <td><input type="checkbox" id="chkcredential_3" class="checkbox"/></td>
+                          <td><input type="checkbox" id="chkcredential_3" class="checkbox" disabled = "disabled"  onclick="showCredentialpopup()" /></td>
                           <td><input type="checkbox" id="chkisactive_3" class="checkbox"/></td>
                       </tr>
                           <tr>
                       <td style="display:none">4</td>
                       <td><input type="checkbox" id="chk_4" class="checkbox"/></td>
-                      <td><input type='text' id='empname_4' class='fieldName' onchange=''  onkeyup='' autocomplete='off'/></td>
-                      <td><input type='text' placeholder='' class='fieldName' id='empmobile_4' autocomplete='off' onchange='' onkeypress='' onkeyup='' /></td>
-                       <td><input type='text' placeholder='' class='fieldName' id='empemail_4' autocomplete='off' onchange='' onkeypress='' onkeyup='' /></td>
+                      <td><label id="empid_4" style='display:none'></label><input type='text' id='empname_4' class='fieldName' onchange=''  onkeyup='RemoveClassEmp(this)'' autocomplete='off'/></td>
+                      <td><input type='text' placeholder='' class='fieldName' id='empmobile_4' autocomplete='off' onchange='' onkeypress='return isNumber(event)' onkeyup='RemoveClassEmp(this)' /></td>
+                       <td><input type='text' placeholder='' class='fieldName' id='empemail_4' autocomplete='off' onchange='' onkeypress='' onkeyup='RemoveClassEmp(this)' /></td>
                        <td><input type='text' id='empaddress_4' class='fieldName'  autocomplete='off'/>
                            <%--<select id="" class="Operator">
 												<option value="Textbox">Address1</option>
                                                 <option value="Textbox">Address2</option>
 												<option value="Textbox">Address3</option>
-                                                </select>--%></td>
-                          <td><input type="checkbox" id="chkcredential_4" class="checkbox"/></td>
+                                                </select>--%></td>  
+                          <td><input type="checkbox" id="chkcredential_4" class="checkbox" disabled = "disabled"  onclick="showCredentialpopup()" /></td>
                           <td><input type="checkbox" id="chkisactive_4" class="checkbox"/></td>
                       </tr>
                           <tr>
                       <td style="display:none">5</td>
                       <td><input type="checkbox" id="chk_5" class="checkbox"/></td>
-                      <td><input type='text' id='empname_5' class='fieldName' onchange=''  onkeyup='' autocomplete='off'/></td>
-                      <td><input type='text' placeholder='' class='fieldName' id='empmobile_5' autocomplete='off' onchange='' onkeypress='' onkeyup='' /></td>
-                       <td><input type='text' placeholder='' class='fieldName' id='empemail_5' autocomplete='off' onchange='' onkeypress='' onkeyup='' /></td>
+                      <td><label id="empid_5" style='display:none'></label><input type='text' id='empname_5' class='fieldName' onchange=''  onkeyup='RemoveClassEmp(this)' autocomplete='off'/></td>
+                      <td><input type='text' placeholder='' class='fieldName' id='empmobile_5' autocomplete='off' onchange='' onkeypress='return isNumber(event)'  onkeyup='RemoveClassEmp(this)' /></td>
+                       <td><input type='text' placeholder='' class='fieldName' id='empemail_5' autocomplete='off' onchange='' onkeypress='' onkeyup='RemoveClassEmp(this)' /></td>
                        <td><input type='text' id='empaddress_5' class='fieldName'  autocomplete='off'/>
                            <%--<select id="" class="Operator">
 												<option value="Textbox">Address1</option>
                                                 <option value="Textbox">Address2</option>
 												<option value="Textbox">Address3</option>
                                                 </select>--%></td>
-                          <td><input type="checkbox" id="chkcredential_5" class="checkbox"/></td>
+                          <td><input type="checkbox" id="chkcredential_5" class="checkbox" disabled = "disabled" onclick="showCredentialpopup()" /></td>
                           <td><input type="checkbox" id="chkisactive_5" class="checkbox"/></td>
                       </tr>
                       </tbody>

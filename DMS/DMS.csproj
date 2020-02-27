@@ -3176,6 +3176,7 @@
     <Compile Include="Models\PartnerClasses\BindAddressForTax.cs" />
     <Compile Include="Models\PartnerClasses\BindAssignedDataSetupGrid.cs" />
     <Compile Include="Models\PartnerClasses\BindAssignPartner.cs" />
+    <Compile Include="Models\PartnerClasses\BindEmpAddress.cs" />
     <Compile Include="Models\PartnerClasses\BindExistingLocation.cs" />
     <Compile Include="Models\PartnerClasses\BindItem.cs" />
     <Compile Include="Models\PartnerClasses\BindItems.cs" />
@@ -3188,6 +3189,7 @@
     <Compile Include="Models\PartnerClasses\BindPartType.cs" />
     <Compile Include="Models\PartnerClasses\BindTaxData.cs" />
     <Compile Include="Models\PartnerClasses\BindTaxGroup.cs" />
+    <Compile Include="Models\PartnerClasses\PartnerEmployee.cs" />
     <Compile Include="Models\PartnerClasses\PartnerSaveRes.cs" />
     <Compile Include="Models\PartnerClasses\TaxtGroupId.cs" />
     <Compile Include="Models\SequenceSetupClasses\BindCreatedSequence.cs" />

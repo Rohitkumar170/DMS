@@ -175,6 +175,21 @@ namespace DMS.WebServices
             }
 
         }
+        [WebMethod]
+        public Dictionary<string, object> BindPartnerEmployee(string partnerId,string countryId,string entityId)
+        {
+            try
+            {
+                var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_Customers]").With<PartnerEmployee>().With<BindEmpAddress>()
+                        .Execute("@QueryType", "@PartnerId", "@countryId", "@entityId", "BindpartnerEmployeeOndblClick",partnerId,countryId,entityId));
+                return results;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
 
         [WebMethod]
         public Dictionary<string, object> SaveEmployee(string Empjson,string EmpAddressjson)
@@ -183,6 +198,21 @@ namespace DMS.WebServices
             {
                 var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_Customers]").With<Flag>()
                         .Execute("@QueryType", "@Empjson", "@EmpAddressjson", "SaveEmployeeData", Empjson,EmpAddressjson));
+                return results;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+        [WebMethod]
+        public Dictionary<string, object> UpdateEmployee(string Empjson, string EmpAddressjson)
+        {
+            try
+            {
+                var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_Customers]").With<Flag>()
+                        .Execute("@QueryType", "@Empjson", "@EmpAddressjson", "UpdateEmployeeData", Empjson, EmpAddressjson));
                 return results;
             }
             catch (Exception ex)
