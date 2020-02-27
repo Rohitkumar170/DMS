@@ -1196,8 +1196,10 @@ var counter=0;
            }
            else
            {
+
             jquery_1_11_3_min_p('#btnSubmit').css('display', 'block');
                // jquery_1_11_3_min_p('#btnSubmit').prop('disabled', true);
+
                 jquery_1_11_3_min_p('#btnback').css('display', 'block');
                jquery_1_11_3_min_p('#btnnew').css('display', 'none');
               jquery_1_11_3_min_p('#btnDeleteLine').css('display', 'none');
@@ -1260,7 +1262,7 @@ var counter=0;
                   
             counter = RowId;
               var EntityId = kendo_all_min_js('#ddlentity').val();
-                var CountryId = kendo_all_min_js('#ddlcountry').val();
+             var CountryId = kendo_all_min_js('#ddlcountry').val();
              jquery_1_11_3_min_p("#repeatArea_" + counter).empty();
     jquery_1_11_3_min_p.ajax({
         type: "POST",
@@ -1297,6 +1299,7 @@ var counter=0;
     }
     if(jsonData.Table.length>1)
     {
+
       
       var Bindcounter=1;
         var newcounter = 2;
@@ -1324,6 +1327,7 @@ var counter=0;
                 Bindcounter++;
                 newcounter++;
             }
+
          });
      }
           

@@ -16,13 +16,15 @@
     <script src="../Telerix/js/kendo.all.min.js"></script>
     <script>        var kendo_all_min_js = jQuery.noConflict();</script>
     <script src="../Telerix/js/jquery.min.js"></script>
-    <script src="../Telerix/js/jszip.min.js" type="text/javascript"></script>
-   
+    <script src="../Telerix/js/jszip.min.js" type="text/javascript"></script>   
     <script src="../JavaScript/OrganizationDataSetup.js" type="text/javascript"></script>
   <style>
       #TblOrgDataGrid td:nth-child(6), #TblOrgDataGrid th:nth-child(6) {
     width: 50px !important;
 }
+      .empImage{width: 50px;
+    height: 50px;
+    border: 1px solid #dcd8d8;}
   </style>
   
 </asp:Content>
@@ -46,8 +48,8 @@
                             <i class="fa-disabled"></i>Disable</button>
                         <button type="button" style="display:none" id="btnback"  class="btn btn-primary" >
                            <i class="fa fa-arrow-left"></i> Back</button>
-                                 <%--    <button type="button" id="btnsummary" data-toggle="modal" data-target="#AllLeaveRequestPopup" class="btn btn-primary">
-                            <i class="fa fa-arrow-left"></i> pop</button>--%>
+                                     <button type="button"  data-toggle="modal" data-target="#TaxGroup" class="btn btn-primary">
+                            <i class="fa fa-arrow-left"></i> pop</button>
                       
                     </div>
                 </div>
@@ -428,7 +430,61 @@
                
       
     </div>
+    <div class="modal fade text-left" id="TaxGroup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel8"
+									 aria-hidden="true" >
+										<div class="modal-dialog modal-sm" role="document">
+											<div class="modal-content">
+												<div class="modal-header bg-primary white">
+                                                    <h6 class="white" id="H2"> Employee Name : <span class="white" id="lblitm">Abhishek</span></h6>
+													<button type="button" id="btntaxgrpclose" class="close" aria-label="Close">
+														<span aria-hidden="true">&times;</span>
+													</button>
+												</div>
+											<div class="mt-1">
+                                          <div class="container ">
+                                  
+						<div class="assignedTaxGroups">						    
+    <div class="row">
+    <div class="col-md-12">
+                                            <h6 class="form-section">Upload Image</h6>
+                                             </div> </div>
+                                             
+                                             <div class="row " id="divTaxGroup">
+    
+      
+          <div class="col-4 pull-left">
+              <div class="empImage">
+<p class="text-muted text-center pt-1">Image</p>
+              </div>
+          </div>
+                                        <div class="col-8 pull-right pt-1">
+                                            <label class="btn btn-sm btn-primary ml-50 mb-50 mb-sm-0 cursor-pointer"
+                                                for="account-upload">Upload new photo</label>
+                                            <input type="file" id="account-upload" hidden>
+                                          <p class="text-muted ml-75 mt-50"><small>Allowed JPG or PNG. Max
+                                                size of 800kB</small></p>
+                                        </div>
+                                        
+                                    </div>
+                                         </div>
 
+                                    
+                                 
+                                        
+                                        
+                                        
+                                        <div class="row">
+<div class="col-md-12">
+         <button type="button" id="btnTaxgrpSubmit" class="btn btn-primary pull-right mb-1 waves-effect waves-light">
+                            <i class="fa fa-save"></i> Submit</button>
+		</div>
+		</div></div>
+												
+												</div>
+												
+											</div>
+										</div>
+									</div>
    <%--
          <script type="text/javascript">
 
