@@ -1917,6 +1917,7 @@ function BindEmployee() {
                             dataBound: onOtherUnitBound,
                             change: function () {
                                 kendo_all_min_js('#empaddress_' + EmpCounter).data("kendoDropDownList").span.css('background', 'none');
+                          
                             }
                         });
                         EmpCounter++;
