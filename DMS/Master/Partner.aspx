@@ -24,6 +24,10 @@
         #accordionWrap1 .card-header {    color: #2D4D76!important;  padding: 5px 15px;
     border-bottom: 1px solid #cfcdcd;      background: #f6f6f6;    }
          #accordionWrap1 .card-title {    font-size:12px;      }
+        .addressDiv {
+    overflow-y: auto;
+    max-height: 200px;
+        }
     </style>
   
 </asp:Content>
