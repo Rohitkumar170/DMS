@@ -135,8 +135,7 @@
                 <td><input type="checkbox" id="chk_1" class="chk_All"></td>         
                 <td >  <input type="text" id="txtField_1" placeholder="Enter Field Name" class="fieldName" onkeyup="Enablebutton(this)"  autocomplete="off" onkeypress="RemoveClass(this)" />      </td>
                 <td > <input type="text" id="ddlDatatype_1" readonly="readonly" class="fieldName"  autocomplete="off" />
-                 
-                                                </td>  
+                 </td>  
                 </tr>
               
               </table>
