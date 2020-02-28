@@ -1,5 +1,6 @@
 ﻿var Parameter = []; var counter = 0; var CopyJson = []; var JsonLocation = []; var DataTypeId = 0; var copyColumnJson = []; var otherFieldsCounter = 0; var countercheck = 1; var searchtxt = ''; var LoadData = ''; var ColumnName = [];
-var GlobalEntityId = 1; var GlobalCountryId = 1; var dblclickFlag = 0; var dblRowid = 0; var Globalcounter = 1;
+var GlobalEntityId = 1; var GlobalCountryId = 1; var dblclickFlag = 0; var dblRowid = 0; var Globalcounter = 1; var EmpCounter = 5; var EmployeeArray = []; var Address = [];
+var EmpWareHouse = [];
 jquery_1_11_3_min_p(document).ready(function () {
  jquery_1_11_3_min_p("#hdnLoad").val(10);
     LoadData = jquery_1_11_3_min_p("#hdnLoad").val();
@@ -38,7 +39,8 @@ jquery_1_11_3_min_p(document).ready(function () {
      var CountryId= row.find('td:nth-child(4)').text().trim();
      var ParameterId= row.find('td:nth-child(5)').text().trim();
       DisplayOrgLocation(DataType, EntityId, CountryId, ParameterId);
-      BindEmpAddress(GlobalEntityId,GlobalCountryId);
+      BindEmployee();
+    //  BindEmpAddress(GlobalEntityId,GlobalCountryId);
 //   DisplayAddressSetupGrid(row.find('td:nth-child(2)').text().trim(), row.find('td:nth-child(5)').text().trim());
 //   jquery_1_11_3_min_p('#BindAddress').css('display', 'block');
 
@@ -90,7 +92,7 @@ swal("Deleted Successfully","Your data deleted successfully!","success")
 
     jquery_1_11_3_min_p('#btnSubmit').click(function () {
        
-        if (ValidateHeaderDropDown() == true && ValidateAddress() == true) {
+        if (ValidateHeaderDropDown() == true && ValidateAddress() == true && validateEmpLoyeeForm() == true) {
             if (dblclickFlag == 0) {
                 swal({
                     title: "Do you want to Submit?",
@@ -103,6 +105,7 @@ swal("Deleted Successfully","Your data deleted successfully!","success")
                         if (willDelete) {
                             MakeAddressJson();
                             SaveLocation();
+                            //saveEmployee();
 
 
                         }
@@ -119,62 +122,59 @@ swal("Deleted Successfully","Your data deleted successfully!","success")
                     .then((willDelete) => {
                         if (willDelete) {
                             UpdateMakeAddressJson();
-                           UpdateLocation();
-
+                            CreateEmployeeJson();
+                            UpdateLocation();
+                           
 
                         }
                     });
 
             }
         }
-     
-
-      //if(DataTypeId==1)
-      //{
-      //    if (ValidateHeaderDropDown() == true && ValidateAddress() == true) {
-
-              
-      //            swal({
-      //                title: "Do you want to Submit?",
-      //                text: "",
-      //                icon: "warning",
-      //                buttons: true,
-      //                dangerMode: true,
-      //            })
-      //                .then((willDelete) => {
-      //                    if (willDelete) {
-      //                        MakeAddressJson();
-      //                        SaveLocation();
-
-
-      //                    }
-      //                });
-          
-           
-      //  }
-      //  }
-      //  else{
-      //   swal({
-      //           title: "Do you want to Submit?",
-      //           text: "",
-      //           icon: "warning",
-      //           buttons: true,
-      //           dangerMode: true,
-      //           })
-      //           .then((willDelete) => {
-      //           if (willDelete) {
-      //          // MakeAddressJson();
-      //          // SaveOtherParameter();
-      //         SaveParameterData();
-               
-
-      //       }
-      //           });
-        
-      //  }
+    
     });
 //====================================== End code for  Submit Button click================================\\
+    jquery_1_11_3_min_p('#btnDeleteLineEmp').on("click", function (event) {
+        var sel = false;
+        var ch = jquery_1_11_3_min_p('#' + 'empTable').find('tbody input[type=checkbox]');
+        ch.each(function () {
+            var $this = jquery_1_11_3_min_p(this);
+            if ($this.is(':checked')) {
+                sel = true; //set to true if there is/are selected row
+            }
+        });
+        if (!sel) {
+            swal("No data selected", "Please select data first!", "warning")
+        }
+        else {
+            swal({
+                title: "Are you sure you want to delete?",
+                text: "",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        var sel = false;
+                        var ch = jquery_1_11_3_min_p('#' + 'empTable').find('tbody input[type=checkbox]');
+                        ch.each(function () {
+                            var $this = jquery_1_11_3_min_p(this);
+                            if ($this.is(':checked')) {
+                                var DeleteRow = jquery_1_11_3_min_p(this).closest('tr');
+                                var rownum = DeleteRow.index() + 1;
+                                sel = true;
+                                DeleteRow.remove();
+                            }
+                        });
+                        swal("Deleted Successfully", "Your data deleted successfully!", "success")
+                            .then((value) => {
 
+                            });
+                    }
+                });
+        }
+    });
     //====================================== start code for add new address================================\\
     jquery_1_11_3_min_p("#btnaddAddress").click(function () {
         if (ValidateAddress() == true) {
@@ -492,37 +492,44 @@ function BindFieldsddl(TableName, ddlId) {
 
 //====================================== start code for ValidateAddress Box ================================\\
 function ValidateAddress() {
-if(counter==0)
-{
-counter=1;
-}
+
     var allow = true;
-    var i = 0;
-     if (jquery_1_11_3_min_p("#txtLocationCode_" + counter).val() == "") {
-                jquery_1_11_3_min_p("#txtLocationCode_" + counter).addClass('validate');
-                jquery_1_11_3_min_p("#txtLocationCode_" + counter).attr("placeholder", "Enter Field value!");
+    var validatecounter = 1;
+    if (jquery_1_11_3_min_p("#txtLocationCode_" + validatecounter).val() == "") {
+        jquery_1_11_3_min_p("#txtLocationCode_" + validatecounter).addClass('validate');
+        jquery_1_11_3_min_p("#txtLocationCode_" + validatecounter).attr("placeholder", "Enter Field value!");
                 allow = false;
             }
-             if (jquery_1_11_3_min_p("#txtLocatuion_" + counter).val() == "") {
-                jquery_1_11_3_min_p("#txtLocatuion_" + counter).addClass('validate');
-                jquery_1_11_3_min_p("#txtLocatuion_" + counter).attr("placeholder", "Enter Field value!");
+    if (jquery_1_11_3_min_p("#txtLocatuion_" + validatecounter).val() == "") {
+        jquery_1_11_3_min_p("#txtLocatuion_" + validatecounter).addClass('validate');
+        jquery_1_11_3_min_p("#txtLocatuion_" + validatecounter).attr("placeholder", "Enter Field value!");
                 allow = false;
             }
     if (CopyJson.Table.length > 0) {
-        jquery_1_11_3_min_p("#repeatArea_" + counter).find('div').each(function () {
-            if (jquery_1_11_3_min_p("#txt_" + CopyJson.Table[i].TxtId + counter).val() == "") {
-                jquery_1_11_3_min_p("#txt_" + CopyJson.Table[i].TxtId + counter).addClass('validate');
-                jquery_1_11_3_min_p("#txt_" + CopyJson.Table[i].TxtId + counter).attr("placeholder", "Enter Field value!");
-                allow = false;
-            }
-            if (CopyJson.Table[i].FieldDataType == "2") {
-                if (kendo_all_min_js("#txt_" + CopyJson.Table[i].TxtId + counter).val() == 0) {
-                    kendo_all_min_js("#txt_" + CopyJson.Table[i].TxtId + counter).data("kendoDropDownList").span.css('background', '#f9e5e5');
+       
+        var addressdivcount = jquery_1_11_3_min_p(".addressDiv").find('.addressBg').each(function () {
+            var i = 0;
+            jquery_1_11_3_min_p("#repeatArea_" + validatecounter).find('div').each(function () {
+                if (jquery_1_11_3_min_p("#txt_" + CopyJson.Table[i].TxtId + validatecounter).val() == "") {
+                    jquery_1_11_3_min_p("#txt_" + CopyJson.Table[i].TxtId + validatecounter).addClass('validate');
+                    jquery_1_11_3_min_p("#txt_" + CopyJson.Table[i].TxtId + validatecounter).attr("placeholder", "Enter Field value!");
                     allow = false;
                 }
-            }
-            i++;
+                if (CopyJson.Table[i].FieldDataType == "2") {
+                    if (kendo_all_min_js("#txt_" + CopyJson.Table[i].TxtId + validatecounter).val() == 0) {
+                        kendo_all_min_js("#txt_" + CopyJson.Table[i].TxtId + validatecounter).data("kendoDropDownList").span.css('background', '#f9e5e5');
+                        allow = false;
+                    }
+                }
+                i++;
+            });
+            validatecounter++;
         });
+       
+       
+
+
+
     }
     else {
         allow = false;
@@ -554,6 +561,218 @@ function ValidateHeaderDropDown() {
 }
 
 //====================================== end code for ValidateAddress Box ================================\\+
+
+function RemoveClassEmp(a) {
+    var id = a.id;
+    $("#" + id).removeClass('validate');
+}
+
+function isValidEmail(email) {
+    return /^[a-z0-9]+([-._][a-z0-9]+)*@([a-z0-9]+(-[a-z0-9]+)*\.)+[a-z]{2,4}$/.test(email)
+        && /^(?=.{1,64}@.{4,64}$)(?=.{6,100}$).*/.test(email);
+}
+function isNumber(evt) {
+    evt = (evt) ? evt : window.event;
+    var charCode = (evt.which) ? evt.which : evt.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+        return false;
+    }
+    return true;
+}
+function validateEmpLoyeeForm() {
+    var allow = true;
+    jquery_1_11_3_min_p('#empTable tbody').find('tr').each(function () {
+        var row = jquery_1_11_3_min_p(this);
+        var rowNumber = row.find('td:nth-child(1)').text().trim();
+        if (kendo_all_min_js('#empaddress_' + rowNumber).val() != 0) {
+            if (jquery_1_11_3_min_p("#empname_" + rowNumber).val() == "") {
+                jquery_1_11_3_min_p("#empname_" + rowNumber).addClass('validate');
+                jquery_1_11_3_min_p("#empname_" + rowNumber).attr("placeholder", "enter Name!");
+                allow = false;
+            }
+            if (jquery_1_11_3_min_p("#empmobile_" + rowNumber).val() == "") {
+                jquery_1_11_3_min_p("#empmobile_" + rowNumber).addClass('validate');
+                jquery_1_11_3_min_p("#empmobile_" + rowNumber).attr("placeholder", "enter mobile!");
+                allow = false;
+            }
+            if (jquery_1_11_3_min_p("#empemail_" + rowNumber).val() == "") {
+                jquery_1_11_3_min_p("#empemail_" + rowNumber).addClass('validate');
+                jquery_1_11_3_min_p("#empemail_" + rowNumber).attr("placeholder", "enter email!");
+                allow = false;
+            }
+
+            if (isValidEmail(jquery_1_11_3_min_p("#empemail_" + rowNumber).val()) == false) {
+                jquery_1_11_3_min_p("#empemail_" + rowNumber).addClass('validate');
+                allow = false;
+            }
+        }
+    });
+    return allow;
+
+}
+function CreateEmployeeJson() {
+   var CreatedBy = jquery_1_11_3_min_p('#ContentPlaceHolder1_lblUserId').text();
+  EmployeeArray = [];
+  EmpWareHouse = [];
+    var partid = 0;
+    if (dblclickFlag == 1) {
+        partid = kendo_all_min_js("#ddlentity").val();
+    } 
+    jquery_1_11_3_min_p('#empTable tbody').find('tr').each(function () {
+        var row = jquery_1_11_3_min_p(this);
+        var rowNumber = row.find('td:nth-child(1)').text().trim();
+        if (kendo_all_min_js('#empaddress_' + rowNumber).val() != 0) {
+            var EmailId = jquery_1_11_3_min_p("#empemail_" + rowNumber).val();
+            var active = 0;
+            if ($("#chkisactive_" + rowNumber).is(':checked')) { active = 1; } else { active = 0 }
+            EmployeeArray.push({ name: jquery_1_11_3_min_p("#empname_" + rowNumber).val(), MobileNo: jquery_1_11_3_min_p("#empmobile_" + rowNumber).val(), EmailId: EmailId, CountryId: kendo_all_min_js("#ddlcountry").val(), EntityId: kendo_all_min_js("#ddlentity").val(), createdBy: CreatedBy, BusinessId: partid, EmployeeId: jquery_1_11_3_min_p("#empid_" + rowNumber).text(), IsActive: active });
+            $(kendo_all_min_js('#empaddress_' + rowNumber).data("kendoDropDownList").dataItems()).each(function () {
+                var b = this;
+                var c = b.value;
+                if ($("#" + rowNumber + "chk_OtherUnit_" + c).prop("checked")) {
+                    EmpWareHouse.push({ Emailid: EmailId, Address: c, createdBy: CreatedBy })
+                }
+            });
+        }
+    });
+
+}
+
+function saveEmployee() {
+   
+    var EmpJson = JSON.stringify(EmployeeArray);
+    var AddressJson = JSON.stringify(EmpWareHouse);
+    jquery_1_11_3_min_p.ajax({
+        type: "POST",
+        contentType: "application/json; charset=utf-8",
+        url: "../WebServices/Customer.asmx/SaveEntityEmployee",
+        data: "{'Empjson':'" + EmpJson + "','EmpAddressjson':'" + AddressJson + "'}",
+        dataType: "json",
+        success: function (result) {
+            var i = 0;
+            var jsonData = eval(result.d);
+            if (jsonData.Table.length > 0) {
+                swal("Updated Successfully", "Data Updated successfully!", "success")
+                    .then((value) => {
+                        window.location.replace("OrganizationDataSetup.aspx");
+                    });
+            }
+        }
+    });
+
+}
+
+function BindEmployee() {
+    BindEmpAddress(GlobalEntityId, GlobalCountryId);
+    var partid = 0;
+    if (dblclickFlag == 1) {
+        partid = kendo_all_min_js("#ddlentity").val();
+    } 
+    jquery_1_11_3_min_p.ajax({
+        type: "POST",
+        contentType: "application/json; charset=utf-8",
+        url: "../WebServices/Customer.asmx/BindEntityEmployee",
+        data: "{'EntityId':'" + partid + "','countryId':'" + kendo_all_min_js("#ddlcountry").val() + "','entityId':'" + kendo_all_min_js("#ddlentity").val() + "'}",
+        dataType: "json",
+        success: function (result) {
+            
+            var i = 0;
+            var jsonData = eval(result.d);
+            if (jsonData.Table.length > 0) {
+                var a = 1;
+                jQuery.each(jsonData.Table, function (rec) {
+                    a = i + 1;
+                    if (a <= 5) {
+                        if (jsonData.Table[i].IsActive == true) {
+                            jquery_1_11_3_min_p("#chkisactive_" + a).prop("checked", true);
+                        }
+                        $('#chkcredential_' + a).prop('disabled', true);
+                        jquery_1_11_3_min_p("#empid_" + a).text(jsonData.Table[i].Empid);
+                        jquery_1_11_3_min_p("#empemail_" + a).val(jsonData.Table[i].EmpEmailId);
+                        jquery_1_11_3_min_p("#empname_" + a).val(jsonData.Table[i].EmpName);
+                        jquery_1_11_3_min_p("#empmobile_" + a).val(jsonData.Table[i].EmpMobileNo);
+                        var j = 0;
+                        jQuery.each(jsonData.Table1, function (rec) {
+                            if (jsonData.Table[i].Empid == jsonData.Table1[j].Empid) {
+                                kendo_all_min_js('#empaddress_' + a).data("kendoDropDownList").value(jsonData.Table1[j].AddressId);
+                                jquery_1_11_3_min_p("#" + a + "chk_OtherUnit_" + jsonData.Table1[j].AddressId).prop("checked", true);
+
+
+                            }
+                            j++;
+
+                        });
+
+
+                    }
+                    else {
+                        if (EmpCounter == 5) { EmpCounter++; }
+                        var markup = "<tr><td style='display:none'>" + EmpCounter + "</td><td><input type='checkbox' id='chk_" + EmpCounter + "' class='checkbox'/></td><td><label style='display:none' id='empid_" + EmpCounter + "'></label><input type='text' id='empname_" + EmpCounter + "' class='fieldName' onchange='' onkeyup='RemoveClassEmp(this)' autocomplete='off' /></td><td><input type='text' placeholder='' class='fieldName' id='empmobile_" + EmpCounter + "' autocomplete='off' onkeyup='RemoveClassEmp(this)' onkeypress='return isNumber(event)'   /></td><td><input type='text' placeholder='' class='fieldName' id='empemail_" + EmpCounter + "' autocomplete='off' onchange='' onkeypress='' onkeyup='RemoveClassEmp(this)' /></td><td><input type='text' id='empaddress_" + EmpCounter + "' class='fieldName' autocomplete='off' /></td><td><input type='checkbox' id='chkcredential_" + EmpCounter + "'  disabled = 'disabled' onclick='showCredentialpopup()' class='checkbox' /></td><td><input type='checkbox' id='chkisactive_" + EmpCounter + "' class='checkbox' /></td></tr>"
+                        $("#empTable tbody").append(markup);
+                        kendo_all_min_js("#empaddress_" + EmpCounter).kendoDropDownList({
+                            filter: "contains",
+                            template: "<input type='checkbox' id='" + EmpCounter + "chk_OtherUnit_#=data.value#' class='clsSkillInner' value='#=data.value #' name='OtherUnit' />" + " " + "${ data.text }",
+                            dataTextField: "text",
+                            dataValueField: "value",
+                            dataSource: Address,
+                            close: onClose,
+                            dataBound: onOtherUnitBound,
+                            change: function () {
+                                kendo_all_min_js('#empaddress_' + EmpCounter).data("kendoDropDownList").span.css('background', 'none');
+
+                            }
+                        });
+                        EmpCounter++;
+                        if (jsonData.Table[i].IsActive == true) {
+                            jquery_1_11_3_min_p("#chkisactive_" + a).prop("checked", true);
+                        }
+                        $('#chkcredential_' + a).prop('disabled', true);
+                        jquery_1_11_3_min_p("#empid_" + a).text(jsonData.Table[i].Empid);
+                        jquery_1_11_3_min_p("#empemail_" + a).val(jsonData.Table[i].EmpEmailId);
+                        jquery_1_11_3_min_p("#empname_" + a).val(jsonData.Table[i].EmpName);
+                        jquery_1_11_3_min_p("#empmobile_" + a).val(jsonData.Table[i].EmpMobileNo);
+                        var j = 0;
+                        jQuery.each(jsonData.Table1, function (rec) {
+                            if (jsonData.Table[i].Empid == jsonData.Table1[j].Empid) {
+                                kendo_all_min_js('#empaddress_' + a).data("kendoDropDownList").value(jsonData.Table1[j].AddressId);
+                                jquery_1_11_3_min_p("#" + a + "chk_OtherUnit_" + jsonData.Table1[j].AddressId).prop("checked", true);
+                            }
+                            j++;
+
+                        });
+
+                    }
+                    i++;
+                });
+
+            }
+            else {
+                BindEmpAddress(GlobalEntityId, GlobalCountryId);
+            }
+        }
+    });
+}
+
+function AddRowEmployee() {
+    if (EmpCounter == 5) { EmpCounter++; }
+    var markup = "<tr><td style='display:none'>" + EmpCounter + "</td><td><input type='checkbox' id='chk_" + EmpCounter + "' class='checkbox'/></td><td><label style='display:none' id='empid_" + EmpCounter + "'></label><input type='text' id='empname_" + EmpCounter + "' class='fieldName' onchange='' onkeyup='RemoveClassEmp(this)' autocomplete='off' /></td><td><input type='text' placeholder='' class='fieldName' id='empmobile_" + EmpCounter + "' autocomplete='off' onkeyup='RemoveClassEmp(this)' onkeypress='return isNumber(event)'   /></td><td><input type='text' placeholder='' class='fieldName' id='empemail_" + EmpCounter + "' autocomplete='off' onchange='' onkeypress='' onkeyup='RemoveClassEmp(this)' /></td><td><input type='text' id='empaddress_" + EmpCounter + "' class='fieldName' autocomplete='off' /></td><td><input type='checkbox' id='chkcredential_" + EmpCounter + "' class='checkbox' disabled = 'disabled' onclick='showCredentialpopup()' /></td><td><input type='checkbox' id='chkisactive_" + EmpCounter + "' class='checkbox' /></td></tr>"
+    $("#empTable tbody").append(markup);
+    BindEmpAddress(GlobalEntityId, GlobalCountryId);
+    EmpCounter++;
+
+}
+
+function showCredentialpopup() {
+
+    jquery_1_11_3_min_p('#empTable tbody').find('tr').each(function () {
+        var row = jquery_1_11_3_min_p(this);
+        var rowNumber = row.find('td:nth-child(1)').text().trim();
+        if ($("#chkcredential_" + rowNumber).is(':checked')) {
+            alert("hii");
+        }
+        else { }
+    });
+}
 
 
 //====================================== start code for Delete Address Box ================================\\
@@ -759,10 +978,15 @@ function UpdateLocation() {
             var jsonData = eval(result.d);
             if (jsonData.Table.length > 0) {
 
-                swal("Updated Successfully", "Data Updated successfully!", "success")
-                    .then((value) => {
-                        window.location.replace("OrganizationDataSetup.aspx");
-                    });
+                if (EmployeeArray.length === 0 && EmpWareHouse.length === 0) {
+                    swal("Updated Successfully", "Data Updated successfully!", "success")
+                        .then((value) => {
+                            window.location.replace("OrganizationDataSetup.aspx");
+                        });
+                }
+                else {
+                    saveEmployee();
+                }
             }
         }
     });
@@ -998,7 +1222,7 @@ jquery_1_11_3_min_p("#DivSearch").append(Searchfinaldiv);
 }
 
 function BindEmpAddress(Entityid,countryid) {
-    var Address = [];
+    Address = [];
     jquery_1_11_3_min_p.ajax({
         type: "POST",
         contentType: "application/json; charset=utf-8",
@@ -1022,7 +1246,7 @@ function BindEmpAddress(Entityid,countryid) {
 
                 kendo_all_min_js("#empaddress_" + rowNumber).kendoDropDownList({
                     filter: "contains",
-                    template: "<input type='checkbox' id='chk_OtherUnit_#=data.value #' class='clsSkillInner' value='#=data.value #' name='OtherUnit' />" + " " + "${ data.text }",
+                    template: "<input type='checkbox' id='" + rowNumber +"chk_OtherUnit_#=data.value#' class='clsSkillInner' value='#=data.value #' name='OtherUnit' />" + " " + "${ data.text }",
                     dataTextField: "text",
                     dataValueField: "value",
                     dataSource: Address,
@@ -1278,7 +1502,7 @@ var counter=0;
             var a = 0;
 
             jQuery.each(jsonData.Table, function (rec) {
-                var markup = "<div class='form-group'> <label id='lbl_" + i + "' for='Address'>" + jsonData.Table[i].FieldName + "</label><input type='text'  id='txt_" + jsonData.Table[i].FieldName + counter + "' autocomplete='off'  class='form-control' onkeypress='RemoveClassAddressDiv(this)' placeholder=' Enter " + jsonData.Table[i].FieldName + "'/></div>";
+                var markup = "<div class='form-group'> <label id='lbl_" + i + "' for='Address'>" + jsonData.Table[i].FieldName + "</label><input type='text'  id='txt_" + jsonData.Table[i].TxtId + counter + "' autocomplete='off'  class='form-control' onkeypress='RemoveClassAddressDiv(this)' placeholder=' Enter " + jsonData.Table[i].FieldName + "'/></div>";
                 jquery_1_11_3_min_p("#repeatArea_" + counter).append(markup);
                 if (jsonData.Table[i].FieldDataType == "2") {
                     var TableName = jsonData.Table1[a].TablesName;
