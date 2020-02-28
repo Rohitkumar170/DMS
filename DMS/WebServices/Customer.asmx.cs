@@ -61,23 +61,90 @@ namespace DMS.WebServices
         }
 
         [WebMethod]
-        public Dictionary<string, object> makeCredential(string Empid, string ImagePath, string CreatedBy ,string empemailId, string UserName)
+        public Dictionary<string, object> BindEmpAddressddl(string entityId, string CountryId, string PartnerId)
+        {
+            try
+            {
+                var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_Customers]").With<BindAddressForTax>()
+                     .Execute("@QueryType", "@entityId", "@countryId", "@PartId", "BindEmpAddressddl", entityId, CountryId, PartnerId));
+                return results;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
+        [WebMethod]
+        public Dictionary<string, object> makeCredential(string Empid, string ImagePath, string CreatedBy ,string empemailId, string UserName ,string IsEmail)
         {
             try
             {
                 Dictionary<string, object> results = new Dictionary<string, object>();
+                
                 string password = "";
                 string passwordkey = "";
-                if (SendMail(empemailId, UserName) == 1)
+                if (IsEmail != "1")
                 {
-                    string pwd = ConfigurationManager.AppSettings["DefaultPassword"];
-                    password = DbSecurity.Encrypt(pwd, ref passwordkey);
-                     results = Common.Getdata(context.MultipleResults("[dbo].[DMS_UserSetup]").With<Flag>()
-                     .Execute("@QueryType", "@Password", "@PasswordKey", "@empid", "@createdby", "@imgpath", "makeemployeeCredential", password, passwordkey, Empid, CreatedBy,ImagePath));
+                    if (SendMail(empemailId, UserName) == 1)
+                    {
+                        string pwd = ConfigurationManager.AppSettings["DefaultPassword"];
+                        password = DbSecurity.Encrypt(pwd, ref passwordkey);
+                        results = Common.Getdata(context.MultipleResults("[dbo].[DMS_UserSetup]").With<Flag>()
+                        .Execute("@QueryType", "@Password", "@PasswordKey", "@empid", "@createdby", "@imgpath", "makeemployeeCredential", password, passwordkey, Empid, CreatedBy, ImagePath));
+                        return results;
+                    }
+                    else
+                    {
+                        results.Add("Res", 3);
+                        return results;
+                    }
+                }
+                else {
+                   results = Common.Getdata(context.MultipleResults("[dbo].[DMS_UserSetup]").With<Flag>()
+                       .Execute("@QueryType",  "@empid", "@createdby", "updateCredentialFlag",  Empid, CreatedBy));
+                    results.Add("Res", 2);
                     return results;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
+        [WebMethod]
+        public Dictionary<string, object> makeEntityEmpCredential(string Empid, string ImagePath, string CreatedBy, string empemailId, string UserName, string IsEmail)
+        {
+            try
+            {
+                Dictionary<string, object> results = new Dictionary<string, object>();
+
+                string password = "";
+                string passwordkey = "";
+                if (IsEmail != "1")
+                {
+                    if (SendMail(empemailId, UserName) == 1)
+                    {
+                        string pwd = ConfigurationManager.AppSettings["DefaultPassword"];
+                        password = DbSecurity.Encrypt(pwd, ref passwordkey);
+                        results = Common.Getdata(context.MultipleResults("[dbo].[DMS_UserSetup]").With<Flag>()
+                        .Execute("@QueryType", "@Password", "@PasswordKey", "@empid", "@createdby", "@imgpath", "makeEntityEmpCredential", password, passwordkey, Empid, CreatedBy, ImagePath));
+                        return results;
+                    }
+                    else
+                    {
+                        results.Add("Res", 3);
+                        return results;
+                    }
                 }
                 else
                 {
+                    results = Common.Getdata(context.MultipleResults("[dbo].[DMS_UserSetup]").With<Flag>()
+                        .Execute("@QueryType", "@empid", "@createdby", "updateCredentialFlag", Empid, CreatedBy));
+                    results.Add("Res", 2);
                     return results;
                 }
             }
@@ -228,6 +295,21 @@ namespace DMS.WebServices
             {
                 var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_Customers]").With<PartnerEmployee>().With<BindEmpAddress>()
                         .Execute("@QueryType", "@PartnerId", "@countryId", "@entityId", "BindentityEmployeeOndblClick", EntityId, countryId, entityId));
+                return results;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+        [WebMethod]
+        public Dictionary<string, object> RemoveCredential(string Empid, string CreatedBy)
+        {
+            try
+            {
+                var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_UserSetup]").With<Flag>()
+                        .Execute("@QueryType", "@empid", "@createdby", "RemoveCredential", Empid, CreatedBy));
                 return results;
             }
             catch (Exception ex)
