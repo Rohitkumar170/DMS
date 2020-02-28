@@ -43,6 +43,97 @@ namespace DMS.WebServices
 
         }
         [WebMethod]
+        public Dictionary<string, object> BindRequisitionField()
+        {
+            try
+            {
+                var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_AdminSetUp]").With<BindReqFields>().With<BindCountry>().With<BindEntityForAddress>()
+                           .Execute("@QueryType", "BindReqtype"));
+                return results;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+        [WebMethod]
+        public Dictionary<string, object> BindRequisitionControlField()
+        {
+            try
+            {
+                var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_AdminSetUp]").With<BindReqControlFields>().With<BindCountry>().With<BindEntityForAddress>().With<BindReqControlFields>()
+                           .Execute("@QueryType", "BindReqCtrltype"));
+                return results;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+        [WebMethod]
+        public Dictionary<string, object> SaveRequisitionalert(string Reqtype,string Reqval,string CreatedBy,string CountryId,string EntityId)
+        {
+            try
+            {
+                var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_AdminSetUp]").With<Flag>()
+                           .Execute("@QueryType","@REqtype", "@Reqval", "@CreatedBy", "@countryid", "@entityid", "SaveAlert",Reqtype,Reqval,CreatedBy,CountryId,EntityId));
+                return results;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+        [WebMethod]
+        public Dictionary<string, object> SaveRequisitioncontrolaccess(string Entityemployee, string Partneremp, string CreatedBy, string CountryId, string EntityId,string Overallow)
+        {
+            try
+            {
+                var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_AdminSetUp]").With<Flag>()
+                           .Execute("@QueryType", "@REqtype", "@JsonFields", "@CreatedBy", "@countryid", "@entityid", "@Overallow", "SaveReqControl", Entityemployee, Partneremp, CreatedBy, CountryId, EntityId,Overallow));
+                return results;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+        [WebMethod]
+        public Dictionary<string, object> UpdateRequisitionalert(string Reqtype, string Reqval, string CreatedBy, string CountryId, string EntityId,string Alertid)
+        {
+            try
+            {
+                var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_AdminSetUp]").With<Flag>()
+                           .Execute("@QueryType", "@REqtype", "@Reqval", "@CreatedBy", "@countryid", "@entityid", "@ta", "UpdateAlert", Reqtype, Reqval, CreatedBy, CountryId, EntityId, Alertid));
+                return results;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+        [WebMethod]
+        public Dictionary<string, object> BindReqtype(string LoadData)
+        {
+            try
+            {
+                    var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_AdminSetUp]").With<BindReqSetup>().With<Count>()
+                        .Execute("@QueryType", "@LoadMore", "BindReqdata", LoadData));
+                    return results;
+              
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        [WebMethod]
         public Dictionary<string, object> BindAddesssetUp()
         {
             try

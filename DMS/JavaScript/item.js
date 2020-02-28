@@ -398,8 +398,6 @@ function GetTemplates() {
     jquery_1_11_3_min_p('#btnupload5').css('display', 'block');
     jquery_1_11_3_min_p('#download').css('display', 'none');
 }
-
-
 function ValidateUnitGrid() {
     var allow = true;
     var i = 1;
@@ -421,8 +419,6 @@ function ValidateUnitGrid() {
     });
     return allow;
 }
-
-
 function AddRow() {
     if (counter == 0) {
         counter++;
