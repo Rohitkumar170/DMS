@@ -2914,6 +2914,9 @@
     <Compile Include="Entity\testtable.cs">
       <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
+    <Compile Include="fileUploader.ashx.cs">
+      <DependentUpon>fileUploader.ashx</DependentUpon>
+    </Compile>
     <Compile Include="ForgetPassword.aspx.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
@@ -3334,6 +3337,7 @@
     <Content Include="Entity\DMSNEW.edmx.diagram">
       <DependentUpon>DMSNEW.edmx</DependentUpon>
     </Content>
+    <Content Include="fileUploader.ashx" />
     <None Include="packages.config" />
     <Content Include="Telerix\content\dataviz\dashboards\stock-data-2007.json" />
     <Content Include="Telerix\content\dataviz\dashboards\stock-data-2008.json" />
@@ -3713,6 +3717,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="assets\app-assets\" />
+    <Folder Include="EmployeeImage\" />
     <Folder Include="Import\" />
     <Folder Include="InvoiceAttachment\INV-0000001\" />
     <Folder Include="InvoiceAttachment\INV-0000008\" />

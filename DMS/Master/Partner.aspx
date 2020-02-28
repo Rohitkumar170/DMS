@@ -24,10 +24,16 @@
         #accordionWrap1 .card-header {    color: #2D4D76!important;  padding: 5px 15px;
     border-bottom: 1px solid #cfcdcd;      background: #f6f6f6;    }
          #accordionWrap1 .card-title {    font-size:12px;      }
+
+          .empImage{width: 50px;
+    height: 50px;
+    border: 1px solid #dcd8d8;}
+
         .addressDiv {
     overflow-y: auto;
     max-height: 200px;
         }
+
     </style>
   
 </asp:Content>
@@ -525,7 +531,7 @@
                                                 <option value="Textbox">Address2</option>
 												<option value="Textbox">Address3</option>
                                                 </select>--%></td>
-                          <td><input type="checkbox" id="chkcredential_1" class="checkbox" disabled = "disabled" onclick="showCredentialpopup()"  /></td>
+                          <td><input type="checkbox" id="chkcredential_1" class="checkbox" disabled = "disabled" onclick="showCredentialpopup(this)"  /></td>
                           <td><input type="checkbox" id="chkisactive_1" class="checkbox"/></td>
                       </tr>
                            <tr>
@@ -540,7 +546,7 @@
                                                 <option value="Textbox">Address2</option>
 												<option value="Textbox">Address3</option>
                                                 </select>--%></td>
-                          <td><input type="checkbox" id="chkcredential_2" class="checkbox" disabled = "disabled" onclick='showCredentialpopup()' /></td>
+                          <td><input type="checkbox" id="chkcredential_2" class="checkbox" disabled = "disabled" onclick='showCredentialpopup(this)' /></td>
                           <td><input type="checkbox" id="chkisactive_2" class="checkbox" /></td>
                       </tr>
                             <tr>
@@ -555,7 +561,7 @@
                                                 <option value="Textbox">Address2</option>
 												<option value="Textbox">Address3</option>
                                                 </select>--%></td>
-                          <td><input type="checkbox" id="chkcredential_3" class="checkbox" disabled = "disabled"  onclick="showCredentialpopup()" /></td>
+                          <td><input type="checkbox" id="chkcredential_3" class="checkbox" disabled = "disabled"  onclick="showCredentialpopup(this)" /></td>
                           <td><input type="checkbox" id="chkisactive_3" class="checkbox"/></td>
                       </tr>
                           <tr>
@@ -570,7 +576,7 @@
                                                 <option value="Textbox">Address2</option>
 												<option value="Textbox">Address3</option>
                                                 </select>--%></td>  
-                          <td><input type="checkbox" id="chkcredential_4" class="checkbox" disabled = "disabled"  onclick="showCredentialpopup()" /></td>
+                          <td><input type="checkbox" id="chkcredential_4" class="checkbox" disabled = "disabled"  onclick="showCredentialpopup(this)" /></td>
                           <td><input type="checkbox" id="chkisactive_4" class="checkbox"/></td>
                       </tr>
                           <tr>
@@ -585,7 +591,7 @@
                                                 <option value="Textbox">Address2</option>
 												<option value="Textbox">Address3</option>
                                                 </select>--%></td>
-                          <td><input type="checkbox" id="chkcredential_5" class="checkbox" disabled = "disabled" onclick="showCredentialpopup()" /></td>
+                          <td><input type="checkbox" id="chkcredential_5" class="checkbox" disabled = "disabled" onclick="showCredentialpopup(this)" /></td>
                           <td><input type="checkbox" id="chkisactive_5" class="checkbox"/></td>
                       </tr>
                       </tbody>
@@ -943,6 +949,63 @@ BorderColor="#3366CC" BorderStyle="None" BorderWidth="1px" CellPadding="4"  ></a
 												</div></div>--%>
 
 											</div>
+											</div>
+										</div>
+									</div>
+     <div class="modal fade text-left" id="imagePopup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel8"
+									 aria-hidden="true" >
+										<div class="modal-dialog modal-sm" role="document">
+											<div class="modal-content">
+												<div class="modal-header bg-primary white">
+                                                    <h6 class="white" id="h1"> Employee Name : <span class="white" id="lblempname"></span></h6>
+													<button type="button" id="btnempgrpclose" class="close" aria-label="Close">
+														<span aria-hidden="true">&times;</span>
+													</button>
+												</div>
+											<div class="mt-1">
+                                          <div class="container ">
+                                  
+						<div class="assignedTaxGroups">						    
+    <div class="row">
+    <div class="col-md-12">
+                                            <h6 class="form-section">Upload Image</h6>
+                                             </div> </div>
+                                             
+                                             <div class="row " id="divemp">
+    
+      
+          <div class="col-4 pull-left ">
+               <img id="myUploadedImg" alt="Photo" height="100px" width="100px" />
+              <%--<div class="empImage">
+<p class="text-muted text-center pt-1">Image</p>
+              </div>--%>
+          </div>
+                                        <div class="col-8 pull-right pt-1">
+                                            <input type="file" class="upload"  id="f_UploadImage" hidden><br />
+                                          <label class="btn btn-sm btn-primary ml-50 mb-50 mb-sm-0 cursor-pointer"
+                                                for="f_UploadImage">Upload new photo</label>
+                                         <%--     <input type="file" id="account-upload" hidden>--%>
+                                          <p class="text-muted ml-75 mt-50"><small>Allowed JPG or PNG. Max
+                                                size of 800kB</small></p>
+                                        </div>
+                                        
+                                    </div>
+                                         </div>
+
+                                    
+                                 
+                                        
+                                        
+                                        
+                                        <div class="row">
+<div class="col-md-12">
+         <button type="button" id="btncredentialSubmit" class="btn btn-primary pull-right mb-1 waves-effect waves-light">
+                            <i class="fa fa-save"></i> Submit</button>
+		</div>
+		</div></div>
+												
+												</div>
+												
 											</div>
 										</div>
 									</div>
