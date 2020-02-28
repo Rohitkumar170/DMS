@@ -11,6 +11,9 @@ using DMS.Models.PartnerClasses;
 using DMS.Models;
 using System.Data;
 using Newtonsoft.Json.Linq;
+using System.Text;
+using System.Configuration;
+using System.Net.Mail;
 
 namespace DMS.WebServices
 {
@@ -49,6 +52,34 @@ namespace DMS.WebServices
                 var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_Customers]").With<BindTaxData>().With<BindAddressForTax>()
                      .Execute("@QueryType", "@entityId", "@countryId", "@PartId", "BindTaxdata", entityId, CountryId, PartnerId));
                 return results;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
+        [WebMethod]
+        public Dictionary<string, object> makeCredential(string Empid, string ImagePath, string CreatedBy ,string empemailId, string UserName)
+        {
+            try
+            {
+                Dictionary<string, object> results = new Dictionary<string, object>();
+                string password = "";
+                string passwordkey = "";
+                if (SendMail(empemailId, UserName) == 1)
+                {
+                    string pwd = ConfigurationManager.AppSettings["DefaultPassword"];
+                    password = DbSecurity.Encrypt(pwd, ref passwordkey);
+                     results = Common.Getdata(context.MultipleResults("[dbo].[DMS_UserSetup]").With<Flag>()
+                     .Execute("@QueryType", "@Password", "@PasswordKey", "@empid", "@createdby", "@imgpath", "makeemployeeCredential", password, passwordkey, Empid, CreatedBy,ImagePath));
+                    return results;
+                }
+                else
+                {
+                    return results;
+                }
             }
             catch (Exception ex)
             {
@@ -595,6 +626,74 @@ namespace DMS.WebServices
             {
                 throw ex;
             }
+        }
+
+
+
+        private int SendMail( string emailid,string UserName)
+        {
+            string varifyedEmail = emailid;
+            string randompass = "123456";
+
+            #region For Admin User Mail
+            if (varifyedEmail != "" && varifyedEmail != "0")
+            {
+                try
+                {
+                   // AdminEmail = Convert.ToString(dt.Tables[1].Rows[0]["EmailId"]);
+                    StringBuilder sb = new StringBuilder();
+                    string SMTPHost = ConfigurationManager.AppSettings["SMTPHost"].ToString();
+                    string UserId = ConfigurationManager.AppSettings["UserId"].ToString();
+                    string MailPassword = ConfigurationManager.AppSettings["MailPassword"].ToString();
+
+                    string SMTPPort = ConfigurationManager.AppSettings["SMTPPort"].ToString();
+                    string SMTPEnableSsl = ConfigurationManager.AppSettings["SMTPEnableSsl"].ToString();
+
+                    sb.Append("Dear  " + UserName + ",<br> <br>");
+                    sb.Append(" Your Default Password is: " + randompass + "<br> <br>");
+
+                    sb.Append("<div><p style='font-size:16px; line-height:22px; color:#ed7d31; font-weight:bold; margin-bottom: 2px;'>Thanks & Regards</p> <div style='background-color:#e7e6e6; padding:6px 0px 15px 6px; border-right: 5px solid #dc9004; width:330px; margin-bottom: 15px;'><p style='font-size:18px; line-height:22px; color:#787878; font-weight:normal; margin-bottom: 5px;'>Support team</p><div><div style='display:inline-block; '><img src='../assets/img/globe-icon.png' style='border:none'/><p style='font-size:12px; color:#787878; text-decoration:underline; padding-left:5px; padding-right:7px; border-right: 1px solid #dc9004'>www.amysoftech.in</p> </div> <div style='display:inline-block; padding-left:4px'><img src='../assets/img/email-icon.png' style='border:none'/><p style='font-size:12px; color:#787878; text-decoration:underline; padding-left:5px'>support@amysoftech.in</p></div></div> </div> <p style=' margin-bottom: 0px; font-weight: bold; color: black; font-size: 16px; overflow: hidden; height: 15px;'>   ************************************************************************</p><p style=' font-size:14px; line-height:18px; color:#ed7d31; font-weight:normal; margin-bottom:0px; padding-bottom:5px'><strong>Note:</strong> This is a system generated email, do not reply on this email.</p><p style=' margin-bottom: 0px; font-weight: bold; color: black; font-size: 16px; overflow: hidden; height: 15px;'> ************************************************************************</p></div>");
+
+
+                    SmtpClient smtpClient = new SmtpClient();
+
+                    MailMessage mailmsg = new MailMessage();
+                    MailAddress mailaddress = new MailAddress(UserId);
+
+                   // mailmsg.To.Add(varifyedEmail);
+                     mailmsg.To.Add("satyendaryadav093@gmail.com");
+                    //mailmsg.Attachments.Add(new Attachment(memoryStream, "Mandate.pdf"));
+
+                    mailmsg.Body = Convert.ToString(sb);
+                    mailmsg.From = mailaddress;
+                    mailmsg.Subject = "Default Password";
+                    mailmsg.IsBodyHtml = true;
+                    smtpClient.Host = SMTPHost;
+                    smtpClient.Port = Convert.ToInt32(SMTPPort);
+                    smtpClient.EnableSsl = Convert.ToBoolean(SMTPEnableSsl);
+                    smtpClient.UseDefaultCredentials = true;
+                    smtpClient.Credentials = new System.Net.NetworkCredential(UserId, MailPassword);
+                    smtpClient.Send(mailmsg);
+
+                    return 1;
+                }
+                catch (Exception ex)
+                {
+
+                    return 0;
+
+                }
+
+            }
+
+            else
+            {
+
+                
+                return 0;
+            }
+            #endregion
+
         }
 
     }

@@ -26,7 +26,12 @@ var EmployeeArray = [];
 var EmpWareHouse = [];
 var TaxCounter = 0;
 var EmpCounter = 5;
-
+var creadentialArray = [];
+var empId = '';
+var empMobile = '';
+var Imgpath = '';
+var empemailId = '';
+var empName = '';
 
 jquery_1_11_3_min_p(document).ready(function () {
     jquery_1_11_3_min_p('#btntaxGrp').click(function () {
@@ -37,6 +42,14 @@ jquery_1_11_3_min_p(document).ready(function () {
     });
     jquery_1_11_3_min_p('#btntaxgrpclose').click(function () {
         $("#TaxGroup").modal('hide');
+
+    });
+    jquery_1_11_3_min_p('#btncredentialSubmit').click(function () {
+        makeCredential();
+
+    });
+    jquery_1_11_3_min_p('#btnempgrpclose').click(function () {
+        $("#imagePopup").modal('hide');
 
     });
     jquery_1_11_3_min_p('#btnTaxgrpSubmit').click(function () {
@@ -79,6 +92,21 @@ jquery_1_11_3_min_p(document).ready(function () {
         }
     });
     //====================================== end code for add new address================================\\
+
+    var _URL = window.URL || window.webkitURL;
+    jquery_1_11_3_min_p("#f_UploadImage").on('change', function () {
+        var file, img;
+        if ((file = this.files[0])) {
+            img = new Image();
+            img.onload = function () {
+                sendFile(file);
+            };
+            img.onerror = function () {
+                alert("Not a valid file:" + file.type);
+            };
+            img.src = _URL.createObjectURL(file);
+        }
+    });
 
     //====================================== start code for  New Button click================================\\
 
@@ -1884,7 +1912,10 @@ function BindEmployee() {
                         if (jsonData.Table[i].IsActive == true) {
                             jquery_1_11_3_min_p("#chkisactive_" +a).prop("checked", true);
                         }
-                        $('#chkcredential_'+a).prop('disabled', true);
+                        if (jsonData.Table[i].IsCreadential == "1") {
+                            jquery_1_11_3_min_p("#chkcredential_" + a).prop("checked", true);
+                        }
+                        $('#chkcredential_' + a).prop('disabled', false);
                         jquery_1_11_3_min_p("#empid_" + a).text(jsonData.Table[i].Empid);
                         jquery_1_11_3_min_p("#empemail_" + a).val(jsonData.Table[i].EmpEmailId);
                         jquery_1_11_3_min_p("#empname_" + a).val(jsonData.Table[i].EmpName);
@@ -1905,7 +1936,7 @@ function BindEmployee() {
                     }
                     else {
                         if (EmpCounter == 5) { EmpCounter++; }
-                        var markup = "<tr><td style='display:none'>" + EmpCounter + "</td><td><input type='checkbox' id='chk_" + EmpCounter + "' class='checkbox'/></td><td><label style='display:none' id='empid_" + EmpCounter + "'></label><input type='text' id='empname_" + EmpCounter + "' class='fieldName' onchange='' onkeyup='RemoveClassEmp(this)' autocomplete='off' /></td><td><input type='text' placeholder='' class='fieldName' id='empmobile_" + EmpCounter + "' autocomplete='off' onkeyup='RemoveClassEmp(this)' onkeypress='return isNumber(event)'   /></td><td><input type='text' placeholder='' class='fieldName' id='empemail_" + EmpCounter + "' autocomplete='off' onchange='' onkeypress='' onkeyup='RemoveClassEmp(this)' /></td><td><input type='text' id='empaddress_" + EmpCounter + "' class='fieldName' autocomplete='off' /></td><td><input type='checkbox' id='chkcredential_" + EmpCounter + "'  disabled = 'disabled' onclick='showCredentialpopup()' class='checkbox' /></td><td><input type='checkbox' id='chkisactive_" + EmpCounter + "' class='checkbox' /></td></tr>"
+                        var markup = "<tr><td style='display:none'>" + EmpCounter + "</td><td><input type='checkbox' id='chk_" + EmpCounter + "' class='checkbox'/></td><td><label style='display:none' id='empid_" + EmpCounter + "'></label><input type='text' id='empname_" + EmpCounter + "' class='fieldName' onchange='' onkeyup='RemoveClassEmp(this)' autocomplete='off' /></td><td><input type='text' placeholder='' class='fieldName' id='empmobile_" + EmpCounter + "' autocomplete='off' onkeyup='RemoveClassEmp(this)' onkeypress='return isNumber(event)'   /></td><td><input type='text' placeholder='' class='fieldName' id='empemail_" + EmpCounter + "' autocomplete='off' onchange='' onkeypress='' onkeyup='RemoveClassEmp(this)' /></td><td><input type='text' id='empaddress_" + EmpCounter + "' class='fieldName' autocomplete='off' /></td><td><input type='checkbox' id='chkcredential_" + EmpCounter + "'  disabled = 'disabled' onclick='showCredentialpopup(this)' class='checkbox' /></td><td><input type='checkbox' id='chkisactive_" + EmpCounter + "' class='checkbox' /></td></tr>"
                         $("#empTable tbody").append(markup);
                         kendo_all_min_js("#empaddress_" + EmpCounter).kendoDropDownList({
                             filter: "contains",
@@ -1924,7 +1955,10 @@ function BindEmployee() {
                         if (jsonData.Table[i].IsActive == true) {
                             jquery_1_11_3_min_p("#chkisactive_" + a).prop("checked", true);
                         }
-                        $('#chkcredential_' + a).prop('disabled', true);
+                        if (jsonData.Table[i].IsCreadential == "1") {
+                            jquery_1_11_3_min_p("#chkcredential_" + a).prop("checked", true);
+                        }
+                        $('#chkcredential_' + a).prop('disabled', false);
                         jquery_1_11_3_min_p("#empid_" + a).text(jsonData.Table[i].Empid);
                         jquery_1_11_3_min_p("#empemail_" + a).val(jsonData.Table[i].EmpEmailId);
                         jquery_1_11_3_min_p("#empname_" + a).val(jsonData.Table[i].EmpName);
@@ -2048,22 +2082,99 @@ function isNumber(evt) {
   
 function AddRowEmployee() {
     if (EmpCounter == 5) { EmpCounter++; }
-    var markup = "<tr><td style='display:none'>" + EmpCounter + "</td><td><input type='checkbox' id='chk_" + EmpCounter + "' class='checkbox'/></td><td><label style='display:none' id='empid_" + EmpCounter + "'></label><input type='text' id='empname_" + EmpCounter + "' class='fieldName' onchange='' onkeyup='RemoveClassEmp(this)' autocomplete='off' /></td><td><input type='text' placeholder='' class='fieldName' id='empmobile_" + EmpCounter + "' autocomplete='off' onkeyup='RemoveClassEmp(this)' onkeypress='return isNumber(event)'   /></td><td><input type='text' placeholder='' class='fieldName' id='empemail_" + EmpCounter + "' autocomplete='off' onchange='' onkeypress='' onkeyup='RemoveClassEmp(this)' /></td><td><input type='text' id='empaddress_" + EmpCounter + "' class='fieldName' autocomplete='off' /></td><td><input type='checkbox' id='chkcredential_" + EmpCounter + "' class='checkbox' disabled = 'disabled' onclick='showCredentialpopup()' /></td><td><input type='checkbox' id='chkisactive_" + EmpCounter + "' class='checkbox' /></td></tr>"
+    var markup = "<tr><td style='display:none'>" + EmpCounter + "</td><td><input type='checkbox' id='chk_" + EmpCounter + "' class='checkbox'/></td><td><label style='display:none' id='empid_" + EmpCounter + "'></label><input type='text' id='empname_" + EmpCounter + "' class='fieldName' onchange='' onkeyup='RemoveClassEmp(this)' autocomplete='off' /></td><td><input type='text' placeholder='' class='fieldName' id='empmobile_" + EmpCounter + "' autocomplete='off' onkeyup='RemoveClassEmp(this)' onkeypress='return isNumber(event)'   /></td><td><input type='text' placeholder='' class='fieldName' id='empemail_" + EmpCounter + "' autocomplete='off' onchange='' onkeypress='' onkeyup='RemoveClassEmp(this)' /></td><td><input type='text' id='empaddress_" + EmpCounter + "' class='fieldName' autocomplete='off' /></td><td><input type='checkbox' id='chkcredential_" + EmpCounter + "' class='checkbox' disabled = 'disabled' onclick='showCredentialpopup(this)' /></td><td><input type='checkbox' id='chkisactive_" + EmpCounter + "' class='checkbox' /></td></tr>"
     $("#empTable tbody").append(markup);
     BindEmpAddress();
     EmpCounter++;
 
 }
 
-function showCredentialpopup() {
-    
-    jquery_1_11_3_min_p('#empTable tbody').find('tr').each(function () {
-    var row = jquery_1_11_3_min_p(this);
-    var rowNumber = row.find('td:nth-child(1)').text().trim();
-        if ($("#chkcredential_" + rowNumber).is(':checked')) {
-            alert("hii");
+function showCredentialpopup(Data) {
+    // creadentialArray = [];
+    var id = Data.id;
+    empId = '';
+    empMobile = '';
+    empemailId = '';
+    empName = '';
+    var CreatedBy = jquery_1_11_3_min_p('#ContentPlaceHolder1_lblUserId').text();
+       if ($("#" + idr).is(':checked')) {
+            $('#imagePopup').modal('show');
+        $("#lblempname").text(jquery_1_11_3_min_p("#" + id).val());
+           // creadentialArray.push({ EmployeeId: jquery_1_11_3_min_p("#empid_" + rowNumber).text(),createdBy: CreatedBy })
+        empId = jquery_1_11_3_min_p("#" + id).text();
+        empMobile = jquery_1_11_3_min_p("#" + id).val();
+        empemailId = jquery_1_11_3_min_p("#" + id).val();
+        empName = jquery_1_11_3_min_p("#" + id).val();
         }
         else
-        { }
+        {
+        alert("hii");
+        $('#imagePopup').modal('hide');
+        }
+    //jquery_1_11_3_min_p('#empTable tbody').find('tr').each(function () {
+    //var row = jquery_1_11_3_min_p(this);
+    //var rowNumber = row.find('td:nth-child(1)').text().trim();
+    //    if ($("#chkcredential_" + rowNumber).is(':checked')) {
+    //        $('#imagePopup').modal('show');
+    //        $("#lblempname").text(jquery_1_11_3_min_p("#empname_" + rowNumber).val());
+    //       // creadentialArray.push({ EmployeeId: jquery_1_11_3_min_p("#empid_" + rowNumber).text(),createdBy: CreatedBy })
+    //        empId = jquery_1_11_3_min_p("#empid_" + rowNumber).text();
+    //        empMobile = jquery_1_11_3_min_p("#empmobile_" + rowNumber).val();
+    //        empemailId = jquery_1_11_3_min_p("#empemail_" + rowNumber).val();
+    //        empName = jquery_1_11_3_min_p("#empname_" + rowNumber).val();
+    //    }
+    //    else
+    //    {
+    //        if (!$("#chkcredential_" + rowNumber).is(':checked')) {
+    //            alert("hii");
+    //            $('#imagePopup').modal('hide');
+    //        }
+    //    }
+    //});
+}
+
+function makeCredential() {
+    var CreatedBy = jquery_1_11_3_min_p('#ContentPlaceHolder1_lblUserId').text();
+    jquery_1_11_3_min_p.ajax({
+        type: "POST",
+        contentType: "application/json; charset=utf-8",
+        url: "../WebServices/Customer.asmx/makeCredential",
+        data: "{'Empid':'" + empId + "','ImagePath':'" + Imgpath + "','CreatedBy':'" + CreatedBy + "','empemailId':'" + empemailId + "','UserName':'" + empName + "'}",
+        dataType: "json",
+        success: function (result) {
+            var i = 0;
+            var jsonData = eval(result.d);
+            $('#imagePopup').modal('hide');
+            if (jsonData.Table[0].Res == '-1') {
+                swal("credential already exists");
+            }
+            else {
+                $('#imagePopup').modal('hide');
+            }
+        }
+    });
+   
+}
+
+function sendFile(file) {
+    var formData = new FormData();
+    formData.append('file', $('#f_UploadImage')[0].files[0]);
+    Imgpath = '';
+    $.ajax({
+        type: 'post',
+        url: '../fileUploader.ashx?EmpId=' + empId + '&Mobile=' + empMobile, 
+        data: formData,
+        success: function (status) {
+            if (status != 'error') {
+                var my_path = '../EmployeeImage/' + status;
+                $("#myUploadedImg").attr("src", my_path);
+                Imgpath = my_path;
+            }
+        },
+        processData: false,
+        contentType: false,
+        error: function () {
+            alert("Whoops something went wrong!");
+        }
     });
 }

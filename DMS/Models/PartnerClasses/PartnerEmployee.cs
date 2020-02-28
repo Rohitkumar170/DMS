@@ -12,6 +12,8 @@ namespace DMS.Models.PartnerClasses
         public string EmpMobileNo { get; set; }
         public string EmpEmailId { get; set; }
         public bool IsActive { get; set; }
+        public Int32 IsCreadential { get; set; }
+        public Int32 isemail { get; set; }
 
     }
 }
