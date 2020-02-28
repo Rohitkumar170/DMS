@@ -24,6 +24,7 @@ var SessionCountryId = 1;
 var SessionEntityName = "Dhiraagu";
 var EmployeeArray = [];
 var EmpWareHouse = [];
+var EmpAddress = [];
 var TaxCounter = 0;
 var EmpCounter = 5;
 var creadentialArray = [];
@@ -32,6 +33,7 @@ var empMobile = '';
 var Imgpath = '';
 var empemailId = '';
 var empName = '';
+var isemail = 0;
 
 jquery_1_11_3_min_p(document).ready(function () {
     jquery_1_11_3_min_p('#btntaxGrp').click(function () {
@@ -45,7 +47,18 @@ jquery_1_11_3_min_p(document).ready(function () {
 
     });
     jquery_1_11_3_min_p('#btncredentialSubmit').click(function () {
-        makeCredential();
+        swal({
+            title: "Do you want to Proceed?",
+            text: "",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    makeCredential();
+                }
+            });
 
     });
     jquery_1_11_3_min_p('#btnempgrpclose').click(function () {
@@ -120,7 +133,23 @@ jquery_1_11_3_min_p(document).ready(function () {
         jquery_1_11_3_min_p('#btnuploadLegalField').css('display', 'block');
         jquery_1_11_3_min_p("#TaxDiv").css('display', 'block');
         BindPartnerCode();
-        BindEmpAddress();
+        //EmpAddress.push({ value: "0", text: "Select" });
+        //jquery_1_11_3_min_p('#empTable tbody').find('tr').each(function () {
+        //    var row = jquery_1_11_3_min_p(this);
+        //    var rowNumber = row.find('td:nth-child(1)').text().trim();
+        //    kendo_all_min_js("#empaddress_" + rowNumber).kendoDropDownList({
+        //        filter: "contains",
+        //        template: "<input type='checkbox' id='" + rowNumber + "chk_OtherUnit_#=data.value#' class='clsSkillInner' value='#=data.value #' name='OtherUnit' />" + " " + "${ data.text }",
+        //        dataTextField: "text",
+        //        dataValueField: "value",
+        //        dataSource: EmpAddress,
+        //        close: onClose,
+        //        dataBound: onOtherUnitBound,
+        //        change: function () {
+        //            kendo_all_min_js('#empaddress_' + rowNumber).data("kendoDropDownList").span.css('background', 'none');
+        //        }
+        //    });
+        //});
     });
     //====================================== end code for  New Button click================================\\
 
@@ -781,7 +810,8 @@ function MakeAddressJsonUpdate() {
             }
         }
     }
-    else if (counter == OldAddressCounter) {
+   // else if (counter == OldAddressCounter)
+    else if (counter == 1) {
         IsFirstCheck = 1;
         var id = counter;
         var AddressData = [];
@@ -843,12 +873,13 @@ function MakeAddressJsonUpdate() {
 
                 var LocationDescription = "";
 
-                columnName1 += '" LocationCode "' + ':' + '"' + LocationCode + '"," LocationName "' + ':' + '"' + LocationName + '"," LocationDescription "' + ':' + '"' + LocationDescription + '",';
+                columnName1 += '"[LocationCode]"' + ':' + '"' + LocationCode + '","[LocationName]"' + ':' + '"' + LocationName + '","[LocationDescription]"' + ':' + '"' + LocationDescription + '",';
 
                 jquery_1_11_3_min_p("#repeatArea_" + j).find('div :text').each(function () {
                     var fieldValue = $(this).val();
                     columnName = jquery_1_11_3_min_p("#lbl" + j + "_" + i).text();
-                    columnName1 += '"' + columnName + '"' + ':' + '"' + fieldValue + '",';
+                   // columnName1 += '"' + columnName + '"' + ':' + '"' + fieldValue + '",';
+                    columnName1 += '"['+ columnName +']"' + ':' + '"' + fieldValue + '",';
                     i++;
                 });
                 var newcol = columnName1.slice(0, -1);
@@ -915,6 +946,8 @@ function SaveRecord() {
                 jquery_1_11_3_min_p('.ExistingCheck').prop('disabled', true);
                 jquery_1_11_3_min_p('.checkLocation').prop('disabled', true);
                 BindCountryforTax();
+                BindEmpAddress();
+              
             }
         }
     });
@@ -982,7 +1015,7 @@ function AddRow() {
     }
     if (kendo_all_min_js("#ddlTaxCountry_" + counter).val() != "0" && kendo_all_min_js("#ddlTax_" + counter).val() != "0" && kendo_all_min_js("#ddlAddress_" + counter).val() != "0" && jquery_1_11_3_min_p("#txtamt_" + counter).val() != "") {
         var rowID = counter + 1;
-        var markup = "<tr><td style='display:none'>" + rowID + "</td><td><input type='checkbox' id='cb_" + rowID + "' class='checkbox'/></td><td ><input type='text' id='ddlTaxCountry_" + rowID + "' class='fieldName' onchange=''  onkeyup='' autocomplete='off'/></td><td ><input type='text' placeholder='' class='fieldName' id='ddlTax_" + rowID + "' autocomplete='off' onchange='' onkeypress='' onkeyup='' /></td><td ><input type='text' id='ddlAddress_" + rowID + "' class='fieldName'  onkeyup='' autocomplete='off'/></td><td><input type='text' id='txtamt_" + rowID + "' class='fieldName' onchange=''   autocomplete='off'/></td></tr>";
+        var markup = "<tr><td style='display:none'>" + rowID + "</td><td><input type='checkbox' id='cb_" + rowID + "' class='checkbox'/></td><td ><label style='display: none' id='lblTaxTypeid_" + rowID +"'></label><input type='text' id='ddlTaxCountry_" + rowID + "' class='fieldName' onchange=''  onkeyup='' autocomplete='off'/></td><td ><input type='text' placeholder='' class='fieldName' id='ddlTax_" + rowID + "' autocomplete='off' onchange='' onkeypress='' onkeyup='' /></td><td ><input type='text' id='ddlAddress_" + rowID + "' class='fieldName'  onkeyup='' autocomplete='off'/></td><td><input type='text' id='txtamt_" + rowID + "' class='fieldName' onchange=''   autocomplete='off'/></td></tr>";
         jquery_1_11_3_min_p("#tblTaxInfo tbody").append(markup);
         counter = rowID;
         TaxCounter = counter;
@@ -1070,15 +1103,13 @@ function BindCountryforTax() {
     if (counter == 0) {
         counter++;
     }
-   // if (TaxCounter == 0) { TaxCounter++;}
-    //counter = TaxCounter;
-
     kendo_all_min_js('#ddlTaxCountry_' + counter).kendoDropDownList({
         filter: "contains",
         dataTextField: "text",
         dataValueField: "value",
         dataSource: Country,
         change: function () {
+            if (TaxCounter == 0) { TaxCounter++; }
             counter = TaxCounter;
             kendo_all_min_js('#ddlTaxCountry_' + counter).data("kendoDropDownList").span.css('background', 'none');
             var entity = SessionEntityId;
@@ -1094,6 +1125,7 @@ function BindCountryforTax() {
         dataValueField: "value",
         dataSource: Tax,
         change: function () {
+            if (TaxCounter == 0) { TaxCounter++; }
             counter = TaxCounter;
             kendo_all_min_js('#ddlTax_' + counter).data("kendoDropDownList").span.css('background', 'none');
         }
@@ -1105,6 +1137,7 @@ function BindCountryforTax() {
         dataValueField: "value",
         dataSource: Address,
         change: function () {
+            if (TaxCounter == 0) { TaxCounter++; }
             counter = TaxCounter;
             kendo_all_min_js('#ddlAddress_' + counter).data("kendoDropDownList").span.css('background', 'none');
         }
@@ -1190,11 +1223,12 @@ function SaveTaxInfo() {
         var TaxType = jquery_1_11_3_min_p("#ddlTax_" + row.find('td:nth-child(1)').text().trim()).val();
         var Address = jquery_1_11_3_min_p("#ddlAddress_" + row.find('td:nth-child(1)').text().trim()).val();
         var TaxPercent = jquery_1_11_3_min_p("#txtamt_" + row.find('td:nth-child(1)').text().trim()).val();
+        var LegalId = jquery_1_11_3_min_p("#lblTaxTypeid_" + row.find('td:nth-child(1)').text().trim()).text();
         if (dblclickFlag != 0) {
-            tax.push({ CountryId: CountryId, TaxType: TaxType, Address: Address, CreatedBy: CreatedBy, PartnerId: PartnerIddblclick, entityid: entityid, TaxPercent: TaxPercent });
+            tax.push({ CountryId: CountryId, TaxType: TaxType, Address: Address, CreatedBy: CreatedBy, PartnerId: PartnerIddblclick, entityid: entityid, TaxPercent: TaxPercent, TaxTypeId: LegalId });
         }
         else {
-            tax.push({ CountryId: CountryId, TaxType: TaxType, Address: Address, CreatedBy: CreatedBy, PartnerId: PartnerId, entityid: entityid, TaxPercent: TaxPercent });
+            tax.push({ CountryId: CountryId, TaxType: TaxType, Address: Address, CreatedBy: CreatedBy, PartnerId: PartnerId, entityid: entityid, TaxPercent: TaxPercent, TaxTypeId: LegalId });
         }
         i++;
     });
@@ -1513,10 +1547,10 @@ function BindPartnerOndblClick(PartnerId) {
                                 if (CopyJson.Table.length > 0) {
                                     var l = 0
                                     jquery_1_11_3_min_p("#repeatArea_" + counter).find('div').each(function () {
-                                        jquery_1_11_3_min_p("#txt_" + CopyJson.Table[l].TxtId + Counterflag).val(jsonData[Tabs[j]][i][CopyJson.Table[l].TxtId]);
+                                        jquery_1_11_3_min_p("#txt_" + CopyJson.Table[l].TxtId + Counterflag).val(jsonData[Tabs[j]][i][CopyJson.Table[l].FieldName]);
                                         if (CopyJson.Table[l].FieldDataType == "2") {
                                             //  kendo_all_min_js("#txt_" + CopyJson.Table[i].FieldName + counter).val()
-                                            kendo_all_min_js("#txt_" + CopyJson.Table[l].TxtId + Counterflag).data("kendoDropDownList").value(jsonData[Tabs[j]][i][CopyJson.Table[l].TxtId]);
+                                            kendo_all_min_js("#txt_" + CopyJson.Table[l].TxtId + Counterflag).data("kendoDropDownList").value(jsonData[Tabs[j]][i][CopyJson.Table[l].FieldName]);
                                         }
                                         l++;
                                     });
@@ -1545,9 +1579,9 @@ function BindPartnerOndblClick(PartnerId) {
                                 if (CopyJson.Table.length > 0) {
                                     var l = 0
                                     jquery_1_11_3_min_p("#repeatArea_" + counter).find('div').each(function () {
-                                        jquery_1_11_3_min_p("#txt_" + CopyJson.Table[l].TxtId + counter).val(jsonData[Tabs[j]][i][CopyJson.Table[l].TxtId]);
+                                        jquery_1_11_3_min_p("#txt_" + CopyJson.Table[l].TxtId + counter).val(jsonData[Tabs[j]][i][CopyJson.Table[l].FieldName]);
                                         if (CopyJson.Table[l].FieldDataType == "2") {
-                                            kendo_all_min_js("#txt_" + CopyJson.Table[l].TxtId + counter).data("kendoDropDownList").value(jsonData[Tabs[j]][i][CopyJson.Table[l].TxtId]);
+                                            kendo_all_min_js("#txt_" + CopyJson.Table[l].TxtId + counter).data("kendoDropDownList").value(jsonData[Tabs[j]][i][CopyJson.Table[l].FieldName]);
                                         }
                                         l++;
                                     });
@@ -1595,10 +1629,11 @@ function BindPartnerOndblClick(PartnerId) {
                         kendo_all_min_js('#ddlTax_' + a).data("kendoDropDownList").value(jsonData.Table1[i].TaxTypeId);
                         kendo_all_min_js('#ddlAddress_' + a).data("kendoDropDownList").value(jsonData.Table1[i].AddressId);
                         jquery_1_11_3_min_p("#txtamt_" + a).val(jsonData.Table1[i].TaxPercent);
+                        jquery_1_11_3_min_p("#lblTaxTypeid_" + a).text(jsonData.Table1[i].PartnerTaxId);
 
                     }
                     else {
-                        var markup = "<tr><td style='display:none'>" + a + "</td><td><input type='checkbox' id='cb_" + a + "' class='checkbox'/></td><td ><input type='text' id='ddlTaxCountry_" + a + "' class='fieldName' onchange=''  onkeyup='' autocomplete='off'/></td><td ><input type='text' placeholder='' class='fieldName' id='ddlTax_" + a + "' autocomplete='off' onchange='' onkeypress='' onkeyup='' /></td><td ><input type='text' id='ddlAddress_" + a + "' class='fieldName'  onkeyup='' autocomplete='off'/></td><td><input type='text' id='txtamt_" + a + "' class='fieldName' onchange=''   autocomplete='off'/></td></tr>";
+                        var markup = "<tr><td style='display:none'>" + a + "</td><td><input type='checkbox' id='cb_" + a + "' class='checkbox'/></td><td ><label style='display: none' id='lblTaxTypeid_"+a+"'></label><input type='text' id='ddlTaxCountry_" + a + "' class='fieldName' onchange=''  onkeyup='' autocomplete='off'/></td><td ><input type='text' placeholder='' class='fieldName' id='ddlTax_" + a + "' autocomplete='off' onchange='' onkeypress='' onkeyup='' /></td><td ><input type='text' id='ddlAddress_" + a + "' class='fieldName'  onkeyup='' autocomplete='off'/></td><td><input type='text' id='txtamt_" + a + "' class='fieldName' onchange=''   autocomplete='off'/></td></tr>";
                         jquery_1_11_3_min_p("#tblTaxInfo tbody").append(markup);
                         counter = a;
                         TaxInfoCounter = counter;
@@ -1611,6 +1646,7 @@ function BindPartnerOndblClick(PartnerId) {
                         kendo_all_min_js('#ddlTax_' + a).data("kendoDropDownList").value(jsonData.Table1[i].TaxTypeId);
                         kendo_all_min_js('#ddlAddress_' + a).data("kendoDropDownList").value(jsonData.Table1[i].AddressId);
                         jquery_1_11_3_min_p("#txtamt_" + a).val(jsonData.Table1[i].TaxPercent);
+                        jquery_1_11_3_min_p("#lblTaxTypeid_" + a).text(jsonData.Table1[i].PartnerTaxId);
 
                     }
                     i++
@@ -1752,8 +1788,32 @@ function showrejectedPopup() {
 
 
 function BindEmpAddress() {
+    var PartnerId = 0;
+    if (dblclickFlag == 1) {
+        PartnerId = PartnerIddblclick;
+    } else {
+        PartnerId = jquery_1_11_3_min_p("#lblPartnerId").text();
+    }
+   
+    EmpAddress = [];
+    jquery_1_11_3_min_p.ajax({
+        type: "POST",
+        contentType: "application/json; charset=utf-8",
+        url: "../WebServices/Customer.asmx/BindEmpAddressddl",
+        data: "{'entityId':'" + SessionEntityId + "','CountryId':'" + SessionCountryId + "','PartnerId':'" + PartnerId + "'}",
+        dataType: "json",
+        async: false,
+        success: function (result) {
+            jsonData = eval(result.d);
+            var i = 0;
+            EmpAddress.push({ value: "0", text: "Select" });
+            jQuery.each(jsonData.Table, function (rec) {
+                EmpAddress.push({ value: jsonData.Table[i].AutoId, text: jsonData.Table[i].ParterAddress });
+                i++;
+            });
+        }
+    });
 
-    
     jquery_1_11_3_min_p('#empTable tbody').find('tr').each(function () {
         var row = jquery_1_11_3_min_p(this);
         var rowNumber = row.find('td:nth-child(1)').text().trim();
@@ -1762,7 +1822,7 @@ function BindEmpAddress() {
             template: "<input type='checkbox' id='" + rowNumber+"chk_OtherUnit_#=data.value#' class='clsSkillInner' value='#=data.value #' name='OtherUnit' />" + " " + "${ data.text }",
         dataTextField: "text",
         dataValueField: "value",
-         dataSource: Address,
+            dataSource: EmpAddress,
           close: onClose,
          dataBound: onOtherUnitBound,
         change: function () {
@@ -1882,6 +1942,13 @@ function saveEmployee() {
             var i = 0;
             var jsonData = eval(result.d);
             if (jsonData.Table.length > 0) {  
+
+                swal("Saved Successfully", "Your data Saved successfully!", "success")
+                    .then((value) => {
+
+                         window.location.replace("Partner.aspx");
+                    });
+               
             }
         }
     });
@@ -1914,8 +1981,9 @@ function BindEmployee() {
                         }
                         if (jsonData.Table[i].IsCreadential == "1") {
                             jquery_1_11_3_min_p("#chkcredential_" + a).prop("checked", true);
-                        }
+                        } 
                         $('#chkcredential_' + a).prop('disabled', false);
+                        jquery_1_11_3_min_p("#isemail_" + a).text(jsonData.Table[i].isemail);
                         jquery_1_11_3_min_p("#empid_" + a).text(jsonData.Table[i].Empid);
                         jquery_1_11_3_min_p("#empemail_" + a).val(jsonData.Table[i].EmpEmailId);
                         jquery_1_11_3_min_p("#empname_" + a).val(jsonData.Table[i].EmpName);
@@ -1936,14 +2004,14 @@ function BindEmployee() {
                     }
                     else {
                         if (EmpCounter == 5) { EmpCounter++; }
-                        var markup = "<tr><td style='display:none'>" + EmpCounter + "</td><td><input type='checkbox' id='chk_" + EmpCounter + "' class='checkbox'/></td><td><label style='display:none' id='empid_" + EmpCounter + "'></label><input type='text' id='empname_" + EmpCounter + "' class='fieldName' onchange='' onkeyup='RemoveClassEmp(this)' autocomplete='off' /></td><td><input type='text' placeholder='' class='fieldName' id='empmobile_" + EmpCounter + "' autocomplete='off' onkeyup='RemoveClassEmp(this)' onkeypress='return isNumber(event)'   /></td><td><input type='text' placeholder='' class='fieldName' id='empemail_" + EmpCounter + "' autocomplete='off' onchange='' onkeypress='' onkeyup='RemoveClassEmp(this)' /></td><td><input type='text' id='empaddress_" + EmpCounter + "' class='fieldName' autocomplete='off' /></td><td><input type='checkbox' id='chkcredential_" + EmpCounter + "'  disabled = 'disabled' onclick='showCredentialpopup(this)' class='checkbox' /></td><td><input type='checkbox' id='chkisactive_" + EmpCounter + "' class='checkbox' /></td></tr>"
+                        var markup = "<tr><td style='display:none'>" + EmpCounter + "</td><td><input type='checkbox' id='chk_" + EmpCounter + "' class='checkbox'/></td><td><label style='display:none' id='empid_" + EmpCounter + "'></label><label id='isemail_" + EmpCounter + "' style='display:none'></label><input type='text' id='empname_" + EmpCounter + "' class='fieldName' onchange='' onkeyup='RemoveClassEmp(this)' autocomplete='off' /></td><td><input type='text' placeholder='' class='fieldName' id='empmobile_" + EmpCounter + "' autocomplete='off' onkeyup='RemoveClassEmp(this)' onkeypress='return isNumber(event)'   /></td><td><input type='text' placeholder='' class='fieldName' id='empemail_" + EmpCounter + "' autocomplete='off' onchange='' onkeypress='' onkeyup='RemoveClassEmp(this)' /></td><td><input type='text' id='empaddress_" + EmpCounter + "' class='fieldName' autocomplete='off' /></td><td><input type='checkbox' id='chkcredential_" + EmpCounter + "'  disabled = 'disabled' onclick='showCredentialpopup(this)' class='checkbox' /></td><td><input type='checkbox' id='chkisactive_" + EmpCounter + "' class='checkbox' /></td></tr>"
                         $("#empTable tbody").append(markup);
                         kendo_all_min_js("#empaddress_" + EmpCounter).kendoDropDownList({
                             filter: "contains",
                             template: "<input type='checkbox' id='" + EmpCounter + "chk_OtherUnit_#=data.value#' class='clsSkillInner' value='#=data.value #' name='OtherUnit' />" + " " + "${ data.text }",
                             dataTextField: "text",
                             dataValueField: "value",
-                            dataSource: Address,
+                            dataSource: EmpAddress,
                             close: onClose,
                             dataBound: onOtherUnitBound,
                             change: function () {
@@ -1959,6 +2027,7 @@ function BindEmployee() {
                             jquery_1_11_3_min_p("#chkcredential_" + a).prop("checked", true);
                         }
                         $('#chkcredential_' + a).prop('disabled', false);
+                        jquery_1_11_3_min_p("#isemail_" + a).text(jsonData.Table[i].isemail);
                         jquery_1_11_3_min_p("#empid_" + a).text(jsonData.Table[i].Empid);
                         jquery_1_11_3_min_p("#empemail_" + a).val(jsonData.Table[i].EmpEmailId);
                         jquery_1_11_3_min_p("#empname_" + a).val(jsonData.Table[i].EmpName);
@@ -2037,19 +2106,19 @@ function onClose(e) {
     }
     else {
 
-        if (dblclickFlag == 0) {
+        
 
-            var Otherunitdata = $("#hf").val().split(',');
-                var getlastele = Otherunitdata.length - 2;
-                var lastelement = Otherunitdata[getlastele];
-                if (lastelement == '' || lastelement == undefined) {
-                    kendo_all_min_js('#' + id).data("kendoDropDownList").value(0);
-                }
-                else {
-                    kendo_all_min_js('#' + id).data("kendoDropDownList").value(lastelement);
-                }
-            }
-
+            //if (dblclickFlag == 0) {
+            //    var Otherunitdata = $("#hf").val().split(',');
+            //    var getlastele = Otherunitdata.length - 2;
+            //    var lastelement = Otherunitdata[getlastele];
+            //    if (lastelement == '' || lastelement == undefined) {
+            //        kendo_all_min_js('#' + id).data("kendoDropDownList").value(0);
+            //    }
+            //    else {
+            //        kendo_all_min_js('#' + id).data("kendoDropDownList").value(lastelement);
+            //    }
+            //}
         
     }
 }
@@ -2082,7 +2151,7 @@ function isNumber(evt) {
   
 function AddRowEmployee() {
     if (EmpCounter == 5) { EmpCounter++; }
-    var markup = "<tr><td style='display:none'>" + EmpCounter + "</td><td><input type='checkbox' id='chk_" + EmpCounter + "' class='checkbox'/></td><td><label style='display:none' id='empid_" + EmpCounter + "'></label><input type='text' id='empname_" + EmpCounter + "' class='fieldName' onchange='' onkeyup='RemoveClassEmp(this)' autocomplete='off' /></td><td><input type='text' placeholder='' class='fieldName' id='empmobile_" + EmpCounter + "' autocomplete='off' onkeyup='RemoveClassEmp(this)' onkeypress='return isNumber(event)'   /></td><td><input type='text' placeholder='' class='fieldName' id='empemail_" + EmpCounter + "' autocomplete='off' onchange='' onkeypress='' onkeyup='RemoveClassEmp(this)' /></td><td><input type='text' id='empaddress_" + EmpCounter + "' class='fieldName' autocomplete='off' /></td><td><input type='checkbox' id='chkcredential_" + EmpCounter + "' class='checkbox' disabled = 'disabled' onclick='showCredentialpopup(this)' /></td><td><input type='checkbox' id='chkisactive_" + EmpCounter + "' class='checkbox' /></td></tr>"
+    var markup = "<tr><td style='display:none'>" + EmpCounter + "</td><td><input type='checkbox' id='chk_" + EmpCounter + "' class='checkbox'/></td><td><label style='display:none' id='empid_" + EmpCounter + "'></label><label id='isemail_" + EmpCounter + "' style='display:none'></label><input type='text' id='empname_" + EmpCounter + "' class='fieldName' onchange='' onkeyup='RemoveClassEmp(this)' autocomplete='off' /></td><td><input type='text' placeholder='' class='fieldName' id='empmobile_" + EmpCounter + "' autocomplete='off' onkeyup='RemoveClassEmp(this)' onkeypress='return isNumber(event)'   /></td><td><input type='text' placeholder='' class='fieldName' id='empemail_" + EmpCounter + "' autocomplete='off' onchange='' onkeypress='' onkeyup='RemoveClassEmp(this)' /></td><td><input type='text' id='empaddress_" + EmpCounter + "' class='fieldName' autocomplete='off' /></td><td><input type='checkbox' id='chkcredential_" + EmpCounter + "' class='checkbox' disabled = 'disabled' onclick='showCredentialpopup(this)' /></td><td><input type='checkbox' id='chkisactive_" + EmpCounter + "' class='checkbox' /></td></tr>"
     $("#empTable tbody").append(markup);
     BindEmpAddress();
     EmpCounter++;
@@ -2091,24 +2160,31 @@ function AddRowEmployee() {
 
 function showCredentialpopup(Data) {
     // creadentialArray = [];
-    var id = Data.id;
+    var id = [];
+    id = Data.id;
+    var newid = id.split('_');
     empId = '';
     empMobile = '';
     empemailId = '';
     empName = '';
-    var CreatedBy = jquery_1_11_3_min_p('#ContentPlaceHolder1_lblUserId').text();
-       if ($("#" + idr).is(':checked')) {
-            $('#imagePopup').modal('show');
-        $("#lblempname").text(jquery_1_11_3_min_p("#" + id).val());
-           // creadentialArray.push({ EmployeeId: jquery_1_11_3_min_p("#empid_" + rowNumber).text(),createdBy: CreatedBy })
-        empId = jquery_1_11_3_min_p("#" + id).text();
-        empMobile = jquery_1_11_3_min_p("#" + id).val();
-        empemailId = jquery_1_11_3_min_p("#" + id).val();
-        empName = jquery_1_11_3_min_p("#" + id).val();
+    isemail = 0;
+       if ($("#" + id).is(':checked')) {
+        $('#imagePopup').modal('show');
+           $("#lblempname").text(jquery_1_11_3_min_p("#empname_" + newid[1]).val());
+           empId = jquery_1_11_3_min_p("#empid_" + newid[1]).text();
+           empMobile = jquery_1_11_3_min_p("#empmobile_" + newid[1]).val();
+           empemailId = jquery_1_11_3_min_p("#empemail_" + newid[1]).val();
+           empName = jquery_1_11_3_min_p("#empname_" + newid[1]).val();
+           isemail = jquery_1_11_3_min_p("#isemail_" + newid[1]).text();
         }
         else
-        {
-        alert("hii");
+       {
+           isemail = jquery_1_11_3_min_p("#isemail_" + newid[1]).text();
+           empId = jquery_1_11_3_min_p("#empid_" + newid[1]).text();
+           if (isemail == "1") {
+               RemoveCredential();
+           }
+          
         $('#imagePopup').modal('hide');
         }
     //jquery_1_11_3_min_p('#empTable tbody').find('tr').each(function () {
@@ -2139,14 +2215,22 @@ function makeCredential() {
         type: "POST",
         contentType: "application/json; charset=utf-8",
         url: "../WebServices/Customer.asmx/makeCredential",
-        data: "{'Empid':'" + empId + "','ImagePath':'" + Imgpath + "','CreatedBy':'" + CreatedBy + "','empemailId':'" + empemailId + "','UserName':'" + empName + "'}",
+        data: "{'Empid':'" + empId + "','ImagePath':'" + Imgpath + "','CreatedBy':'" + CreatedBy + "','empemailId':'" + empemailId + "','UserName':'" + empName + "','IsEmail':'" + isemail + "'}",
         dataType: "json",
         success: function (result) {
             var i = 0;
             var jsonData = eval(result.d);
-            $('#imagePopup').modal('hide');
-            if (jsonData.Table[0].Res == '-1') {
-                swal("credential already exists");
+            //if (jsonData.Table[0].Res == '-1') {
+            //    swal("employee already exists");
+            //}
+            if (jsonData.Res == '3')
+            {
+                $('#imagePopup').modal('hide');
+                swal("invalid emailid");
+            }
+            else if (jsonData.Res == '2') {
+                $('#imagePopup').modal('hide');
+                swal("credential details already exists");
             }
             else {
                 $('#imagePopup').modal('hide');
@@ -2154,6 +2238,22 @@ function makeCredential() {
         }
     });
    
+}
+
+function RemoveCredential() {
+    var CreatedBy = jquery_1_11_3_min_p('#ContentPlaceHolder1_lblUserId').text();
+    jquery_1_11_3_min_p.ajax({
+        type: "POST",
+        contentType: "application/json; charset=utf-8",
+        url: "../WebServices/Customer.asmx/RemoveCredential",
+        data: "{'Empid':'" + empId + "','CreatedBy':'" + CreatedBy + "'}",
+        dataType: "json",
+        success: function (result) {
+            var i = 0;
+            var jsonData = eval(result.d);
+        }
+    });
+
 }
 
 function sendFile(file) {

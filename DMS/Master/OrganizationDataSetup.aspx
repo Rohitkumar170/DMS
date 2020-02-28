@@ -229,17 +229,17 @@
                       <tr>
                       <td style="display:none">1</td>
                       <td><input type="checkbox" id="chk_1" class="checkbox"/></td>
-                      <td><label id="empid_1" style='display:none'></label><input type='text' id='empname_1' class='fieldName' onchange=''  onkeyup='RemoveClassEmp(this)'  autocomplete='off'/></td>
+                      <td><label id="empid_1" style='display:none'></label><label id="isemail_1" style='display:none'></label><input type='text' id='empname_1' class='fieldName' onchange=''  onkeyup='RemoveClassEmp(this)'  autocomplete='off'/></td>
                       <td><input type='text' placeholder='' class='fieldName' id='empmobile_1' autocomplete='off' onchange='' onkeypress='return isNumber(event)'  onkeyup='RemoveClassEmp(this)' /></td>
                        <td><input type='text' placeholder='' class='fieldName' id='empemail_1' autocomplete='off' onchange='' onkeypress='' onkeyup='RemoveClassEmp(this)' /></td>
                        <td><input type='text' id='empaddress_1' class='fieldName'  autocomplete='off'/></td>
-                          <td><input type="checkbox" id="chkcredential_1" disabled = "disabled" class="checkbox"/></td>
+                          <td><input type="checkbox" id="chkcredential_1" disabled = "disabled" onclick='showCredentialpopup(this)'  class="checkbox"/></td>
                           <td><input type="checkbox" id="chkisactive_1" class="checkbox"/></td>
                       </tr>
                            <tr>
                       <td style="display:none">2</td>
                       <td><input type="checkbox" id="chk_2" class="checkbox"/></td>
-                      <td><label id="empid_2" style='display:none'></label><input type='text' id='empname_2' class='fieldName' onchange=''  onkeyup='RemoveClassEmp(this)'  autocomplete='off'/></td>
+                      <td><label id="empid_2" style='display:none'></label><label id="isemail_2" style='display:none'></label><input type='text' id='empname_2' class='fieldName' onchange=''  onkeyup='RemoveClassEmp(this)'  autocomplete='off'/></td>
                       <td><input type='text' placeholder='' class='fieldName' id='empmobile_2' autocomplete='off' onchange='' onkeypress='return isNumber(event)'  onkeyup='RemoveClassEmp(this)' /></td>
                        <td><input type='text' placeholder='' class='fieldName' id='empemail_2' autocomplete='off' onchange='' onkeypress='' onkeyup='RemoveClassEmp(this)' /></td>
                        <td><input type='text' id='empaddress_2' class='fieldName'  autocomplete='off'/>
@@ -248,13 +248,13 @@
                                                 <option value="Textbox">Address2</option>
 												<option value="Textbox">Address3</option>
                                                 </select>--%></td>
-                          <td><input type="checkbox" id="chkcredential_2" disabled = "disabled" class="checkbox"/></td>
+                          <td><input type="checkbox" id="chkcredential_2" disabled = "disabled" onclick='showCredentialpopup(this)' class="checkbox"/></td>
                           <td><input type="checkbox" id="chkisactive_2" class="checkbox"/></td>
                       </tr>
                             <tr>
                       <td style="display:none">3</td>
                       <td><input type="checkbox" id="chk_3" class="checkbox"/></td>
-                      <td><label id="empid_3" style='display:none'></label><input type='text' id='empname_3' class='fieldName' onchange=''  onkeyup='RemoveClassEmp(this)'  autocomplete='off'/></td>
+                      <td><label id="empid_3" style='display:none'></label><label id="isemail_3" style='display:none'></label><input type='text' id='empname_3' class='fieldName' onchange=''  onkeyup='RemoveClassEmp(this)'  autocomplete='off'/></td>
                       <td><input type='text' placeholder='' class='fieldName' id='empmobile_3' autocomplete='off' onchange='' onkeypress='return isNumber(event)'  onkeyup='RemoveClassEmp(this)' /></td>
                        <td><input type='text' placeholder='' class='fieldName' id='empemail_3' autocomplete='off' onchange='' onkeypress='' onkeyup='RemoveClassEmp(this)' /></td>
                        <td><input type='text' id='empaddress_3' class='fieldName'  autocomplete='off'/>
@@ -263,13 +263,13 @@
                                                 <option value="Textbox">Address2</option>
 												<option value="Textbox">Address3</option>
                                                 </select>--%></td>
-                          <td><input type="checkbox" id="chkcredential_3"  disabled = "disabled" class="checkbox"/></td>
+                          <td><input type="checkbox" id="chkcredential_3"  disabled = "disabled" onclick='showCredentialpopup(this)' class="checkbox"/></td>
                           <td><input type="checkbox" id="chkisactive_3" class="checkbox"/></td>
                       </tr>
                           <tr>
                       <td style="display:none">4</td>
                       <td><input type="checkbox" id="chk_4" class="checkbox"/></td>
-                      <td><label id="empid_4" style='display:none'></label><input type='text' id='empname_4' class='fieldName' onchange=''  onkeyup='RemoveClassEmp(this)' autocomplete='off' /></td>
+                      <td><label id="empid_4" style='display:none'></label><label id="isemail_4" style='display:none'></label><input type='text' id='empname_4' class='fieldName' onchange=''  onkeyup='RemoveClassEmp(this)' autocomplete='off' /></td>
                       <td><input type='text' placeholder='' class='fieldName' id='empmobile_4' autocomplete='off' onchange='' onkeypress='return isNumber(event)'  onkeyup='RemoveClassEmp(this)' /></td>
                        <td><input type='text' placeholder='' class='fieldName' id='empemail_4' autocomplete='off' onchange='' onkeypress='' onkeyup='RemoveClassEmp(this)' /></td>
                        <td><input type='text' id='empaddress_4' class='fieldName'  autocomplete='off'/>
@@ -278,13 +278,13 @@
                                                 <option value="Textbox">Address2</option>
 												<option value="Textbox">Address3</option>
                                                 </select>--%></td>
-                          <td><input type="checkbox" id="chkcredential_4" disabled = "disabled" class="checkbox"/></td>
+                          <td><input type="checkbox" id="chkcredential_4" disabled = "disabled" onclick='showCredentialpopup(this)' class="checkbox"/></td>
                           <td><input type="checkbox" id="chkisactive_4" class="checkbox"/></td>
                       </tr>
                           <tr>
                       <td style="display:none">5</td>
                       <td><input type="checkbox" id="chk_5" class="checkbox"/></td>
-                      <td><label id="empid_5" style='display:none'></label><input type='text' id='empname_5' class='fieldName' onchange=''  onkeyup='RemoveClassEmp(this)'  autocomplete='off'/></td>
+                      <td><label id="empid_5" style='display:none'></label><label id="isemail_5" style='display:none'></label><input type='text' id='empname_5' class='fieldName' onchange=''  onkeyup='RemoveClassEmp(this)'  autocomplete='off'/></td>
                       <td><input type='text' placeholder='' class='fieldName' id='empmobile_5' autocomplete='off' onchange='' onkeypress='return isNumber(event)'  onkeyup='RemoveClassEmp(this)' /></td>
                        <td><input type='text' placeholder='' class='fieldName' id='empemail_5' autocomplete='off' onchange='' onkeypress='' onkeyup='RemoveClassEmp(this)' /></td>
                        <td><input type='text' id='empaddress_5' class='fieldName'  autocomplete='off'/>
@@ -487,6 +487,64 @@
 											</div>
 										</div>
 									</div>
+    <div class="modal fade text-left" id="imagePopup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel8"
+									 aria-hidden="true" >
+										<div class="modal-dialog modal-sm" role="document">
+											<div class="modal-content">
+												<div class="modal-header bg-primary white">
+                                                    <h6 class="white" id="h1"> Employee Name : <span class="white" id="lblempname"></span></h6>
+													<button type="button" id="btnempgrpclose" class="close" aria-label="Close">
+														<span aria-hidden="true">&times;</span>
+													</button>
+												</div>
+											<div class="mt-1">
+                                          <div class="container ">
+                                  
+						<div class="assignedTaxGroups">						    
+    <div class="row">
+    <div class="col-md-12">
+                                            <h6 class="form-section">Upload Image</h6>
+                                             </div> </div>
+                                             
+                                             <div class="row " id="divemp">
+    
+      
+          <div class="col-4 pull-left ">
+               <img id="myUploadedImg" alt="Photo" height="100px" width="100px" />
+              <%--<div class="empImage">
+<p class="text-muted text-center pt-1">Image</p>
+              </div>--%>
+          </div>
+                                        <div class="col-8 pull-right pt-1">
+                                            <input type="file" class="upload"  id="f_UploadImage" hidden><br />
+                                          <label class="btn btn-sm btn-primary ml-50 mb-50 mb-sm-0 cursor-pointer"
+                                                for="f_UploadImage">Upload new photo</label>
+                                         <%--     <input type="file" id="account-upload" hidden>--%>
+                                          <p class="text-muted ml-75 mt-50"><small>Allowed JPG or PNG. Max
+                                                size of 800kB</small></p>
+                                        </div>
+                                        
+                                    </div>
+                                         </div>
+
+                                    
+                                 
+                                        
+                                        
+                                        
+                                        <div class="row">
+<div class="col-md-12">
+         <button type="button" id="btncredentialSubmit" class="btn btn-primary pull-right mb-1 waves-effect waves-light">
+                            <i class="fa fa-save"></i> Submit</button>
+		</div>
+		</div></div>
+												
+												</div>
+												
+											</div>
+										</div>
+									</div>
+
    <%--
          <script type="text/javascript">
 

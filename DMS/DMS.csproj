@@ -2446,6 +2446,9 @@
     <Compile Include="Downloadimage.ashx.cs">
       <DependentUpon>Downloadimage.ashx</DependentUpon>
     </Compile>
+    <Compile Include="EntityEmployeeImageUpload.ashx.cs">
+      <DependentUpon>EntityEmployeeImageUpload.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Entity\AngularTest_Result.cs">
       <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
@@ -3338,6 +3341,7 @@
       <DependentUpon>DMSNEW.edmx</DependentUpon>
     </Content>
     <Content Include="fileUploader.ashx" />
+    <Content Include="EntityEmployeeImageUpload.ashx" />
     <None Include="packages.config" />
     <Content Include="Telerix\content\dataviz\dashboards\stock-data-2007.json" />
     <Content Include="Telerix\content\dataviz\dashboards\stock-data-2008.json" />
@@ -3718,6 +3722,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="assets\app-assets\" />
     <Folder Include="EmployeeImage\" />
+    <Folder Include="EntityEmployeeImage\" />
     <Folder Include="Import\" />
     <Folder Include="InvoiceAttachment\INV-0000001\" />
     <Folder Include="InvoiceAttachment\INV-0000008\" />
