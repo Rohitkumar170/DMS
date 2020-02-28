@@ -1,7 +1,30 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/DMS.Master" AutoEventWireup="true" CodeBehind="RequestControlSetup.aspx.cs" Inherits="DMS.Master.RequestControlSetup" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+        <script src="../js/jquery-1.11.3.min.js" type="text/javascript"></script>
+    <script>        var jquery_1_11_3_min_p = jQuery.noConflict();</script>
+    <script src="../js/bootstrap.min.js" type="text/javascript"></script>
+    <script>        var bootstrap_min_js = jQuery.noConflict();</script>
+    <link href="/Telerix/Style/kendo.default.min.css" rel="stylesheet" type="text/css" />
+    <link href="/Telerix/Style/kendo.dataviz.min.css" rel="stylesheet" type="text/css" />
+    <link href="/Telerix/Style/kendo.dataviz.default.min.css" rel="stylesheet" type="text/css" />
+    <link href="/Telerix/Style/kendo.common.min.css" rel="stylesheet" type="text/css" />
+    <link href="/Telerix/Style/kendo.rtl.min.css" rel="stylesheet" type="text/css" />
+    <link href="../Telerix/Style/kendo.default.mobile.min.css" rel="stylesheet" type="text/css" />
+    <link href="../Telerix/Style/kendo.common.min.css" rel="stylesheet" type="text/css" />
+    <link href="../Telerix/Style/kendo.rtl.min.css" rel="stylesheet" type="text/css" />
+    <link href="../Telerix/Style/kendo.default.min.css" rel="stylesheet" type="text/css" />
+    <link href="../Telerix/Style/kendo.dataviz.min.css" rel="stylesheet" type="text/css" />
+    <link href="../Telerix/Style/kendo.dataviz.default.min.css" rel="stylesheet" type="text/css" />
+    <script src="../Telerix/js/angular.min.js"></script>
+    <script src="../Telerix/js/kendo.all.min.js"></script>
+    <script>        var kendo_all_min_js = jQuery.noConflict();</script>
+    <script src="../Telerix/js/jquery.min.js"></script>
+    <script src="../Telerix/js/jszip.min.js" type="text/javascript"></script>
+     <script src="../JavaScript/RequisitionControlsetup.js" type="text/javascript"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+     <input type="hidden" id="hdnLoad"/>
+      <input type="hidden" id="hf" />
       <div class="content-header row">
         <div class="content-header-light col-12">
             <div class="row">
@@ -44,36 +67,50 @@
                                     </div>
                              
                                     <div class="form-body lineSelection">
+                                        <div class="row mt-1 headerDropdown form-section">
+                                        <div class="col-md-6 pull-left">   
                                         <h6 class="form-section"> Request Control Setup</h6>
+                                            </div>
+
+                                        <div class="col-md-3 ">
+                                            <div class="form-group pull-right  ">
+                                                <label class="pr-1">Default Country</label>
+                                                <input type="text" id="ddlcountry"  autocomplete="off"  style="width: 100px;"/>
+
+                                            </div>
+                                            </div>
+    <div class="col-md-3">
+                                                <div class="form-group pull-right ">
+                                                   <label class="pr-1">Select Entity</label>
+                                                  <input type="text" id="ddlentity"  autocomplete="off"  style="width: 100px;"/>
+                                                </div>
+                                            </div>
+                                            </div>
                                         <div class="row">
                                      
                                           
                                        <div class="col-md-3">
                                                 <div class="form-group">
-                                                  <label for="ItemType">Select Employee</label>
-                                           <%--  <input type="text" id="ddlcountryId" autocomplete="off" />--%>
-                                         <select id="Select1" name="interested" class="form-control">											
-												<option value="Type1">Abhishek</option>
-												<option value="Type2">Rohit</option>
-                                                <option value="Type2">Satendra</option>                                              
-                                                </select>
+                                                  <label for="ItemType">Entity Employee</label>
+                                           <input type="text" id="ddlemployee" autocomplete="off" />
+                                      
                                                 </div>
                                             </div>
                                              <div class="col-md-3">
                                                 <div class="form-group">
-                                                  <label for="ItemType">Select Locations</label>
-                                           <%--  <input type="text" id="ddlcountryId" autocomplete="off" />--%>
-                                         <select id="Select1" name="interested" class="form-control">											
+                                                  <label for="ItemType">Partner Employee</label>
+                                             <input type="text" id="ddlpartneremp" autocomplete="off" />
+                                       <%--  <select id="Select1" name="interested" class="form-control">											
 												<option value="Type1">Location1</option>
 												<option value="Type2">Location2</option>
                                                 <option value="Type2">Location3</option>                                              
-                                                </select>
+                                                </select>--%>
                                                 </div>
                                             </div>
                                            
                                                   <div class="col-md-3">
                                                 <div class="form-group pt-1">
-                                                     <input type="checkbox" class="checkLocation" >
+                                                     <input type="checkbox" id="chk_overallow" class="checkLocation" />
                                                      <label for="Self">Allow Over Quantity </label>
                                                 </div>
                                             </div>
@@ -86,7 +123,7 @@
                              
                                       <div class="row ">
                                        <div class="col-md-12">
-                                        <button type="button" id="btnsubmit"   class="btn btn-primary pull-right mt-1 ">
+                                        <button type="button" id="btnSubmit"   class="btn btn-primary pull-right mt-1 ">
                             <i class="fa fa-save"></i> Submit</button>
                                           
 

@@ -369,6 +369,8 @@
     <Content Include="JavaScript\PurchaseInvoice.js" />
     <Content Include="JavaScript\Request.js" />
     <Content Include="JavaScript\RequestControl.js" />
+    <Content Include="JavaScript\RequisitionControlsetup.js" />
+    <Content Include="JavaScript\Requisitionsetup.js" />
     <Content Include="JavaScript\saleinvoice.js" />
     <Content Include="JavaScript\SalesOrder.js" />
     <Content Include="JavaScript\Sequencesetup.js" />
@@ -3159,8 +3161,11 @@
     <Compile Include="Models\EntitySetupClass\BindPAddressFields.cs" />
     <Compile Include="Models\EntitySetupClass\BindParaDataSetupdblClick.cs" />
     <Compile Include="Models\EntitySetupClass\BindParaParaddl.cs" />
+    <Compile Include="Models\EntitySetupClass\BindReqControlFields.cs" />
+    <Compile Include="Models\EntitySetupClass\BindReqSetup.cs" />
     <Compile Include="Models\EntitySetupClass\GetTablename.cs" />
     <Compile Include="Models\EntitySetupClass\ImportEntity.cs" />
+    <Compile Include="Models\EntitySetupClass\Reqsetup.cs" />
     <Compile Include="Models\Flag.cs" />
     <Compile Include="Models\EntitySetupClass\Country.cs" />
     <Compile Include="Models\EntitySetupClass\Entity.cs" />
