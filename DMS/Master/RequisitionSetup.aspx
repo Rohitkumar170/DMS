@@ -118,7 +118,13 @@
                                                 </div>
                                             </div>
                                       
-                                         
+                                          <div class="col-md-3">
+                                                <div class="form-group">
+                                                  <label for="ItemGroup">Description</label>
+                        <input type="text" id="txtdescription"    class="form-control" autocomplete="off" placeholder="Enter Number"  />
+                                                
+                                                </div>
+                                            </div>
                                         
                                         </div>
                                     
@@ -256,7 +262,8 @@
                                  <th style="display:none"></th>
                                 <th><input type="checkbox" id="chkAll"/> All</th>
                                 <th>Requisition Formate</th>
-                                <th>Requisition Time</th>                               
+                                <th>Requisition Time</th>  
+                                 <th>Description</th>             
                             </tr>
                         </thead>
                       <tbody>

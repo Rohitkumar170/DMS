@@ -13,5 +13,6 @@ namespace DMS.Models.EntitySetupClass
         public int ReqFormat { get; set; }
         public string AlertType { get; set; }
         public decimal Reqvalue { get; set; }
+        public string Description { get; set; }
     }
 }

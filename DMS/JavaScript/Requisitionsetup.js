@@ -72,6 +72,7 @@ jquery_1_11_3_min_p(document).ready(function () {
         BindAllFields();
         kendo_all_min_js('#ddlrequisitiontype').data("kendoDropDownList").value(row.find('td:nth-child(4)').text().trim());
         jquery_1_11_3_min_p('#taxalerttime').val(row.find('td:nth-child(7)').text().trim());
+        jquery_1_11_3_min_p('#txtdescription').val(row.find('td:nth-child(8)').text().trim());
 
     });
 
@@ -95,7 +96,7 @@ function BindReqsetup() {
             var i = 0;
             jquery_1_11_3_min_p("#userGrid tbody").empty();
             jQuery.each(jsonData.Table, function (rec) {
-                var markup = "<tr> <td style='display:none'> " + jsonData.Table[i].RAlertid + "</td><td style='display:none'> " + jsonData.Table[i].EntityId + "</td><td style='display:none'> " + jsonData.Table[i].CountryId + "</td><td style='display:none'> " + jsonData.Table[i].ReqFormat + "</td> <td> <input id='chkbox' type='checkbox' class='checkAll'  /></td><td title='" + jsonData.Table[i].ItemName + "'>" + jsonData.Table[i].AlertType + "</td> <td >" + jsonData.Table[i].Reqvalue + "</td></tr>";
+                var markup = "<tr> <td style='display:none'> " + jsonData.Table[i].RAlertid + "</td><td style='display:none'> " + jsonData.Table[i].EntityId + "</td><td style='display:none'> " + jsonData.Table[i].CountryId + "</td><td style='display:none'> " + jsonData.Table[i].ReqFormat + "</td> <td> <input id='chkbox' type='checkbox' class='checkAll'  /></td><td title='" + jsonData.Table[i].ItemName + "'>" + jsonData.Table[i].AlertType + "</td> <td >" + jsonData.Table[i].Reqvalue + "</td><td >" + jsonData.Table[i].Description + "</td></tr>";
                 jquery_1_11_3_min_p("#userGrid tbody").append(markup);
                 i++;
             });
@@ -118,7 +119,7 @@ function SaveAlert() {
         type: "POST",
         contentType: "application/json; charset=utf-8",
         url: "../WebServices/Setup.asmx/SaveRequisitionalert",
-        data: "{'Reqtype':'" + kendo_all_min_js('#ddlrequisitiontype').val() + "','Reqval':'" + jquery_1_11_3_min_p('#taxalerttime').val() + "','CreatedBy':'" + jquery_1_11_3_min_p('#ContentPlaceHolder1_lblUserId').text().trim() + "','CountryId':'" + kendo_all_min_js('#ddlcountry').val()+ "','EntityId':'" + kendo_all_min_js('#ddlentity').val() + "'}",
+        data: "{'Reqtype':'" + kendo_all_min_js('#ddlrequisitiontype').val() + "','Reqval':'" + jquery_1_11_3_min_p('#taxalerttime').val() + "','CreatedBy':'" + jquery_1_11_3_min_p('#ContentPlaceHolder1_lblUserId').text().trim() + "','CountryId':'" + kendo_all_min_js('#ddlcountry').val() + "','EntityId':'" + kendo_all_min_js('#ddlentity').val() + "','Description':'" + jquery_1_11_3_min_p('#txtdescription').val().trim()+ "'}",
         dataType: "json",
         success: function (result) {
             var jsonData = result.d;
@@ -259,7 +260,7 @@ function UpdateAlert() {
         type: "POST",
         contentType: "application/json; charset=utf-8",
         url: "../WebServices/Setup.asmx/UpdateRequisitionalert",
-        data: "{'Reqtype':'" + kendo_all_min_js('#ddlrequisitiontype').val() + "','Reqval':'" + jquery_1_11_3_min_p('#taxalerttime').val() + "','CreatedBy':'" + jquery_1_11_3_min_p('#ContentPlaceHolder1_lblUserId').text().trim() + "','CountryId':'" + kendo_all_min_js('#ddlcountry').val() + "','EntityId':'" + kendo_all_min_js('#ddlentity').val() + "','Alertid':'" + RAlertid + "'}",
+        data: "{'Reqtype':'" + kendo_all_min_js('#ddlrequisitiontype').val() + "','Reqval':'" + jquery_1_11_3_min_p('#taxalerttime').val() + "','CreatedBy':'" + jquery_1_11_3_min_p('#ContentPlaceHolder1_lblUserId').text().trim() + "','CountryId':'" + kendo_all_min_js('#ddlcountry').val() + "','EntityId':'" + kendo_all_min_js('#ddlentity').val() + "','Alertid':'" + RAlertid + "','Description':'" + jquery_1_11_3_min_p('#txtdescription').val().trim() + "'}",
         dataType: "json",
         success: function (result) {
             var jsonData = result.d;

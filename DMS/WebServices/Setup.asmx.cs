@@ -73,12 +73,12 @@ namespace DMS.WebServices
 
         }
         [WebMethod]
-        public Dictionary<string, object> SaveRequisitionalert(string Reqtype,string Reqval,string CreatedBy,string CountryId,string EntityId)
+        public Dictionary<string, object> SaveRequisitionalert(string Reqtype,string Reqval,string CreatedBy,string CountryId,string EntityId,string Description)
         {
             try
             {
                 var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_AdminSetUp]").With<Flag>()
-                           .Execute("@QueryType","@REqtype", "@Reqval", "@CreatedBy", "@countryid", "@entityid", "SaveAlert",Reqtype,Reqval,CreatedBy,CountryId,EntityId));
+                           .Execute("@QueryType","@REqtype", "@Reqval", "@CreatedBy", "@countryid", "@entityid", "@Description", "SaveAlert",Reqtype,Reqval,CreatedBy,CountryId,EntityId,Description));
                 return results;
             }
             catch (Exception ex)
@@ -118,12 +118,12 @@ namespace DMS.WebServices
 
         }
         [WebMethod]
-        public Dictionary<string, object> UpdateRequisitionalert(string Reqtype, string Reqval, string CreatedBy, string CountryId, string EntityId,string Alertid)
+        public Dictionary<string, object> UpdateRequisitionalert(string Reqtype, string Reqval, string CreatedBy, string CountryId, string EntityId,string Alertid, string Description)
         {
             try
             {
                 var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_AdminSetUp]").With<Flag>()
-                           .Execute("@QueryType", "@REqtype", "@Reqval", "@CreatedBy", "@countryid", "@entityid", "@ta", "UpdateAlert", Reqtype, Reqval, CreatedBy, CountryId, EntityId, Alertid));
+                           .Execute("@QueryType", "@REqtype", "@Reqval", "@CreatedBy", "@countryid", "@entityid", "@ta", "@Description", "UpdateAlert", Reqtype, Reqval, CreatedBy, CountryId, EntityId, Alertid,Description));
                 return results;
             }
             catch (Exception ex)
