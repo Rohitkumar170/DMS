@@ -858,6 +858,8 @@ function makeCredential() {
             }
             else {
                 $('#imagePopup').modal('hide');
+                
+                swal("Sent successfully","Email has been sent successfully!","success");
             }
         }
     });

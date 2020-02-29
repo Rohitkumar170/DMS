@@ -245,13 +245,17 @@
                             <tr>
                                  <th style="display:none"></th>
                                    <th style="display:none"></th>
+                                 <th style="display:none"></th>
+                                 <th style="display:none"></th>
+                                 <th style="display:none"></th>
                                 <th><input type="checkbox" id="chkAll"/> All</th>
                                 <th>Employee Name</th>
-                                <th>No. of Locations</th>                               
+                                <th>No. of Locations</th>   
+                                 <th style="display:none"></th>
                             </tr>
                         </thead>
                       <tbody>
-                            <tr>  
+                         <%--   <tr>  
                                  <td><input type="checkbox" /></td>
                                  <td>Abhishek</td>                                
                                  <td>14</td>
@@ -260,7 +264,7 @@
                              <td><input type="checkbox" /></td>
                                  <td>Rohit</td>                               
                                  <td>48 </td>
-                            </tr>
+                            </tr>--%>
                       </tbody>
                           
                     </table>
