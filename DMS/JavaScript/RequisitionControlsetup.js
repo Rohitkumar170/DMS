@@ -1,7 +1,7 @@
-﻿var LoadData = ''; var dblclickid = 0; var RAlertid = 0; var dblclickFlag = 1;
+﻿var LoadData = ''; var dblclickid = 0; var Reqctrlid = 0; var dblclickFlag = 1;
 jquery_1_11_3_min_p(document).ready(function () {
     jquery_1_11_3_min_p("#hdnLoad").val(1000);
-   // BindReqsetup();
+    BindReqsetup();
     jquery_1_11_3_min_p('#btnnew').click(function () {
         jquery_1_11_3_min_p("#createusserForm").css('display', 'block');
         jquery_1_11_3_min_p("#createusserGrid").css('display', 'none');
@@ -45,7 +45,7 @@ jquery_1_11_3_min_p(document).ready(function () {
                 })
                     .then((willDelete) => {
                         if (willDelete) {
-                            UpdateAlert();
+                            UpdateRequestcontrolaccess();
 
                         }
                     });
@@ -62,15 +62,25 @@ jquery_1_11_3_min_p(document).ready(function () {
     });
     $(document).on("dblclick", "#userGrid tbody tr", function () {
         var row = jquery_1_11_3_min_p(this);
-        dblclickid = 1; RAlertid = row.find('td:nth-child(1)').text().trim();
+        dblclickid = 1; Reqctrlid = row.find('td:nth-child(5)').text().trim();
         jquery_1_11_3_min_p("#createusserForm").css('display', 'block');
         jquery_1_11_3_min_p("#createusserGrid").css('display', 'none');
         jquery_1_11_3_min_p("#btnnew").css('display', 'none');
         jquery_1_11_3_min_p("#btnback").css('display', 'block');
         jquery_1_11_3_min_p("#btnSubmit").css('display', 'block');
         BindAllFields();
-        kendo_all_min_js('#ddlrequisitiontype').data("kendoDropDownList").value(row.find('td:nth-child(4)').text().trim());
-        jquery_1_11_3_min_p('#taxalerttime').val(row.find('td:nth-child(7)').text().trim());
+        kendo_all_min_js('#ddlemployee').data("kendoDropDownList").value(row.find('td:nth-child(3)').text().trim());
+        var data = row.find('td:nth-child(9)').text().trim().split(',');
+        for (var x = 0; x < data.length; x++) {
+            jquery_1_11_3_min_p("#" + "chk_Otherpartner_" + data[x]).prop("checked", true);
+            if (data.length-1 == x) {
+                kendo_all_min_js('#ddlpartneremp').data("kendoDropDownList").value(data[x]);
+            }
+        }
+        if (row.find('td:nth-child(4)').text().trim()==1) {
+            jquery_1_11_3_min_p('#chk_overallow').prop("checked", true);
+        }
+        
 
     });
 
@@ -84,7 +94,7 @@ function BindReqsetup() {
     jquery_1_11_3_min_p.ajax({
         type: "POST",
         contentType: "application/json; charset=utf-8",
-        url: "../WebServices/Setup.asmx/BindReqtype",
+        url: "../WebServices/Setup.asmx/BindReqControltype",
         data: "{'LoadData':'" + LoadData + "'}",
         dataType: "json",
         success: function (result) {
@@ -94,7 +104,7 @@ function BindReqsetup() {
             var i = 0;
             jquery_1_11_3_min_p("#userGrid tbody").empty();
             jQuery.each(jsonData.Table, function (rec) {
-                var markup = "<tr> <td style='display:none'> " + jsonData.Table[i].RAlertid + "</td><td style='display:none'> " + jsonData.Table[i].EntityId + "</td><td style='display:none'> " + jsonData.Table[i].CountryId + "</td><td style='display:none'> " + jsonData.Table[i].ReqFormat + "</td> <td> <input id='chkbox' type='checkbox' class='checkAll'  /></td><td title='" + jsonData.Table[i].ItemName + "'>" + jsonData.Table[i].AlertType + "</td> <td >" + jsonData.Table[i].Reqvalue + "</td></tr>";
+                var markup = "<tr> <td style='display:none'> " + jsonData.Table[i].CountryId + "</td><td style='display:none'> " + jsonData.Table[i].EntityId + "</td><td style='display:none'> " + jsonData.Table[i].EntityEmpId + "</td><td style='display:none'> " + jsonData.Table[i].AllowOverQty + "</td><td style='display:none'> " + jsonData.Table[i].ReqCtrlSetId + "</td> <td> <input id='chkbox' type='checkbox' class='checkAll'  /></td><td title='" + jsonData.Table[i].EmpName + "'>" + jsonData.Table[i].EmpName + "</td> <td >" + jsonData.Table[i].Employeecount + "</td><td style='display:none'>" + jsonData.Table[i].EmpLocation + "</td></tr>";
                 jquery_1_11_3_min_p("#userGrid tbody").append(markup);
                 i++;
             });
@@ -112,16 +122,17 @@ function BindReqsetup() {
     });
 
 }
+
 function SaveRequestcontrolaccess() {
     var Emparray = []; var EmployeeJson = ''; var Overqty = '';
     $(kendo_all_min_js('#ddlpartneremp').data("kendoDropDownList").dataItems()).each(function () {
         var b = this;
         var c = b.value;
         if ($("#" + "chk_Otherpartner_" + c).prop("checked")) {
-            Emparray.push({ Empid: c})
+            Emparray.push({ Empid: c })
         }
     });
-     EmployeeJson = JSON.stringify(Emparray);
+    EmployeeJson = JSON.stringify(Emparray);
     if ($("#chk_overallow").is(':checked')) { Overqty = 1; } else { Overqty = 0 }
     jquery_1_11_3_min_p.ajax({
         type: "POST",
@@ -134,13 +145,13 @@ function SaveRequestcontrolaccess() {
             if (jsonData.Table[0].Res == "1") {
                 swal("Saved Successfully", "Data Saved successfully!", "success")
                     .then((value) => {
-                        window.location.replace("RequisitionControlSetup.aspx");
+                        window.location.replace("RequestControlSetup.aspx");
                     });
             }
             if (jsonData.Table[0].Res == "2") {
                 swal("Sorry", "Update Only No New Insertion allow!", "warning")
                     .then((value) => {
-                        window.location.replace("RequisitionControlSetup.aspx");
+                        window.location.replace("RequestControlSetup.aspx");
                     });
             }
         }
@@ -381,19 +392,29 @@ function UpdateIdInHiddenField(hf, id, IsAdd) {
 
 } 
 
-function UpdateAlert() {
+function UpdateRequestcontrolaccess() {
+    var Emparray = []; var EmployeeJson = ''; var Overqty = '';
+    $(kendo_all_min_js('#ddlpartneremp').data("kendoDropDownList").dataItems()).each(function () {
+        var b = this;
+        var c = b.value;
+        if ($("#" + "chk_Otherpartner_" + c).prop("checked")) {
+            Emparray.push({ Empid: c })
+        }
+    });
+    EmployeeJson = JSON.stringify(Emparray);
+    if ($("#chk_overallow").is(':checked')) { Overqty = 1; } else { Overqty = 0 }
     jquery_1_11_3_min_p.ajax({
         type: "POST",
         contentType: "application/json; charset=utf-8",
-        url: "../WebServices/Setup.asmx/UpdateRequisitionalert",
-        data: "{'Reqtype':'" + kendo_all_min_js('#ddlrequisitiontype').val() + "','Reqval':'" + jquery_1_11_3_min_p('#taxalerttime').val() + "','CreatedBy':'" + jquery_1_11_3_min_p('#ContentPlaceHolder1_lblUserId').text().trim() + "','CountryId':'" + kendo_all_min_js('#ddlcountry').val() + "','EntityId':'" + kendo_all_min_js('#ddlentity').val() + "','Alertid':'" + RAlertid + "'}",
+        url: "../WebServices/Setup.asmx/UpdateRequisitioncontrolaccess",
+        data: "{'Entityemployee':'" + kendo_all_min_js('#ddlemployee').val() + "','Partneremp':'" + EmployeeJson + "','CreatedBy':'" + jquery_1_11_3_min_p('#ContentPlaceHolder1_lblUserId').text().trim() + "','CountryId':'" + kendo_all_min_js('#ddlcountry').val() + "','EntityId':'" + kendo_all_min_js('#ddlentity').val() + "','Overallow':'" + Overqty + "','Rowid':'" + Reqctrlid + "'}",
         dataType: "json",
         success: function (result) {
             var jsonData = result.d;
             if (jsonData.Table[0].Res == "1") {
                 swal("Updated Successfully", "Data Updated successfully!", "success")
                     .then((value) => {
-                        window.location.replace("RequisitionSetup.aspx");
+                        window.location.replace("RequestControlSetup.aspx");
                     });
             }
         }
