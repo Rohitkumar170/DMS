@@ -1,6 +1,6 @@
 ﻿var jsonRecallData = ''; var BindRecallHistory = ''; var RequestControlItems = [];
 var JsonRequestControlItems = ''; var checkquantity=0; var Checkvalidation=0;var approvetextid='';
-var approveqty=0;
+var approveqty = 0; var LoadData = 0;
 jquery_1_11_3_min_p(document).ready(function () {
     var LoadData = '';
     jquery_1_11_3_min_p('#availableWarehouse').css('display', 'none');
@@ -306,7 +306,8 @@ var gettxtval = jquery_1_11_3_min_p("#" + textvalue.toString()).val().trim();
 
 function BindRequestHeader() {
     var dataRequestHeader = [];
-    var LoadData = jquery_1_11_3_min_p("#hdnLoad").val();
+    jquery_1_11_3_min_p("#hdnLoad").val(4);
+    LoadData = 0;
     jquery_1_11_3_min_p.ajax({
         type: "POST",
         contentType: "application/json; charset=utf-8",
@@ -397,7 +398,7 @@ function BindRequestHeader() {
 
 
 function SearchBindRequestHeader() {
-    var LoadData = jquery_1_11_3_min_p('#lblRowCount').text();
+    var LoadData = 0;
     var RequisitionNo = jquery_1_11_3_min_p('#searchText').val();
     var dataRequestHeader = [];
     jquery_1_11_3_min_p.ajax({

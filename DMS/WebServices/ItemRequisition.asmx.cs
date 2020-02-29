@@ -136,6 +136,7 @@ namespace DMS.WebServices
         {
             try
             {
+                LoadData = "4";
                 DataSet ds = CommonManger.FillDatasetWithParam("DMS_RequestControl", "@QueryType", "@loadMore", "RequisitionHeaderRC", LoadData);
                 return ClsJson.JsonMethods.ToJson(ds);
             }
