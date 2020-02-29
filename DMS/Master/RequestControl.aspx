@@ -23,6 +23,7 @@
      <script src="../JavaScript/RequestControl.js" type="text/javascript"></script>
     
     <style>
+        .table tbody td, .table thead th {    width: 140px;  }
          #RequisitionLineForm td:nth-child(1), #RequisitionLineForm th:nth-child(1) {    width: 50px;} 
          #RequisitionLineForm td:nth-child(6) input[type="text"]{    text-align:right; width: 90px;} 
          #RequisitionLineForm td:nth-child(5), #RequisitionLineForm th:nth-child(5) {    text-align:right; width: 90px;} 

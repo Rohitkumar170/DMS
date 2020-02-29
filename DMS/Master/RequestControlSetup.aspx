@@ -21,6 +21,10 @@
     <script src="../Telerix/js/jquery.min.js"></script>
     <script src="../Telerix/js/jszip.min.js" type="text/javascript"></script>
      <script src="../JavaScript/RequisitionControlsetup.js" type="text/javascript"></script>
+    <style>
+        .headerDropdown .k-dropdown {            height: 18px;        }
+          #userGrid td:nth-child(6), #userGrid th:nth-child(6) {    width: 50px;}
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
      <input type="hidden" id="hdnLoad"/>
@@ -61,15 +65,11 @@
                         <div class="card">
                          
                             <div class="card-content collapse show" >
-                                <div class="card-body">
-                                <div class="card-text">
-
-                                    </div>
-                             
+                                <div class="container">
                                     <div class="form-body lineSelection">
-                                        <div class="row mt-1 headerDropdown form-section">
+                                        <div class="row pt5 headerDropdown form-section">
                                         <div class="col-md-6 pull-left">   
-                                        <h6 class="form-section"> Request Control Setup</h6>
+                                        <h6 class=""> Request Control Setup</h6>
                                             </div>
 
                                         <div class="col-md-3 ">
