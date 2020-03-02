@@ -1,5 +1,22 @@
 <%@ Page Language="C#" MasterPageFile="~/DMS.Master" AutoEventWireup="true" CodeBehind="AllRequisition.aspx.cs" Inherits="DMS.Master.AllRequisition" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+     <script>     var jquery_1_11_3_min_p = jQuery.noConflict();</script>
+    <script src="../js/bootstrap.min.js" type="text/javascript"></script>
+    <script>        var bootstrap_min_js = jQuery.noConflict();</script>
+    <link href="/Telerix/Style/kendo.default.min.css" rel="stylesheet" type="text/css" /><link href="/Telerix/Style/kendo.dataviz.min.css" rel="stylesheet" type="text/css" /><link href="/Telerix/Style/kendo.dataviz.default.min.css" rel="stylesheet" type="text/css" /><link href="/Telerix/Style/kendo.common.min.css" rel="stylesheet" type="text/css" /><link href="/Telerix/Style/kendo.rtl.min.css" rel="stylesheet" type="text/css" />
+      <link href="../Telerix/Style/kendo.default.mobile.min.css" rel="stylesheet" type="text/css" />
+    <link href="../Telerix/Style/kendo.common.min.css" rel="stylesheet" type="text/css" />
+    <link href="../Telerix/Style/kendo.rtl.min.css" rel="stylesheet" type="text/css" />
+    <link href="../Telerix/Style/kendo.default.min.css" rel="stylesheet" type="text/css" />
+    <link href="../Telerix/Style/kendo.dataviz.min.css" rel="stylesheet" type="text/css" />
+    <link href="../Telerix/Style/kendo.dataviz.default.min.css" rel="stylesheet" type="text/css" />
+    <script src="../Telerix/js/angular.min.js"></script>
+    <script src="../Telerix/js/kendo.all.min.js"></script>
+    <script>        var kendo_all_min_js = jQuery.noConflict();</script>
+    <script src="../Telerix/js/jquery.min.js"></script>
+    <script src="../Telerix/js/jszip.min.js" type="text/javascript"></script>
+    <script src="../JavaScript/Request.js" type="text/javascript"></script>
+
     <style>
          #RequisitionLineForm td:nth-child(1), #RequisitionLineForm th:nth-child(1) {    width: 50px;} 
          #RequisitionLineForm td:nth-child(6) input[type="text"]{    text-align:right; width: 90px;} 
@@ -29,7 +46,7 @@
                     
                        <button type="button" id="btnNew" class="btn btn-primary">
                             <i class="fa fa-plus-square"></i> New</button>                        
-                         <button type="button"  id=""  class="btn btn-primary">
+                         <button type="button"  id="btnsave"  class="btn btn-primary">
                             <i class="fa fa-save"></i> Save</button>
                          <button type="button"  id=""  class="btn btn-primary">
                             <i class="fa fa-repeat"></i> Recall</button>
@@ -59,57 +76,61 @@
                    <div class="col-12 col-xl-12 ">                    
                     <div class="card">
                         <div class="card-content">
-                      <div class="container">
+                      <div class="container"  id="RequisitionHeader" style=" display:none">
                           <h6 class="form-section">Requisition  Header</h6>
                       <div class="row  mt-1 ">
-                      <div class="col-md-3"> 
+                      <div class="col-md-3" id="divreqno" > 
                           <label class="headerPropery">Request No.</label>
                            : <label class="headerValue">0001</label>
                       </div>
                       
                            <div class="col-md-3"> 
                           <label class="headerPropery">Request Date</label>
-                                : <label class="headerValue">01-Feb-2020 4:08pm</label>
+                                : <label class="headerValue" id="lblreqdate"></label>
                       </div>
                       
-                           <div class="col-md-3"> 
+                           <div class="col-md-3" id="divlocatrion" > 
                           <label class="headerPropery">Location</label>
                                 : <label class="headerValue">Delhi</label>
                       </div>
-                       <div class="col-md-3"> 
+                       <div class="col-md-3" id="divcreationdate"> 
                           <label class="headerPropery">Creation Date</label>
                                 : <label class="headerValue">01-Feb-2020 4:08pm</label>
                       </div>
                       </div>
                            <div class="row pt5 ">
-                      <div class="col-md-3"> 
+                      <div class="col-md-3" id="divsubmissiondate" > 
                           <label class="headerPropery">Submission Date</label>
                            : <label class="headerValue">01-Feb-2020 4:08pm</label>
                       </div>
                       
-                           <div class="col-md-3"> 
+                           <div class="col-md-3" id="divcanceldate" > 
                           <label class="headerPropery">Cancel Request Date</label>
                                 : <label class="headerValue">01-Feb-2020 4:08pm</label>
                       </div>
                       
-                           <div class="col-md-3"> 
+                           <div class="col-md-3" id="divlastactivitydate" > 
                           <label class="headerPropery">Last Activity Date</label>
                                 : <label class="headerValue"> 01-Feb-2020 4:08pm</label>
                       </div>
-                       <div class="col-md-3"> 
+                       <div class="col-md-3" id="divtotaltime" > 
                           <label class="headerPropery">Total Time</label>
                                 : <label class="headerValue">24:10:12 Hours</label>
                       </div>
                       </div>
                            <div class="row  pt5 ">
-                      <div class="col-md-3"> 
-                          <label class="headerPropery">Last Activity Status</label>
+                      <div class="col-md-3" id="divlastactivityby" > 
+                          <label class="headerPropery">Last Activity By</label>
                            : <label class="headerValue">01-Feb-2020 4:08pm</label>
                       </div>
                       
-                           <div class="col-md-3"> 
-                          <label class="headerPropery">Last Activity By</label>
+                           <div class="col-md-3" id="divlastactivityfrom" > 
+                          <label class="headerPropery">Last Activity From</label>
                                 : <label class="headerValue">Mobile</label>
+                      </div>
+                                <div class="col-md-3" id="status" > 
+                          <label class="headerPropery">Status</label>
+                                : <label class="headerValue">saved</label>
                       </div>
                       
                       
@@ -133,7 +154,7 @@
   
     
     </div>
-                           <div class="col-md-3"  >
+                           <div class="col-md-3" id="processgraph" style="display:none" >
                                 
                                <div class="ColorStatus">
                                    <label class="headerPropery">Process Graph :</label>
@@ -148,12 +169,12 @@
 								                   <div class="input-group-prepend ">
 								                     <span class="input-group-text">Select Location</span>
 								                   </div>
-                                                 <%--  <input type="text"  class="form-control" id="ddlitemtype"/>--%>
-								                 <select  class="Operator">
+                                                   <input type="text"  class="form-control" id="ddllocation"/>
+								                <%-- <select  class="Operator">
 												<option value="Item">Location1</option>
                                                 <option value="Group">Location2</option>
 												<option value="All">Location3</option>                                        
-                                                </select>
+                                                </select>--%>
 							                    </div>
                                           </div>
     
@@ -180,7 +201,7 @@
                            <div class="table-responsive full-width" >
                              <table  class="table table-de mb-0"  id="RequisitionLineForm">
                 <thead>
-                  <tr>                    
+                  <tr> <th style="display:none"></th>                  
                     <th ><input type="checkbox" id="" onclick="InputcheckAll(this)"/> All</th>
                     <th><span class="customer">Search Item</span></th>
                     <th>Item No.</th>
@@ -190,7 +211,7 @@
                   </tr>
                 </thead>
               <tbody>
-                <tr> 
+               <%-- <tr> <td style="display:none"></td>
                 <td> <input type="checkbox" id="" class="chk_All" /></td>         
                 <td> 
                     <select  class="Operator">
@@ -198,6 +219,7 @@
                     <option value="Group">Item2</option>
 					<option value="All">Item3</option>                                        
                     </select>
+                     <input type="text" id="ddlitem_" placeholder="00"   class="fieldName"  autocomplete="off" /> 
                 </td>
                 <td> <label>0001</label> </td> 
                 <td> <label>Bottle</label> </td> 
@@ -259,7 +281,7 @@
                 <td> <label>Bottle5</label> </td> 
                 <td> <label>255</label> </td> 
                 <td> <input type="text" id="" placeholder="00"  onkeyup=""  class="fieldName"  autocomplete="off" /> </td>  
-                </tr>
+                </tr>--%>
               </tbody>
               </table>
 

@@ -7,6 +7,8 @@ using BusinessLibrary;
 using DMS.Entity;
 using DMS.Models;
 using System.Data;
+using DMS.Models.PartnerClasses;
+using DMS.Models.Requisition_Classes;
 
 namespace DMS.WebServices
 {
@@ -23,12 +25,13 @@ namespace DMS.WebServices
         DMSNEWEntities context = new DMSNEWEntities();
         BindADOResultset CommonManger = new BindADOResultset();
         [WebMethod]
-        public Dictionary<string, object> SaveRequisition(string RequestNumber, string RequestedDate, string Status, string CreatedBy, string JsonRequestionItems, string WareHouseId)
+        public Dictionary<string, object> SaveRequest(string Reqjson)
         {
             try
             {
-                DataSet dt = CommonManger.FillDatasetWithParam("DMS_InsertRequisition", "@QueryType", "@RequestNumber", "@RequestedDate", "@Status", "@CreatedBy", "@JsonRequestionItems", "@WareHouseId", "SaveRequisition", RequestNumber, RequestedDate, Status, CreatedBy, JsonRequestionItems, WareHouseId);
-                return ClsJson.JsonMethods.ToJson(dt);
+                var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_InsertRequisition]").With<Flag>()
+                 .Execute("@QueryType", "@JsonRequisitionItems", "SaveRequisition", Reqjson));
+                return results;
             }
             catch (Exception ex)
             {
@@ -252,12 +255,13 @@ namespace DMS.WebServices
             }
         }
         [WebMethod]
-        public Dictionary<string, object> BindItemMaster(string LocationId)
+        public Dictionary<string, object> BindItem(string entityId, string CountryId, string PartnerId, string LocationId)
         {
             try
             {
-                DataSet ds = CommonManger.FillDatasetWithParam("DMS_GetItemMaster", "@QueryType", "@LocationId", "ItemMaster", LocationId);
-                return ClsJson.JsonMethods.ToJson(ds);
+                var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_InsertRequisition]").With<BindItemddl>()
+                    .Execute("@QueryType", "@EntityId", "@CountryId", "@PartnerId", "@LocationId", "BindItem", entityId, CountryId, PartnerId,LocationId));
+                return results;
             }
             catch (Exception ex)
             {
@@ -266,12 +270,15 @@ namespace DMS.WebServices
         }
 
         [WebMethod]
-        public Dictionary<string, object> BindLocation()
+        public Dictionary<string, object> BindLocation(string entityId, string CountryId, string PartnerId)
         {
             try
             {
-                DataSet ds = CommonManger.FillDatasetWithParam("DMS_GetItemMaster", "@QueryType", "BindLocation");
-                return ClsJson.JsonMethods.ToJson(ds);
+                var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_InsertRequisition]").With<BindAddressForTax>()
+                   .Execute("@QueryType", "@EntityId", "@CountryId", "@Partner", "BindLocation", entityId, CountryId, PartnerId));
+                return results;
+
+
             }
             catch (Exception ex)
             {
