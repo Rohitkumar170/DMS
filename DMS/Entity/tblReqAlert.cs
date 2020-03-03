@@ -12,19 +12,14 @@ namespace DMS.Entity
     using System;
     using System.Collections.Generic;
     
-    public partial class tblRequisition
+    public partial class tblReqAlert
     {
-        public int RequisitionId { get; set; }
-        public string RequestNumber { get; set; }
-        public Nullable<int> WareHouseId { get; set; }
-        public Nullable<byte> Status { get; set; }
-        public bool IsActive { get; set; }
-        public bool IsDeleted { get; set; }
+        public int Alertid { get; set; }
+        public string AlertType { get; set; }
+        public Nullable<bool> IsActive { get; set; }
+        public Nullable<bool> IsDeleted { get; set; }
         public Nullable<long> CreatedBy { get; set; }
         public Nullable<long> UpdatedBy { get; set; }
-        public Nullable<bool> IsSubmitted { get; set; }
-        public Nullable<System.DateTime> RequestedDate { get; set; }
-        public Nullable<System.DateTime> SubmittedDate { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }
         public Nullable<System.DateTime> UpdatedOn { get; set; }
     }

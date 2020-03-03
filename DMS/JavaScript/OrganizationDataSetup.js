@@ -313,8 +313,6 @@ function BindEntity() {
         }
     });
 }
-
-
 function BindOrgParaddl(CountryId,EntityId) {
           var Countryname=kendo_all_min_js("#ddlcountry").data("kendoDropDownList").text();
           var cName=Countryname.split(' ');
@@ -376,8 +374,6 @@ function BindOrgParaddl(CountryId,EntityId) {
         }
     });
 }
-
-
 function appendColumn() {
    $('#tblOrgFields thead tr').empty();
    $('#tblOrgFields tbody').empty();
@@ -422,7 +418,6 @@ function appendColumn() {
         }
     });
 }
-
 //====================================== start code for BindAddress Fields================================\\
 function BindAddressFields(entityId, countryId) {
 
@@ -475,7 +470,6 @@ function BindAddressFields(entityId, countryId) {
 
 }
 //====================================== end code for BindAddress Fields================================\\
-
 //====================================== start code for Bind Fields Dropdowns  ================================\\
 function BindFieldsddl(TableName, ddlId) {
     var data = [];
@@ -534,10 +528,7 @@ function BindFieldsddl(TableName, ddlId) {
         }
     });
 }
-
 //====================================== end code for Bind Fields Dropdowns ================================\\
-
-
 //====================================== start code for ValidateAddress Box ================================\\
 function ValidateAddress() {
 
@@ -585,7 +576,6 @@ function ValidateAddress() {
     }
     return allow;
 }
-
 //====================================== end code for ValidateAddress Box ================================\\
 
 //====================================== start code for ValidateAddress Box ================================\\
@@ -607,14 +597,11 @@ function ValidateHeaderDropDown() {
    
     return allow;
 }
-
 //====================================== end code for ValidateAddress Box ================================\\+
-
 function RemoveClassEmp(a) {
     var id = a.id;
     $("#" + id).removeClass('validate');
 }
-
 function isValidEmail(email) {
     return /^[a-z0-9]+([-._][a-z0-9]+)*@([a-z0-9]+(-[a-z0-9]+)*\.)+[a-z]{2,4}$/.test(email)
         && /^(?=.{1,64}@.{4,64}$)(?=.{6,100}$).*/.test(email);
@@ -685,7 +672,6 @@ function CreateEmployeeJson() {
     });
 
 }
-
 function saveEmployee() {
    
     var EmpJson = JSON.stringify(EmployeeArray);
@@ -709,7 +695,6 @@ function saveEmployee() {
     });
 
 }
-
 function BindEmployee() {
     BindEmpAddress(GlobalEntityId, GlobalCountryId);
     var partid = 0;
@@ -808,7 +793,6 @@ function BindEmployee() {
         }
     });
 }
-
 function AddRowEmployee() {
     if (EmpCounter == 5) { EmpCounter++; }
     var markup = "<tr><td style='display:none'>" + EmpCounter + "</td><td><input type='checkbox' id='chk_" + EmpCounter + "' class='checkbox'/></td><td><label style='display:none' id='empid_" + EmpCounter + "'></label><input type='text' id='empname_" + EmpCounter + "' class='fieldName' onchange='' onkeyup='RemoveClassEmp(this)' autocomplete='off' /></td><td><input type='text' placeholder='' class='fieldName' id='empmobile_" + EmpCounter + "' autocomplete='off' onkeyup='RemoveClassEmp(this)' onkeypress='return isNumber(event)'   /></td><td><input type='text' placeholder='' class='fieldName' id='empemail_" + EmpCounter + "' autocomplete='off' onchange='' onkeypress='' onkeyup='RemoveClassEmp(this)' /></td><td><input type='text' id='empaddress_" + EmpCounter + "' class='fieldName' autocomplete='off' /></td><td><input type='checkbox' id='chkcredential_" + EmpCounter + "' class='checkbox' disabled = 'disabled' onclick='showCredentialpopup(this)' /></td><td><input type='checkbox' id='chkisactive_" + EmpCounter + "' class='checkbox' /></td></tr>"
@@ -817,7 +801,6 @@ function AddRowEmployee() {
     EmpCounter++;
 
 }
-
 function RemoveCredential() {
     var CreatedBy = jquery_1_11_3_min_p('#ContentPlaceHolder1_lblUserId').text();
     jquery_1_11_3_min_p.ajax({
@@ -833,7 +816,6 @@ function RemoveCredential() {
     });
 
 }
-
 function makeCredential() {
     var CreatedBy = jquery_1_11_3_min_p('#ContentPlaceHolder1_lblUserId').text();
     jquery_1_11_3_min_p.ajax({
@@ -865,8 +847,6 @@ function makeCredential() {
     });
 
 }
-
-
 function sendFile(file) {
     var formData = new FormData();
     formData.append('file', $('#f_UploadImage')[0].files[0]);
@@ -889,7 +869,6 @@ function sendFile(file) {
         }
     });
 }
-
 function showCredentialpopup(Data) {
     var id = [];
     id = Data.id;
@@ -919,8 +898,6 @@ function showCredentialpopup(Data) {
     }
    
 }
-
-
 //====================================== start code for Delete Address Box ================================\\
 function  deleteAddress(ele) { 
 
@@ -947,7 +924,6 @@ arr=id.split('_');
                  });
 }
 //====================================== end code for Delete Address Box ================================\\
-
 function Deleteaddress(Entityid, Countryid, Autoid,Deletediv) {
     jquery_1_11_3_min_p.ajax({
         type: "POST",
@@ -969,7 +945,6 @@ function Deleteaddress(Entityid, Countryid, Autoid,Deletediv) {
         }
     });
 }
-
 //====================================== start code for Remove validate Class ================================\\
 function RemoveClassAddressDiv(data) {
     var id = data.id;
@@ -989,7 +964,6 @@ function RemoveClassAddressDiv(data) {
         });
         
 }
-
 //====================================== end code for Remove validate Class ================================\\
 
 
@@ -1065,7 +1039,6 @@ function UpdateMakeAddressJson() {
     
 }
 //====================================== end code for Create Json Of Address Data ================================\\
-
 function SaveLocation(){
 
     var CreatedBy = jquery_1_11_3_min_p('#ContentPlaceHolder1_lblUserId').text();
@@ -1099,7 +1072,6 @@ function SaveLocation(){
     });
 
 }
-
 function UpdateLocation() {
 
     var CreatedBy = jquery_1_11_3_min_p('#ContentPlaceHolder1_lblUserId').text();
@@ -1138,16 +1110,13 @@ function UpdateLocation() {
     });
 
 }
-
 //====================================== end code for Save Partner Record ================================\\
-
 function RemoveClass(data) {
     var id = data.id;
     if (jquery_1_11_3_min_p('#' + id).val() != '') {
         jquery_1_11_3_min_p('#' + id).removeClass('validate');
     } 
 }
-
 function AddRow() {
 
 if(otherFieldsCounter==0)
@@ -1179,7 +1148,6 @@ var RowId = otherFieldsCounter+1; var markup=''; var flag=0;
    
 
 }
-
 function SaveParameterData()
 {
    var Country = jquery_1_11_3_min_p("#ddlcountry").data("kendoDropDownList").text();
@@ -1269,8 +1237,6 @@ var CountryId=kendo_all_min_js("#ddlcountry").val();
         }
     });
 }
-
-
 function BindOrgDataSetupGrid(searchtxt) {
  jquery_1_11_3_min_p("#TblOrgDataGrid tbody").empty();
     var wh = jquery_1_11_3_min_p(document).height();
@@ -1366,7 +1332,6 @@ jquery_1_11_3_min_p("#DivSearch").append(Searchfinaldiv);
 
 
 }
-
 function BindEmpAddress(Entityid,countryid) {
     Address = [];
     jquery_1_11_3_min_p.ajax({
@@ -1445,7 +1410,6 @@ function onOtherUnitBound(e) {
     bindSkillChk();
 
 }
-
 function bindSkillChk() {
     var chkInner = $("#hf").val().split(',');
     chkInner = chkInner.filter(a => a != '');
@@ -1453,7 +1417,6 @@ function bindSkillChk() {
         $('input[id*="chk_OtherUnit_' + data + '"]').prop("checked", true);
     })
 }
-
 function onClose(e) {
     var obj = this;
     var id = $(obj).attr('id');
@@ -1478,7 +1441,6 @@ function onClose(e) {
 
     }
 }
-
 var IsItemChecked = false;
 function UpdateIdInHiddenField(hf, id, IsAdd) {
     if (hf.value == "") {
@@ -1496,7 +1458,6 @@ function UpdateIdInHiddenField(hf, id, IsAdd) {
     }
 
 }  
-
 function DisplayOrgLocation(DataType,EntityId, countryId,ParameterId) {
  jquery_1_11_3_min_p('.noData').css('display', 'none');
 var counter=0;
@@ -1708,6 +1669,8 @@ var counter=0;
            });
 		   
      }
-
-
+function Findclick() {
+    $('#ContentPlaceHolder1_FileUpload').click();
+}
+function UploadFile() { $('#ContentPlaceHolder1_btnUpload4').click(); }
 

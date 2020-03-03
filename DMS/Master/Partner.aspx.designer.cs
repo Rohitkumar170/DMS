@@ -85,22 +85,22 @@ namespace DMS.Master {
         protected global::System.Web.UI.WebControls.Button btnUploadLegalField;
         
         /// <summary>
-        /// FileUpload3 control.
+        /// FileUploadEmp control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload FileUpload3;
+        protected global::System.Web.UI.WebControls.FileUpload FileUploadEmp;
         
         /// <summary>
-        /// Button4 control.
+        /// btnUploademp control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button4;
+        protected global::System.Web.UI.WebControls.Button btnUploademp;
         
         /// <summary>
         /// lblUserId control.

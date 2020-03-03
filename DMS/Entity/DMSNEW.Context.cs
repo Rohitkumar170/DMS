@@ -106,8 +106,6 @@ namespace DMS.Entity
         public virtual DbSet<tblPartnerGroup> tblPartnerGroups { get; set; }
         public virtual DbSet<tblPartner1> tblPartners1 { get; set; }
         public virtual DbSet<tblPartnerTax> tblPartnerTaxes { get; set; }
-        public virtual DbSet<tblRequisition> tblRequisitions { get; set; }
-        public virtual DbSet<tblRequisitionItemDetail> tblRequisitionItemDetails { get; set; }
         public virtual DbSet<tblRequisitionItemWarehous> tblRequisitionItemWarehouses { get; set; }
         public virtual DbSet<tblSequencetype> tblSequencetypes { get; set; }
         public virtual DbSet<tblServiceLog> tblServiceLogs { get; set; }
@@ -142,9 +140,15 @@ namespace DMS.Entity
         public virtual DbSet<tblZonewiseItem> tblZonewiseItems { get; set; }
         public virtual DbSet<TempFileSequenceline> TempFileSequencelines { get; set; }
         public virtual DbSet<testtable> testtables { get; set; }
-        public virtual DbSet<tblDhiraaguMaldives_StateorProvince> tblDhiraaguMaldives_StateorProvince { get; set; }
         public virtual DbSet<tblUserRole> tblUserRoles { get; set; }
         public virtual DbSet<Taxgroupformula> Taxgroupformulas { get; set; }
+        public virtual DbSet<tblEmpLocation> tblEmpLocations { get; set; }
+        public virtual DbSet<tblEmployee> tblEmployees { get; set; }
+        public virtual DbSet<tblDhiraaguAddressMaldive> tblDhiraaguAddressMaldives { get; set; }
+        public virtual DbSet<tblReqAlert> tblReqAlerts { get; set; }
+        public virtual DbSet<tblRequestControlSetup> tblRequestControlSetups { get; set; }
+        public virtual DbSet<tblRequestControlSetupline> tblRequestControlSetuplines { get; set; }
+        public virtual DbSet<tblRequisitionSetup> tblRequisitionSetups { get; set; }
     
         [DbFunction("DMSNEWEntities", "fn_split_string_to_column")]
         public virtual IQueryable<fn_split_string_to_column_Result> fn_split_string_to_column(string @string, string delimiter)
@@ -199,7 +203,7 @@ namespace DMS.Entity
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AngularTest_Result>("AngularTest", queryTypeParameter, nameParameter, mobileParameter, emailParameter, passwordParameter, empidParameter);
         }
     
-        public virtual ObjectResult<DMS_AdminSetUp_Result> DMS_AdminSetUp(string queryType, Nullable<long> loadMore, string ddlvalue, Nullable<long> userId, Nullable<long> fieldid, Nullable<long> partnerId, Nullable<int> countryid, Nullable<int> entityid, Nullable<long> createdBy, Nullable<long> partnerType, string partnerName, string contact, string location, string tableName, string parameterId, Nullable<long> updatedBy, Nullable<long> dataType, string addressLineJson, string countryJson, string jsonData, string jsonFields, string searchValue, string columnName, string insertQuery, string checkExist, string selectQuery, Nullable<int> orgflag, string partid, string ta, string column, Nullable<long> assigneid)
+        public virtual ObjectResult<DMS_AdminSetUp_Result> DMS_AdminSetUp(string queryType, Nullable<long> loadMore, string ddlvalue, Nullable<long> userId, Nullable<long> fieldid, Nullable<long> partnerId, Nullable<int> countryid, Nullable<int> entityid, Nullable<long> createdBy, Nullable<long> partnerType, string partnerName, string contact, string location, string tableName, string parameterId, Nullable<long> updatedBy, Nullable<long> dataType, string addressLineJson, string countryJson, string jsonData, string jsonFields, string searchValue, string columnName, string insertQuery, string checkExist, string selectQuery, Nullable<int> orgflag, string partid, string ta, string column, Nullable<long> assigneid, Nullable<long> columnid, Nullable<int> rEqtype, Nullable<decimal> reqval, Nullable<int> overallow, string requestcontrol, string description)
         {
             var queryTypeParameter = queryType != null ?
                 new ObjectParameter("QueryType", queryType) :
@@ -325,7 +329,31 @@ namespace DMS.Entity
                 new ObjectParameter("Assigneid", assigneid) :
                 new ObjectParameter("Assigneid", typeof(long));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DMS_AdminSetUp_Result>("DMS_AdminSetUp", queryTypeParameter, loadMoreParameter, ddlvalueParameter, userIdParameter, fieldidParameter, partnerIdParameter, countryidParameter, entityidParameter, createdByParameter, partnerTypeParameter, partnerNameParameter, contactParameter, locationParameter, tableNameParameter, parameterIdParameter, updatedByParameter, dataTypeParameter, addressLineJsonParameter, countryJsonParameter, jsonDataParameter, jsonFieldsParameter, searchValueParameter, columnNameParameter, insertQueryParameter, checkExistParameter, selectQueryParameter, orgflagParameter, partidParameter, taParameter, columnParameter, assigneidParameter);
+            var columnidParameter = columnid.HasValue ?
+                new ObjectParameter("Columnid", columnid) :
+                new ObjectParameter("Columnid", typeof(long));
+    
+            var rEqtypeParameter = rEqtype.HasValue ?
+                new ObjectParameter("REqtype", rEqtype) :
+                new ObjectParameter("REqtype", typeof(int));
+    
+            var reqvalParameter = reqval.HasValue ?
+                new ObjectParameter("Reqval", reqval) :
+                new ObjectParameter("Reqval", typeof(decimal));
+    
+            var overallowParameter = overallow.HasValue ?
+                new ObjectParameter("Overallow", overallow) :
+                new ObjectParameter("Overallow", typeof(int));
+    
+            var requestcontrolParameter = requestcontrol != null ?
+                new ObjectParameter("Requestcontrol", requestcontrol) :
+                new ObjectParameter("Requestcontrol", typeof(string));
+    
+            var descriptionParameter = description != null ?
+                new ObjectParameter("Description", description) :
+                new ObjectParameter("Description", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DMS_AdminSetUp_Result>("DMS_AdminSetUp", queryTypeParameter, loadMoreParameter, ddlvalueParameter, userIdParameter, fieldidParameter, partnerIdParameter, countryidParameter, entityidParameter, createdByParameter, partnerTypeParameter, partnerNameParameter, contactParameter, locationParameter, tableNameParameter, parameterIdParameter, updatedByParameter, dataTypeParameter, addressLineJsonParameter, countryJsonParameter, jsonDataParameter, jsonFieldsParameter, searchValueParameter, columnNameParameter, insertQueryParameter, checkExistParameter, selectQueryParameter, orgflagParameter, partidParameter, taParameter, columnParameter, assigneidParameter, columnidParameter, rEqtypeParameter, reqvalParameter, overallowParameter, requestcontrolParameter, descriptionParameter);
         }
     
         public virtual ObjectResult<DMS_AllItems_Result> DMS_AllItems(string queryType, Nullable<long> loadMore, Nullable<long> updatedBy, string jsonData, string searchValue)
@@ -424,7 +452,7 @@ namespace DMS.Entity
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DMS_COASetup_Result>("DMS_COASetup", queryTypeParameter, loadMoreParameter, countryidParameter, entityidParameter, jsondataParameter, searchvalueParameter, accountIdParameter);
         }
     
-        public virtual ObjectResult<DMS_Customers_Result> DMS_Customers(string queryType, Nullable<long> loadMore, Nullable<long> userId, Nullable<long> countryId, Nullable<long> entityId, Nullable<long> vendorId, string custType, string groupName, string description, Nullable<long> updatedBy, string parameterId, string jsonData, string jsonFields, string searchValue, string query, string taxJson, string tableName, string columnName, Nullable<long> createdBy, string partnerCode, string partnerName, string partnerRepresentative, Nullable<long> partnerType, Nullable<long> groupId, Nullable<long> accountId, Nullable<long> partnerId, Nullable<long> partnerStatus, Nullable<long> partnerGroup, string partId, string insertQuery, string existingLocation)
+        public virtual ObjectResult<DMS_Customers_Result> DMS_Customers(string queryType, Nullable<long> loadMore, Nullable<long> userId, Nullable<long> countryId, Nullable<long> entityId, Nullable<long> vendorId, string custType, string groupName, string description, Nullable<long> updatedBy, string parameterId, string jsonData, string jsonFields, string searchValue, string query, string taxJson, string tableName, string columnName, Nullable<long> createdBy, string partnerCode, string partnerName, string partnerRepresentative, Nullable<long> partnerType, Nullable<long> groupId, Nullable<long> accountId, Nullable<long> partnerId, Nullable<long> partnerStatus, Nullable<long> partnerGroup, string partId, string insertQuery, string existingLocation, string empjson, string empAddressjson)
         {
             var queryTypeParameter = queryType != null ?
                 new ObjectParameter("QueryType", queryType) :
@@ -550,7 +578,15 @@ namespace DMS.Entity
                 new ObjectParameter("ExistingLocation", existingLocation) :
                 new ObjectParameter("ExistingLocation", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DMS_Customers_Result>("DMS_Customers", queryTypeParameter, loadMoreParameter, userIdParameter, countryIdParameter, entityIdParameter, vendorIdParameter, custTypeParameter, groupNameParameter, descriptionParameter, updatedByParameter, parameterIdParameter, jsonDataParameter, jsonFieldsParameter, searchValueParameter, queryParameter, taxJsonParameter, tableNameParameter, columnNameParameter, createdByParameter, partnerCodeParameter, partnerNameParameter, partnerRepresentativeParameter, partnerTypeParameter, groupIdParameter, accountIdParameter, partnerIdParameter, partnerStatusParameter, partnerGroupParameter, partIdParameter, insertQueryParameter, existingLocationParameter);
+            var empjsonParameter = empjson != null ?
+                new ObjectParameter("Empjson", empjson) :
+                new ObjectParameter("Empjson", typeof(string));
+    
+            var empAddressjsonParameter = empAddressjson != null ?
+                new ObjectParameter("EmpAddressjson", empAddressjson) :
+                new ObjectParameter("EmpAddressjson", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DMS_Customers_Result>("DMS_Customers", queryTypeParameter, loadMoreParameter, userIdParameter, countryIdParameter, entityIdParameter, vendorIdParameter, custTypeParameter, groupNameParameter, descriptionParameter, updatedByParameter, parameterIdParameter, jsonDataParameter, jsonFieldsParameter, searchValueParameter, queryParameter, taxJsonParameter, tableNameParameter, columnNameParameter, createdByParameter, partnerCodeParameter, partnerNameParameter, partnerRepresentativeParameter, partnerTypeParameter, groupIdParameter, accountIdParameter, partnerIdParameter, partnerStatusParameter, partnerGroupParameter, partIdParameter, insertQueryParameter, existingLocationParameter, empjsonParameter, empAddressjsonParameter);
         }
     
         public virtual ObjectResult<DMS_DiscountSetup_Result> DMS_DiscountSetup(string queryType, Nullable<long> countryid, Nullable<long> loaddata, Nullable<int> entityid, Nullable<long> createdBy, Nullable<long> updatedBy, string jsonData, string lineJson, Nullable<long> itemid, Nullable<long> loadMore, Nullable<long> discountgrpId, string itemType, Nullable<long> userId, Nullable<long> typeFlag)
@@ -830,7 +866,7 @@ namespace DMS.Entity
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DMS_ImportUnit", unitCodeParameter, unitParameter, descriptionParameter, createdByParameter);
         }
     
-        public virtual ObjectResult<Nullable<int>> DMS_InsertRequisition(string queryType, string requestNumber, string createdBy, string requestedDate, string wareHouseId, string submittedDate, string status, string jsonRequestionItems, string jsonUpdateRequestItems, string updatedBy, string requisitionId, Nullable<long> loadMore)
+        public virtual ObjectResult<Nullable<int>> DMS_InsertRequisition(string queryType, string requestNumber, string createdBy, string requestedDate, string wareHouseId, string submittedDate, string status, string jsonRequisitionItems, string jsonUpdateRequestItems, string updatedBy, string requisitionId, Nullable<long> loadMore, Nullable<long> entityId, Nullable<long> countryId, string partner, Nullable<long> partnerId, Nullable<long> locationId)
         {
             var queryTypeParameter = queryType != null ?
                 new ObjectParameter("QueryType", queryType) :
@@ -860,9 +896,9 @@ namespace DMS.Entity
                 new ObjectParameter("Status", status) :
                 new ObjectParameter("Status", typeof(string));
     
-            var jsonRequestionItemsParameter = jsonRequestionItems != null ?
-                new ObjectParameter("JsonRequestionItems", jsonRequestionItems) :
-                new ObjectParameter("JsonRequestionItems", typeof(string));
+            var jsonRequisitionItemsParameter = jsonRequisitionItems != null ?
+                new ObjectParameter("JsonRequisitionItems", jsonRequisitionItems) :
+                new ObjectParameter("JsonRequisitionItems", typeof(string));
     
             var jsonUpdateRequestItemsParameter = jsonUpdateRequestItems != null ?
                 new ObjectParameter("JsonUpdateRequestItems", jsonUpdateRequestItems) :
@@ -880,7 +916,27 @@ namespace DMS.Entity
                 new ObjectParameter("loadMore", loadMore) :
                 new ObjectParameter("loadMore", typeof(long));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("DMS_InsertRequisition", queryTypeParameter, requestNumberParameter, createdByParameter, requestedDateParameter, wareHouseIdParameter, submittedDateParameter, statusParameter, jsonRequestionItemsParameter, jsonUpdateRequestItemsParameter, updatedByParameter, requisitionIdParameter, loadMoreParameter);
+            var entityIdParameter = entityId.HasValue ?
+                new ObjectParameter("EntityId", entityId) :
+                new ObjectParameter("EntityId", typeof(long));
+    
+            var countryIdParameter = countryId.HasValue ?
+                new ObjectParameter("CountryId", countryId) :
+                new ObjectParameter("CountryId", typeof(long));
+    
+            var partnerParameter = partner != null ?
+                new ObjectParameter("Partner", partner) :
+                new ObjectParameter("Partner", typeof(string));
+    
+            var partnerIdParameter = partnerId.HasValue ?
+                new ObjectParameter("PartnerId", partnerId) :
+                new ObjectParameter("PartnerId", typeof(long));
+    
+            var locationIdParameter = locationId.HasValue ?
+                new ObjectParameter("LocationId", locationId) :
+                new ObjectParameter("LocationId", typeof(long));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("DMS_InsertRequisition", queryTypeParameter, requestNumberParameter, createdByParameter, requestedDateParameter, wareHouseIdParameter, submittedDateParameter, statusParameter, jsonRequisitionItemsParameter, jsonUpdateRequestItemsParameter, updatedByParameter, requisitionIdParameter, loadMoreParameter, entityIdParameter, countryIdParameter, partnerParameter, partnerIdParameter, locationIdParameter);
         }
     
         public virtual ObjectResult<DMS_Item_Result> DMS_Item(string queryType, Nullable<int> countryid, Nullable<int> entityid, Nullable<long> createdBy, Nullable<long> updatedBy, Nullable<long> unitclass, string jsonData, string itemJson, string baseUnit, string skuJson, string unit, string otherUnitJson, string convertedvalueJson, Nullable<long> itemsid, Nullable<long> itemIddbl, string searchValue, Nullable<long> loadMore)
@@ -1499,7 +1555,7 @@ namespace DMS.Entity
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DMS_Transactions_Result>("DMS_Transactions", queryTypeParameter, countryidParameter, entityidParameter, createdByParameter, updatedByParameter, jsonDataParameter, itemidParameter, loadMoreParameter, tableNameParameter);
         }
     
-        public virtual int DMS_UserSetup(string queryType, string emailid, string password, string passwordKey, Nullable<long> userId, Nullable<long> userTypeId, Nullable<long> entityId, Nullable<long> countryId, Nullable<long> loaddata, string searchvalue, string partId, string passKey, string entityDataJson, Nullable<int> isactive)
+        public virtual int DMS_UserSetup(string queryType, string emailid, string password, string passwordKey, Nullable<long> userId, Nullable<long> userTypeId, Nullable<long> entityId, Nullable<long> countryId, Nullable<long> loaddata, string searchvalue, string partId, string passKey, string entityDataJson, Nullable<int> isactive, Nullable<long> empid, Nullable<long> createdby, string imgpath)
         {
             var queryTypeParameter = queryType != null ?
                 new ObjectParameter("QueryType", queryType) :
@@ -1557,7 +1613,19 @@ namespace DMS.Entity
                 new ObjectParameter("Isactive", isactive) :
                 new ObjectParameter("Isactive", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DMS_UserSetup", queryTypeParameter, emailidParameter, passwordParameter, passwordKeyParameter, userIdParameter, userTypeIdParameter, entityIdParameter, countryIdParameter, loaddataParameter, searchvalueParameter, partIdParameter, passKeyParameter, entityDataJsonParameter, isactiveParameter);
+            var empidParameter = empid.HasValue ?
+                new ObjectParameter("empid", empid) :
+                new ObjectParameter("empid", typeof(long));
+    
+            var createdbyParameter = createdby.HasValue ?
+                new ObjectParameter("createdby", createdby) :
+                new ObjectParameter("createdby", typeof(long));
+    
+            var imgpathParameter = imgpath != null ?
+                new ObjectParameter("imgpath", imgpath) :
+                new ObjectParameter("imgpath", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DMS_UserSetup", queryTypeParameter, emailidParameter, passwordParameter, passwordKeyParameter, userIdParameter, userTypeIdParameter, entityIdParameter, countryIdParameter, loaddataParameter, searchvalueParameter, partIdParameter, passKeyParameter, entityDataJsonParameter, isactiveParameter, empidParameter, createdbyParameter, imgpathParameter);
         }
     
         public virtual int DMSBindSequence(Nullable<int> pageid, Nullable<int> fieldid, Nullable<int> countryid, Nullable<int> entityid, string queryType)
@@ -2089,6 +2157,53 @@ namespace DMS.Entity
                 new ObjectParameter("MaximumQty", typeof(decimal));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DMS_IMPORTBULKAssigneditem", partneridParameter, createdByParameter, locationidParameter, entityIdParameter, countryIdParameter, itemIdParameter, minimumQtyParameter, maximumQtyParameter);
+        }
+    
+        public virtual int BindLocation()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("BindLocation");
+        }
+    
+        public virtual ObjectResult<BindLocations_Result> BindLocations()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BindLocations_Result>("BindLocations");
+        }
+    
+        public virtual int DMSImport_Employee(string empName, string empMobileNo, string empEmailId, Nullable<long> countryId, Nullable<long> entityId, Nullable<long> createdBy, Nullable<long> addressId, Nullable<int> businessID)
+        {
+            var empNameParameter = empName != null ?
+                new ObjectParameter("EmpName", empName) :
+                new ObjectParameter("EmpName", typeof(string));
+    
+            var empMobileNoParameter = empMobileNo != null ?
+                new ObjectParameter("EmpMobileNo", empMobileNo) :
+                new ObjectParameter("EmpMobileNo", typeof(string));
+    
+            var empEmailIdParameter = empEmailId != null ?
+                new ObjectParameter("EmpEmailId", empEmailId) :
+                new ObjectParameter("EmpEmailId", typeof(string));
+    
+            var countryIdParameter = countryId.HasValue ?
+                new ObjectParameter("CountryId", countryId) :
+                new ObjectParameter("CountryId", typeof(long));
+    
+            var entityIdParameter = entityId.HasValue ?
+                new ObjectParameter("EntityId", entityId) :
+                new ObjectParameter("EntityId", typeof(long));
+    
+            var createdByParameter = createdBy.HasValue ?
+                new ObjectParameter("CreatedBy", createdBy) :
+                new ObjectParameter("CreatedBy", typeof(long));
+    
+            var addressIdParameter = addressId.HasValue ?
+                new ObjectParameter("AddressId", addressId) :
+                new ObjectParameter("AddressId", typeof(long));
+    
+            var businessIDParameter = businessID.HasValue ?
+                new ObjectParameter("BusinessID", businessID) :
+                new ObjectParameter("BusinessID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DMSImport_Employee", empNameParameter, empMobileNoParameter, empEmailIdParameter, countryIdParameter, entityIdParameter, createdByParameter, addressIdParameter, businessIDParameter);
         }
     }
 }

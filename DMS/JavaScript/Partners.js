@@ -1773,6 +1773,10 @@ function UploadFile() { $('#ContentPlaceHolder1_btnUpload').click(); }
 function Findclick() {
     $('#ContentPlaceHolder1_FileUpload').click();
 }
+function FindclickEmp() {
+    $('#ContentPlaceHolder1_FileUploadEmp').click();
+}
+function UploadFileEmp() { $('#ContentPlaceHolder1_btnUploademp').click(); }
 function UploadFileAddress() { $('#ContentPlaceHolder1_btnUploadAddress').click(); }
 function FindclickAddress() {
     $('#ContentPlaceHolder1_FileUploadAddress').click();

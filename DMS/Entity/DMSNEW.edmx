@@ -237,19 +237,25 @@
           <Property Name="UpdatedOn" Type="smalldatetime" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'DMSNEW.dbo.tblDhiraaguMaldives_StateorProvince' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="tblDhiraaguMaldives_StateorProvince">
+warning 6002: The table/view 'DMSNEW.dbo.tblDhiraaguAddressMaldives' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tblDhiraaguAddressMaldives">
           <Key>
-            <PropertyRef Name="StateorProvinceAutoid" />
-            <PropertyRef Name="StateCode" />
-            <PropertyRef Name="StateName" />
+            <PropertyRef Name="AutoId" />
           </Key>
-          <Property Name="StateorProvinceAutoid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="StateCode" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="StateName" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="ParentValue" Type="bigint" />
+          <Property Name="AutoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LocationCode" Type="varchar" MaxLength="250" />
+          <Property Name="LocationName" Type="varchar" MaxLength="250" />
+          <Property Name="LocationDescription" Type="varchar" MaxLength="250" />
+          <Property Name="AddressLine1" Type="varchar" MaxLength="250" />
+          <Property Name="AddressLine2" Type="varchar" MaxLength="250" />
+          <Property Name="P.O.Box" Type="varchar" MaxLength="250" />
+          <Property Name="City" Type="varchar" MaxLength="250" />
+          <Property Name="ZipCode" Type="varchar" MaxLength="250" />
+          <Property Name="Atoll" Type="varchar" MaxLength="250" />
+          <Property Name="CountryId" Type="bigint" />
           <Property Name="EntityId" Type="bigint" />
-          <Property Name="ParentId" Type="bigint" />
+          <Property Name="PartnerId" Type="bigint" />
+          <Property Name="LocationFlag" Type="bigint" />
           <Property Name="CreatedOn" Type="datetime" />
           <Property Name="UpdatedOn" Type="varchar" MaxLength="100" />
           <Property Name="CreatedBy" Type="bigint" />
@@ -320,6 +326,42 @@ warning 6002: The table/view 'DMSNEW.dbo.tblDhiraaguMaldives_StateorProvince' do
           <Property Name="DiscountValue" Type="decimal" Precision="18" Scale="3" />
           <Property Name="EntityId" Type="bigint" />
           <Property Name="CountryId" Type="bigint" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="CreatedBy" Type="bigint" />
+          <Property Name="UpdatedBy" Type="bigint" />
+          <Property Name="CreatedOn" Type="smalldatetime" />
+          <Property Name="UpdatedOn" Type="smalldatetime" />
+        </EntityType>
+        <EntityType Name="tblEmpLocation">
+          <Key>
+            <PropertyRef Name="EmpLocId" />
+          </Key>
+          <Property Name="EmpLocId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Empid" Type="bigint" />
+          <Property Name="AddressId" Type="bigint" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="CreatedBy" Type="bigint" />
+          <Property Name="UpdatedBy" Type="bigint" />
+          <Property Name="CreatedOn" Type="smalldatetime" />
+          <Property Name="UpdatedOn" Type="smalldatetime" />
+        </EntityType>
+        <EntityType Name="tblEmployee">
+          <Key>
+            <PropertyRef Name="Empid" />
+          </Key>
+          <Property Name="Empid" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmpName" Type="varchar" MaxLength="250" />
+          <Property Name="EmpMobileNo" Type="varchar" MaxLength="50" />
+          <Property Name="EmpEmailId" Type="nvarchar" MaxLength="250" />
+          <Property Name="CountryId" Type="bigint" />
+          <Property Name="EntityId" Type="bigint" />
+          <Property Name="ImagePath" Type="nvarchar" MaxLength="500" />
+          <Property Name="Flag" Type="int" />
+          <Property Name="BussinessId" Type="bigint" />
+          <Property Name="IsEmail" Type="int" />
+          <Property Name="IsCreadential" Type="int" />
           <Property Name="IsActive" Type="bit" />
           <Property Name="IsDeleted" Type="bit" />
           <Property Name="CreatedBy" Type="bigint" />
@@ -1285,52 +1327,54 @@ warning 6002: The table/view 'DMSNEW.dbo.tblDhiraaguMaldives_StateorProvince' do
           <Property Name="CreatedOn" Type="smalldatetime" />
           <Property Name="UpdatedOn" Type="smalldatetime" />
         </EntityType>
-        <EntityType Name="tblRequisition">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DMSNEW.dbo.tblReqAlert' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tblReqAlert">
           <Key>
-            <PropertyRef Name="RequisitionId" />
+            <PropertyRef Name="Alertid" />
           </Key>
-          <Property Name="RequisitionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="RequestNumber" Type="varchar" MaxLength="100" />
-          <Property Name="WareHouseId" Type="int" />
-          <Property Name="Status" Type="tinyint" />
-          <Property Name="IsActive" Type="bit" Nullable="false" />
-          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="Alertid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AlertType" Type="varchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsDeleted" Type="bit" />
           <Property Name="CreatedBy" Type="bigint" />
           <Property Name="UpdatedBy" Type="bigint" />
-          <Property Name="IsSubmitted" Type="bit" />
-          <Property Name="RequestedDate" Type="smalldatetime" />
-          <Property Name="SubmittedDate" Type="date" />
           <Property Name="CreatedOn" Type="smalldatetime" />
           <Property Name="UpdatedOn" Type="smalldatetime" />
         </EntityType>
-        <EntityType Name="tblRequisitionItemDetails">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DMSNEW.dbo.tblRequestControlSetup' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tblRequestControlSetup">
           <Key>
-            <PropertyRef Name="RequestDetId" />
+            <PropertyRef Name="ReqCtrlSetId" />
           </Key>
-          <Property Name="RequestDetId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="RequisitionId" Type="int" Nullable="false" />
-          <Property Name="ItemSKUId" Type="bigint" />
-          <Property Name="LocationId" Type="bigint" />
-          <Property Name="AXitemId" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="RequestedWareHouse" Type="nvarchar" MaxLength="50" />
-          <Property Name="RequestedQty" Type="decimal" Precision="18" Scale="3" />
-          <Property Name="ApprovedQty" Type="decimal" Precision="18" Scale="3" />
-          <Property Name="ShippedQty" Type="decimal" Precision="18" Scale="3" />
-          <Property Name="ReceivedQty" Type="bigint" />
-          <Property Name="RemainingQty" Type="decimal" Precision="18" Scale="3" />
-          <Property Name="TransferOrder" Type="varchar" MaxLength="100" />
-          <Property Name="Remarks" Type="nvarchar" MaxLength="100" />
-          <Property Name="ApprovedBy" Type="bigint" />
-          <Property Name="ShippedBY" Type="bigint" />
-          <Property Name="ReceiveBy" Type="bigint" />
-          <Property Name="LineStatus" Type="bigint" />
-          <Property Name="ShipingReason" Type="varchar" MaxLength="100" />
-          <Property Name="ReceivingReason" Type="nvarchar" MaxLength="250" />
-          <Property Name="ApprovedDate" Type="datetime" />
-          <Property Name="shippedDate" Type="datetime" />
-          <Property Name="ReceiveDate" Type="datetime" />
-          <Property Name="ApprovedFlag" Type="bit" />
-          <Property Name="ShippingFlag" Type="int" />
+          <Property Name="ReqCtrlSetId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CountryId" Type="int" />
+          <Property Name="EntityId" Type="int" />
+          <Property Name="EntityEmpId" Type="int" />
+          <Property Name="AllowOverQty" Type="int" />
+          <Property Name="CreatedBy" Type="bigint" />
+          <Property Name="UpdatedBy" Type="bigint" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="CreatedOn" Type="smalldatetime" />
+          <Property Name="UpdatedOn" Type="smalldatetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DMSNEW.dbo.tblRequestControlSetupline' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tblRequestControlSetupline">
+          <Key>
+            <PropertyRef Name="RequestControlPartid" />
+          </Key>
+          <Property Name="RequestControlPartid" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ReqCtrlSetId" Type="bigint" />
+          <Property Name="PartnerEmpId" Type="bigint" />
+          <Property Name="CreatedBy" Type="bigint" />
+          <Property Name="UpdatedBy" Type="bigint" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="CreatedOn" Type="smalldatetime" />
+          <Property Name="UpdatedOn" Type="smalldatetime" />
         </EntityType>
         <EntityType Name="tblRequisitionItemWarehouses">
           <Key>
@@ -1346,6 +1390,25 @@ warning 6002: The table/view 'DMSNEW.dbo.tblDhiraaguMaldives_StateorProvince' do
           <Property Name="CreatedOn" Type="smalldatetime" />
           <Property Name="UpdatedOn" Type="smalldatetime" />
           <Property Name="ShipFlag" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DMSNEW.dbo.tblRequisitionSetup' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tblRequisitionSetup">
+          <Key>
+            <PropertyRef Name="RAlertid" />
+          </Key>
+          <Property Name="RAlertid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EntityId" Type="int" />
+          <Property Name="CountryId" Type="int" />
+          <Property Name="ReqFormat" Type="int" />
+          <Property Name="Reqvalue" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="Description" Type="nvarchar" MaxLength="200" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="CreatedBy" Type="bigint" />
+          <Property Name="UpdatedBy" Type="bigint" />
+          <Property Name="CreatedOn" Type="smalldatetime" />
+          <Property Name="UpdatedOn" Type="smalldatetime" />
         </EntityType>
         <EntityType Name="tblSequencetype">
           <Key>
@@ -1646,6 +1709,8 @@ warning 6002: The table/view 'DMSNEW.dbo.tblDhiraaguMaldives_StateorProvince' do
           <Property Name="UserRole" Type="int" />
           <Property Name="Password" Type="nvarchar" MaxLength="100" />
           <Property Name="PasswordKey" Type="nvarchar" MaxLength="100" />
+          <Property Name="EmpFlag" Type="int" />
+          <Property Name="EmployeeId" Type="bigint" />
           <Property Name="WareHouseId" Type="bigint" />
           <Property Name="IsActive" Type="bit" />
           <Property Name="IsDeleted" Type="bit" />
@@ -1923,6 +1988,11 @@ warning 6002: The table/view 'DMSNEW.dbo.Taxgroupformula' does not have a primar
           <Parameter Name="Empid" Type="int" Mode="In" />
         </Function>
         <Function Name="BINDGROUP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="BindLocation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="BindLocations" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="BindPartneremployee" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar(max)">
+          <Parameter Name="EmpId" Type="nvarchar(max)" Mode="In" />
+        </Function>
         <Function Name="BINDUNITS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="ConcateAllFormula" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar(max)">
           <Parameter Name="fromdate" Type="smalldatetime" Mode="In" />
@@ -1971,6 +2041,12 @@ warning 6002: The table/view 'DMSNEW.dbo.Taxgroupformula' does not have a primar
           <Parameter Name="ta" Type="varchar" Mode="In" />
           <Parameter Name="column" Type="varchar" Mode="In" />
           <Parameter Name="Assigneid" Type="bigint" Mode="In" />
+          <Parameter Name="Columnid" Type="bigint" Mode="In" />
+          <Parameter Name="REqtype" Type="int" Mode="In" />
+          <Parameter Name="Reqval" Type="decimal" Mode="In" />
+          <Parameter Name="Overallow" Type="int" Mode="In" />
+          <Parameter Name="Requestcontrol" Type="varchar(max)" Mode="In" />
+          <Parameter Name="Description" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="DMS_AllItems" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="QueryType" Type="varchar" Mode="In" />
@@ -2034,6 +2110,8 @@ warning 6002: The table/view 'DMSNEW.dbo.Taxgroupformula' does not have a primar
           <Parameter Name="PartId" Type="varchar" Mode="In" />
           <Parameter Name="InsertQuery" Type="nvarchar(max)" Mode="In" />
           <Parameter Name="ExistingLocation" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Empjson" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="EmpAddressjson" Type="nvarchar(max)" Mode="In" />
         </Function>
         <Function Name="DMS_DiscountSetup" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="QueryType" Type="varchar" Mode="In" />
@@ -2203,11 +2281,16 @@ warning 6002: The table/view 'DMSNEW.dbo.Taxgroupformula' does not have a primar
           <Parameter Name="WareHouseId" Type="varchar" Mode="In" />
           <Parameter Name="SubmittedDate" Type="varchar" Mode="In" />
           <Parameter Name="Status" Type="varchar" Mode="In" />
-          <Parameter Name="JsonRequestionItems" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="JsonRequisitionItems" Type="nvarchar(max)" Mode="In" />
           <Parameter Name="JsonUpdateRequestItems" Type="nvarchar(max)" Mode="In" />
           <Parameter Name="UpdatedBy" Type="varchar" Mode="In" />
           <Parameter Name="RequisitionId" Type="varchar" Mode="In" />
           <Parameter Name="loadMore" Type="bigint" Mode="In" />
+          <Parameter Name="EntityId" Type="bigint" Mode="In" />
+          <Parameter Name="CountryId" Type="bigint" Mode="In" />
+          <Parameter Name="Partner" Type="varchar" Mode="In" />
+          <Parameter Name="PartnerId" Type="bigint" Mode="In" />
+          <Parameter Name="LocationId" Type="bigint" Mode="In" />
         </Function>
         <Function Name="DMS_Item" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="QueryType" Type="varchar" Mode="In" />
@@ -2389,6 +2472,9 @@ warning 6002: The table/view 'DMSNEW.dbo.Taxgroupformula' does not have a primar
           <Parameter Name="passKey" Type="varchar" Mode="In" />
           <Parameter Name="EntityDataJson" Type="nvarchar(max)" Mode="In" />
           <Parameter Name="Isactive" Type="int" Mode="In" />
+          <Parameter Name="empid" Type="bigint" Mode="In" />
+          <Parameter Name="createdby" Type="bigint" Mode="In" />
+          <Parameter Name="imgpath" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="DMSBindSequence" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Pageid" Type="int" Mode="In" />
@@ -2396,6 +2482,16 @@ warning 6002: The table/view 'DMSNEW.dbo.Taxgroupformula' does not have a primar
           <Parameter Name="Countryid" Type="int" Mode="In" />
           <Parameter Name="Entityid" Type="int" Mode="In" />
           <Parameter Name="QueryType" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="DMSImport_Employee" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EmpName" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="EmpMobileNo" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="EmpEmailId" Type="nvarchar" Mode="In" />
+          <Parameter Name="CountryId" Type="bigint" Mode="In" />
+          <Parameter Name="EntityId" Type="bigint" Mode="In" />
+          <Parameter Name="CreatedBy" Type="bigint" Mode="In" />
+          <Parameter Name="AddressId" Type="bigint" Mode="In" />
+          <Parameter Name="BusinessID" Type="int" Mode="In" />
         </Function>
         <Function Name="DMSTestBindSequence" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="ENTITYTEST" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -2502,6 +2598,8 @@ warning 6002: The table/view 'DMSNEW.dbo.Taxgroupformula' does not have a primar
           <EntitySet Name="tblDiscountGroupHeader" EntityType="Self.tblDiscountGroupHeader" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblDiscountGroupLine" EntityType="Self.tblDiscountGroupLine" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblDiscountGroupLineTemp" EntityType="Self.tblDiscountGroupLineTemp" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblEmpLocation" EntityType="Self.tblEmpLocation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblEmployee" EntityType="Self.tblEmployee" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblEntity" EntityType="Self.tblEntity" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblFielddatatype" EntityType="Self.tblFielddatatype" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblFieldsetup" EntityType="Self.tblFieldsetup" Schema="dbo" store:Type="Tables" />
@@ -2564,8 +2662,6 @@ warning 6002: The table/view 'DMSNEW.dbo.Taxgroupformula' does not have a primar
           <EntitySet Name="tblPartnerGroup" EntityType="Self.tblPartnerGroup" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblPartners" EntityType="Self.tblPartners" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblPartnerTax" EntityType="Self.tblPartnerTax" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tblRequisition" EntityType="Self.tblRequisition" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tblRequisitionItemDetails" EntityType="Self.tblRequisitionItemDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblRequisitionItemWarehouses" EntityType="Self.tblRequisitionItemWarehouses" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblSequencetype" EntityType="Self.tblSequencetype" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblServiceLog" EntityType="Self.tblServiceLog" Schema="dbo" store:Type="Tables" />
@@ -2600,21 +2696,85 @@ warning 6002: The table/view 'DMSNEW.dbo.Taxgroupformula' does not have a primar
           <EntitySet Name="tblZonewiseItems" EntityType="Self.tblZonewiseItems" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TempFileSequenceline" EntityType="Self.TempFileSequenceline" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="testtable" EntityType="Self.testtable" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tblDhiraaguMaldives_StateorProvince" EntityType="Self.tblDhiraaguMaldives_StateorProvince" store:Type="Tables" store:Schema="dbo">
+          <EntitySet Name="tblDhiraaguAddressMaldives" EntityType="Self.tblDhiraaguAddressMaldives" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
-    [tblDhiraaguMaldives_StateorProvince].[StateorProvinceAutoid] AS [StateorProvinceAutoid], 
-    [tblDhiraaguMaldives_StateorProvince].[StateCode] AS [StateCode], 
-    [tblDhiraaguMaldives_StateorProvince].[StateName] AS [StateName], 
-    [tblDhiraaguMaldives_StateorProvince].[ParentValue] AS [ParentValue], 
-    [tblDhiraaguMaldives_StateorProvince].[EntityId] AS [EntityId], 
-    [tblDhiraaguMaldives_StateorProvince].[ParentId] AS [ParentId], 
-    [tblDhiraaguMaldives_StateorProvince].[CreatedOn] AS [CreatedOn], 
-    [tblDhiraaguMaldives_StateorProvince].[UpdatedOn] AS [UpdatedOn], 
-    [tblDhiraaguMaldives_StateorProvince].[CreatedBy] AS [CreatedBy], 
-    [tblDhiraaguMaldives_StateorProvince].[UpdatedBy] AS [UpdatedBy], 
-    [tblDhiraaguMaldives_StateorProvince].[IsActive] AS [IsActive], 
-    [tblDhiraaguMaldives_StateorProvince].[IsDeleted] AS [IsDeleted]
-    FROM [dbo].[tblDhiraaguMaldives_StateorProvince] AS [tblDhiraaguMaldives_StateorProvince]</DefiningQuery>
+    [tblDhiraaguAddressMaldives].[AutoId] AS [AutoId], 
+    [tblDhiraaguAddressMaldives].[LocationCode] AS [LocationCode], 
+    [tblDhiraaguAddressMaldives].[LocationName] AS [LocationName], 
+    [tblDhiraaguAddressMaldives].[LocationDescription] AS [LocationDescription], 
+    [tblDhiraaguAddressMaldives].[AddressLine1] AS [AddressLine1], 
+    [tblDhiraaguAddressMaldives].[AddressLine2] AS [AddressLine2], 
+    [tblDhiraaguAddressMaldives].[P.O.Box] AS [P.O.Box], 
+    [tblDhiraaguAddressMaldives].[City] AS [City], 
+    [tblDhiraaguAddressMaldives].[ZipCode] AS [ZipCode], 
+    [tblDhiraaguAddressMaldives].[Atoll] AS [Atoll], 
+    [tblDhiraaguAddressMaldives].[CountryId] AS [CountryId], 
+    [tblDhiraaguAddressMaldives].[EntityId] AS [EntityId], 
+    [tblDhiraaguAddressMaldives].[PartnerId] AS [PartnerId], 
+    [tblDhiraaguAddressMaldives].[LocationFlag] AS [LocationFlag], 
+    [tblDhiraaguAddressMaldives].[CreatedOn] AS [CreatedOn], 
+    [tblDhiraaguAddressMaldives].[UpdatedOn] AS [UpdatedOn], 
+    [tblDhiraaguAddressMaldives].[CreatedBy] AS [CreatedBy], 
+    [tblDhiraaguAddressMaldives].[UpdatedBy] AS [UpdatedBy], 
+    [tblDhiraaguAddressMaldives].[IsActive] AS [IsActive], 
+    [tblDhiraaguAddressMaldives].[IsDeleted] AS [IsDeleted]
+    FROM [dbo].[tblDhiraaguAddressMaldives] AS [tblDhiraaguAddressMaldives]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tblReqAlert" EntityType="Self.tblReqAlert" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tblReqAlert].[Alertid] AS [Alertid], 
+    [tblReqAlert].[AlertType] AS [AlertType], 
+    [tblReqAlert].[IsActive] AS [IsActive], 
+    [tblReqAlert].[IsDeleted] AS [IsDeleted], 
+    [tblReqAlert].[CreatedBy] AS [CreatedBy], 
+    [tblReqAlert].[UpdatedBy] AS [UpdatedBy], 
+    [tblReqAlert].[CreatedOn] AS [CreatedOn], 
+    [tblReqAlert].[UpdatedOn] AS [UpdatedOn]
+    FROM [dbo].[tblReqAlert] AS [tblReqAlert]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tblRequestControlSetup" EntityType="Self.tblRequestControlSetup" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tblRequestControlSetup].[ReqCtrlSetId] AS [ReqCtrlSetId], 
+    [tblRequestControlSetup].[CountryId] AS [CountryId], 
+    [tblRequestControlSetup].[EntityId] AS [EntityId], 
+    [tblRequestControlSetup].[EntityEmpId] AS [EntityEmpId], 
+    [tblRequestControlSetup].[AllowOverQty] AS [AllowOverQty], 
+    [tblRequestControlSetup].[CreatedBy] AS [CreatedBy], 
+    [tblRequestControlSetup].[UpdatedBy] AS [UpdatedBy], 
+    [tblRequestControlSetup].[IsActive] AS [IsActive], 
+    [tblRequestControlSetup].[IsDeleted] AS [IsDeleted], 
+    [tblRequestControlSetup].[CreatedOn] AS [CreatedOn], 
+    [tblRequestControlSetup].[UpdatedOn] AS [UpdatedOn]
+    FROM [dbo].[tblRequestControlSetup] AS [tblRequestControlSetup]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tblRequestControlSetupline" EntityType="Self.tblRequestControlSetupline" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tblRequestControlSetupline].[RequestControlPartid] AS [RequestControlPartid], 
+    [tblRequestControlSetupline].[ReqCtrlSetId] AS [ReqCtrlSetId], 
+    [tblRequestControlSetupline].[PartnerEmpId] AS [PartnerEmpId], 
+    [tblRequestControlSetupline].[CreatedBy] AS [CreatedBy], 
+    [tblRequestControlSetupline].[UpdatedBy] AS [UpdatedBy], 
+    [tblRequestControlSetupline].[IsActive] AS [IsActive], 
+    [tblRequestControlSetupline].[IsDeleted] AS [IsDeleted], 
+    [tblRequestControlSetupline].[CreatedOn] AS [CreatedOn], 
+    [tblRequestControlSetupline].[UpdatedOn] AS [UpdatedOn]
+    FROM [dbo].[tblRequestControlSetupline] AS [tblRequestControlSetupline]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tblRequisitionSetup" EntityType="Self.tblRequisitionSetup" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tblRequisitionSetup].[RAlertid] AS [RAlertid], 
+    [tblRequisitionSetup].[EntityId] AS [EntityId], 
+    [tblRequisitionSetup].[CountryId] AS [CountryId], 
+    [tblRequisitionSetup].[ReqFormat] AS [ReqFormat], 
+    [tblRequisitionSetup].[Reqvalue] AS [Reqvalue], 
+    [tblRequisitionSetup].[Description] AS [Description], 
+    [tblRequisitionSetup].[IsActive] AS [IsActive], 
+    [tblRequisitionSetup].[IsDeleted] AS [IsDeleted], 
+    [tblRequisitionSetup].[CreatedBy] AS [CreatedBy], 
+    [tblRequisitionSetup].[UpdatedBy] AS [UpdatedBy], 
+    [tblRequisitionSetup].[CreatedOn] AS [CreatedOn], 
+    [tblRequisitionSetup].[UpdatedOn] AS [UpdatedOn]
+    FROM [dbo].[tblRequisitionSetup] AS [tblRequisitionSetup]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="tblUserRole" EntityType="Self.tblUserRole" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -3926,53 +4086,6 @@ warning 6002: The table/view 'DMSNEW.dbo.Taxgroupformula' does not have a primar
           <Property Name="CreatedOn" Type="DateTime" Precision="0" />
           <Property Name="UpdatedOn" Type="DateTime" Precision="0" />
         </EntityType>
-        <EntityType Name="tblRequisition">
-          <Key>
-            <PropertyRef Name="RequisitionId" />
-          </Key>
-          <Property Name="RequisitionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="RequestNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="WareHouseId" Type="Int32" />
-          <Property Name="Status" Type="Byte" />
-          <Property Name="IsActive" Type="Boolean" Nullable="false" />
-          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
-          <Property Name="CreatedBy" Type="Int64" />
-          <Property Name="UpdatedBy" Type="Int64" />
-          <Property Name="IsSubmitted" Type="Boolean" />
-          <Property Name="RequestedDate" Type="DateTime" Precision="0" />
-          <Property Name="SubmittedDate" Type="DateTime" Precision="0" />
-          <Property Name="CreatedOn" Type="DateTime" Precision="0" />
-          <Property Name="UpdatedOn" Type="DateTime" Precision="0" />
-        </EntityType>
-        <EntityType Name="tblRequisitionItemDetail">
-          <Key>
-            <PropertyRef Name="RequestDetId" />
-          </Key>
-          <Property Name="RequestDetId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="RequisitionId" Type="Int32" Nullable="false" />
-          <Property Name="ItemSKUId" Type="Int64" />
-          <Property Name="LocationId" Type="Int64" />
-          <Property Name="AXitemId" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="RequestedWareHouse" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="RequestedQty" Type="Decimal" Precision="18" Scale="3" />
-          <Property Name="ApprovedQty" Type="Decimal" Precision="18" Scale="3" />
-          <Property Name="ShippedQty" Type="Decimal" Precision="18" Scale="3" />
-          <Property Name="ReceivedQty" Type="Int64" />
-          <Property Name="RemainingQty" Type="Decimal" Precision="18" Scale="3" />
-          <Property Name="TransferOrder" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Remarks" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="ApprovedBy" Type="Int64" />
-          <Property Name="ShippedBY" Type="Int64" />
-          <Property Name="ReceiveBy" Type="Int64" />
-          <Property Name="LineStatus" Type="Int64" />
-          <Property Name="ShipingReason" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="ReceivingReason" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="ApprovedDate" Type="DateTime" Precision="3" />
-          <Property Name="shippedDate" Type="DateTime" Precision="3" />
-          <Property Name="ReceiveDate" Type="DateTime" Precision="3" />
-          <Property Name="ApprovedFlag" Type="Boolean" />
-          <Property Name="ShippingFlag" Type="Int32" />
-        </EntityType>
         <EntityType Name="tblRequisitionItemWarehous">
           <Key>
             <PropertyRef Name="RequisitionWareHouseDetID" />
@@ -4295,6 +4408,8 @@ warning 6002: The table/view 'DMSNEW.dbo.Taxgroupformula' does not have a primar
           <Property Name="UpdatedBy" Type="Int64" />
           <Property Name="CreatedOn" Type="DateTime" Precision="0" />
           <Property Name="UpdatedOn" Type="DateTime" Precision="0" />
+          <Property Name="EmpFlag" Type="Int32" />
+          <Property Name="EmployeeId" Type="Int64" />
         </EntityType>
         <EntityType Name="tblVariant">
           <Key>
@@ -4516,25 +4631,6 @@ warning 6002: The table/view 'DMSNEW.dbo.Taxgroupformula' does not have a primar
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityType Name="tblDhiraaguMaldives_StateorProvince">
-          <Key>
-            <PropertyRef Name="StateorProvinceAutoid" />
-            <PropertyRef Name="StateCode" />
-            <PropertyRef Name="StateName" />
-          </Key>
-          <Property Name="StateorProvinceAutoid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="StateCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="StateName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ParentValue" Type="Int64" />
-          <Property Name="EntityId" Type="Int64" />
-          <Property Name="ParentId" Type="Int64" />
-          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
-          <Property Name="UpdatedOn" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="CreatedBy" Type="Int64" />
-          <Property Name="UpdatedBy" Type="Int32" />
-          <Property Name="IsActive" Type="Boolean" />
-          <Property Name="IsDeleted" Type="Boolean" />
-        </EntityType>
         <EntityType Name="tblUserRole">
           <Key>
             <PropertyRef Name="URID" />
@@ -4650,8 +4746,6 @@ warning 6002: The table/view 'DMSNEW.dbo.Taxgroupformula' does not have a primar
           <EntitySet Name="tblPartnerGroups" EntityType="Self.tblPartnerGroup" />
           <EntitySet Name="tblPartners1" EntityType="Self.tblPartner1" />
           <EntitySet Name="tblPartnerTaxes" EntityType="Self.tblPartnerTax" />
-          <EntitySet Name="tblRequisitions" EntityType="Self.tblRequisition" />
-          <EntitySet Name="tblRequisitionItemDetails" EntityType="Self.tblRequisitionItemDetail" />
           <EntitySet Name="tblRequisitionItemWarehouses" EntityType="Self.tblRequisitionItemWarehous" />
           <EntitySet Name="tblSequencetypes" EntityType="Self.tblSequencetype" />
           <EntitySet Name="tblServiceLogs" EntityType="Self.tblServiceLog" />
@@ -4686,7 +4780,6 @@ warning 6002: The table/view 'DMSNEW.dbo.Taxgroupformula' does not have a primar
           <EntitySet Name="tblZonewiseItems" EntityType="Self.tblZonewiseItem" />
           <EntitySet Name="TempFileSequencelines" EntityType="Self.TempFileSequenceline" />
           <EntitySet Name="testtables" EntityType="Self.testtable" />
-          <EntitySet Name="tblDhiraaguMaldives_StateorProvince" EntityType="Self.tblDhiraaguMaldives_StateorProvince" />
           <EntitySet Name="tblUserRoles" EntityType="Self.tblUserRole" />
           <EntitySet Name="Taxgroupformulas" EntityType="Self.Taxgroupformula" />
           <FunctionImport Name="fn_split_string_to_column" IsComposable="true" ReturnType="Collection(DMSNEWModel.fn_split_string_to_column_Result)">
@@ -4736,6 +4829,12 @@ warning 6002: The table/view 'DMSNEW.dbo.Taxgroupformula' does not have a primar
             <Parameter Name="ta" Mode="In" Type="String" />
             <Parameter Name="column" Mode="In" Type="String" />
             <Parameter Name="Assigneid" Mode="In" Type="Int64" />
+            <Parameter Name="Columnid" Mode="In" Type="Int64" />
+            <Parameter Name="REqtype" Mode="In" Type="Int32" />
+            <Parameter Name="Reqval" Mode="In" Type="Decimal" />
+            <Parameter Name="Overallow" Mode="In" Type="Int32" />
+            <Parameter Name="Requestcontrol" Mode="In" Type="String" />
+            <Parameter Name="Description" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="DMS_AllItems" ReturnType="Collection(DMSNEWModel.DMS_AllItems_Result)">
             <Parameter Name="QueryType" Mode="In" Type="String" />
@@ -4796,6 +4895,8 @@ warning 6002: The table/view 'DMSNEW.dbo.Taxgroupformula' does not have a primar
             <Parameter Name="PartId" Mode="In" Type="String" />
             <Parameter Name="InsertQuery" Mode="In" Type="String" />
             <Parameter Name="ExistingLocation" Mode="In" Type="String" />
+            <Parameter Name="Empjson" Mode="In" Type="String" />
+            <Parameter Name="EmpAddressjson" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="DMS_DiscountSetup" ReturnType="Collection(DMSNEWModel.DMS_DiscountSetup_Result)">
             <Parameter Name="QueryType" Mode="In" Type="String" />
@@ -4881,11 +4982,16 @@ warning 6002: The table/view 'DMSNEW.dbo.Taxgroupformula' does not have a primar
             <Parameter Name="WareHouseId" Mode="In" Type="String" />
             <Parameter Name="SubmittedDate" Mode="In" Type="String" />
             <Parameter Name="Status" Mode="In" Type="String" />
-            <Parameter Name="JsonRequestionItems" Mode="In" Type="String" />
+            <Parameter Name="JsonRequisitionItems" Mode="In" Type="String" />
             <Parameter Name="JsonUpdateRequestItems" Mode="In" Type="String" />
             <Parameter Name="UpdatedBy" Mode="In" Type="String" />
             <Parameter Name="RequisitionId" Mode="In" Type="String" />
             <Parameter Name="loadMore" Mode="In" Type="Int64" />
+            <Parameter Name="EntityId" Mode="In" Type="Int64" />
+            <Parameter Name="CountryId" Mode="In" Type="Int64" />
+            <Parameter Name="Partner" Mode="In" Type="String" />
+            <Parameter Name="PartnerId" Mode="In" Type="Int64" />
+            <Parameter Name="LocationId" Mode="In" Type="Int64" />
           </FunctionImport>
           <FunctionImport Name="DMS_Item" ReturnType="Collection(DMSNEWModel.DMS_Item_Result)">
             <Parameter Name="QueryType" Mode="In" Type="String" />
@@ -5065,6 +5171,9 @@ warning 6002: The table/view 'DMSNEW.dbo.Taxgroupformula' does not have a primar
             <Parameter Name="passKey" Mode="In" Type="String" />
             <Parameter Name="EntityDataJson" Mode="In" Type="String" />
             <Parameter Name="Isactive" Mode="In" Type="Int32" />
+            <Parameter Name="empid" Mode="In" Type="Int64" />
+            <Parameter Name="createdby" Mode="In" Type="Int64" />
+            <Parameter Name="imgpath" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="DMSBindSequence">
             <Parameter Name="Pageid" Mode="In" Type="Int32" />
@@ -5208,6 +5317,26 @@ warning 6002: The table/view 'DMSNEW.dbo.Taxgroupformula' does not have a primar
             <Parameter Name="ItemId" Mode="In" Type="Int64" />
             <Parameter Name="MinimumQty" Mode="In" Type="Decimal" />
             <Parameter Name="MaximumQty" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <EntitySet Name="tblEmpLocations" EntityType="DMSNEWModel.tblEmpLocation" />
+          <EntitySet Name="tblEmployees" EntityType="DMSNEWModel.tblEmployee" />
+          <EntitySet Name="tblDhiraaguAddressMaldives" EntityType="DMSNEWModel.tblDhiraaguAddressMaldive" />
+          <EntitySet Name="tblReqAlerts" EntityType="DMSNEWModel.tblReqAlert" />
+          <EntitySet Name="tblRequestControlSetups" EntityType="DMSNEWModel.tblRequestControlSetup" />
+          <EntitySet Name="tblRequestControlSetuplines" EntityType="DMSNEWModel.tblRequestControlSetupline" />
+          <EntitySet Name="tblRequisitionSetups" EntityType="DMSNEWModel.tblRequisitionSetup" />
+          <FunctionImport Name="BindLocation">
+            </FunctionImport>
+          <FunctionImport Name="BindLocations" ReturnType="Collection(DMSNEWModel.BindLocations_Result)" />
+          <FunctionImport Name="DMSImport_Employee">
+            <Parameter Name="EmpName" Mode="In" Type="String" />
+            <Parameter Name="EmpMobileNo" Mode="In" Type="String" />
+            <Parameter Name="EmpEmailId" Mode="In" Type="String" />
+            <Parameter Name="CountryId" Mode="In" Type="Int64" />
+            <Parameter Name="EntityId" Mode="In" Type="Int64" />
+            <Parameter Name="CreatedBy" Mode="In" Type="Int64" />
+            <Parameter Name="AddressId" Mode="In" Type="Int64" />
+            <Parameter Name="BusinessID" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="AngularTest_Result">
@@ -5366,6 +5495,131 @@ warning 6002: The table/view 'DMSNEW.dbo.Taxgroupformula' does not have a primar
         <ComplexType Name="DMS_Partner_Result">
           <Property Type="Int64" Name="PartnerId" Nullable="false" />
           <Property Type="String" Name="PartnerCode" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <EntityType Name="tblEmpLocation">
+          <Key>
+            <PropertyRef Name="EmpLocId" />
+          </Key>
+          <Property Name="EmpLocId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Empid" Type="Int64" />
+          <Property Name="AddressId" Type="Int64" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="CreatedBy" Type="Int64" />
+          <Property Name="UpdatedBy" Type="Int64" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="0" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="tblEmployee">
+          <Key>
+            <PropertyRef Name="Empid" />
+          </Key>
+          <Property Name="Empid" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmpName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="EmpMobileNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmpEmailId" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="CountryId" Type="Int64" />
+          <Property Name="EntityId" Type="Int64" />
+          <Property Name="ImagePath" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Flag" Type="Int32" />
+          <Property Name="BussinessId" Type="Int64" />
+          <Property Name="IsEmail" Type="Int32" />
+          <Property Name="IsCreadential" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="CreatedBy" Type="Int64" />
+          <Property Name="UpdatedBy" Type="Int64" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="0" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="tblDhiraaguAddressMaldive">
+          <Key>
+            <PropertyRef Name="AutoId" />
+          </Key>
+          <Property Name="AutoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LocationCode" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="LocationName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="LocationDescription" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="AddressLine1" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="AddressLine2" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="P_O_Box" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="ZipCode" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Atoll" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="CountryId" Type="Int64" />
+          <Property Name="EntityId" Type="Int64" />
+          <Property Name="PartnerId" Type="Int64" />
+          <Property Name="LocationFlag" Type="Int64" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedOn" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="Int64" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="IsDeleted" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="tblReqAlert">
+          <Key>
+            <PropertyRef Name="Alertid" />
+          </Key>
+          <Property Name="Alertid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AlertType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="CreatedBy" Type="Int64" />
+          <Property Name="UpdatedBy" Type="Int64" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="0" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="tblRequestControlSetup">
+          <Key>
+            <PropertyRef Name="ReqCtrlSetId" />
+          </Key>
+          <Property Name="ReqCtrlSetId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CountryId" Type="Int32" />
+          <Property Name="EntityId" Type="Int32" />
+          <Property Name="EntityEmpId" Type="Int32" />
+          <Property Name="AllowOverQty" Type="Int32" />
+          <Property Name="CreatedBy" Type="Int64" />
+          <Property Name="UpdatedBy" Type="Int64" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="0" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="tblRequestControlSetupline">
+          <Key>
+            <PropertyRef Name="RequestControlPartid" />
+          </Key>
+          <Property Name="RequestControlPartid" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ReqCtrlSetId" Type="Int64" />
+          <Property Name="PartnerEmpId" Type="Int64" />
+          <Property Name="CreatedBy" Type="Int64" />
+          <Property Name="UpdatedBy" Type="Int64" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="0" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="tblRequisitionSetup">
+          <Key>
+            <PropertyRef Name="RAlertid" />
+          </Key>
+          <Property Name="RAlertid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EntityId" Type="Int32" />
+          <Property Name="CountryId" Type="Int32" />
+          <Property Name="ReqFormat" Type="Int32" />
+          <Property Name="Reqvalue" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="CreatedBy" Type="Int64" />
+          <Property Name="UpdatedBy" Type="Int64" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="0" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="0" />
+        </EntityType>
+        <ComplexType Name="BindLocations_Result">
+          <Property Type="Int32" Name="AutoId" Nullable="false" />
+          <Property Type="String" Name="LocationCode" Nullable="true" MaxLength="250" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -6711,55 +6965,6 @@ warning 6002: The table/view 'DMSNEW.dbo.Taxgroupformula' does not have a primar
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tblRequisitions">
-            <EntityTypeMapping TypeName="DMSNEWModel.tblRequisition">
-              <MappingFragment StoreEntitySet="tblRequisition">
-                <ScalarProperty Name="RequisitionId" ColumnName="RequisitionId" />
-                <ScalarProperty Name="RequestNumber" ColumnName="RequestNumber" />
-                <ScalarProperty Name="WareHouseId" ColumnName="WareHouseId" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
-                <ScalarProperty Name="IsSubmitted" ColumnName="IsSubmitted" />
-                <ScalarProperty Name="RequestedDate" ColumnName="RequestedDate" />
-                <ScalarProperty Name="SubmittedDate" ColumnName="SubmittedDate" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tblRequisitionItemDetails">
-            <EntityTypeMapping TypeName="DMSNEWModel.tblRequisitionItemDetail">
-              <MappingFragment StoreEntitySet="tblRequisitionItemDetails">
-                <ScalarProperty Name="RequestDetId" ColumnName="RequestDetId" />
-                <ScalarProperty Name="RequisitionId" ColumnName="RequisitionId" />
-                <ScalarProperty Name="ItemSKUId" ColumnName="ItemSKUId" />
-                <ScalarProperty Name="LocationId" ColumnName="LocationId" />
-                <ScalarProperty Name="AXitemId" ColumnName="AXitemId" />
-                <ScalarProperty Name="RequestedWareHouse" ColumnName="RequestedWareHouse" />
-                <ScalarProperty Name="RequestedQty" ColumnName="RequestedQty" />
-                <ScalarProperty Name="ApprovedQty" ColumnName="ApprovedQty" />
-                <ScalarProperty Name="ShippedQty" ColumnName="ShippedQty" />
-                <ScalarProperty Name="ReceivedQty" ColumnName="ReceivedQty" />
-                <ScalarProperty Name="RemainingQty" ColumnName="RemainingQty" />
-                <ScalarProperty Name="TransferOrder" ColumnName="TransferOrder" />
-                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
-                <ScalarProperty Name="ApprovedBy" ColumnName="ApprovedBy" />
-                <ScalarProperty Name="ShippedBY" ColumnName="ShippedBY" />
-                <ScalarProperty Name="ReceiveBy" ColumnName="ReceiveBy" />
-                <ScalarProperty Name="LineStatus" ColumnName="LineStatus" />
-                <ScalarProperty Name="ShipingReason" ColumnName="ShipingReason" />
-                <ScalarProperty Name="ReceivingReason" ColumnName="ReceivingReason" />
-                <ScalarProperty Name="ApprovedDate" ColumnName="ApprovedDate" />
-                <ScalarProperty Name="shippedDate" ColumnName="shippedDate" />
-                <ScalarProperty Name="ReceiveDate" ColumnName="ReceiveDate" />
-                <ScalarProperty Name="ApprovedFlag" ColumnName="ApprovedFlag" />
-                <ScalarProperty Name="ShippingFlag" ColumnName="ShippingFlag" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="tblRequisitionItemWarehouses">
             <EntityTypeMapping TypeName="DMSNEWModel.tblRequisitionItemWarehous">
               <MappingFragment StoreEntitySet="tblRequisitionItemWarehouses">
@@ -7080,6 +7285,8 @@ warning 6002: The table/view 'DMSNEW.dbo.Taxgroupformula' does not have a primar
           <EntitySetMapping Name="tblUserLogins">
             <EntityTypeMapping TypeName="DMSNEWModel.tblUserLogin">
               <MappingFragment StoreEntitySet="tblUserLogin">
+                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+                <ScalarProperty Name="EmpFlag" ColumnName="EmpFlag" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="AccountNo" ColumnName="AccountNo" />
@@ -7334,24 +7541,6 @@ warning 6002: The table/view 'DMSNEW.dbo.Taxgroupformula' does not have a primar
                 <ScalarProperty Name="Mobile" ColumnName="Mobile" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tblDhiraaguMaldives_StateorProvince">
-            <EntityTypeMapping TypeName="DMSNEWModel.tblDhiraaguMaldives_StateorProvince">
-              <MappingFragment StoreEntitySet="tblDhiraaguMaldives_StateorProvince">
-                <ScalarProperty Name="StateorProvinceAutoid" ColumnName="StateorProvinceAutoid" />
-                <ScalarProperty Name="StateCode" ColumnName="StateCode" />
-                <ScalarProperty Name="StateName" ColumnName="StateName" />
-                <ScalarProperty Name="ParentValue" ColumnName="ParentValue" />
-                <ScalarProperty Name="EntityId" ColumnName="EntityId" />
-                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -7721,6 +7910,144 @@ warning 6002: The table/view 'DMSNEW.dbo.Taxgroupformula' does not have a primar
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="DMS_IMPORTBULKAssigneditem" FunctionName="DMSNEWModel.Store.DMS_IMPORTBULKAssigneditem" />
+          <EntitySetMapping Name="tblEmpLocations">
+            <EntityTypeMapping TypeName="DMSNEWModel.tblEmpLocation">
+              <MappingFragment StoreEntitySet="tblEmpLocation">
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="AddressId" ColumnName="AddressId" />
+                <ScalarProperty Name="Empid" ColumnName="Empid" />
+                <ScalarProperty Name="EmpLocId" ColumnName="EmpLocId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblEmployees">
+            <EntityTypeMapping TypeName="DMSNEWModel.tblEmployee">
+              <MappingFragment StoreEntitySet="tblEmployee">
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsCreadential" ColumnName="IsCreadential" />
+                <ScalarProperty Name="IsEmail" ColumnName="IsEmail" />
+                <ScalarProperty Name="BussinessId" ColumnName="BussinessId" />
+                <ScalarProperty Name="Flag" ColumnName="Flag" />
+                <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
+                <ScalarProperty Name="EntityId" ColumnName="EntityId" />
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="EmpEmailId" ColumnName="EmpEmailId" />
+                <ScalarProperty Name="EmpMobileNo" ColumnName="EmpMobileNo" />
+                <ScalarProperty Name="EmpName" ColumnName="EmpName" />
+                <ScalarProperty Name="Empid" ColumnName="Empid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblDhiraaguAddressMaldives">
+            <EntityTypeMapping TypeName="DMSNEWModel.tblDhiraaguAddressMaldive">
+              <MappingFragment StoreEntitySet="tblDhiraaguAddressMaldives">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="LocationFlag" ColumnName="LocationFlag" />
+                <ScalarProperty Name="PartnerId" ColumnName="PartnerId" />
+                <ScalarProperty Name="EntityId" ColumnName="EntityId" />
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="Atoll" ColumnName="Atoll" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="P_O_Box" ColumnName="P.O.Box" />
+                <ScalarProperty Name="AddressLine2" ColumnName="AddressLine2" />
+                <ScalarProperty Name="AddressLine1" ColumnName="AddressLine1" />
+                <ScalarProperty Name="LocationDescription" ColumnName="LocationDescription" />
+                <ScalarProperty Name="LocationName" ColumnName="LocationName" />
+                <ScalarProperty Name="LocationCode" ColumnName="LocationCode" />
+                <ScalarProperty Name="AutoId" ColumnName="AutoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblReqAlerts">
+            <EntityTypeMapping TypeName="DMSNEWModel.tblReqAlert">
+              <MappingFragment StoreEntitySet="tblReqAlert">
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="AlertType" ColumnName="AlertType" />
+                <ScalarProperty Name="Alertid" ColumnName="Alertid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblRequestControlSetups">
+            <EntityTypeMapping TypeName="DMSNEWModel.tblRequestControlSetup">
+              <MappingFragment StoreEntitySet="tblRequestControlSetup">
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="AllowOverQty" ColumnName="AllowOverQty" />
+                <ScalarProperty Name="EntityEmpId" ColumnName="EntityEmpId" />
+                <ScalarProperty Name="EntityId" ColumnName="EntityId" />
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="ReqCtrlSetId" ColumnName="ReqCtrlSetId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblRequestControlSetuplines">
+            <EntityTypeMapping TypeName="DMSNEWModel.tblRequestControlSetupline">
+              <MappingFragment StoreEntitySet="tblRequestControlSetupline">
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="PartnerEmpId" ColumnName="PartnerEmpId" />
+                <ScalarProperty Name="ReqCtrlSetId" ColumnName="ReqCtrlSetId" />
+                <ScalarProperty Name="RequestControlPartid" ColumnName="RequestControlPartid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblRequisitionSetups">
+            <EntityTypeMapping TypeName="DMSNEWModel.tblRequisitionSetup">
+              <MappingFragment StoreEntitySet="tblRequisitionSetup">
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Reqvalue" ColumnName="Reqvalue" />
+                <ScalarProperty Name="ReqFormat" ColumnName="ReqFormat" />
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="EntityId" ColumnName="EntityId" />
+                <ScalarProperty Name="RAlertid" ColumnName="RAlertid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="BindLocation" FunctionName="DMSNEWModel.Store.BindLocation" />
+          <FunctionImportMapping FunctionImportName="BindLocations" FunctionName="DMSNEWModel.Store.BindLocations">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DMSNEWModel.BindLocations_Result">
+                <ScalarProperty Name="AutoId" ColumnName="AutoId" />
+                <ScalarProperty Name="LocationCode" ColumnName="LocationCode" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="DMSImport_Employee" FunctionName="DMSNEWModel.Store.DMSImport_Employee" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

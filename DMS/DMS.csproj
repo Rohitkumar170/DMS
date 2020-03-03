@@ -2458,6 +2458,9 @@
     <Compile Include="Entity\BINDGROUP_Result.cs">
       <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entity\BindLocations_Result.cs">
+      <DependentUpon>DMSNEW.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entity\BINDUNITS_Result.cs">
       <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
@@ -2611,7 +2614,7 @@
     <Compile Include="Entity\tblCustTransOpen.cs">
       <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entity\tblDhiraaguMaldives_StateorProvince.cs">
+    <Compile Include="Entity\tblDhiraaguAddressMaldive.cs">
       <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblDiscountGroupHeader.cs">
@@ -2621,6 +2624,12 @@
       <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblDiscountGroupLineTemp.cs">
+      <DependentUpon>DMSNEW.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\tblEmpLocation.cs">
+      <DependentUpon>DMSNEW.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\tblEmployee.cs">
       <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblEntity.cs">
@@ -2809,13 +2818,19 @@
     <Compile Include="Entity\tblPartnerTax.cs">
       <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entity\tblRequisition.cs">
+    <Compile Include="Entity\tblReqAlert.cs">
       <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entity\tblRequisitionItemDetail.cs">
+    <Compile Include="Entity\tblRequestControlSetup.cs">
+      <DependentUpon>DMSNEW.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\tblRequestControlSetupline.cs">
       <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblRequisitionItemWarehous.cs">
+      <DependentUpon>DMSNEW.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\tblRequisitionSetup.cs">
       <DependentUpon>DMSNEW.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\tblSequencetype.cs">
@@ -3182,7 +3197,9 @@
     <Compile Include="Models\ItemSetupClass\BindUnitConversion.cs" />
     <Compile Include="Models\ItemSetupClass\BindVariantGrid.cs" />
     <Compile Include="Models\ItemSetupClass\EntityName.cs" />
+    <Compile Include="Models\ItemSetupClass\Getclassname.cs" />
     <Compile Include="Models\ItemSetupClass\GetItemSKU.cs" />
+    <Compile Include="Models\ItemSetupClass\GetPartneridbycode.cs" />
     <Compile Include="Models\ItemSetupClass\GetUnits.cs" />
     <Compile Include="Models\ItemSetupClass\ItemDetails.cs" />
     <Compile Include="Models\ItemSetupClass\ItemGroup.cs" />
