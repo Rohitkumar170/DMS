@@ -12,29 +12,19 @@ namespace DMS.Entity
     using System;
     using System.Collections.Generic;
     
-    public partial class tblUserLogin
+    public partial class tblRequisitionSetup
     {
-        public long UserId { get; set; }
-        public string UserName { get; set; }
-        public string AccountNo { get; set; }
-        public Nullable<int> UserType { get; set; }
-        public Nullable<long> CountryId { get; set; }
-        public Nullable<long> PartnerId { get; set; }
-        public Nullable<long> EntityId { get; set; }
-        public string EmailId { get; set; }
-        public Nullable<long> MobileNo { get; set; }
-        public Nullable<int> UserRole { get; set; }
-        public string Password { get; set; }
-        public string PasswordKey { get; set; }
-        public Nullable<long> WareHouseId { get; set; }
+        public int RAlertid { get; set; }
+        public Nullable<int> EntityId { get; set; }
+        public Nullable<int> CountryId { get; set; }
+        public Nullable<int> ReqFormat { get; set; }
+        public Nullable<decimal> Reqvalue { get; set; }
+        public string Description { get; set; }
         public Nullable<bool> IsActive { get; set; }
         public Nullable<bool> IsDeleted { get; set; }
-        public Nullable<bool> IsLogin { get; set; }
         public Nullable<long> CreatedBy { get; set; }
         public Nullable<long> UpdatedBy { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }
         public Nullable<System.DateTime> UpdatedOn { get; set; }
-        public Nullable<int> EmpFlag { get; set; }
-        public Nullable<long> EmployeeId { get; set; }
     }
 }

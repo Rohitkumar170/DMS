@@ -480,21 +480,20 @@
                             <i class="fa fa-plus"></i> </button>
                             <button type="button" id="btnDeleteLineEmp" class="btn btn-outline-primary" title="Delete Line">
                             <i class="fa fa-trash"></i> </button>
-                            <button type="button" id="Button1" class="btn btn-outline-primary" title="Export">
+                            <button type="button" id="btnexprt" class="btn btn-outline-primary" title="Export">
                             <i class="fa fa-file-excel-o"></i> </button>
-                            <button type="button" id="Button1" class="btn btn-outline-primary" title="PDF">
+                            <button type="button" id="btnpdf" class="btn btn-outline-primary" title="PDF">
                             <i class="fa fa-file-pdf-o"></i> </button>    
                           
     </div>
         </div>
   <div class="col-md-6 "> 
       <div class="pdfexport tablebtn ">
-<span class="multifileupload pb5 pull-right" id="btnupload3" > 
+<span class="multifileupload pb5 pull-right" id="Spanupload" > 
                        <i class="fa fa-upload"></i>
-                  <%--   <input type="file" id='FileUpload' runat="server" class="custom-file-input multifileBtn" onchange="UploadFile(this);" />--%>
-                           <input type="button" id="upload3" value="Import" class="custom-file-input multifileBtn" />
-                           <asp:FileUpload runat="server" Visible="true" ID="FileUpload3"  style="display:none" />
-                           <asp:Button ID="Button4" runat="server" style="display:none" /> 
+                          <input type="button" id="uploadPartEmp" value="Import" title="Import Items" class="custom-file-input multifileBtn" onclick="FindclickEmp();" />
+                           <asp:FileUpload runat="server" Visible="true" ID="FileUploadEmp" onchange="UploadFileEmp(this);" style="display:none" />
+                           <asp:Button ID="btnUploademp" runat="server" OnClick="btnUploademp_Click" OnClientClick="Showloader();"   style="display:none" />
                        </span>
   
       </div>
@@ -892,7 +891,7 @@
 												<div class="modal-header bg-primary white">
                                                     <h6 class="white" >  Rejected Data  <span class="white" ></span></h6>
 													
-													<button type="button" id="" class="close" aria-label="Close">
+													<button type="button" id="" class="close" data-dismiss="modal"  aria-label="Close">
 														<span aria-hidden="true">&times;</span>
 													</button>
 												</div>
@@ -901,9 +900,9 @@
                                                                                
     <div class="col-md-12">    
     <div class="pdfexport tablebtn">
-                            <button type="button" id="Button1" class="btn btn-outline-primary" title="Export">
+                            <button type="button" id="btngg" class="btn btn-outline-primary" title="Export">
                             <i class="fa fa-file-excel-o"></i> </button>
-                            <button type="button" id="Button1" class="btn btn-outline-primary" title="PDF">
+                            <button type="button" id="bty" class="btn btn-outline-primary" title="PDF">
                             <i class="fa fa-file-pdf-o"></i> </button>  
                           
                           
@@ -913,7 +912,7 @@
                                             <div class="col-md-12">
     
                                                   <div class="table-responsive" >
-                                                      <asp:GridView ID="grdpartner" runat="server" AutoGenerateColumns="False" BackColor="White"  
+                                                      <asp:GridView ID="grdpartner" runat="server" BackColor="White"  
 BorderColor="#3366CC" BorderStyle="None" BorderWidth="1px" CellPadding="4"  ></asp:GridView>
                               <%--<table id="rejectedTable" class="table table-de mb-0">
                       <thead>

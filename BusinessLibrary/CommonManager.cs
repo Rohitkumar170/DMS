@@ -59,7 +59,7 @@ namespace BusinessLibrary
 
                         command.CommandText = "EXEC " + _storedProcedure + " " + _storedProcedureparam;
                         command.CommandTimeout = 100000;
-                       // connection.Close();
+                        // connection.Close();
                         connection.Open();
                         using (var reader = command.ExecuteReader())
                         {
@@ -72,7 +72,9 @@ namespace BusinessLibrary
                             }
                         }
                     }
-                    finally {
+                    catch (Exception ex) { throw ex; }
+                    finally
+                    {
                         connection.Close();
                     }
 

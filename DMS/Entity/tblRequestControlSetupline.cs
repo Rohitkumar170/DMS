@@ -12,19 +12,16 @@ namespace DMS.Entity
     using System;
     using System.Collections.Generic;
     
-    public partial class tblDhiraaguMaldives_StateorProvince
+    public partial class tblRequestControlSetupline
     {
-        public int StateorProvinceAutoid { get; set; }
-        public string StateCode { get; set; }
-        public string StateName { get; set; }
-        public Nullable<long> ParentValue { get; set; }
-        public Nullable<long> EntityId { get; set; }
-        public Nullable<long> ParentId { get; set; }
-        public Nullable<System.DateTime> CreatedOn { get; set; }
-        public string UpdatedOn { get; set; }
+        public long RequestControlPartid { get; set; }
+        public Nullable<long> ReqCtrlSetId { get; set; }
+        public Nullable<long> PartnerEmpId { get; set; }
         public Nullable<long> CreatedBy { get; set; }
-        public Nullable<int> UpdatedBy { get; set; }
+        public Nullable<long> UpdatedBy { get; set; }
         public Nullable<bool> IsActive { get; set; }
         public Nullable<bool> IsDeleted { get; set; }
+        public Nullable<System.DateTime> CreatedOn { get; set; }
+        public Nullable<System.DateTime> UpdatedOn { get; set; }
     }
 }

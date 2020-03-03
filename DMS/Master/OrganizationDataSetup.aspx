@@ -57,11 +57,11 @@
         </div>
     </div>
        <div class="content-wrapper">
-<%--<div id="preloader">
+<div id="preloader" runat="server" style="display:none" >
   <div id="showPreloader"> <img src="../../assets/img/preloader.gif" > </div>
 </div>
 
-<div id="Overlay_Load"></div>--%>
+<div id="Overlay_Load" runat="server" style="display:none" ></div>
     <div class="">
         <div class="content-body">
            <div class="row match-height pb-2" id="OrganizationDataForm"  style="display:none" >
@@ -196,12 +196,11 @@
         </div>
   <div class="col-md-6 "> 
       <div class="pdfexport tablebtn ">
-<span class="multifileupload pb5 pull-right" id="btnupload3" > 
+<span class="multifileupload pb5 pull-right" id="Spanupload" > 
                        <i class="fa fa-upload"></i>
-                  <%--   <input type="file" id='FileUpload' runat="server" class="custom-file-input multifileBtn" onchange="UploadFile(this);" />--%>
-                           <input type="button" id="upload3" value="Import" class="custom-file-input multifileBtn" />
-                           <asp:FileUpload runat="server" Visible="true" ID="FileUpload3"  style="display:none" />
-                           <asp:Button ID="Button4" runat="server" style="display:none" /> 
+                          <input type="button" id="upload" value="Import" title="Import Items" class="custom-file-input multifileBtn" onclick="Findclick();" />
+                           <asp:FileUpload runat="server" Visible="true" ID="FileUpload" onchange="UploadFile(this);" style="display:none" />
+                           <asp:Button ID="btnUpload4" runat="server" OnClick="btnUpload4_Click" OnClientClick="Showloader();"   style="display:none" />
                        </span>
   
       </div>
@@ -528,7 +527,7 @@
                                          </div>
 
                                     
-                                 
+                                  
                                         
                                         
                                         
@@ -544,7 +543,73 @@
 											</div>
 										</div>
 									</div>
+    <div class="modal fade text-left" id="RejectedData" tabindex="-1" role="dialog" aria-labelledby="myModalLabel8"
+									 aria-hidden="true" >
+										<div class="modal-dialog modal-lg" role="document">
+											<div class="modal-content">
+												<div class="modal-header bg-primary white">
+                                                    <h6 class="white" >  Rejected Data  <span class="white" ></span></h6>
+													
+													<button type="button" id="" class="close" data-dismiss="modal"  aria-label="Close">
+														<span aria-hidden="true">&times;</span>
+													</button>
+												</div>
+											<div class="modal-body">
+												    <div class="row">
+                                                                               
+    <div class="col-md-12">    
+    <div class="pdfexport tablebtn">
+                            <button type="button" id="btngg" class="btn btn-outline-primary" title="Export">
+                            <i class="fa fa-file-excel-o"></i> </button>
+                            <button type="button" id="bty" class="btn btn-outline-primary" title="PDF">
+                            <i class="fa fa-file-pdf-o"></i> </button>  
+                          
+                          
+    </div>
 
+    </div>
+                                            <div class="col-md-12">
+    
+                                                  <div class="table-responsive" >
+                                                      <asp:GridView ID="grdemployee" runat="server" BackColor="White"  
+BorderColor="#3366CC" BorderStyle="None" BorderWidth="1px" CellPadding="4"  ></asp:GridView>
+                              <%--<table id="rejectedTable" class="table table-de mb-0">
+                      <thead>
+                            <tr>
+                                <th id="hidePselect_all"><input type="checkbox" id="chkPAll" onclick="">All</th>
+                                 <th> Name</th>
+                                 <th>Mobile</th>  
+                                 <th>Email</th>  
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <tr>                       
+                        <td id="chkPtd"><input type="checkbox" id="cb_1" class="chk_PAll"></td>
+                         <td> Abhishek    </td>
+                         <td> 88825656  </td> 
+                         <td> abc@gmail.com  </td> 
+                        </tr>
+                         
+                           
+                        </tbody>
+                    </table>--%>
+                            </div>
+                                            </div>
+                                          
+                                        </div>
+                                        	    <%--<div class="row">
+                                         
+                                            <div class="col-md-12">
+                                            <div class="table-responsive">
+												 <button type="button"  id="btnsavepopupdata" class="btn btn-primary  pull-right">
+                            <i class="fa fa-save"></i> Submit</button>
+												</div>
+												</div></div>--%>
+
+											</div>
+											</div>
+										</div>
+									</div>
    <%--
          <script type="text/javascript">
 
@@ -581,9 +646,23 @@
              </script>--%>
    <label id="lblUserId" runat="server" style="display: none"> </label>
     <script>
+          function Showloader() {
+                
+                 jquery_1_11_3_min_p('#ContentPlaceHolder1_preloader').css('display', 'block');
+                jquery_1_11_3_min_p('#ContentPlaceHolder1_Overlay_Load').css('display', 'block');
+}
         jquery_1_11_3_min_p(document).ready(function () {
             jquery_1_11_3_min_p(".footerDropdown").css('visibility', 'hidden');
         });
+</script>
+      <script type="text/javascript">
+          function showrejectedPopup() {
+    $("#RejectedData").modal('show');
+}
+        function ShowPopup(text) {
+        swal(text, "warning")
+        
+    }
 </script>
 </asp:Content>
 

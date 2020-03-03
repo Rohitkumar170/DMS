@@ -7,7 +7,7 @@ using BusinessLibrary;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-
+using DMS.Models.ItemSetupClass;
 namespace DMS.Master
 {
     public partial class Partner : System.Web.UI.Page
@@ -202,13 +202,96 @@ namespace DMS.Master
                     context.DMS_ImporPartnerLegalField(Convert.ToInt64(FieldID), Convert.ToInt64(Address), Convert.ToString(dr["FieldValue"].ToString().Trim()), Convert.ToInt64(PartId),  Convert.ToInt64(Session["UserId"].ToString()));
                 }
                 context.SaveChanges();
-                grdpartner.DataSource = newTable;
-                grdpartner.DataBind();
-                ScriptManager.RegisterStartupScript(this, GetType(), "alertmsg", "showrejectedPopup();", false);
+                if (newTable.Rows.Count > 0)
+                {
+                    grdpartner.DataSource = newTable;
+                    grdpartner.DataBind();
+                    ScriptManager.RegisterStartupScript(this, GetType(), "alertmsg", "showrejectedPopup();", true);
+                    return;
+                }
             }
             catch (Exception ex) { throw ex; }
 
         }
 
+        protected void btnUploademp_Click(object sender, EventArgs e)
+        {
+            DataTable dt = Commonmanager.ExcelImport(Path.GetExtension(FileUploadEmp.PostedFile.FileName), FileUploadEmp.PostedFile.FileName, Server.MapPath("../Import"), FileUploadEmp);
+            DataTable Newdt = dt.Clone();
+            if (dt.Rows.Count == 0)
+            {
+                preloader.Style.Add("display", "none");
+                Overlay_Load.Style.Add("display", "none");
+                string Message = "Please upload excel file";
+                ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup('" + Message + "');", true);
+                return;
+            }
+            if (dt.Columns.Count != 6)
+            {
+                preloader.Style.Add("display", "none");
+                Overlay_Load.Style.Add("display", "none");
+                string Message = "Excel is not in Proper format";
+                ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup('" + Message + "');", true);
+                return;
+            }
+            DMSNEWEntities context = new DMSNEWEntities();
+            Dictionary<int, string> Locationcode = new Dictionary<int, string>();
+            var TableName = context.tblmstOrgLocationTables.Where(u => u.EntityId == 1 && u.CountryId == 1 && u.IsActive == true).Select(u => u.TablesName).SingleOrDefault();
+            Locationcode = context.Database.SqlQuery<Getclassname>(string.Format("SELECT AutoId,LocationCode FROM {0} WHERE LocationFlag=2 and  IsActive=1", TableName), 1).AsEnumerable()
+                .Select(x => new { Groupid = x.AutoId, Groupc = x.LocationCode }).Distinct().ToDictionary(o => o.Groupid, o => o.Groupc);
+            Dictionary<Int64, string> Partnercode1 = new Dictionary<Int64, string>();
+            string partnertable = "tblPartner";
+            Partnercode1 = context.Database.SqlQuery<GetPartneridbycode>(string.Format("SELECT PartnerId,PartnerCode FROM {0} WHERE IsActive=1", partnertable), 1).AsEnumerable()
+                .Select(x => new { Partnercodes = x.PartnerId, Groupc = x.PartnerCode }).Distinct().ToDictionary(o => o.Partnercodes, o => o.Groupc);
+            int Groupid = 0; int partnerid = 0; int flag = 0;
+            foreach (DataRow dr in dt.Rows)
+            {
+                #region Conditional Logic
+                if (Convert.ToInt64(Locationcode.FirstOrDefault(x => x.Value == Convert.ToString(dr["LocationCode"])).Key.ToString()) != 0)
+                {
+                    Groupid = Convert.ToInt32(Locationcode.FirstOrDefault(x => x.Value == Convert.ToString(dr["LocationCode"])).Key.ToString());
+                    flag = 1;
+                }
+                else
+                {
+                    Newdt.Rows.Add(dr.ItemArray);
+                    flag = 0;
+                    //  break;
+                }
+                if (Convert.ToInt64(Partnercode1.FirstOrDefault(x => x.Value == Convert.ToString(dr["PartnerCode"])).Key.ToString()) != 0)
+                {
+                    partnerid = Convert.ToInt32(Partnercode1.FirstOrDefault(x => x.Value == Convert.ToString(dr["PartnerCode"])).Key.ToString());
+                    flag = 1;
+                }
+                else
+                {
+                    Newdt.Rows.Add(dr.ItemArray);
+                    //  break;
+                    flag = 0;
+                }
+
+
+                #endregion
+                if (flag == 1)
+                {
+                      context.DMSImport_Employee(Convert.ToString(dr["EmployeeName"]), Convert.ToString(dr["MobileNo"]), Convert.ToString(dr["EmailId"]), Convert.ToInt64(1), Convert.ToInt64(1), Convert.ToInt64(Session["UserId"].ToString()),Convert.ToInt32(partnerid), Convert.ToInt32(Groupid));
+                    flag = 0;
+                }
+                }
+            context.SaveChanges();
+           
+           
+         
+            preloader.Style.Add("display", "none");
+            Overlay_Load.Style.Add("display", "none");
+            if (Newdt.Rows.Count > 0)
+            {
+                grdpartner.DataSource = Newdt;
+                grdpartner.DataBind();
+                ScriptManager.RegisterStartupScript(this, GetType(), "alertmsg", "showrejectedPopup();", true);
+                return;
+            }
+
+        }
     }
 }
