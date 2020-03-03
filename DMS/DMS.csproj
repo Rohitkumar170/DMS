@@ -3222,6 +3222,7 @@
     <Compile Include="Models\PartnerClasses\PartnerSaveRes.cs" />
     <Compile Include="Models\PartnerClasses\TaxtGroupId.cs" />
     <Compile Include="Models\Requisition Classes\BindItemddl.cs" />
+    <Compile Include="Models\Requisition Classes\BindRequestGrid.cs" />
     <Compile Include="Models\SequenceSetupClasses\BindCreatedSequence.cs" />
     <Compile Include="Models\SequenceSetupClasses\BindddlFormate.cs" />
     <Compile Include="Models\SequenceSetupClasses\BindddlSequence.cs" />
