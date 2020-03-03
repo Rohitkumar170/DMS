@@ -81,7 +81,7 @@
                       <div class="row  mt-1 ">
                       <div class="col-md-3" id="divreqno" > 
                           <label class="headerPropery">Request No.</label>
-                           : <label class="headerValue">0001</label>
+                           : <label class="headerValue" id="iblreqNo"></label>
                       </div>
                       
                            <div class="col-md-3"> 
@@ -426,24 +426,25 @@
                             <table class="table table-de mb-0" id="AllRequisitionGrid">
                         <thead>
                             <tr>
-                                
-                                <th><input Type="checkbox" id="chkall"/> All</th>
+                                 <th style="display:none">RequestId</th>
+                                <th><input type="checkbox" id="chkall"/> All</th>
                                 <th>Request No.</th>
-                                <th>Requested Qty</th>
-                                <th>Request Date</th>
+                                <%--<th>Requested Qty</th>--%>
+                               <%-- <th>Request Date</th>--%>
                                 <th>Location</th>
                                 <th>Creation Date</th>
-                                <th>Submission Date</th>
-                                <th>Cancel Request Date</th>
+                              <th>Submission Date</th>
+                             <%--   <th>Cancel Request Date</th>--%>
                                 <th>Last Activity Date</th>
-                                <th>Total Time</th>
-                                <th>Last Activity Status</th>
-                                <th>Last Activity By</th>
+                              <%--  <th>Total Time</th>--%>
+                                 <th>Last Activity By</th>
+                                <th>Status</th>
+                               
                                
                             </tr>
                         </thead>
                       <tbody>
-                            <tr>  
+                         <%--   <tr>  
                                  <td><input Type="checkbox"/></td>
                                  <td>0001</td>
                                 <td>1000</td>
@@ -484,7 +485,7 @@
                                 <td>2:2:08 Hours</td>
                                 <td>01-Feb-2020 4:08pm</td>
                                 <td>01-Feb-2020 4:08pm</td>
-                            </tr>
+                            </tr>--%>
                       </tbody>
                           
                     </table>

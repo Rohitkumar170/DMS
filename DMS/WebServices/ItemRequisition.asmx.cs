@@ -92,13 +92,15 @@ namespace DMS.WebServices
             }
         }
         [WebMethod]
-        //public Dictionary<string, object> BindRequestHeader(string LoadData)
-        public Dictionary<string, object> BindRequestHeader(string LoadData)
+       
+        public Dictionary<string, object> BindRequestGrid(string EntityId, string CountryId,string Loadmore)
         {
             try
             {
-                DataSet ds = CommonManger.FillDatasetWithParam("DMS_InsertRequisition", "@QueryType", "@loadMore", "RequisitionHeader", LoadData);
-                return ClsJson.JsonMethods.ToJson(ds);
+              
+                var results = Common.Getdata(context.MultipleResults("[dbo].[DMS_InsertRequisition]").With<BindRequestGrid>()
+               .Execute("@QueryType", "@EntityId", "@CountryId", "@loadMore", "BindRequestGrid", EntityId, CountryId, Loadmore));
+                return results;
             }
             catch (Exception ex)
             {

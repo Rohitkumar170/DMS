@@ -1,4 +1,4 @@
-﻿var SessionPartnerId = "5"; var SessionCountryId = "1"; var SessionEntityId = "1"; var globalCounter = 0; var Item = []; var RequestData = [];
+﻿var SessionPartnerId = "5"; var SessionCountryId = "1"; var SessionEntityId = "1"; var globalCounter = 0; var Item = []; var RequestData = []; var dblclickFlag = 0;
 Item.push({ value: "0", text: "Select" });
 jquery_1_11_3_min_p(document).ready(function () {
     var time = new Date();
@@ -7,6 +7,21 @@ jquery_1_11_3_min_p(document).ready(function () {
     $("#lblreqdate").text(Reqdate);
     BindLocation();
     AddDefaultRow();
+    BindRequestGrid();
+
+    $(document).on("dblclick", "#AllRequisitionGrid tbody tr", function () {
+        var row = jquery_1_11_3_min_p(this);
+        $("#AllRequisitionGrid tbody tr").removeClass("selectedRow");
+        row.addClass("selectedRow");
+        dblclickFlag = 1;
+        $("#RequisitionHeader").css('display', 'block');
+        $("#RequisitionForm").css('display', 'block');
+        $("#RequisitionGrid").css('display', 'none');
+        $("#iblreqNo").text(row.find('td:nth-child(3)').text().trim());
+        BindLocation();
+        AddDefaultRow();
+
+    });
 
     jquery_1_11_3_min_p('#btnsave').click(function () {
         if (validateRequisitionForm() == true) {
@@ -120,10 +135,34 @@ function BindItem(LocationId) {
         }
     });
 }
+
+function BindRequestGrid() {
+    Item = [];
+    var Loadmore = 10;
+    jquery_1_11_3_min_p.ajax({
+        type: "POST",
+        contentType: "application/json; charset=utf-8",
+        url: "../WebServices/ItemRequisition.asmx/BindRequestGrid",
+        data: "{'EntityId':'" + SessionEntityId + "','CountryId':'" + SessionCountryId + "','Loadmore':'" + Loadmore + "'}",
+        dataType: "json",
+        async: false,
+        success: function (result) {
+            jsonData = eval(result.d);
+            var i = 0;
+            Item.push({ value: "0", text: "Select" });
+            jQuery.each(jsonData.Table, function (rec) {
+                var markup = "<tr><td style ='display:none'> " + jsonData.Table[i].RequisitionId + "</td> <td> <input type='checkbox' id='chk_' class='chk_All' /></td > <td>" + jsonData.Table[i].RequestNumber + "</td><td>" + jsonData.Table[i].Location + "</td><td>" + jsonData.Table[i].CreationDate + "</td><td>" + jsonData.Table[i].SubmissionDate + "</td><td>" + jsonData.Table[i].LastActivityDate + "</td><td>" + jsonData.Table[i].UserName + "</td><td>" + jsonData.Table[i].Status + "</td> </tr >";
+                jquery_1_11_3_min_p("#AllRequisitionGrid  tbody").append(markup);         
+                i++;
+            });
+        }
+    });
+}
+
+
 function SaveRequest() {
     CreateJson();
     var Reqjson = JSON.stringify(RequestData);
-    alert(Reqjson);
     jquery_1_11_3_min_p.ajax({
         type: "POST",
         contentType: "application/json; charset=utf-8",
